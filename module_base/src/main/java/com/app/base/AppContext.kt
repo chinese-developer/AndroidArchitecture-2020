@@ -25,6 +25,7 @@ import com.app.base.debug.DebugTools
 import com.app.base.router.AppRouter
 import com.app.base.router.RouterManager
 import com.app.base.widget.dialog.AppLoadingView
+import com.drake.tooltip.toast
 import retrofit2.HttpException
 import timber.log.Timber
 import java.io.IOException
@@ -140,11 +141,6 @@ fun CoroutineContext.Dialog(block: (DialogCoroutineScope.(context: FragmentActiv
     AppContext.onDialog = block
 }
 
-/**
- * 该函数指定某些Observer的onError中的默认错误信息处理
- *
- * @see NetConfig.onError
- */
-fun CoroutineContext.onError(block: Throwable.() -> Unit) {
-    NetConfig.onError = block
+fun toast(msg: CharSequence? = null) {
+    AppContext.get().toast(msg ?: "")
 }

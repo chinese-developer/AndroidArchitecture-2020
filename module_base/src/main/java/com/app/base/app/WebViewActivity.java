@@ -34,13 +34,14 @@ import com.app.base.utils.SaveImageUtils;
 import com.app.base.utils.ShareUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.ToastUtils;
 
 import org.jetbrains.annotations.NotNull;
 
 import me.jingbin.web.ByWebView;
 import me.jingbin.web.OnTitleProgressCallback;
 import timber.log.Timber;
+
+import static com.app.base.AppContextKt.toast;
 
 /**
  * 网页可以处理:
@@ -129,7 +130,7 @@ public class WebViewActivity extends AppCompatActivity {
             ShareUtils.share(WebViewActivity.this, shareText);
         } else if (itemId == R.id.actionbar_cope) {// 复制链接
             BaseTools.copy(byWebView.getWebView().getUrl());
-            ToastUtils.showShort("已复制到剪贴板");
+            toast("已复制到剪贴板");
         } else if (itemId == R.id.actionbar_open) {// 打开链接
             BaseTools.openLink(WebViewActivity.this, byWebView.getWebView().getUrl());
         } else if (itemId == R.id.actionbar_webview_refresh) {// 刷新页面

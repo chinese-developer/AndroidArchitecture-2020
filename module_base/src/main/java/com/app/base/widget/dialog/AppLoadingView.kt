@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.annotation.NonNull
 import com.android.base.app.ui.LoadingView
 import com.app.base.R
+import com.app.base.toast
 
 class AppLoadingView constructor(@NonNull context: Context) : LoadingView {
 
@@ -32,11 +33,11 @@ class AppLoadingView constructor(@NonNull context: Context) : LoadingView {
     }
 
     override fun showMessage(message: CharSequence) {
-        TipsManager.showMessage(message)
+        toast(message)
     }
 
     override fun showMessage(messageId: Int) {
-        showMessage(mContext.getText(messageId))
+        toast(mContext.getText(messageId))
     }
 
     override fun showLoadingDialog(cancelable: Boolean) {

@@ -14,7 +14,6 @@ import android.view.View;
 
 import com.android.base.utils.BaseUtils;
 import com.app.base.R;
-import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 
@@ -30,6 +29,8 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.app.base.AppContextKt.toast;
 
 /**
  * 保存图片，重复插入图片提示已存在
@@ -89,7 +90,7 @@ public class SaveImageUtils {
 
     @SuppressLint("CheckResult")
     public static void saveImageToGallery(Activity context, String mImageUrl, String mImageTitle) {
-        ToastUtils.showShort("开始下载图片");
+        toast("开始下载图片");
         // @formatter:off
         SaveImageUtils.saveImageAndGetPathObservable(context, mImageUrl, mImageTitle)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -97,8 +98,8 @@ public class SaveImageUtils {
                     File appDir = new File(Environment.getExternalStorageDirectory(), "相册");
                     String msg = String.format(BaseUtils.getResources().getString(R.string.picture_has_save_to),
                             appDir.getAbsolutePath());
-                    ToastUtils.showLong(msg);
-                }, error -> ToastUtils.showLong(error.getMessage()));
+                    toast(msg);
+                }, error -> toast(error.getMessage()));
     }
 
     /**

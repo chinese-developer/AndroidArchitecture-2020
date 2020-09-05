@@ -28,7 +28,7 @@ import com.app.base.common.EventCenter
 import com.app.base.data.models.Song
 import com.app.base.service.DownLoadJobService
 import com.app.base.service.DownLoadJobService.Companion.HANDLER_MSG_WHAT_DOWNLOAD
-import com.app.base.widget.dialog.TipsManager
+import com.app.base.toast
 import com.app.base.widget.dialog.mdstyle.MaterialDialog
 import com.app.base.widget.dialog.mdstyle.core.LayoutMode
 import com.app.base.widget.dialog.mdstyle.core.bottomsheets.BottomSheet
@@ -261,7 +261,7 @@ class MainFragment : AppBaseFragment() {
 
     fun playWhenReady(song: Song?, pause: Boolean = true): Boolean {
         if (song == null || song.url.isNullOrBlank()) {
-            TipsManager.showMessage(getString(R.string.error_get_song_url))
+            toast(getString(R.string.error_get_song_url))
             return false
         }
 
@@ -334,7 +334,7 @@ class MainFragment : AppBaseFragment() {
                                 lineSpacing(1.4f)
                                 html {
                                     context.startActivityForUriIntent(it) { errorMessage ->
-                                        TipsManager.showMessage(errorMessage)
+                                        toast(errorMessage)
                                     }
                                 }
                             }

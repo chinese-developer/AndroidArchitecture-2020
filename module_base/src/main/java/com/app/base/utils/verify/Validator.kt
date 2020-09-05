@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import com.android.base.utils.android.ResourceUtils.getString
-import com.app.base.widget.dialog.TipsManager
+import com.app.base.toast
 import com.app.base.widget.text.ValidateCodeInputLayout
 
 /**
@@ -85,7 +85,7 @@ internal fun handNoMatch(view: View, strId: Int) {
             }
             view.textInputLayout.error = message
         }
-        else -> TipsManager.showMessage(message)
+        else -> toast(message)
     }
 }
 

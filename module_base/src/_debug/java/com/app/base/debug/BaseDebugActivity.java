@@ -21,7 +21,6 @@ import com.app.base.R;
 import com.app.base.data.DataConfig;
 import com.app.base.data.app.AppDataSource;
 import com.app.base.utils.verify.ValidatorKt;
-import com.blankj.utilcode.util.ToastUtils;
 import com.uber.autodispose.AutoDispose;
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
 
@@ -33,6 +32,8 @@ import dagger.hilt.android.AndroidEntryPoint;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import me.ele.uetool.UETool;
 import timber.log.Timber;
+
+import static com.app.base.AppContextKt.toast;
 
 /**
  * 仅用于调试版本
@@ -207,7 +208,7 @@ public class BaseDebugActivity extends AppCompatActivity {
         AutoPermissionRequester.with(this)
                 .permission(Permission.WRITE_EXTERNAL_STORAGE, Permission.CAMERA)
                 .onDenied(strings -> {
-                    ToastUtils.showShort("没有权限");
+                    toast("没有权限");
                     supportFinishAfterTransition();
                 }).request();
     }

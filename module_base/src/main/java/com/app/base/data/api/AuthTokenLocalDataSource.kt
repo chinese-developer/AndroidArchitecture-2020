@@ -8,8 +8,9 @@ package com.app.base.data.api
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.android.base.utils.android.views.getString
+import com.app.base.AppContext
 import com.app.base.R
-import com.app.base.widget.dialog.TipsManager
+import com.drake.tooltip.toast
 import javax.inject.Inject
 
 /**
@@ -37,7 +38,7 @@ class AuthTokenLocalDataSource @Inject constructor(private val prefs: SharedPref
 
     fun checkIfHasToken(): Boolean {
         if (authToken.isNullOrBlank()) {
-            TipsManager.showMessage(getString(R.string.error_not_login))
+            AppContext.get().toast(getString(R.string.error_not_login))
             return false
         }
         return true
