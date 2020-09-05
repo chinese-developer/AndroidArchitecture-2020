@@ -7,8 +7,8 @@ import com.app.base.data.api.NetResult
 import com.app.base.data.api.isLoginExpired
 import com.app.base.data.api.isSSOLoginExpired
 import com.app.base.router.RouterPath
-import com.app.base.widget.dialog.TipsManager.showMessage
 import com.app.base.widget.dialog.showConfirmDialog
+import com.drake.tooltip.toast
 import javax.inject.Inject
 
 interface ErrorHandler {
@@ -28,7 +28,7 @@ class AppErrorHandler @Inject constructor() : ErrorHandler {
 
     override fun handleError(netResultError: NetResult.Error) {
         handleError(netResultError) {
-            showMessage(it)
+            AppContext.get().toast(it)
         }
     }
 
@@ -39,7 +39,7 @@ class AppErrorHandler @Inject constructor() : ErrorHandler {
                 return
             }
         }
-        showMessage(netResultError.exception.message)
+        AppContext.get().toast(netResultError.exception.message ?: "")
     }
 
     override fun handleGlobalError(code: Int) {

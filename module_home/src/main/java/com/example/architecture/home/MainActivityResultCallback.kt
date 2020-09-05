@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import com.android.base.app.activity.ActivityDelegate
 import com.app.base.router.RouterPath
-import com.app.base.widget.dialog.TipsManager
+import com.app.base.toast
 import com.app.base.widget.dialog.showConfirmDialog
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -29,7 +29,7 @@ class MainActivityResultCallback(private val activity: MainActivity) :
                         positiveColor = R.color.green_main
                         titleId = R.string.title
                         positiveListener = {
-                            TipsManager.showMessage("appRouter.build().navigation()")
+                            toast("appRouter.build().navigation()")
                         }
                     }
                 }
