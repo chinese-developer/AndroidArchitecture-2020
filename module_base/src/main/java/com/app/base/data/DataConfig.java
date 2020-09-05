@@ -3,11 +3,10 @@ package com.app.base.data;
 import android.app.Application;
 
 import com.android.base.utils.android.cache.SpCache;
-import com.android.sdk.net.NetContext;
+import com.android.sdk.net.NetConfig;
 import com.app.base.AppContext;
 import com.app.base.BuildConfig;
 import com.app.base.data.app.AppDataSource;
-import com.blankj.utilcode.util.NetworkUtils;
 
 import timber.log.Timber;
 
@@ -24,11 +23,11 @@ import static com.app.base.data.api.HttpResultKt.isLoginExpired;
 /**
  * Data层配置，抽象为DataContext
  */
-public class DataContext {
+public class DataConfig {
 
-    private static DataContext sDataContext;
+    private static DataConfig sDataConfig;
 
-    private static final String NAME = "data_context";
+    private static final String NAME = "data_config";
     private static final String HOST_KEY = "host_key";
 
     /*环境配置*/
@@ -42,35 +41,29 @@ public class DataContext {
     static final String RELEASE = "release";
 
     public synchronized static void init(Application application) {
-        if (sDataContext != null) {
+        if (sDataConfig != null) {
             throw new IllegalStateException("DataContext was  initialized");
         }
-        sDataContext = new DataContext(application);
+        sDataConfig = new DataConfig(application);
     }
 
-    public static DataContext getInstance() {
-        if (sDataContext == null) {
+    public static DataConfig getInstance() {
+        if (sDataConfig == null) {
             throw new IllegalStateException("DataContext has not initialized");
         }
-        return sDataContext;
+        return sDataConfig;
     }
 
     private AppDataSource mAppDataSource;
     private final SpCache mSpCache;
     private int mHostEnvIdentification;
 
-    private DataContext(Application application) {
+    private DataConfig(Application application) {
         mSpCache = new SpCache(NAME, false/*不适用 apply，立即保存*/);
         //环境初始化
         initEnvironment();
         //初始化网络库
-        NetContext.get()
-                .newBuilder()
-                .aipHandler(newApiHandler())
-                .httpConfig(newOkHttpConfig())
-                .networkChecker(NetworkUtils::isConnected)
-                .errorDataAdapter(newErrorDataAdapter())
-                .setup();
+        NetConfig.INSTANCE.initNet(application, newApiHandler(), newOkHttpConfig(), newErrorDataAdapter());
     }
 
     void publishLoginExpired(int code) {

@@ -15,10 +15,10 @@ import androidx.lifecycle.Lifecycle;
 
 import com.android.base.permission.AutoPermissionRequester;
 import com.android.base.permission.Permission;
-import com.android.sdk.net.NetContext;
+import com.android.sdk.net.NetConfig;
 import com.app.base.AppContext;
 import com.app.base.R;
-import com.app.base.data.DataContext;
+import com.app.base.data.DataConfig;
 import com.app.base.data.app.AppDataSource;
 import com.app.base.utils.verify.ValidatorKt;
 import com.blankj.utilcode.util.ToastUtils;
@@ -56,7 +56,7 @@ public class BaseDebugActivity extends AppCompatActivity {
         setContentView(R.layout.base_activity_debug);
         initUI();
         initUser();
-        showHost(DataContext.getInstance().hostIdentification());
+        showHost(DataConfig.getInstance().hostIdentification());
         requestPermission();
     }
 
@@ -75,7 +75,7 @@ public class BaseDebugActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void initUser() {
-        mDebugApi = NetContext.get().retrofitWithoutToken().create(DebugApi.class);
+        mDebugApi = NetConfig.INSTANCE.getRetrofitWithoutToken().create(DebugApi.class);
 
         mAppDataSource.observableUser()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -143,21 +143,21 @@ public class BaseDebugActivity extends AppCompatActivity {
 
     private void showHost(int hostEnvIdentification) {
         TextView tv = findViewById(R.id.debug_tv_host);
-        if (hostEnvIdentification == DataContext.BUILD_DEV) {
+        if (hostEnvIdentification == DataConfig.BUILD_DEV) {
             tv.setText("环境：开发");
-        } else if (hostEnvIdentification == DataContext.BUILD_TEST) {
+        } else if (hostEnvIdentification == DataConfig.BUILD_TEST) {
             tv.setText("环境：测试");
-        } else if (hostEnvIdentification == DataContext.BUILD_RELEASE) {
+        } else if (hostEnvIdentification == DataConfig.BUILD_RELEASE) {
             tv.setText("环境：正式");
         }
     }
 
     public void switchHost(View view) {
-        int hostEnvIdentification = DataContext.getInstance().hostIdentification();
+        int hostEnvIdentification = DataConfig.getInstance().hostIdentification();
         final int[] choice = new int[1];
-        if (hostEnvIdentification == DataContext.BUILD_TEST) {
+        if (hostEnvIdentification == DataConfig.BUILD_TEST) {
             choice[0] = 1;
-        } else if (hostEnvIdentification == DataContext.BUILD_RELEASE) {
+        } else if (hostEnvIdentification == DataConfig.BUILD_RELEASE) {
             choice[0] = 2;
         }
         new AlertDialog.Builder(this)
@@ -165,11 +165,11 @@ public class BaseDebugActivity extends AppCompatActivity {
                     dialog.dismiss();
                     int host;
                     if (which == 0) {
-                        host = DataContext.BUILD_DEV;
+                        host = DataConfig.BUILD_DEV;
                     } else if (which == 1) {
-                        host = DataContext.BUILD_TEST;
+                        host = DataConfig.BUILD_TEST;
                     } else {
-                        host = DataContext.BUILD_RELEASE;
+                        host = DataConfig.BUILD_RELEASE;
                     }
                     showRestartAction(host);
                 }).show();
@@ -184,7 +184,7 @@ public class BaseDebugActivity extends AppCompatActivity {
 
                     //修改 host 标识
                     showHost(host);
-                    DataContext.getInstance().switchHost(host);
+                    DataConfig.getInstance().switchHost(host);
                     //清除所有数据
                     AppContext.appDataSource().logout();
                     AppContext.storageManager().stableStorage().clearAll();

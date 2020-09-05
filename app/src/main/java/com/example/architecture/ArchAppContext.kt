@@ -2,7 +2,7 @@ package com.example.architecture
 
 import android.content.Intent
 import com.app.base.AppContext
-import com.app.base.data.DataContext
+import com.app.base.data.DataConfig
 import com.example.architecture.home.SplashActivity
 import dagger.hilt.android.HiltAndroidApp
 
@@ -17,7 +17,7 @@ class ArchAppContext : AppContext() {
 
     override fun onCreate() {
         /** 数据层在 dagger 注入前初始化，保证 [DataModule] 需要的依赖都已经生成 */
-        DataContext.init(this)
+        DataConfig.init(this)
 
         super.onCreate()
     }

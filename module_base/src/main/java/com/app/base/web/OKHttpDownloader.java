@@ -2,7 +2,7 @@ package com.app.base.web;
 
 import com.android.base.utils.common.CloseUtils;
 import com.android.base.utils.common.FileUtils;
-import com.android.sdk.net.NetContext;
+import com.android.sdk.net.NetConfig;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -33,50 +33,46 @@ public class OKHttpDownloader {
 
     private static String downLoadImage(String url, File saveFile) {
 
-        OkHttpClient okHttpClient = NetContext.get().httpClient();
+        OkHttpClient okHttpClient = NetConfig.INSTANCE.getOKHttpRegular();
 
-        if (okHttpClient != null) {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
 
-            Request request = new Request.Builder()
-                    .url(url)
-                    .build();
+        ResponseBody body = null;
 
-            ResponseBody body = null;
-
-            try {
-                Response response = okHttpClient.newCall(request).execute();
-                if (response.isSuccessful()) {
-                    body = response.body();
-                } else {
-                    throw new IOException();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+            if (response.isSuccessful()) {
+                body = response.body();
+            } else {
+                throw new IOException();
             }
-
-            if (body == null) return "";
-
-            FileUtils.makeFilePath(saveFile);
-
-            InputStream is = null;
-            FileOutputStream fos = null;
-            try {
-                byte[] buf = new byte[1024 * 2];
-                int len;
-                is = body.byteStream();
-                fos = new FileOutputStream(saveFile);
-                while ((len = is.read(buf)) != -1) {
-                    fos.write(buf, 0, len);
-                }
-                fos.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                CloseUtils.closeIOQuietly(is, fos);
-            }
-
-            return saveFile.getAbsolutePath();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return "";
+
+        if (body == null) return "";
+
+        FileUtils.makeFilePath(saveFile);
+
+        InputStream is = null;
+        FileOutputStream fos = null;
+        try {
+            byte[] buf = new byte[1024 * 2];
+            int len;
+            is = body.byteStream();
+            fos = new FileOutputStream(saveFile);
+            while ((len = is.read(buf)) != -1) {
+                fos.write(buf, 0, len);
+            }
+            fos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            CloseUtils.closeIOQuietly(is, fos);
+        }
+
+        return saveFile.getAbsolutePath();
     }
 }

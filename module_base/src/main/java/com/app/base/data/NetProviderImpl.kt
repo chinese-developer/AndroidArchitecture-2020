@@ -27,9 +27,9 @@ internal fun newOkHttpConfig(): HttpConfig {
         private val CONNECTION_TIME_OUT = 10
         private val IO_TIME_OUT = 20
 
-        override fun baseUrl() = DataContext.baseUrl()
+        override fun baseUrl() = DataConfig.baseUrl()
 
-        override fun environment() = DataContext.environment()
+        override fun environment() = DataConfig.environment()
 
         override fun configRetrofit(
                 okHttpClient: OkHttpClient,
@@ -82,6 +82,6 @@ internal fun newErrorDataAdapter(): ErrorDataAdapter = object : ErrorDataAdapter
 internal fun newApiHandler(): ApiHandler = ApiHandler { result ->
     // 登录状态已过期，请重新登录、账号在其他设备登陆
     if (isLoginExpired(result.code)) {
-        DataContext.getInstance().publishLoginExpired(result.code)
+        DataConfig.getInstance().publishLoginExpired(result.code)
     }
 }

@@ -1,7 +1,7 @@
 package com.android.sdk.net.gson;
 
 
-import com.android.sdk.net.NetContext;
+import com.android.sdk.net.NetConfig;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
@@ -45,7 +45,7 @@ public class ErrorJsonLenientConverterFactory extends Converter.Factory {
                 return delegateConverter.convert(value);
             } catch (Exception e/*防止闪退：JsonSyntaxException、IOException or MalformedJsonException*/) {
                 Timber.e(e, "Json covert error -->error ");
-                return NetContext.get().netProvider().errorDataAdapter().createErrorDataStub(type, annotations, retrofit, value);// 服务器数据格式错误
+                return NetConfig.INSTANCE.getNetProvider().errorDataAdapter().createErrorDataStub(type, annotations, retrofit, value);// 服务器数据格式错误
             }
         };
     }

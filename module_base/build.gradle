@@ -104,6 +104,9 @@ dependencies {
     // gson
     api "com.google.code.gson:gson:${versions.gson}"
 
+    // toast
+    api "com.github.liangjingkanji:Tooltip:${versions.toast}"
+
     // rx binding
     api "com.jakewharton.rxbinding3:rxbinding-appcompat:${versions.rxBinding3}"
     // image compression
