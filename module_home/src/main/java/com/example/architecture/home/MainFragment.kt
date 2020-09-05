@@ -243,7 +243,7 @@ class MainFragment : AppBaseFragment() {
                 override fun createFragment(position: Int): Fragment {
                     return when (position) {
                         0 -> lyricsFragment
-                        else -> lyricsFragment
+                        else -> newFragment<LyricsFragment>()
                     }
                 }
             }

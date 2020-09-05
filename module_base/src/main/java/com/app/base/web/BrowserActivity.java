@@ -12,7 +12,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.android.base.utils.android.compat.StatusBarUtil;
 import com.app.base.R;
 import com.app.base.app.AppBaseActivity;
-import com.app.base.data.DataContext;
+import com.app.base.data.DataConfig;
 import com.app.base.router.RouterPath;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
@@ -39,7 +39,7 @@ public class BrowserActivity extends AppBaseActivity {
         setContentView(R.layout.app_base_web_activity);
         String url = targetUrl;
         if (!URLUtil.isValidUrl(targetUrl)) {
-            url = DataContext.getInstance().baseWebUrl() + targetUrl;
+            url = DataConfig.getInstance().baseWebUrl() + targetUrl;
         }
 
         if (savedInstanceState == null) {

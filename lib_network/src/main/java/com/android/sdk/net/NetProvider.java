@@ -10,8 +10,6 @@ import androidx.annotation.Nullable;
 
 public interface NetProvider {
 
-    boolean isConnected();
-
     @Nullable
     ApiHandler aipHandler();
 
@@ -28,12 +26,6 @@ class NetProviderImpl implements NetProvider {
     ApiHandler mApiHandler;
     HttpConfig mHttpConfig;
     ErrorDataAdapter mErrorDataAdapter;
-    NetworkChecker mNetworkChecker;
-
-    @Override
-    public boolean isConnected() {
-        return mNetworkChecker.isConnected();
-    }
 
     @Nullable
     @Override
@@ -54,7 +46,7 @@ class NetProviderImpl implements NetProvider {
     }
 
     void checkRequired() {
-        if (mErrorDataAdapter == null || mNetworkChecker == null || mHttpConfig == null) {
+        if (mErrorDataAdapter == null || mHttpConfig == null) {
             throw new NullPointerException("You must provide following object：ErrorMessage, mErrorDataAdapter, mNetworkChecker, HttpConfig.");
         }
     }

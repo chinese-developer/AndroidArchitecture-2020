@@ -1,7 +1,7 @@
 package com.app.base.dagger
 
 import android.content.SharedPreferences
-import com.android.sdk.net.NetContext
+import com.android.sdk.net.NetConfig
 import com.android.sdk.net.gson.GsonUtils
 import com.app.base.data.api.*
 import com.app.base.data.app.AppRepository
@@ -51,12 +51,12 @@ object DataModule {
     @Named(OKHTTP_REGULAR)
     @Provides
     @Singleton
-    fun provideOkHttpRegularClient(): OkHttpClient = NetContext.get().httpClient()
+    fun provideOkHttpRegularClient(): OkHttpClient = NetConfig.oKHttpRegular
 
     @Named(OKHTTP_WITHOUT_TOKEN)
     @Provides
     @Singleton
-    fun provideOkHttpWithoutTokenClient(): OkHttpClient = NetContext.get().httpClientWithoutToken()
+    fun provideOkHttpWithoutTokenClient(): OkHttpClient = NetConfig.okHttpWithoutToken
 
     @Provides
     @AuthInterceptorOkHttpClient

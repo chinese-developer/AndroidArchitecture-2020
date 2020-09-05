@@ -3,7 +3,7 @@ package com.app.base.data.api;
 import android.text.TextUtils;
 
 import com.android.base.utils.common.StringChecker;
-import com.app.base.data.DataContext;
+import com.app.base.data.DataConfig;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -133,7 +133,7 @@ public class ApiParameter {
         JsonObject jsonObject = generateCommonParamsJson();
         /*添加app token*/
         if (isNeedToken) {
-            String appToken = DataContext.getInstance().getAppToken();
+            String appToken = DataConfig.getInstance().getAppToken();
             jsonObject.addProperty(ApiParameter.APP_TOKEN_KEY, appToken == null ? "" : appToken);
         }
         /*添加参数*/
