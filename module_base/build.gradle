@@ -1,0 +1,160 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+boolean openDebug = isOpenDebug.toBoolean()
+
+android {
+
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 1
+        versionName "1.0"
+        buildConfigField("boolean", "openDebug", "$openDebug")
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildFeatures {
+
+        dataBinding true
+        viewBinding true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main {
+            if (openDebug) {
+                java.srcDirs += "src/_debug/java"
+                res.srcDirs += "src/_debug/res"
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            // path "src/main/cpp/CMakeLists.txt"
+        }
+    }
+
+}
+
+dependencies {
+
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    // 基础组件库
+    api project(':lib_base') // 基础类库
+    api project(':lib_cache') // 缓存库
+    api project(':lib_network') // 网络库
+    api project(':lib_media_selector') // 媒体库选择器
+
+    // AndroidX Support
+    api "androidx.cardview:cardview:${versions.cardview}"
+    api "androidx.multidex:multidex:${versions.multidex}"
+    api "androidx.exifinterface:exifinterface:${versions.androidx}"
+
+    // kotlin
+    api "io.reactivex.rxjava2:rxkotlin:${versions.rxkotlin}"
+
+    // Third Library
+    // apt
+    kapt "com.github.bumptech.glide:compiler:${versions.glide}"
+
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:${versions.dagger}"
+    kapt "com.google.dagger:hilt-android-compiler:${versions.dagger}"
+
+    // Room
+    implementation "androidx.room:room-runtime:${versions.room}"
+    implementation "androidx.room:room-ktx:${versions.room}"
+    kapt "androidx.room:room-compiler:${versions.room}"
+
+    // ARouter
+    api "com.alibaba:arouter-api:${versions.arouter}"
+    kapt "com.alibaba:arouter-compiler:${versions.arouterAnnotation}"
+
+    // gson
+    api "com.google.code.gson:gson:${versions.gson}"
+
+    // rx binding
+    api "com.jakewharton.rxbinding3:rxbinding-appcompat:${versions.rxBinding3}"
+    // image compression
+    api "top.zibin:Luban:${versions.luban}"
+
+    // multi channel
+    implementation "com.leon.channel:helper:2.0.3"
+
+    // WebView https://github.com/youlookwhat/ByWebView
+    implementation 'com.github.youlookwhat:ByWebView:1.0.0'
+
+    // EventBus
+    api 'org.greenrobot:eventbus:3.2.0'
+
+    // UI
+    // https://github.com/Tencent/QMUI_Android
+    api("com.qmuiteam:qmui:${versions.qmui}") {
+        exclude group: 'com.android.support'
+    }
+    // https://github.com/chenBingX/SuperTextView
+    api "com.github.chenBingX:SuperTextView:${versions.superTextView}"
+    // https://github.com/kyleduo/SwitchButton
+    api "com.kyleduo.switchbutton:library:${versions.switchbutton}"
+    // https://github.com/yshrsmz/KeyboardVisibilityEvent
+    api "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:${versions.keyboardtools}"
+    api "com.github.chrisbanes:PhotoView:${versions.photoView}"
+
+    // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:${versions.brvah}"
+    api "androidx.paging:paging-runtime-ktx:${versions.paging}"
+
+    // https://github.com/evant/binding-collection-adapter
+    api "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${versions.bindingAdapter}"
+    api "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${versions.bindingAdapter}"
+
+    // Debug
+    if (openDebug) {
+        // UETool
+        implementation "me.ele:uetool:${versions.ueTool}"
+        // stetho
+        implementation "com.facebook.stetho:stetho:${versions.stethoOkhttp3}"
+        implementation "com.facebook.stetho:stetho-okhttp3:${versions.stethoOkhttp3}"
+        // LeakCanary
+//        implementation "com.squareup.leakcanary:leakcanary-android:${versions.leakcanary}"
+        // BlockCanary
+//        implementation "com.github.markzhai:blockcanary-android:${versions.blockcanary}"
+    } else {
+        compileOnly "me.ele:uetool:${versions.ueTool}"
+        compileOnly "com.facebook.stetho:stetho:${versions.stethoOkhttp3}"
+        compileOnly "com.facebook.stetho:stetho-okhttp3:${versions.stethoOkhttp3}"
+        compileOnly "com.squareup.leakcanary:leakcanary-android:${versions.leakcanary}"
+        compileOnly "com.github.markzhai:blockcanary-android:${versions.blockcanary}"
+    }
+}

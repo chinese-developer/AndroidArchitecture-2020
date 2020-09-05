@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.app.base.widget.dialog.mdstyle.core.rtl.RtlTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/md_text_message"
+    style="@style/MD_Dialog_Message"
+    tools:text="RTL message textView"
+    />

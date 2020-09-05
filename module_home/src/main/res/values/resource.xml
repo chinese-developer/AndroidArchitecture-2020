@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
+
+    <string-array name="home_tabs">
+        <item>@string/tab_1</item>
+        <item>@string/tab_2</item>
+    </string-array>
+
+</resources>

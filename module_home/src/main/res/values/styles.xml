@@ -1,0 +1,31 @@
+<resources>
+    <style name="AppTheme.Launcher" parent="AppTheme.FullScreen">
+        <!-- 是否绘制 navigation bar 区域，false 不显示 nav bar 区域，将图设置为全屏。 -->
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+        <item name="android:windowBackground">@drawable/layer_splash</item>
+    </style>
+
+    <style name="SearchViewTheme" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="colorControlActivated">?android:colorAccent</item>
+        <item name="android:searchViewStyle">@style/Widget.DaMi.SearchView</item>
+    </style>
+
+    <style name="Widget.DaMi.SearchView" parent="android:style/Widget.Material.SearchView">
+        <item name="android:searchIcon">@android:color/transparent</item>
+        <item name="android:searchHintIcon">@android:color/transparent</item>
+        <item name="android:queryBackground">@android:color/transparent</item>
+        <item name="android:submitBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="Widget.DaMi.SongerView">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">195dp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/gray_level1</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>

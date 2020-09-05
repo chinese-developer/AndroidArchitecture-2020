@@ -1,0 +1,65 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- 5.0 沉浸式 -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <!-- 放在values-v23/themes.xmk：Android 6.0以上 状态栏字色和图标为浅黑色-->
+        <!--<item name="android:windowLightStatusBar">true</item>-->
+    </style>
+
+    <!--Dialog-->
+    <style name="Theme_Dialog_Common">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.4</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+    <style name="AppTheme.MDDialog">
+        <item name="md_corner_radius">20dp</item>
+        <item name="md_color_title">@color/md_color_title</item>
+        <item name="md_color_content">@color/md_color_content</item>
+        <item name="md_color_hint">@color/md_color_content</item>
+        <item name="md_ripple_color">@color/md_ripple_color</item>
+        <item name="md_color_positive_button_text">@color/md_color_positive_button_text</item>
+        <item name="md_color_negative_button_text">@color/md_color_negative_button_text</item>
+        <item name="md_color_neutral_button_text">@color/md_color_neutral_button_text</item>
+        <item name="md_background_color">@color/md_background_color</item>
+        <item name="md_color_widget">@color/md_color_widget</item>
+        <item name="md_color_widget_unchecked">@color/md_color_widget_unchecked</item>
+        <item name="md_divider_color">@color/md_divider_theme</item>
+        <item name="md_item_selector">@drawable/md_item_selector</item>
+        <item name="md_button_selector">@drawable/md_btn_selector</item>
+        <item name="android:windowBackground">@color/md_background_color</item>
+    </style>
+
+    <style name="AppTheme.MDDialog.Font">
+        <item name="md_font_title">@font/raleway_bold</item>
+        <item name="md_font_body">@font/raleway_medium</item>
+        <item name="md_font_button">@font/raleway_semibold</item>
+    </style>
+
+    <style name="AppTheme.MDDialog.Theme" parent="Theme.AppCompat.Light.Dialog.Alert"
+        tools:ignore="PrivateResource">
+        <item name="android:windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
+
+        <item name="android:actionModeBackground">@color/primary_material_dark</item>
+        <item name="android:actionModeCloseDrawable">@drawable/md_nav_back</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <item name="android:windowAnimationStyle">@style/MD_WindowAnimation</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+</resources>

@@ -1,0 +1,36 @@
+dependencies {
+//    testImplementation project(':test_shared')
+    testImplementation "androidx.arch.core:core-testing:${test.archTestingVersion}"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${test.mockitoKotlinVersion}"
+    testImplementation "com.squareup.retrofit2:retrofit-mock:${versions.retrofit}"
+    testImplementation "junit:junit:${test.junitVersion}"
+    testImplementation "org.mockito:mockito-core:${test.mockitoVersion}"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${test.coroutinesVersion}"
+
+    // Work around issue with runtime classpath version conflict
+    implementation "androidx.arch.core:core-runtime:${test.androidXTestCoreVersion}"
+    implementation "androidx.collection:collection:${test.androidxCollection}"
+    implementation "androidx.legacy:legacy-support-core-utils:${test.legacyCoreUtils}"
+    implementation "androidx.lifecycle:lifecycle-runtime:${versions.lifecycle}"
+
+    // Workaround for dependency conflict during assembleAndroidTest
+    androidTestImplementation("androidx.arch.core:core-runtime:2.1.0")
+
+    // Work around issue with runtime classpath version conflict
+    androidTestImplementation "androidx.arch.core:core-testing:${test.archTestingVersion}"
+    androidTestImplementation "androidx.legacy:legacy-support-core-utils:${test.legacyCoreUtils}"
+    androidTestImplementation "androidx.lifecycle:lifecycle-runtime:${versions.lifecycle}"
+
+    androidTestImplementation "androidx.arch.core:core-testing:${test.archTestingVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:${test.espressoVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${test.espressoVersion}"
+    androidTestImplementation "androidx.test.ext:junit:${test.androidXTestExtKotlinRunnerVersion}"
+    androidTestImplementation "androidx.test:rules:${test.androidXTestRulesVersion}"
+    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${test.mockitoKotlinVersion}"
+    androidTestImplementation "com.squareup.retrofit2:retrofit-mock:${versions.retrofit}"
+    androidTestImplementation "org.mockito:mockito-android:${test.mockitoVersion}"
+    androidTestImplementation "org.mockito:mockito-core:${test.mockitoVersion}"
+    // Adding this to bring "google_play_services_version" into the test project
+    // without this, it fails on AGP 3.6.x.
+    androidTestImplementation "com.google.android.gms:play-services-gcm:17.0.0"
+}

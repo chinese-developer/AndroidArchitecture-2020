@@ -1,0 +1,75 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+apply from: '../test_dependencies.gradle'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+android {
+
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildToolsVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
+        vectorDrawables.useSupportLibrary = true
+        resConfigs "zh" // 只需要中文资源
+
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    buildFeatures {
+
+        dataBinding true
+        viewBinding true
+    }
+
+    testOptions { unitTests.returnDefaultValues = true }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    // 基础类库
+    implementation project(':module_base')
+
+    /*https://github.com/google/ExoPlayer*/
+    implementation "com.google.android.exoplayer:exoplayer:${versions.exoplayer}"
+    implementation "com.google.android.exoplayer:exoplayer-ui:${versions.exoplayer}"
+    /*Dagger Hilt*/
+    implementation "com.google.dagger:hilt-android:${versions.dagger}"
+    implementation "androidx.hilt:hilt-common:${versions.dagger_hilt}"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:${versions.dagger_hilt}"
+    kapt "androidx.hilt:hilt-compiler:${versions.dagger_hilt}"
+    kapt "com.google.dagger:hilt-android-compiler:${versions.dagger}"
+    /*ARouter*/
+    kapt "com.alibaba:arouter-compiler:${versions.arouterAnnotation}"
+    /* all jar*/
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+}

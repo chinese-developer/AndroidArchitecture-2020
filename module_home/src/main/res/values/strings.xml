@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
+    <string name="app_name">module_home</string>
+
+    <string name="tab_1">最近播放</string>
+    <string name="tab_2">歌单广场</string>
+
+    <string name="tab_song">歌曲</string>
+    <string name="tab_singer">歌手</string>
+
+    <string name="error_get_song_url">歌曲文件已损坏~</string>
+    <string name="error_get_song_url_and_play_next">歌曲文件已损坏，准备播放下一首~</string>
+    <string name="error_unsupported_audio">媒体包含音轨，但此设备无法播放！</string>
+    <string name="error_unsupported_video">媒体包括视频轨道，但此设备无法播放！</string>
+    <string name="error_tips_first_index">这已经是第一首了</string>
+    <string name="error_tips_last_index">这已经是最后一首了</string>
+
+    <string name="tips_downloading">后台下载中…</string>
+    <string name="hint_search_song_to_api">请输入要搜索的歌名</string>
+
+    <string name="tips_wangyiyun_uid"><![CDATA[
+        1. 首先在电脑端，打开网易云音乐官网<b><a href="https://music.163.com/">https://music.163.com/</a>。</b><br/>
+        2. 然后点击页面右上角的"登录"，登录您的账号。<br/>
+        3. 点击您的头像，进入个人中心。<br/>
+        4. 此时<i><b><font color="#FFA500">浏览器地址栏</font></b><font color="#1986F3">/user/home?id=</font></i>后面的<b><font color="#FFA500">数字</font></b>就是您的网易云UID
+    ]]></string>
+    <string name="tips_wangyiyun_uid_title">请输入您的网易云UID</string>
+    <string name="tips_shared_url_title">歌曲外链分享</string>
+    <string name="tips_shared_content_"><![CDATA[
+    <b><font size="16" color="#B39DDB">%s</font></b> 歌曲的外链地址为:<br/>(获取到的音乐外链有效期较短，请按需使用)
+    ]]></string>
+
+    <string name="error_uid_must_be_not_null_tips">请输入您的网易云UID！</string>
+    <string name="tips_sync_succeed">同步成功！</string>
+    <string name="tips_sync_failed">同步失败，没有找到任何歌单！</string>
+    <string name="error_cant_find_song">找不到有效的歌曲</string>
+    <string name="tips_cant_find_any_song">没有找到相关歌曲~</string>
+
+</resources>

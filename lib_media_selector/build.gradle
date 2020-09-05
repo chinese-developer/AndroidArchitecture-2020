@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildToolsVersion
+
+    defaultConfig {
+
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    // support
+    implementation "androidx.appcompat:appcompat:${versions.appcompat}"
+    implementation "com.google.android.material:material:${versions.material}"
+
+    // glide
+    compileOnly "com.github.bumptech.glide:glide:${versions.glide}"
+
+    // bilibili图片选择开源框架
+    implementation('com.bilibili:boxing:1.0.4') {
+        exclude group: 'com.android.support'
+    }
+    implementation('com.bilibili:boxing-impl:1.0.4') {
+        exclude group: 'com.android.support'
+    }
+
+    // https://github.com/ChenSiLiang/RotatePhotoView 图片旋转
+    implementation('com.chensl.rotatephotoview:rotatephotoview:1.0.5') {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
+
+    // https://github.com/Yalantis/uCrop 放大缩小
+    implementation('com.yalantis:ucrop:2.2.0') {
+        exclude group: 'com.android.support'
+        exclude group: 'com.squareup.okio'
+        exclude group: 'com.squareup.okhttp3'
+    }
+}

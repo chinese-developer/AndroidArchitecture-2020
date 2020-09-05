@@ -1,0 +1,122 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+androidExtensions {
+    experimental = true
+}
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildToolsVersion
+
+    defaultConfig {
+
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+
+        dataBinding true
+        viewBinding true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation "junit:junit:4.13"
+
+    // AndroidX Support
+    api "androidx.activity:activity-ktx:${versions.activityKtx}"
+    api "androidx.fragment:fragment-ktx:${versions.fragmentKtx}"
+    api "androidx.legacy:legacy-support-v4:${versions.supportV4}"
+    api "androidx.appcompat:appcompat:${versions.appcompat}"
+    api "androidx.recyclerview:recyclerview:${versions.recyclerview}"
+    api "com.google.android.material:material:${versions.material}"
+    api "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
+    api "androidx.navigation:navigation-fragment:${versions.navigation}"
+    api "androidx.navigation:navigation-ui:${versions.navigation}"
+    api "androidx.arch.core:core-runtime:${versions.arch}"
+    api "androidx.arch.core:core-common:${versions.arch}"
+    api "androidx.lifecycle:lifecycle-common:${versions.lifecycle}"
+    api "androidx.lifecycle:lifecycle-common-java8:${versions.lifecycle}"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}"
+    api "androidx.lifecycle:lifecycle-livedata-core:${versions.lifecycle}"
+    api "androidx.lifecycle:lifecycle-livedata:${versions.livedata}"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:${versions.livedata}"
+    api "androidx.lifecycle:lifecycle-viewmodel:${versions.lifecycle}"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
+    api "androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}"
+    api "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
+    api "androidx.lifecycle:lifecycle-reactivestreams:${versions.lifecycle}"
+
+    // Kotlin
+    api "androidx.core:core-ktx:${versions.coreKtx}"
+    api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+    api "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines}"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"
+
+    // RxJava
+    api "io.reactivex.rxjava2:rxjava:${versions.rxJava2}"
+    api "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
+    api "com.jakewharton.rxbinding2:rxbinding:${versions.rxBinding2}"
+    api "com.jakewharton.rxbinding3:rxbinding:${versions.rxBinding3}"
+
+    // autoDispose
+    api "com.uber.autodispose:autodispose:${versions.autodispose}"
+    api "com.uber.autodispose:autodispose-lifecycle:${versions.autodispose}"
+    api "com.uber.autodispose:autodispose-android:${versions.autodispose}"
+    api "com.uber.autodispose:autodispose-android-archcomponents:${versions.autodispose}"
+
+    // Log
+    api "com.jakewharton.timber:timber:${versions.timber}"
+
+    // glide
+    api "com.github.bumptech.glide:glide:${versions.glide}"
+    api "com.github.bumptech.glide:okhttp3-integration:${versions.glide}"
+    api "de.hdodenhof:circleimageview:${versions.circleImageView}"
+
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:${versions.dagger}"
+    kapt "com.google.dagger:hilt-android-compiler:${versions.dagger}"
+
+    /** Utils support */
+    api "com.blankj:utilcode:${versions.blankjUtils}"
+
+    // Reflect chain
+    api "org.jooq:joor-java-6:0.9.7"
+    api "com.github.dmstocking:support-optional:${versions.supportOptional}"
+
+    // LoadMore
+    api "com.github.Ztiany:WrapperAdapter:4.0.1"
+
+    // MultiType
+    api "com.drakeet.multitype:multitype:4.2.0"
+}
