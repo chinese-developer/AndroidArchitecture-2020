@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="md_divider_color" format="color" />
+    <attr name="md_item_selector" format="reference" />
+    <attr name="md_button_selector" format="reference" />
+
+    <attr name="md_background_color" format="color" />
+    <attr name="md_color_title" format="color" />
+    <attr name="md_color_content" format="color" />
+    <attr name="md_color_hint" format="color" />
+    <attr name="md_ripple_color" format="color" />
+    <attr name="md_color_positive_button_text" format="color" />
+    <attr name="md_color_negative_button_text" format="color" />
+    <attr name="md_color_neutral_button_text" format="color" />
+    <attr name="md_color_widget" format="color" />
+    <attr name="md_color_widget_unchecked" format="color" />
+    <attr name="md_corner_radius" format="dimension" />
+    <attr name="md_font_title" format="reference" />
+    <attr name="md_font_body" format="reference" />
+    <attr name="md_font_button" format="reference" />
+    <attr name="md_button_casing" format="enum">
+        <enum name="upper" value="1" />
+        <enum name="literal" value="2" />
+    </attr>
+
+    <declare-styleable name="DotsIndicator">
+        <attr name="dot_width" format="dimension" />
+        <attr name="dot_height" format="dimension" />
+        <attr name="dot_margin" format="dimension" />
+        <attr name="dot_drawable" format="reference" />
+        <attr name="dot_drawable_unselected" format="reference" />
+        <attr name="dot_tint" format="color" />
+        <attr name="dots_animator" format="reference" />
+        <attr name="dots_animator_reverse" format="reference" />
+        <attr name="dots_orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="dots_gravity">
+
+            <flag name="top" value="0x30" />
+
+            <flag name="bottom" value="0x50" />
+
+            <flag name="left" value="0x03" />
+
+            <flag name="right" value="0x05" />
+
+            <flag name="center_vertical" value="0x10" />
+
+            <flag name="fill_vertical" value="0x70" />
+
+            <flag name="center_horizontal" value="0x01" />
+
+            <flag name="fill_horizontal" value="0x07" />
+
+            <flag name="center" value="0x11" />
+
+            <flag name="fill" value="0x77" />
+
+            <flag name="clip_vertical" value="0x80" />
+
+            <flag name="clip_horizontal" value="0x08" />
+
+            <flag name="start" value="0x00800003" />
+
+            <flag name="end" value="0x00800005" />
+        </attr>
+    </declare-styleable>
+</resources>

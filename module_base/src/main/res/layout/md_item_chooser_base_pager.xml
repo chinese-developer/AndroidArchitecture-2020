@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+  <com.app.base.widget.dialog.mdstyle.core.widget.DotsIndicator
+      android:id="@+id/colorChooserPagerDots"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/md_chooser_pageDots_height"
+      android:layout_marginBottom="@dimen/md_chooser_pageDots_marginBottom"
+      tools:ignore="InconsistentLayout"
+      />
+
+  <com.app.base.widget.dialog.mdstyle.core.viewpagers.WrapContentViewPager
+      android:id="@+id/colorChooserPager"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+    <include layout="@layout/md_item_chooser_base_grid" />
+
+    <TextView
+        android:id="@+id/customView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAllCaps="false"
+        android:paddingBottom="@dimen/md_item_grid_item_padding_double"
+        android:paddingLeft="@dimen/md_item_grid_item_padding_double"
+        android:paddingRight="@dimen/md_item_grid_item_padding_double"
+        android:textColor="@color/md_color_content"
+        android:textSize="36dp"
+        />
+
+  </com.app.base.widget.dialog.mdstyle.core.viewpagers.WrapContentViewPager>
+
+</LinearLayout>

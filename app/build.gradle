@@ -1,0 +1,160 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+boolean openDebug = isOpenDebug.toBoolean()
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildToolsVersion
+
+    defaultConfig {
+        applicationId names.applicationId
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+
+        resConfigs "zh" // 只需要中文资源
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments << ['room.incremental': 'true']
+            }
+        }
+
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${project.name}-${variant.versionName}.apk"
+        }
+    }
+
+    signingConfigs {
+        release {
+            v1SigningEnabled true
+            v2SigningEnabled true
+            keyAlias releaseKeyAlias
+            keyPassword releaseKeyPassword
+            storeFile rootProject.file(releaseKeyFileName)
+            storePassword releaseKeyPassword
+        }
+    }
+
+    buildTypes {
+        // 测试
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.release
+            manifestPlaceholders = [screenOrientation: "unspecified"]
+            resValue("string", "app_name", "Architecture2020-测试版")
+        }
+
+        // 正式发布
+        release {
+            zipAlignEnabled true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            manifestPlaceholders = [screenOrientation: "portrait"]
+            resValue("string", "app_name", "Architecture2020")
+            ndk {
+                abiFilters 'armeabi-v7a'
+            }
+        }
+    }
+
+    /*productFlavors {
+
+       // 开发环境
+       flavors_dev {
+           applicationIdSuffix '.dev'
+           manifestPlaceholders = [
+                   JPUSH_PKGNAME: "me.bo.architecture.dev",
+                   JPUSH_APPKEY : "",
+                   JPUSH_CHANNEL: "developer-attrs"
+           ]
+       }
+
+       // 线上环境
+       flavors_release {
+           manifestPlaceholders = [
+                   JPUSH_PKGNAME: "me.bo.architecture",
+                   JPUSH_APPKEY : "",
+                   JPUSH_CHANNEL: "developer-attrs"
+           ]
+       }
+   }*/
+}
+
+dependencies {
+
+    if (!rootProject.isMultiApp) {
+
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation project(path: ':module_base')
+        implementation project(path: ':module_home')
+
+        /*Dagger Hilt*/
+        implementation "com.google.dagger:hilt-android:${versions.dagger}"
+        kapt "com.google.dagger:hilt-android-compiler:${versions.dagger}"
+        implementation "androidx.hilt:hilt-lifecycle-viewmodel:${versions.dagger_hilt}"
+        kapt "androidx.hilt:hilt-compiler:${versions.dagger_hilt}"
+
+        /*ARouter*/
+        kapt "com.alibaba:arouter-compiler:${versions.arouterAnnotation}"
+
+    } else {
+
+        implementation "androidx.appcompat:appcompat:${versions.appcompat}"
+        implementation "com.google.android.material:material:${versions.material}"
+
+    }
+}
+
+repositories {
+    mavenCentral()
+}

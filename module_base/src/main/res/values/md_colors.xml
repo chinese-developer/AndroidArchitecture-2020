@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="md_btn_selected">#33969696</color>
+    <color name="md_btn_selected_light">#33969696</color>
+    <color name="md_btn_selected_dark">#40CBCBCB</color>
+
+    <color name="md_divider_theme">#F3F4F6</color>
+    <color name="md_divider_light_theme">#F3F4F6</color>
+    <color name="md_divider_dark_theme">#555555</color>
+
+    <color name="md_enabled_text_theme">#888888</color>
+    <color name="md_disabled_text_theme">#BBBBBB</color>
+
+    <color name="md_disabled_text_light_theme">#818181</color>
+    <color name="md_disabled_text_dark_theme">#C2C2C2</color>
+
+    <color name="md_ripple_color">@color/ripple_color</color>
+    <color name="md_color_positive_button_text">#2B44B1</color>
+    <color name="md_color_negative_button_text">#000000</color>
+    <color name="md_color_neutral_button_text">#2B44B1</color>
+    <color name="md_color_title">#000000</color>
+    <color name="md_color_content">#888888</color>
+    <color name="md_color_hint">#BBBBBB</color>
+    <color name="md_background_color">#FFFFFF</color>
+    <color name="md_color_widget">#009915</color>
+    <color name="md_color_widget_unchecked">#818181</color>
+
+</resources>

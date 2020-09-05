@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <com.app.base.widget.ViewPager2FixDragLayout
+            android:id="@+id/nav_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".MainActivity">
+
+            <ImageView
+                android:id="@+id/iv_disc_halo"
+                android:layout_width="168dp"
+                android:layout_height="167dp"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_play_disc_halo"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <com.example.architecture.home.ui.lyrics.parser.LrcView
+                android:id="@+id/lrc_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/padding_normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_disc_halo" />
+
+        </com.app.base.widget.ViewPager2FixDragLayout>
+
+</layout>
+

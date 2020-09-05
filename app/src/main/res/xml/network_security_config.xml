@@ -1,0 +1,12 @@
+<?xml version ="1.0" encoding ="utf-8"?><!--  Learn More about how to use App Actions: https://developer.android.com/guide/actions/index.html -->
+<network-security-config>
+    <debug-overrides>
+        <trust-anchors>
+            <!-- Trust user added CAs while debuggable only -->
+            <!-- 抓包： 放开网路 user 权限 -->
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+    <!-- 在Android9.0手机上请求失败，报错：CLEARTEXT communication to not permitted by network security policy -->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

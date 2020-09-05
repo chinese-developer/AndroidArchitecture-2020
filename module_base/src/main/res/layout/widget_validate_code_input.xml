@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="android.widget.RelativeLayout">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/vcilTilValidateCode"
+        android:layout_width="match_parent"
+        style="@style/Widget.DaMi.TextEntry"
+        android:layout_height="wrap_content">
+
+        <com.app.base.widget.text.FixedTextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:drawablePadding="@dimen/input_text_drawable_padding"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:hint="@string/sms_code_enter_tips"
+            android:inputType="number"
+            android:textSize="14sp"
+            android:maxLength="@integer/validate_code_length" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.app.base.widget.text.CounterButton
+        android:id="@+id/vcilCounterBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/sel_counter_state"
+        android:paddingStart="11dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="11dp"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:paddingBottom="6dp"
+        android:singleLine="true"
+        android:text="@string/obtain_validate_code"
+        android:textColor="@color/color_text_primary_enabled"
+        android:textSize="@dimen/text_small"
+        app:ccb_text_hint_format="@string/sms_code_again_tips_mask" />
+
+    <!--design_text_input_password_icon-->
+    <ImageButton
+        android:id="@+id/vcilClearBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        android:layout_toStartOf="@id/vcilCounterBtn"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/icon_clear"
+        tools:ignore="ContentDescription" />
+
+</merge>

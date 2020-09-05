@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white_solid_round_10"
+    tools:ignore="ContentDescription">
+
+    <ImageView
+        android:id="@+id/ivConfirmDialogIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvConfirmDialogTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textColor="@color/gray_level1"
+        android:textSize="@dimen/text_big"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivConfirmDialogIcon"
+        app:layout_goneMarginTop="24dp"
+        tools:text="我是标题"
+        tools:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/tvConfirmDialogMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/common_edge_big"
+        android:layout_marginStart="@dimen/common_edge_big"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="@color/gray_level1"
+        android:textSize="@dimen/text_normal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvConfirmDialogTitle"
+        app:layout_goneMarginTop="25dp"
+        tools:text="账号已在其他设备登录，请重新登录，请重新登录，请重新登录，请重新登录，请重新登录，请重新登录，请重新登录"/>
+
+    <com.app.base.widget.dialog.DialogBottomLayout
+        android:id="@+id/dblDialogBottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvConfirmDialogMessage"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

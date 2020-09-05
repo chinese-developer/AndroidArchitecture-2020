@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--action bar-->
+    <color name="colorPrimary">#03a9f4</color>
+    <!--status bar-->
+    <color name="colorPrimaryDark">#FFD1D2D1</color>
+    <!--控件-->
+    <color name="colorAccent">@color/green_main</color>
+
+    <!--  水波纹统一颜色-->
+    <color name="ripple_color">#cccccccc</color>
+
+    <color name="hint_disabled_dark">#43000000</color> <!-- 26% black -->
+    <color name="text_on_accent">#8f000000</color>
+    <color name="textPrimary">#000000</color>
+    <color name="textSecondPrimary">#4A4A4A</color>
+
+    <color name="error">#ffdd2c00</color>
+    <color name="color_surface">@color/background_light</color>
+    <color name="background_light">#ffffff</color>
+    <color name="color_background">#e0e0e0</color>
+    <color name="background_super_dark">#ff292929</color>
+    <color name="mid_grey">#40808080</color>
+    <color name="nav_bar">#99000000</color> <!-- overridden on v29+ -->
+
+    <!--背景-->
+    <color name="common_bg">#FAFCFF</color>
+    <color name="common_bg_deep">#F4F7FB</color><!--背景色加深-->
+    <!--分割线-->
+    <color name="divider">#f2f2f2</color>
+    <!--红色系-->
+    <color name="red_level1">#FF420E</color>
+    <color name="red_level2">#FF7587</color><!--辅助色，视觉亮点-->
+    <color name="red_level3">#FFB8C1</color>
+    <color name="red_level4">#FFCFD6</color>
+    <color name="red_level5">#FDC6CD</color>
+    <!--绿色系-->
+    <color name="green_level1">#65DD84</color>
+    <color name="green_level1_2">#83D598</color>
+    <color name="green_level2">#BBECC7</color>
+    <color name="green_level3">#E2FADE</color>
+    <color name="green_main">#55CF74</color>
+    <color name="green_gradient_start">#A5F698</color>
+    <color name="green_gradient_end">#2EEFA0</color>
+    <!--黑灰色系-->
+    <color name="black_gray_level1">#2B2605</color><!--app logo 填充色-->
+    <color name="black_gray_level2">#494B54</color><!--重点数据：灰黑色-->
+    <color name="gray_level1">#494949</color><!--一般内容-->
+    <color name="gray_level2">#656565</color><!--次级内容-->
+    <color name="gray_level3">#C3C3C3</color><!--最弱内容-->
+    <color name="gray_level4">#E5E5E5</color><!--灰白色-->
+    <color name="gray_level1_plus">#3E3E3E</color><!--灰白色-->
+    <color name="gray_pressed">#55999999</color><!--按下-->
+    <color name="gray_disable">@color/gray_level4</color><!--被禁用控件-->
+    <color name="gray_disable_bg">#F3F3F3</color><!--被禁用控件-->
+    <color name="gray_text_disable">#4F5671</color><!--被禁用文本-->
+    <!--蓝色-->
+    <color name="blue_level1">#1986F3</color>
+    <color name="blue_level2">#50D7F2</color><!--辅助色，整体通透感-->
+    <color name="blue_level3">#7DF1F5</color>
+    <!--黄色-->
+    <color name="yellow_level1">#FFEA15</color>
+    <color name="yellow_level2">#FFAF41</color>
+    <!--紫色-->
+    <color name="purple_level1">#A180FF</color>
+
+    <color name="scrim">#99323232</color>
+
+
+</resources>
