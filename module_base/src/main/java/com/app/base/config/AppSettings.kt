@@ -54,14 +54,6 @@ object AppSettings {
         }
     }
 
-    fun setSupportStatusBarLightMode(supportStatusBarLightMode: Boolean) {
-        sSupportStatusBarLightMode = supportStatusBarLightMode
-    }
-
-    fun supportStatusBarLightMode(): Boolean {
-        return sSupportStatusBarLightMode
-    }
-
     fun settingsStorage(): Storage {
         return sStorage
     }

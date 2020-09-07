@@ -32,8 +32,6 @@ open class AndroidScope(
         catch(throwable)
     }
 
-    val uid = exceptionHandler
-
     override val coroutineContext: CoroutineContext =
         Dispatchers.Main + exceptionHandler + SupervisorJob()
 

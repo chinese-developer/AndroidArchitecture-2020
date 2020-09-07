@@ -5,7 +5,7 @@ package com.app.base.utils.verify
 import com.google.android.material.textfield.TextInputLayout
 import android.view.View
 import android.widget.EditText
-import com.android.base.utils.common.StringChecker
+import com.android.base.utils.StringChecker
 
 /**是否符合手机号的长度*/
 fun CharSequence?.matchCellphone(): Boolean {

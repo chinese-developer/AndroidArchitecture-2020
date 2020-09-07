@@ -6,8 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.android.base.adapter.recycler.MultiTypeAdapter;
-import com.android.base.app.fragment.BaseListFragment;
-import com.android.base.app.ui.AutoPageNumber;
 
 public class TestListFragment extends BaseListFragment<String> {
 

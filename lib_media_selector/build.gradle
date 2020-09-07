@@ -51,9 +51,5 @@ dependencies {
     }
 
     // https://github.com/Yalantis/uCrop 放大缩小
-    implementation('com.yalantis:ucrop:2.2.0') {
-        exclude group: 'com.android.support'
-        exclude group: 'com.squareup.okio'
-        exclude group: 'com.squareup.okhttp3'
-    }
+    implementation('com.github.yalantis:ucrop:2.2.6')
 }

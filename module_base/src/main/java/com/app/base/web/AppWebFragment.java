@@ -2,7 +2,7 @@ package com.app.base.web;
 
 import android.os.Bundle;
 
-import com.android.base.utils.common.StringChecker;
+import com.android.base.utils.StringChecker;
 
 public class AppWebFragment extends BaseWebFragment {
 

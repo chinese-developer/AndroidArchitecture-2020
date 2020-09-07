@@ -2,7 +2,7 @@ package com.app.base.utils.verify
 
 import android.text.TextUtils
 import android.view.View
-import com.android.base.utils.common.StringChecker
+import com.android.base.utils.StringChecker
 import com.app.base.R
 
 class ConfirmPasswordValidator private constructor(view: View, private val mNewPassword: String, doOnAfterTextChanged: Boolean) : TextValidator(view, doOnAfterTextChanged) {

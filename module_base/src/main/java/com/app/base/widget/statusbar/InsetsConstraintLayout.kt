@@ -4,11 +4,11 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
-import androidx.core.content.ContextCompat
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import com.android.base.utils.android.compat.AndroidVersion
-import com.android.base.utils.android.compat.StatusBarUtil
+import com.android.base.utils.android.compat.getStatusBarHeight
 import com.app.base.R
 
 class InsetsConstraintLayout @JvmOverloads constructor(
@@ -40,7 +40,7 @@ class InsetsConstraintLayout @JvmOverloads constructor(
             // 针对透明的系统导航栏（底部）会自动添加一个值等于导航栏高度的paddingBottom
             // 这样我们的标题栏就可以正常的显示在statusBar下面了，而不是重叠。
             if (fitsSystemWindows) {
-                mStatusRect.set(0, 0, measuredWidth, StatusBarUtil.getStatusBarHeight(context))
+                mStatusRect.set(0, 0, measuredWidth, context.getStatusBarHeight())
                 canvas.drawRect(mStatusRect, mPaint)
             }
         }

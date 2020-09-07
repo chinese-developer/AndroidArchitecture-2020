@@ -8,7 +8,6 @@ import android.webkit.URLUtil;
 
 import androidx.lifecycle.Lifecycle;
 
-import com.android.base.utils.common.Checker;
 import com.app.base.R;
 import com.app.base.config.DirectoryManager;
 import com.app.base.web.OKHttpDownloader;
@@ -33,7 +32,7 @@ final class SaveImageAction {
     }
 
     private void run() {
-        if (Checker.isEmpty(mArgs)) {
+        if (mArgs == null || mArgs.length == 0) {
             return;
         }
 

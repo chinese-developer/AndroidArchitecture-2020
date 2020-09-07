@@ -1,3 +1,9 @@
+/**
+ * Designed and developed by Nemo (privateemailmaster@gmail.com)
+ *
+ */
+
+@file:Suppress("unused")
 package com.app.base
 
 import android.app.Activity
@@ -9,6 +15,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.multidex.MultiDex
 import com.android.base.app.BaseAppContext
 import com.android.base.app.Sword
+import com.android.base.app.mvvm.VMViewModel
 import com.android.base.rx.SchedulerProvider
 import com.android.sdk.net.NetConfig
 import com.app.base.scope.DialogCoroutineScope
@@ -25,7 +32,11 @@ import com.app.base.debug.DebugTools
 import com.app.base.router.AppRouter
 import com.app.base.router.RouterManager
 import com.app.base.widget.dialog.AppLoadingView
+import com.drake.statelayout.StateConfig
 import com.drake.tooltip.toast
+import com.scwang.smart.refresh.footer.ClassicsFooter
+import com.scwang.smart.refresh.header.MaterialHeader
+import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import retrofit2.HttpException
 import timber.log.Timber
 import java.io.IOException
@@ -61,11 +72,26 @@ open class AppContext : BaseAppContext() {
         // 调试
         DebugTools.init(this)
 
+        // 全局缺省页配置 [https://github.com/liangjingkanji/StateLayout]
+        StateConfig.apply {
+            emptyLayout = R.layout.base_layout_empty
+            loadingLayout = R.layout.base_layout_loading
+            errorLayout = R.layout.base_layout_error
+        }.setRetryIds(R.id.base_retry_btn)
+
+        // 初始化SmartRefreshLayout, 这是自动下拉刷新和上拉加载采用的第三方库  [https://github.com/scwang90/SmartRefreshLayout/tree/master] V2版本
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, _ ->
+            MaterialHeader(context)
+        }
+        SmartRefreshLayout.setDefaultRefreshFooterCreator { context, _ ->
+            ClassicsFooter(context)
+        }
+
+        com.drake.brv.BindingAdapter.modelId = BR.item
+
         // 基础库配置
         Sword.get()
             .registerLoadingFactory { AppLoadingView(it) } // 默认的通用的LoadingDialog和Toast实现
-            .setDefaultPageStart(AppSettings.DEFAULT_PAGE_START) // 分页开始页码
-            .setDefaultPageSize(AppSettings.DEFAULT_PAGE_SIZE) // 默认分页大小
             .setErrorClassifier(object : Sword.ErrorClassifier {
                 override fun isNetworkError(throwable: Throwable): Boolean {
                     Timber.tag("===OkHttp===").d(throwable)
@@ -117,7 +143,6 @@ open class AppContext : BaseAppContext() {
             return context.schedulerProvider
         }
 
-        //
         var onDialog: DialogCoroutineScope.(FragmentActivity) -> Dialog = {
             val progress = ProgressDialog(activity)
             progress.setMessage(activity.getString(R.string.net_dialog_msg))
@@ -142,5 +167,9 @@ fun CoroutineContext.Dialog(block: (DialogCoroutineScope.(context: FragmentActiv
 }
 
 fun toast(msg: CharSequence? = null) {
+    AppContext.get().toast(msg ?: "")
+}
+
+fun VMViewModel.toast(msg: CharSequence? = null) {
     AppContext.get().toast(msg ?: "")
 }

@@ -4,11 +4,6 @@ import android.graphics.drawable.Drawable;
 import android.view.Menu;
 import android.view.View;
 
-import com.android.base.app.ui.CommonId;
-import com.android.base.utils.android.TintUtils;
-import com.android.base.utils.android.views.FragmentExKt;
-import com.app.base.R;
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.MenuRes;
 import androidx.annotation.StringRes;
@@ -17,10 +12,12 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
-import static com.android.base.app.ui.CommonId.TOOLBAR_ID;
+import com.android.base.utils.android.TintUtils;
+import com.android.base.utils.android.views.FragmentExKt;
+import com.app.base.R;
 
 /**
- * Fragment中使用Toolbar的帮助类，需要设置toolbar的id为：{@link CommonId#TOOLBAR_ID}
+ * Fragment中使用Toolbar的帮助类，需要设置toolbar的id为：R.id.common_toolbar
  */
 public class ToolbarUtils {
 
@@ -69,7 +66,7 @@ public class ToolbarUtils {
 
     public static ToolbarUtils setupToolBar(Fragment fragment, View layoutView, int titleResId, int menuResId) {
         ToolbarUtils toolbarUtils = new ToolbarUtils(titleResId, menuResId, fragment);
-        toolbarUtils.mToolbar = layoutView.findViewById(TOOLBAR_ID);
+        toolbarUtils.mToolbar = layoutView.findViewById(R.id.common_toolbar);
         toolbarUtils.setupToolbar();
         return toolbarUtils;
     }

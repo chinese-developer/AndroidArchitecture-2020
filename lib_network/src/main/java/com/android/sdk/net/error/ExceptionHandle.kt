@@ -42,7 +42,7 @@ object ExceptionHandle {
             }
 
             is ConnectException -> {
-                ErrorException(ERROR_NETWORK_ERROR, "连接失败")
+                ErrorException(ERROR_NETWORK_ERROR, "似乎网络出现了点问题..")
             }
 
             is SSLException -> {
