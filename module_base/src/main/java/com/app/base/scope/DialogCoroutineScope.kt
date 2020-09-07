@@ -6,8 +6,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.android.sdk.net.NetConfig
+import com.android.sdk.net.error.ExceptionHandle
 import com.app.base.AppContext
-import com.drake.net.scope.NetCoroutineScope
+import com.drake.tooltip.toast
 
 /**
  * 自动加载对话框网络请求
@@ -48,8 +49,9 @@ class DialogCoroutineScope(
         }
     }
 
+    @Suppress("ThrowableNotThrown")
     override fun handleError(e: Throwable) {
-        NetConfig.onError(e)
+       NetConfig.onError(e)
     }
 
     override fun finally(e: Throwable?) {
@@ -63,5 +65,4 @@ class DialogCoroutineScope(
             dialog?.dismiss()
         }
     }
-
 }

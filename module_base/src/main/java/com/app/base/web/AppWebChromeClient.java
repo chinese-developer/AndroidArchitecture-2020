@@ -16,6 +16,7 @@ import com.android.sdk.mediaselector.SystemMediaSelector;
 import com.app.base.R;
 import com.app.base.config.DirectoryManager;
 import com.app.base.widget.dialog.Dialogs;
+import com.app.base.widget.dialog.mdstyle.MaterialDialog;
 
 import java.io.File;
 
@@ -162,6 +163,7 @@ class AppWebChromeClient extends WebChromeClient {
         selection[1] = mFragment.getString(R.string.album);
         Context context = mFragment.getContext();
         assert context != null;
+        MaterialDialog materialDialog = new MaterialDialog(context);
         Dialogs.showListDialog(context, listDialogBuilder -> {
             listDialogBuilder.setItems(selection);
             listDialogBuilder.setPositiveListener((which, charSequence) -> {

@@ -114,9 +114,4 @@ dependencies {
     api "org.jooq:joor-java-6:0.9.7"
     api "com.github.dmstocking:support-optional:${versions.supportOptional}"
 
-    // LoadMore
-    api "com.github.Ztiany:WrapperAdapter:4.0.1"
-
-    // MultiType
-    api "com.drakeet.multitype:multitype:4.2.0"
 }

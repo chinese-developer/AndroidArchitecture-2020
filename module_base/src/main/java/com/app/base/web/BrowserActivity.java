@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.android.base.utils.android.compat.StatusBarUtil;
+import com.android.base.utils.android.compat.StatusBarKt;
 import com.app.base.R;
 import com.app.base.app.AppBaseActivity;
 import com.app.base.data.DataConfig;
@@ -53,8 +53,7 @@ public class BrowserActivity extends AppBaseActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.common_container_id, webFragment).commit();
             }
         }
-
-        StatusBarUtil.setTranslucentSystemUi(this, true, false);
+        StatusBarKt.immersiveDark(this, null, true, 0, 0f);
     }
 
     @Override

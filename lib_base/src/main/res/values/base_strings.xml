@@ -3,13 +3,6 @@
     <string name="confirm">确认</string>
     <string name="cancel">取消</string>
 
-    <!-- ================== 错误状态布局  ================== -->
-    <string name="base_error_load_fail_tips">加载失败了/(ㄒoㄒ)/~~ </string>
-    <string name="base_error_retry_action_tips">点我重试吧</string>
-    <string name="base_error_no_data">还没有相关数据哦！</string>
-    <string name="base_error_no_network">网络不可访问！</string>
-    <string name="base_error_server_error">服务器开小差了！</string>
-
     <!-- ================== permission  ================== -->
     <string name="Base_to_set_permission">去设置</string>
     <string name="Base_permission_denied">%s  权限被拒绝</string>

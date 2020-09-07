@@ -3,8 +3,7 @@ package com.android.base.imageloader;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.android.base.utils.common.Checker;
-import com.android.base.utils.common.StringChecker;
+import com.android.base.utils.StringChecker;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -55,7 +54,7 @@ final class ProgressManager {
     private void notifyResponseProgress(String url, ProgressInfo progressInfo) {
         // multi
         List<WeakReference<ProgressListener>> weakReferences = mMultiResponseListeners.get(url);
-        if (!Checker.isEmpty(weakReferences)) {
+        if (weakReferences != null && weakReferences.size() > 0) {
             for (WeakReference<ProgressListener> weakReference : weakReferences) {
                 ProgressListener progressListener = weakReference.get();
                 if (progressListener != null) {
@@ -77,7 +76,7 @@ final class ProgressManager {
     private void notifyResponseError(String url, long id, Exception e) {
         // multi
         List<WeakReference<ProgressListener>> weakReferences = mMultiResponseListeners.get(url);
-        if (!Checker.isEmpty(weakReferences)) {
+        if (weakReferences != null && weakReferences.size() > 0) {
             for (WeakReference<ProgressListener> weakReference : weakReferences) {
                 ProgressListener progressListener = weakReference.get();
                 if (progressListener != null) {

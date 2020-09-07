@@ -2,7 +2,7 @@ package com.app.base.utils.verify
 
 import android.view.View
 
-import com.android.base.utils.common.StringChecker
+import com.android.base.utils.StringChecker
 import com.app.base.R
 
 class CellphoneNumberValidator private constructor(view: View, doOnAfterTextChanged: Boolean) : TextValidator(view, doOnAfterTextChanged) {

@@ -9,8 +9,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.webkit.MimeTypeMap;
 
-import com.android.base.utils.common.FileUtils;
-import com.android.base.utils.common.StringChecker;
+import com.android.base.utils.StringChecker;
+import com.blankj.utilcode.util.FileUtils;
 
 import java.io.File;
 import java.util.List;

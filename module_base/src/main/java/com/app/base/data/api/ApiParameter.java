@@ -2,7 +2,7 @@ package com.app.base.data.api;
 
 import android.text.TextUtils;
 
-import com.android.base.utils.common.StringChecker;
+import com.android.base.utils.StringChecker;
 import com.app.base.data.DataConfig;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

@@ -1,8 +1,8 @@
 package com.app.base.web;
 
-import com.android.base.utils.common.CloseUtils;
-import com.android.base.utils.common.FileUtils;
+import com.android.base.utils.IOCloseUtils;
 import com.android.sdk.net.NetConfig;
+import com.blankj.utilcode.util.FileUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -54,7 +54,7 @@ public class OKHttpDownloader {
 
         if (body == null) return "";
 
-        FileUtils.makeFilePath(saveFile);
+        FileUtils.createOrExistsDir(saveFile);
 
         InputStream is = null;
         FileOutputStream fos = null;
@@ -70,7 +70,7 @@ public class OKHttpDownloader {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            CloseUtils.closeIOQuietly(is, fos);
+            IOCloseUtils.closeIOQuietly(is, fos);
         }
 
         return saveFile.getAbsolutePath();

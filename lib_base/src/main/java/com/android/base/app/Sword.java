@@ -1,21 +1,9 @@
 package com.android.base.app;
 
-import android.accounts.NetworkErrorException;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
-
-import com.android.base.app.ui.LoadingViewFactory;
-import com.android.base.app.ui.PageNumber;
-import com.android.base.app.ui.RefreshLoadViewFactory;
-import com.android.base.app.ui.RefreshViewFactory;
-import com.android.base.interfaces.adapter.ActivityLifecycleCallbacksAdapter;
-import com.android.base.receiver.NetworkState;
-import com.blankj.utilcode.util.ActivityUtils;
-import com.blankj.utilcode.util.AppUtils;
-
-import java.lang.ref.WeakReference;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +11,15 @@ import androidx.annotation.UiThread;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+
+import com.android.base.app.ui.LoadingViewFactory;
+import com.android.base.interfaces.adapter.ActivityLifecycleCallbacksAdapter;
+import com.android.base.receiver.NetworkState;
+import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.AppUtils;
+
+import java.lang.ref.WeakReference;
+
 import io.reactivex.Flowable;
 
 /**
@@ -93,16 +90,6 @@ public final class Sword {
         return this;
     }
 
-    public Sword setDefaultPageStart(int pageStart) {
-        PageNumber.setDefaultPageStart(pageStart);
-        return this;
-    }
-
-    public Sword setDefaultPageSize(int defaultPageSize) {
-        PageNumber.setDefaultPageSize(defaultPageSize);
-        return this;
-    }
-
     /**
      * 通过订阅Activity、Fragment的生命周期接口的回调，来注入Dagger2.
      * <p>
@@ -157,15 +144,6 @@ public final class Sword {
         return ActivityUtils.getTopActivity();
     }
 
-    /**
-     * App是否在前台运行
-     *
-     * @return true 表示App在前台运行
-     */
-    public boolean isForeground() {
-        return AppUtils.isAppForeground();
-    }
-
     public interface ErrorClassifier {
         boolean isNetworkError(Throwable throwable);
 
@@ -185,16 +163,7 @@ public final class Sword {
         return errorClassifier;
     }
 
-    public Sword registerRefreshLoadViewFactory(RefreshLoadViewFactory.Factory factory) {
-        RefreshLoadViewFactory.registerFactory(factory);
-        return this;
-    }
-
-    public Sword registerRefreshViewFactory(RefreshViewFactory.Factory factory) {
-        RefreshViewFactory.registerFactory(factory);
-        return this;
-    }
-
+    @Nullable
     public Activity getCurrentActivity() {
         if (currentActivity != null) {
             return currentActivity.get();

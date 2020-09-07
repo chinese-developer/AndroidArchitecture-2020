@@ -1,10 +1,9 @@
 package com.app.base.web.actions
 
-import com.android.base.utils.android.compat.StatusBarUtil
+import com.android.base.utils.android.compat.getStatusBarHeight
 import com.app.base.AppContext
 import com.app.base.data.api.ApiParameter
 import com.app.base.router.RouterPath
-import com.app.base.router.RouterPath.Main.DIARY
 import com.app.base.router.RouterPath.Main.HOME
 import com.app.base.web.BaseWebFragment
 import com.app.base.web.ResultReceiver
@@ -17,7 +16,12 @@ private const val GO_BACK_METHOD = "goback"//退出web
 private const val SHOW_HEADER_METHOD = "showHeader"//展示和隐藏头部
 private const val GET_STATUS_HEIGHT = "getStatusBarHeight"//获取状态栏高度
 
-internal fun doAction(method: String, args: Array<String>?, resultReceiver: ResultReceiver?, fragment: BaseWebFragment) {
+internal fun doAction(
+    method: String,
+    args: Array<String>?,
+    resultReceiver: ResultReceiver?,
+    fragment: BaseWebFragment
+) {
     when (method) {
         GET_VERSION_METHOD -> getVersion(resultReceiver)
         SIGN_METHOD -> sign(args, resultReceiver)
@@ -30,13 +34,16 @@ internal fun doAction(method: String, args: Array<String>?, resultReceiver: Resu
 
 fun jumpToHomePage() {
     AppContext.appRouter().build(RouterPath.Main.PATH)
-            .withInt(RouterPath.Main.PAGE_KEY, HOME)
-            .navigation()
+        .withInt(RouterPath.Main.PAGE_KEY, HOME)
+        .navigation()
 }
 
-private fun getStatusBarHeight(fragment: androidx.fragment.app.Fragment, resultReceiver: ResultReceiver?) {
+private fun getStatusBarHeight(
+    fragment: androidx.fragment.app.Fragment,
+    resultReceiver: ResultReceiver?
+) {
     fragment.context?.let {
-        resultReceiver?.result(StatusBarUtil.getStatusBarHeight(it).toString())
+        resultReceiver?.result(fragment.requireContext().getStatusBarHeight().toString())
     }
 }
 
@@ -65,7 +72,12 @@ private fun sign(args: Array<String>?, resultReceiver: ResultReceiver?) {
         val sign = if (args.isNullOrEmpty()) {
             ApiParameter.genSignAndGenerateRequestParams("", false, false, false)
         } else {
-            ApiParameter.genSignAndGenerateRequestParams(args[0], args[1].toBoolean(), args[2].toBoolean(), args[3].toBoolean())
+            ApiParameter.genSignAndGenerateRequestParams(
+                args[0],
+                args[1].toBoolean(),
+                args[2].toBoolean(),
+                args[3].toBoolean()
+            )
         }
         Timber.d("js call Sign, return $sign")
         resultReceiver?.result(sign)

@@ -12,7 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.android.base.utils.BaseUtils;
-import com.android.base.utils.android.compat.StatusBarUtil;
+import com.android.base.utils.android.compat.StatusBarKt;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -136,7 +136,7 @@ public final class WindowUtils {
         view.setDrawingCacheEnabled(true);
         view.buildDrawingCache();
         Bitmap bmp = view.getDrawingCache();
-        int statusBarHeight = StatusBarUtil.getStatusBarHeight(activity);
+        int statusBarHeight = StatusBarKt.getStatusBarHeight(activity);
         DisplayMetrics dm = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
         Bitmap ret = Bitmap.createBitmap(bmp, 0, statusBarHeight, dm.widthPixels, dm.heightPixels - statusBarHeight);

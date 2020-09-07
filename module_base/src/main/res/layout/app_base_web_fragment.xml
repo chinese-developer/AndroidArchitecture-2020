@@ -41,7 +41,7 @@
 
         <include
             android:id="@+id/layout_error"
-            layout="@layout/app_base_layout_error"
+            layout="@layout/base_layout_error"
             android:visibility="gone"/>
 
     </FrameLayout>

@@ -1,7 +1,7 @@
 package com.app.base.utils.verify
 
 import android.view.View
-import com.android.base.utils.common.StringChecker
+import com.android.base.utils.StringChecker
 import com.app.base.R
 
 class PasswordValidator private constructor(view: View, private val allowSpecialCharInput: Boolean, doOnAfterTextChanged: Boolean) : TextValidator(view, doOnAfterTextChanged) {

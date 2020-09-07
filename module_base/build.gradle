@@ -97,6 +97,12 @@ dependencies {
     implementation "androidx.room:room-ktx:${versions.room}"
     kapt "androidx.room:room-compiler:${versions.room}"
 
+    // multi channel
+    implementation "com.leon.channel:helper:2.0.3"
+
+    // WebView https://github.com/youlookwhat/ByWebView
+    implementation 'com.github.youlookwhat:ByWebView:1.0.0'
+
     // ARouter
     api "com.alibaba:arouter-api:${versions.arouter}"
     kapt "com.alibaba:arouter-compiler:${versions.arouterAnnotation}"
@@ -104,43 +110,36 @@ dependencies {
     // gson
     api "com.google.code.gson:gson:${versions.gson}"
 
-    // toast
-    api "com.github.liangjingkanji:Tooltip:${versions.toast}"
-
-    // rx binding
-    api "com.jakewharton.rxbinding3:rxbinding-appcompat:${versions.rxBinding3}"
     // image compression
     api "top.zibin:Luban:${versions.luban}"
-
-    // multi channel
-    implementation "com.leon.channel:helper:2.0.3"
-
-    // WebView https://github.com/youlookwhat/ByWebView
-    implementation 'com.github.youlookwhat:ByWebView:1.0.0'
 
     // EventBus
     api 'org.greenrobot:eventbus:3.2.0'
 
     // UI
     // https://github.com/Tencent/QMUI_Android
-    api("com.qmuiteam:qmui:${versions.qmui}") {
-        exclude group: 'com.android.support'
-    }
+    api("com.qmuiteam:qmui:${versions.qmui}")
     // https://github.com/chenBingX/SuperTextView
-    api "com.github.chenBingX:SuperTextView:${versions.superTextView}"
+//    api "com.github.chenBingX:SuperTextView:${versions.superTextView}"
     // https://github.com/kyleduo/SwitchButton
     api "com.kyleduo.switchbutton:library:${versions.switchbutton}"
     // https://github.com/yshrsmz/KeyboardVisibilityEvent
     api "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:${versions.keyboardtools}"
     api "com.github.chrisbanes:PhotoView:${versions.photoView}"
 
-    // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-    api "com.github.CymChad:BaseRecyclerViewAdapterHelper:${versions.brvah}"
+    // https://github.com/liangjingkanji/BRV
+    api "com.github.liangjingkanji:BRV:${versions.brv}"
     api "androidx.paging:paging-runtime-ktx:${versions.paging}"
+
+    // toast
+    api "com.github.liangjingkanji:Tooltip:${versions.toast}"
 
     // https://github.com/evant/binding-collection-adapter
     api "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${versions.bindingAdapter}"
     api "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${versions.bindingAdapter}"
+
+    // rx binding
+    api "com.jakewharton.rxbinding3:rxbinding-appcompat:${versions.rxBinding3}"
 
     // Debug
     if (openDebug) {

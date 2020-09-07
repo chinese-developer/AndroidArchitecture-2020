@@ -25,7 +25,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.android.base.permission.EasyPermissions;
-import com.android.base.utils.android.compat.StatusBarUtil;
+import com.android.base.utils.android.compat.StatusBarKt;
 import com.app.base.AppContext;
 import com.app.base.R;
 import com.app.base.router.RouterPath;
@@ -64,7 +64,7 @@ public class WebViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
-        StatusBarUtil.setStatusBarColor(this, ContextCompat.getColor(this, R.color.red));
+        StatusBarKt.setStatusBarColor(this, ContextCompat.getColor(this, R.color.red), true, 1F);
         getIntentData();
         initTitle();
         syncCookie(mUrl);

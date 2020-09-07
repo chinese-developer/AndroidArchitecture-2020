@@ -66,11 +66,15 @@ fun FragmentActivity.showTipsDialog(builder: TipsDialogBuilder.() -> Unit): Dial
     return showTipsDialog(ActFragWrapper.create(this), builder)
 }
 
-private fun showTipsDialogImpl(actFragWrapper: ActFragWrapper, tipsDialogBuilder: TipsDialogBuilder): Dialog {
-    val tipsDialog = TipsDialog(actFragWrapper.context,
+private fun showTipsDialogImpl(
+    actFragWrapper: ActFragWrapper,
+    tipsDialogBuilder: TipsDialogBuilder
+): Dialog {
+    val tipsDialog = TipsDialog(
+        actFragWrapper.context,
         when (tipsDialogBuilder.type) {
             TipsDialogBuilder.TYPE_SUCCESS -> R.drawable.ic_checkbox_green_checked
-            TipsDialogBuilder.TYPE_ERROR -> R.drawable.base_img_error
+            TipsDialogBuilder.TYPE_ERROR -> R.drawable.ic_warning
             else -> throw IllegalArgumentException("you should define the type of tips ")
         }
     )
@@ -117,6 +121,7 @@ open class BaseLoadingDialog(val context: Context) {
     @StyleRes
     var style: Int = NO_ID
     var title: CharSequence? = null
+
     @StringRes
     var titleId: Int = NO_ID
         set(value) {
@@ -133,7 +138,11 @@ open class BaseLoadingDialog(val context: Context) {
 ///////////////////////////////////////////////////////////////////////////
 // Loading
 ///////////////////////////////////////////////////////////////////////////
-fun showLoadingDialog(context: Context, builder: BaseLoadingDialog.() -> Unit, autoShow: Boolean = false): Dialog {
+fun showLoadingDialog(
+    context: Context,
+    builder: BaseLoadingDialog.() -> Unit,
+    autoShow: Boolean = false
+): Dialog {
     val baseLoadingDialog = BaseLoadingDialog(context)
     builder.invoke(baseLoadingDialog)
     val loadingDialog = LoadingDialog(baseLoadingDialog)
@@ -152,7 +161,10 @@ fun Activity.showLoadingDialog(builder: BaseLoadingDialog.() -> Unit): Dialog {
     return showLoadingDialog(this, builder)
 }
 
-fun LoadingView.showLoadingDialog(context: Context, builder: BaseLoadingDialog.() -> Unit): Dialog? {
+fun LoadingView.showLoadingDialog(
+    context: Context,
+    builder: BaseLoadingDialog.() -> Unit
+): Dialog? {
     return showLoadingDialog(context, builder, false)
 }
 
@@ -175,8 +187,10 @@ open class BaseDialogBuilder(val context: Context) {
             title = context.getText(value)
         }
     var title: CharSequence? = null
+
     /**标题的字体大小，单位为 sp*/
     var titleSize = 16F
+
     /**标题的字体颜色*/
     var titleColor = context.colorFromId(R.color.black_gray_level2)
 
@@ -191,11 +205,13 @@ open class BaseDialogBuilder(val context: Context) {
             }
         }
     var positiveText: CharSequence? = context.getText(R.string.confirm)
+
     @ColorRes
     var positiveColorId: Int = NO_ID
         set(value) {
             positiveColor = ContextCompat.getColor(context, value)
         }
+
     @ColorInt
     var positiveColor: Int = NO_ID
 
@@ -226,8 +242,10 @@ class ConfirmDialogBuilder(context: Context) : BaseDialogBuilder(context) {
             message = context.getText(value)
         }
     var message: CharSequence = "debug：请设置message"
+
     /**消息的字体大小，单位为 sp*/
     var messageSize = 14F
+
     /**消息的字体颜色*/
     var messageColor = context.colorFromId(R.color.gray_level1)
 

@@ -1,15 +1,14 @@
 package com.app.base.widget.dialog
 
 import android.content.Context
-import androidx.appcompat.widget.AppCompatTextView
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.android.base.adapter.recycler.RecyclerAdapter
-import com.android.base.adapter.recycler.ViewHolder
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.recyclerview.widget.RecyclerView
 import com.android.base.utils.android.UnitConverter
 import com.app.base.R
 import kotlinx.android.synthetic.main.dialog_list_layout.*
@@ -19,7 +18,7 @@ import kotlinx.android.synthetic.main.dialog_list_layout.*
  *
  */
 internal class ListDialog(listDialogBuilder: ListDialogBuilder) :
-        BaseDialog(listDialogBuilder.context, listDialogBuilder.style) {
+    BaseDialog(listDialogBuilder.context, listDialogBuilder.style) {
 
     private var mSelectedItemIndex: Int = 0
     private var mSelectableBgId = 0
@@ -45,7 +44,8 @@ internal class ListDialog(listDialogBuilder: ListDialogBuilder) :
         }
 
         //list
-        rvDialogListContent.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+        rvDialogListContent.layoutManager =
+            androidx.recyclerview.widget.LinearLayoutManager(context)
         val items = listDialogBuilder.items
         val adapter = listDialogBuilder.adapter
 
@@ -59,7 +59,10 @@ internal class ListDialog(listDialogBuilder: ListDialogBuilder) :
             rvDialogListContent.adapter = Adapter(context, items.toList())
             dblListDialogBottom.onPositiveClick(View.OnClickListener {
                 checkDismiss(listDialogBuilder)
-                listDialogBuilder.positiveListener?.invoke(mSelectedItemIndex, items[mSelectedItemIndex])
+                listDialogBuilder.positiveListener?.invoke(
+                    mSelectedItemIndex,
+                    items[mSelectedItemIndex]
+                )
             })
 
         } else if (adapter != null) {
@@ -88,9 +91,9 @@ internal class ListDialog(listDialogBuilder: ListDialogBuilder) :
     }
 
     private inner class Adapter internal constructor(
-            context: Context,
-            data: List<CharSequence>
-    ) : RecyclerAdapter<CharSequence, ViewHolder>(context, data) {
+        val context: Context,
+        val data: List<CharSequence>?
+    ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         private val mOnClickListener = View.OnClickListener { view ->
             val childAdapterPosition = rvDialogListContent!!.getChildAdapterPosition(view)
@@ -103,21 +106,25 @@ internal class ListDialog(listDialogBuilder: ListDialogBuilder) :
         private val hPadding = UnitConverter.dpToPx(19)
         private val vPadding = UnitConverter.dpToPx(12)
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val textView = AppCompatTextView(context)
             textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.sel_choice, 0, 0, 0)
             textView.compoundDrawablePadding = UnitConverter.dpToPx(10)
             textView.gravity = Gravity.CENTER_VERTICAL
-            textView.layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            textView.layoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
             if (mSelectableBgId != 0) {
                 textView.setBackgroundResource(mSelectableBgId)
             }
             textView.setPadding(hPadding, vPadding, hPadding, vPadding)
-            return ViewHolder(textView)
+            return ListViewHolder(textView)
         }
 
-        override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-            (viewHolder.itemView as TextView).text = getItem(position)
+        override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
+            if (data.isNullOrEmpty()) return
+            (viewHolder.itemView as TextView).text = data[position]
             viewHolder.itemView.isSelected = viewHolder.bindingAdapterPosition == mSelectedItemIndex
             if (!viewHolder.itemView.isSelected) {
                 viewHolder.itemView.setOnClickListener(mOnClickListener)
@@ -126,6 +133,11 @@ internal class ListDialog(listDialogBuilder: ListDialogBuilder) :
             }
         }
 
+        override fun getItemCount(): Int {
+            return data?.size ?: 0
+        }
+
+        inner class ListViewHolder(textView: TextView) : RecyclerView.ViewHolder(textView)
     }
 
 }
