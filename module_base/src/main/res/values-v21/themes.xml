@@ -25,7 +25,7 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
 
-    <style name="AppTheme.MDDialog">
+    <style name="AppTheme.NoActionBar.MDDialog">
         <item name="md_corner_radius">20dp</item>
         <item name="md_color_title">@color/md_color_title</item>
         <item name="md_color_content">@color/md_color_content</item>
@@ -43,13 +43,13 @@
         <item name="android:windowBackground">@color/md_background_color</item>
     </style>
 
-    <style name="AppTheme.MDDialog.Font">
+    <style name="AppTheme.NoActionBar.MDDialog.Font">
         <item name="md_font_title">@font/raleway_bold</item>
         <item name="md_font_body">@font/raleway_medium</item>
         <item name="md_font_button">@font/raleway_semibold</item>
     </style>
 
-    <style name="AppTheme.MDDialog.Theme" parent="Theme.AppCompat.Light.Dialog.Alert"
+    <style name="AppTheme.NoActionBar.MDDialog.Theme" parent="Theme.AppCompat.Light.Dialog.Alert"
         tools:ignore="PrivateResource">
         <item name="android:windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
         <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>

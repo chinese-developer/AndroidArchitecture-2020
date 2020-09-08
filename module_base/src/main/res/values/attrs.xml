@@ -31,8 +31,4 @@
         <attr name="android:orientation" />
     </declare-styleable>
 
-    <declare-styleable name="ViewPager2FixDragLayout">
-        <attr name="android:orientation" />
-    </declare-styleable>
-
 </resources>

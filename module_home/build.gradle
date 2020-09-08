@@ -3,3 +3,8 @@ apply from: '../modularization_config.gradle'
 android {
 //    resourcePrefix "home_"
 }
+
+dependencies {
+    // https://github.com/Ashok-Varma/BottomNavigation
+    implementation "com.ashokvarma.android:bottom-navigation-bar:${versions.bottomBar}"
+}

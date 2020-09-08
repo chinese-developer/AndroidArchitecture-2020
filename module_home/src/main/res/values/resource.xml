@@ -2,8 +2,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
 
     <string-array name="home_tabs">
-        <item>@string/tab_1</item>
-        <item>@string/tab_2</item>
+        <item>@string/home_tab_1</item>
+        <item>@string/home_tab_2</item>
+        <item>@string/home_tab_3</item>
+    </string-array>
+
+    <string-array name="main_tabs">
+        <item>@string/home_tab_1</item>
+        <item>@string/home_tab_2</item>
     </string-array>
 
 </resources>

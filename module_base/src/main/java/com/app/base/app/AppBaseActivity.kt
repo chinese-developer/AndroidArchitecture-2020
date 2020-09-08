@@ -9,8 +9,8 @@ import com.app.base.router.RouterManager
 
 abstract class AppBaseActivity : BaseActivity(), AutoDisposeLifecycleOwnerEx {
 
-    override fun initialize(savedInstanceState: Bundle?) {
-        super.initialize(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         if (tintStatusBar()) {
             if (enableStatusBarLightMode()) {
@@ -22,7 +22,6 @@ abstract class AppBaseActivity : BaseActivity(), AutoDisposeLifecycleOwnerEx {
 
         RouterManager.inject(this)
     }
-
     protected open fun tintStatusBar() = true
     protected open fun enableStatusBarLightMode() = false
 

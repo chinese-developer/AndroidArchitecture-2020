@@ -3,6 +3,7 @@
 package com.app.base.data
 
 import android.annotation.SuppressLint
+import com.android.base.LogTags
 import com.android.sdk.net.provider.ApiHandler
 import com.android.sdk.net.provider.ErrorDataAdapter
 import com.android.sdk.net.provider.HttpConfig
@@ -52,7 +53,7 @@ internal fun newOkHttpConfig(): HttpConfig {
                 val httpLoggingInterceptor =
                         HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
                             override fun log(message: String) {
-                                Timber.tag("===OkHttp===").i(message)
+                                Timber.tag(LogTags.okHttp).i(message)
                             }
                         })
                 httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-        <com.app.base.widget.ViewPager2FixDragLayout
+        <com.app.base.widget.FixDragLayout
             android:id="@+id/nav_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,7 +22,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
 
-            <com.example.architecture.home.ui.lyrics.parser.LrcView
+            <com.example.architecture.home.ui.home.lyrics.parser.LrcView
                 android:id="@+id/lrc_view"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -30,7 +30,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_disc_halo" />
 
-        </com.app.base.widget.ViewPager2FixDragLayout>
+        </com.app.base.widget.FixDragLayout>
 
 </layout>
 

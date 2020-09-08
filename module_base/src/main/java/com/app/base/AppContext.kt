@@ -4,6 +4,7 @@
  */
 
 @file:Suppress("unused")
+
 package com.app.base
 
 import android.app.Activity
@@ -13,24 +14,23 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.fragment.app.FragmentActivity
 import androidx.multidex.MultiDex
+import com.android.base.LogTags
 import com.android.base.app.BaseAppContext
 import com.android.base.app.Sword
 import com.android.base.app.mvvm.VMViewModel
 import com.android.base.rx.SchedulerProvider
-import com.android.sdk.net.NetConfig
-import com.app.base.scope.DialogCoroutineScope
 import com.android.sdk.net.error.RequestParamsException
 import com.android.sdk.net.error.ResponseException
 import com.android.sdk.net.error.ServerResponseException
 import com.app.base.app.AppSecurity
 import com.app.base.app.ErrorHandler
-import com.app.base.config.AppSettings
 import com.app.base.data.DataConfig
 import com.app.base.data.app.AppDataSource
 import com.app.base.data.app.StorageManager
 import com.app.base.debug.DebugTools
 import com.app.base.router.AppRouter
 import com.app.base.router.RouterManager
+import com.app.base.scope.DialogCoroutineScope
 import com.app.base.widget.dialog.AppLoadingView
 import com.drake.statelayout.StateConfig
 import com.drake.tooltip.toast
@@ -79,7 +79,7 @@ open class AppContext : BaseAppContext() {
             errorLayout = R.layout.base_layout_error
         }.setRetryIds(R.id.base_retry_btn)
 
-        // 初始化SmartRefreshLayout, 这是自动下拉刷新和上拉加载采用的第三方库  [https://github.com/scwang90/SmartRefreshLayout/tree/master] V2版本
+        // 初始化 SmartRefreshLayout, 这是自动下拉刷新和上拉加载采用的第三方库  [https://github.com/scwang90/SmartRefreshLayout/tree/master] V2版本
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, _ ->
             MaterialHeader(context)
         }
@@ -94,12 +94,12 @@ open class AppContext : BaseAppContext() {
             .registerLoadingFactory { AppLoadingView(it) } // 默认的通用的LoadingDialog和Toast实现
             .setErrorClassifier(object : Sword.ErrorClassifier {
                 override fun isNetworkError(throwable: Throwable): Boolean {
-                    Timber.tag("===OkHttp===").d(throwable)
+                    Timber.tag(LogTags.okHttp).d(throwable)
                     return throwable is RequestParamsException || throwable is IOException || throwable is ResponseException
                 }
 
                 override fun isServerError(throwable: Throwable): Boolean {
-                    Timber.tag("===OkHttp===").d(throwable)
+                    Timber.tag(LogTags.okHttp).d(throwable)
                     return throwable is ServerResponseException || throwable is HttpException && throwable.code() >= 500
                 }
             })

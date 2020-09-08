@@ -23,7 +23,7 @@ public class ServiceFactory {
         mBaseUrl = httpConfig.baseUrl();
         String environment = httpConfig.environment();
 
-        Timber.tag("===OkHttp===").i("当前环境是: " + environment + "\nBaseUrl: " + mBaseUrl + "\nOkHttp: " + mOkHttpClient);
+        Timber.tag("===OKHTTP===").i("当前环境是: " + environment + "\nBaseUrl: " + mBaseUrl + "\nOkHttp: " + mOkHttpClient);
 
         Retrofit.Builder builder = new Retrofit.Builder();
 
