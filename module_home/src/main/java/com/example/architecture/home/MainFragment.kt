@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commitNow
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.android.base.app.fragment.BaseFragment
 import com.android.base.utils.android.views.getStringArray
@@ -22,17 +21,13 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar.MODE_FIXED
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
 import com.ashokvarma.bottomnavigation.ShapeBadgeItem
 import com.ashokvarma.bottomnavigation.ShapeBadgeItem.SHAPE_OVAL
-import com.drake.tooltip.toast
 import com.example.architecture.home.common.Constant.TAB_1
 import com.example.architecture.home.common.Constant.TAB_2
+import com.example.architecture.home.common.Constant.TAB_3
 import com.example.architecture.home.common.OnTabSelectedListenerAdapter
 import com.example.architecture.home.databinding.FragMainBinding
 import com.example.architecture.home.ui.home.HomeFragment
-import com.example.architecture.home.ui.home.playlist.PlayListFragment
-import com.example.architecture.home.ui.home.recommend.RecommendFragment
 import com.example.architecture.home.ui.mine.MineFragment
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -77,6 +72,7 @@ class MainFragment : BaseFragment() {
                     return when (position) {
                         TAB_1 -> homeFragment
                         TAB_2 -> mineFragment
+                        TAB_3 -> newFragment<MineFragment>()
                         else -> throw IllegalArgumentException("createFragment error!")
                     }
                 }
@@ -96,28 +92,35 @@ class MainFragment : BaseFragment() {
             bottomNavigationBar.setBackgroundStyle(BACKGROUND_STYLE_STATIC)
 
             shapeBadgeItem = ShapeBadgeItem()
-                .setShapeColorResource(R.color.red)
+                .setShapeColorResource(R.color.red_dot)
                 .setGravity(Gravity.TOP or Gravity.END)
                 .setShape(SHAPE_OVAL)
-                .setHideOnSelect(true)
+                .setSizeInDp(activity, 7, 7)
+                .setHideOnSelect(false)
 
             bottomNavigationBar
                 .addItem(
                     BottomNavigationItem(
                         R.mipmap.ic_home_white_24dp,
                         getString(R.string.main_tab_1)
-                    ).setActiveColorResource(R.color.color_1DE9B6)
+                    ).setActiveColorResource(R.color.green_primary)
+                )
+                .addItem(
+                    BottomNavigationItem(
+                        R.mipmap.ic_tv_white_24dp,
+                        getString(R.string.main_tab_2)
+                    ).setActiveColorResource(R.color.green_primary)
                 )
                 .addItem(
                     BottomNavigationItem(
                         R.mipmap.ic_music_note_white_24dp,
-                        getString(R.string.main_tab_2)
-                    ).setActiveColorResource(R.color.color_1DE9B6).setBadgeItem(shapeBadgeItem)
+                        getString(R.string.main_tab_3)
+                    ).setActiveColorResource(R.color.green_primary).setBadgeItem(shapeBadgeItem)
                 )
                 .setFirstSelectedPosition(TAB_1)
                 .initialise()
 
-            binding.bottomNavigationBar.setTabSelectedListener(object :
+            bottomNavigationBar.setTabSelectedListener(object :
                 OnTabSelectedListenerAdapter() {
                 override fun onTabSelected(position: Int) {
                     viewPager.currentItem = position
@@ -129,7 +132,7 @@ class MainFragment : BaseFragment() {
     private fun listeners() {
         binding.apply {
             fabHome.onDebouncedClick {
-                toast("点我想干嘛？")
+                shapeBadgeItem.toggle()
             }
         }
     }

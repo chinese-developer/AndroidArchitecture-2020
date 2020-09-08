@@ -35,9 +35,10 @@
     <color name="red_level3">#FFB8C1</color>
     <color name="red_level4">#FFCFD6</color>
     <color name="red_level5">#FDC6CD</color>
+    <color name="red_dot">#FF6666</color>
     <!--绿色系-->
     <color name="color_1DE9B6">#1DE9B6</color>
-    <color name="green_level1_2">#83D598</color>
+    <color name="green_primary">#22d59c</color>
     <color name="green_level2">#BBECC7</color>
     <color name="green_level3">#E2FADE</color>
     <color name="green_main">#55CF74</color>

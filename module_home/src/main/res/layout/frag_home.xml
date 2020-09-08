@@ -29,7 +29,7 @@
             app:tabBackground="@color/transparent"
             app:tabGravity="start"
             app:tabIndicator="@drawable/tab_indicator"
-            app:tabIndicatorColor="@color/color_1DE9B6"
+            app:tabIndicatorColor="@color/green_primary"
             app:tabIndicatorFullWidth="false"
             app:tabIndicatorGravity="bottom"
             app:tabIndicatorHeight="4dp"
