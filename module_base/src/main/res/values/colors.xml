@@ -6,7 +6,7 @@
     <!--status bar-->
     <color name="colorPrimaryDark">#FFD1D2D1</color>
     <!--控件-->
-    <color name="colorAccent">@color/green_main</color>
+    <color name="colorAccent">#FF4081</color>
 
     <!--  水波纹统一颜色-->
     <color name="ripple_color">#cccccccc</color>
@@ -36,7 +36,7 @@
     <color name="red_level4">#FFCFD6</color>
     <color name="red_level5">#FDC6CD</color>
     <!--绿色系-->
-    <color name="green_level1">#65DD84</color>
+    <color name="color_1DE9B6">#1DE9B6</color>
     <color name="green_level1_2">#83D598</color>
     <color name="green_level2">#BBECC7</color>
     <color name="green_level3">#E2FADE</color>
@@ -67,5 +67,6 @@
 
     <color name="scrim">#99323232</color>
 
+    <color name="color_212121">#212121</color>
 
 </resources>

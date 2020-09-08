@@ -1,11 +1,13 @@
 package com.app.base.widget
 
+
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.app.base.R
 
 /**
@@ -13,10 +15,12 @@ import com.app.base.R
  * 1. ViewPager2中嵌套SwipeRefreshLayout，SwipeRefreshLayout和RecyclerView上下滑动困难。
  * 2. RecyclerView或SwipeRefreshLayout中嵌套ViewPager2，
  *    ViewPager2左右滑动困难，事件容易给RecyclerView或SwipeRefreshLayout吃掉。
+ *
+ *    *注意父布局继承的是 ConstraintLayout
  */
 class FixDragLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     private var downX: Float = 0f
     private var downY: Float = 0f

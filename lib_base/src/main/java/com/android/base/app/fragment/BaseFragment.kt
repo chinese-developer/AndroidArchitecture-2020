@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import com.android.base.LogTags
 import com.android.base.app.Sword
 import com.android.base.app.activity.BackHandlerHelper
 import com.android.base.app.activity.OnBackPressListener
@@ -23,33 +24,92 @@ import timber.log.Timber
  */
 open class BaseFragment : Fragment(), LoadingView, OnBackPressListener {
 
-    private var layoutView: View? = null
-    private var cachedView: View? = null
+    private val loadingView by lazy { Sword.get().loadingViewFactory.createLoadingDelegate(context) }
 
-    @Volatile
-    private var _loadingView: LoadingView? = null
-    private val loadingView: LoadingView
-        get() {
-            synchronized(this) {
-                return _loadingView
-                    ?: onCreateLoadingView()
-                    ?: Sword.get().loadingViewFactory.createLoadingDelegate(context)
-            }
-        }
-
-    /** Fragment需要自己处理BackPress事件，如果返回false代表fragment不拦截事件，交给子Fragment处理，如果子Fragment也不处理，则由Activity处理。*/
+    /** 返回 true，则代表 Fragment 需要自己处理 BackPress 事件，如果返回 false 代表 Fragment 不拦截事件，交给子 Fragment 处理，如果子 Fragment 也不处理，则由 Activity 处理。*/
     open fun handleBackPress() = false
+    override fun onBackPressed() = handleBackPress() || BackHandlerHelper.handleBackPress(this)
 
-    protected open fun onCreateLoadingView(): LoadingView? = null
-    protected open fun provideLayout(
+    override fun onPrimaryNavigationFragmentChanged(isPrimaryNavigationFragment: Boolean) {
+        super.onPrimaryNavigationFragmentChanged(isPrimaryNavigationFragment)
+        Timber.tag(LogTags.fragment_lifecycle)
+            .i(">>>>>>> onPrimaryNavigationFragmentChanged: [isPrimaryNavigationFragment= $isPrimaryNavigationFragment]")
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onAttach: [context= $context]")
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onCreate ${ if (savedInstanceState != null) ": [savedInstanceState= $savedInstanceState]" else ""}")
+    }
+
+    override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): Any? = null
+    ): View? {
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onCreateView ")
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
-    protected open fun onViewPrepared(view: View, savedInstanceState: Bundle?) {}
-    internal open fun internalOnViewPrepared(view: View, savedInstanceState: Bundle?) {}
-    override fun onBackPressed() = handleBackPress() || BackHandlerHelper.handleBackPress(this)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onViewCreated ${ if (savedInstanceState != null) ": [savedInstanceState= $savedInstanceState]" else ""}")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onDestroy")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onDestroyView")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onDetach")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onSaveInstanceState: [outState= ${outState}]")
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        Timber.tag(LogTags.fragment_lifecycle)
+            .i(">>>>>>> onViewStateRestored: [savedInstanceState= ${savedInstanceState}]")
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        Timber.tag(LogTags.fragment_lifecycle).i(">>>>>>> onHiddenChanged: [hidden= ${hidden}]")
+    }
 
     override fun showLoadingDialog() = loadingView.showLoadingDialog(true)
     override fun showLoadingDialog(cancelable: Boolean) = loadingView.showLoadingDialog(cancelable)
@@ -59,122 +119,9 @@ open class BaseFragment : Fragment(), LoadingView, OnBackPressListener {
     override fun showLoadingDialog(@StringRes messageId: Int, cancelable: Boolean) =
         loadingView.showLoadingDialog(messageId, cancelable)
 
-    override fun dismissLoadingDialog() = loadingView.dismissLoadingDialog()
     override fun showMessage(message: CharSequence) = loadingView.showMessage(message)
     override fun showMessage(@StringRes messageId: Int) = loadingView.showMessage(messageId)
-    override fun onPrimaryNavigationFragmentChanged(isPrimaryNavigationFragment: Boolean) {
-        super.onPrimaryNavigationFragmentChanged(isPrimaryNavigationFragment)
-        Timber.tag(tag())
-            .d(">>>>>>> onPrimaryNavigationFragmentChanged: [isPrimaryNavigationFragment= $isPrimaryNavigationFragment]")
-    }
 
-    private fun tag() = javaClass.simpleName
+    override fun dismissLoadingDialog() = loadingView.dismissLoadingDialog()
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Timber.tag(tag()).d(">>>>>>> onAttach: [context= $context]")
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Timber.tag(tag()).d(">>>>>>> onCreate: [savedInstanceState= $savedInstanceState]")
-    }
-
-    /**
-     * 为了避免增加不必要的代码入侵，除了[HomeFragment, DiaryFragment, MineFragment] 以外，都应该重写此方法 [onCreateView]
-     */
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        if (cachedView == null) {
-            val layout = provideLayout(inflater, container, savedInstanceState) ?: return null
-            if (layout is Int) {
-                cachedView = inflater.inflate(layout, container, false)
-                return cachedView
-            }
-            if (layout is View) {
-                cachedView = layout
-                return layout
-            }
-            throw IllegalArgumentException("You should provide a layout id or a View")
-        }
-
-        Timber.tag(tag()).d(">>>>>>> onCreateView.parent: [container= ${cachedView!!.parent}]")
-
-        if (cachedView!!.parent != null) {
-            val parent = cachedView!!.parent
-            if (parent is ViewGroup) {
-                parent.removeView(cachedView)
-            }
-        }
-
-        return cachedView
-    }
-
-    /**
-     * 为了避免增加不必要的代码入侵，除了[HomeFragment, DiaryFragment, MineFragment] 以外，都应该重写此方法 [onViewCreated]
-     */
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Timber.tag(tag()).d(">>>>>>> onViewCreated: [savedInstanceState= ${savedInstanceState}]")
-
-        if (layoutView !== view) {
-            layoutView = view
-            internalOnViewPrepared(view, savedInstanceState)
-            onViewPrepared(view, savedInstanceState)
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Timber.tag(tag()).d(">>>>>>> onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Timber.tag(tag()).d(">>>>>>> onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Timber.tag(tag()).d(">>>>>>> onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Timber.tag(tag()).d(">>>>>>> onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.tag(tag()).d(">>>>>>> onDestroy")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Timber.tag(tag()).d(">>>>>>> onDestroyView")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Timber.tag(tag()).d(">>>>>>> onDetach")
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        Timber.tag(tag()).d(">>>>>>> onSaveInstanceState: [outState= ${outState}]")
-    }
-
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-        Timber.tag(tag())
-            .d(">>>>>>> onViewStateRestored: [savedInstanceState= ${savedInstanceState}]")
-    }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        Timber.tag(tag()).d(">>>>>>> onHiddenChanged: [hidden= ${hidden}]")
-    }
 }

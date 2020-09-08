@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.architecture.home.HomeViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nav_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.home.HomeFragment">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_normal"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabBackground="@color/transparent"
+            app:tabGravity="start"
+            app:tabIndicator="@drawable/tab_indicator"
+            app:tabIndicatorColor="@color/color_1DE9B6"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorGravity="bottom"
+            app:tabIndicatorHeight="4dp"
+            app:tabMode="fixed"
+            app:tabPaddingBottom="0dp"
+            app:tabPaddingEnd="8dp"
+            app:tabPaddingStart="8dp"
+            app:tabPaddingTop="8dp"
+            app:tabRippleColor="@color/transparent"
+            app:tabSelectedTextColor="@color/color_212121"
+            app:tabTextAppearance="@style/Widget.DaMi.TabTextAppearance"
+            app:tabTextColor="@color/color_212121" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/player_view"
+            app:layout_constraintTop_toBottomOf="@id/tabs" />
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/player_view"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:paddingStart="@dimen/spacing_normal"
+            android:paddingEnd="@dimen/spacing_normal"
+            app:auto_show="true"
+            app:controller_layout_id="@layout/layout_exo_control"
+            app:hide_during_ads="false"
+            app:hide_on_touch="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:repeat_toggle_modes="one|none"
+            app:show_timeout="0"
+            app:shutter_background_color="@color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

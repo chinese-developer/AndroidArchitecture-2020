@@ -118,7 +118,7 @@ dependencies {
 
     // UI
     // https://github.com/Tencent/QMUI_Android
-    api("com.qmuiteam:qmui:${versions.qmui}")
+    api "com.qmuiteam:qmui:${versions.qmui}"
     // https://github.com/chenBingX/SuperTextView
 //    api "com.github.chenBingX:SuperTextView:${versions.superTextView}"
     // https://github.com/kyleduo/SwitchButton

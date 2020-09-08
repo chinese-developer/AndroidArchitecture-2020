@@ -5,7 +5,6 @@ import com.github.dmstocking.optional.java.util.function.Predicate;
 import androidx.annotation.UiThread;
 
 @UiThread
-@SuppressWarnings("unused")
 public interface ActivityDelegateOwner {
 
     void addDelegate(ActivityDelegate fragmentDelegate);
@@ -13,7 +12,5 @@ public interface ActivityDelegateOwner {
     boolean removeDelegate(ActivityDelegate fragmentDelegate);
 
     ActivityDelegate findDelegate(Predicate<ActivityDelegate> predicate);
-
-    ActivityStatus getStatus();
 
 }

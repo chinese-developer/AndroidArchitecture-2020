@@ -28,4 +28,9 @@
         <item name="android:textColor">@color/gray_level1</item>
         <item name="android:textSize">14sp</item>
     </style>
+
+    <style name="Widget.DaMi.TabTextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/color_212121</item>
+    </style>
 </resources>

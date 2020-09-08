@@ -3,6 +3,7 @@ package com.android.base.app.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.android.base.LogTags;
 import com.android.base.utils.android.compat.AndroidVersion;
 import com.github.dmstocking.optional.java.util.function.Predicate;
 
@@ -28,129 +29,111 @@ import timber.log.Timber;
 public abstract class BaseActivity extends AppCompatActivity implements ActivityDelegateOwner {
 
     private final ActivityDelegates activityDelegates = new ActivityDelegates(this);
-    private ActivityStatus activityStatus = ActivityStatus.INITIALIZED;
-    private String tag() {
-        return getClass().getSimpleName();
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Timber.tag(tag()).d( ">>>> onCreate before call super");
-
-        initialize(savedInstanceState);
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onCreate before call super");
         activityDelegates.callOnCreateBeforeSetContentView(savedInstanceState);
-
         super.onCreate(savedInstanceState);
-        Timber.tag(tag()).d( ">>>> onCreate after call super: [bundle= " + savedInstanceState + "]");
-
-        activityStatus = ActivityStatus.CREATE;
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onCreate after call super: [bundle= " + savedInstanceState + "]");
     }
 
     @Override
     protected void onRestart() {
-        Timber.tag(tag()).d( ">>>> onRestart before call super");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onRestart before call super");
         super.onRestart();
-        Timber.tag(tag()).d( ">>>> onRestart after call super");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onRestart after call super");
         activityDelegates.callOnRestart();
     }
 
     @Override
     protected void onStart() {
-        Timber.tag(tag()).d(">>>> onStart before call super");
+        Timber.tag(LogTags.activity_lifecycle).i(">>>> onStart before call super");
         super.onStart();
-        Timber.tag(tag()).d( ">>>> onStart after call super");
-        activityStatus = ActivityStatus.START;
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onStart after call super");
         activityDelegates.callOnStart();
     }
 
     @Override
     protected void onResume() {
-        Timber.tag(tag()).d( ">>>> onResume before call super");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onResume before call super");
         super.onResume();
-        Timber.tag(tag()).d( ">>>> onResume after call super");
-        activityStatus = ActivityStatus.RESUME;
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onResume after call super");
         activityDelegates.callOnResume();
     }
 
     @Override
     protected void onPause() {
-        Timber.tag(tag()).d( ">>>> onPause before call super");
-        activityStatus = ActivityStatus.PAUSE;
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onPause before call super");
         activityDelegates.callOnPause();
         super.onPause();
-        Timber.tag(tag()).d( ">>>> onPause after call super");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onPause after call super");
     }
 
     @Override
     protected void onStop() {
-        Timber.tag(tag()).d( ">>>> onStop before call super");
-        activityStatus = ActivityStatus.STOP;
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onStop before call super");
         activityDelegates.callOnStop();
         super.onStop();
-        Timber.tag(tag()).d( ">>>> onStop after call super");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onStop after call super");
     }
 
     @Override
     protected void onDestroy() {
-        Timber.tag(tag()).d( ">>>> onDestroy before call super");
-        activityStatus = ActivityStatus.DESTROY;
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onDestroy before call super");
         activityDelegates.callOnDestroy();
         super.onDestroy();
-        Timber.tag(tag()).d( ">>>> onDestroy after call super");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onDestroy after call super");
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        Timber.tag(tag()).d( ">>>> onPostCreate: [bundle= " + savedInstanceState + "]");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onPostCreate: [bundle= " + savedInstanceState + "]");
         activityDelegates.callOnPostCreate(savedInstanceState);
     }
 
     @Override
     protected void onSaveInstanceState(@NotNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        Timber.tag(tag()).d( ">>>> onSaveInstanceState: [bundle= " + outState + "]");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onSaveInstanceState: [bundle= " + outState + "]");
         activityDelegates.callOnSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Timber.tag(tag()).d( ">>>> onRestoreInstanceState: [bundle= " + savedInstanceState + "]");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onRestoreInstanceState: [bundle= " + savedInstanceState + "]");
         activityDelegates.callOnRestoreInstanceState(savedInstanceState);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Timber.tag(tag()).d( ">>>> onActivityResult: [resultCode= " + resultCode + "]");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onActivityResult: [resultCode= " + resultCode + "]");
         activityDelegates.callOnActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        Timber.tag(tag()).d( ">>>> onRequestPermissionsResult: [requestCode= " + requestCode + "]");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onRequestPermissionsResult: [requestCode= " + requestCode + "]");
         activityDelegates.callOnRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
-        Timber.tag(tag()).d( ">>>> onResumeFragments");
+        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onResumeFragments");
         activityDelegates.callOnResumeFragments();
     }
 
-    // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
-    // interface impl
-    // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // /
     @UiThread
     @Override
     public final void addDelegate(@NonNull ActivityDelegate activityDelegate) {
         activityDelegates.addActivityDelegate(activityDelegate);
     }
 
-    @SuppressWarnings("unused")
     @UiThread
     @Override
     public final boolean removeDelegate(@NonNull ActivityDelegate activityDelegate) {
@@ -160,19 +143,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
     @Override
     public ActivityDelegate findDelegate(Predicate<ActivityDelegate> predicate) {
         return activityDelegates.findDelegate(predicate);
-    }
-
-    @Override
-    public ActivityStatus getStatus() {
-        return activityStatus;
-    }
-
-    /**
-     * Before call super.onCreate and setContentView
-     *
-     * @param savedInstanceState state
-     */
-    protected void initialize(@Nullable Bundle savedInstanceState) {
     }
 
     @Override
@@ -186,15 +156,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
 
     protected void superOnBackPressed() {
         super.onBackPressed();
-    }
-
-    @Override
-    public boolean isDestroyed() {
-        if (AndroidVersion.atLeast(17)) {
-            return super.isDestroyed();
-        } else {
-            return getStatus() == ActivityStatus.DESTROY;
-        }
     }
 
 }

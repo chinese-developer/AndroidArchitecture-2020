@@ -65,6 +65,7 @@ buildscript {
                 'superTextView'     : '3.2.5',
                 'photoView'         : '2.1.4',
                 'switchbutton'      : '2.0.0',
+                'bottomBar'         : '2.2.0',
                 'leakcanary'        : '1.5.1',
                 'blockcanary'       : '1.5.0',
                 'ueTool'            : '1.0.15',
