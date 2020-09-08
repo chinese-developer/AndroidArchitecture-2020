@@ -8,8 +8,9 @@
     </string-array>
 
     <string-array name="main_tabs">
-        <item>@string/home_tab_1</item>
-        <item>@string/home_tab_2</item>
+        <item>@string/main_tab_1</item>
+        <item>@string/main_tab_2</item>
+        <item>@string/main_tab_3</item>
     </string-array>
 
 </resources>
