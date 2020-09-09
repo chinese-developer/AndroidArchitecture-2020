@@ -32,6 +32,8 @@ public class RouterPath {
     public static final class Main {
         public static final String PATH = "/arch_home/main";
 
+        public static final String MEDIA_PLAYER_PATH = "/arch_home/media_player";
+
         public static final String PAGE_KEY = "page_key";
         public static final int HOME = 0;
         public static final int DIARY = 1;

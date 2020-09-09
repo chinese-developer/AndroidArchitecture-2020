@@ -40,7 +40,6 @@
         <item name="md_divider_color">@color/md_divider_theme</item>
         <item name="md_item_selector">@drawable/md_item_selector</item>
         <item name="md_button_selector">@drawable/md_btn_selector</item>
-        <item name="android:windowBackground">@color/md_background_color</item>
     </style>
 
     <style name="AppTheme.NoActionBar.MDDialog.Font">

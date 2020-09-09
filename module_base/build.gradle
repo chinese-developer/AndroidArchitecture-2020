@@ -119,6 +119,8 @@ dependencies {
     // UI
     // https://github.com/Tencent/QMUI_Android
     api "com.qmuiteam:qmui:${versions.qmui}"
+    // https://github.com/code-mc/material-icon-lib
+    api 'net.steamcrafted:materialiconlib:1.1.5'
     // https://github.com/chenBingX/SuperTextView
 //    api "com.github.chenBingX:SuperTextView:${versions.superTextView}"
     // https://github.com/kyleduo/SwitchButton

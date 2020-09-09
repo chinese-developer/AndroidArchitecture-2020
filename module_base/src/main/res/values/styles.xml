@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
 
+    <attr format="reference" name="iconColor"/>
+
     <style name="TextAppearance" />
 
     <style name="Widget.DaMi" parent="android:Widget" />

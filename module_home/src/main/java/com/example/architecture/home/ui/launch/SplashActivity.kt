@@ -3,7 +3,7 @@
  *
  */
 
-package com.example.architecture.home
+package com.example.architecture.home.ui.launch
 
 import android.content.Intent
 import android.os.Bundle

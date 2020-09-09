@@ -5,17 +5,21 @@
 
 package com.example.architecture.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.android.base.app.fragment.BaseFragment
 import com.android.base.utils.android.views.getStringArray
 import com.android.base.utils.android.views.newFragment
 import com.android.base.utils.android.views.onDebouncedClick
+import com.app.base.app.AppBaseFragment
+import com.app.base.common.EventCenter
+import com.app.base.router.RouterPath
 import com.ashokvarma.bottomnavigation.BottomNavigationBar.BACKGROUND_STYLE_STATIC
 import com.ashokvarma.bottomnavigation.BottomNavigationBar.MODE_FIXED
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
@@ -30,17 +34,23 @@ import com.example.architecture.home.ui.home.HomeFragment
 import com.example.architecture.home.ui.mine.MineFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class MainFragment : BaseFragment() {
+class MainFragment : AppBaseFragment() {
+
+    private val tabsArr = getStringArray(R.array.main_tabs)
 
     private lateinit var binding: FragMainBinding
     private lateinit var shapeBadgeItem: ShapeBadgeItem
     private lateinit var homeFragment: HomeFragment
     private lateinit var mineFragment: MineFragment
+    private lateinit var mediaController: MediaController
 
-    private val tabsArr = getStringArray(R.array.main_tabs)
+    @Inject lateinit var eventCenter: EventCenter
+
+    private val model by viewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,9 +65,16 @@ class MainFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        mediaController = MediaController(this, binding, model, eventCenter)
         initViewPager()
         initBottomNavigationBar()
         listeners()
+
+        model.songModel.observe(viewLifecycleOwner, {
+            if (it.lyricPojo != null) {
+//                lyricsFragment.setLrcRows(true, it.lyricPojo!!)
+            }
+        })
     }
 
     private fun initViewPager() {
@@ -133,6 +150,7 @@ class MainFragment : BaseFragment() {
         binding.apply {
             fabHome.onDebouncedClick {
                 shapeBadgeItem.toggle()
+                appRouter.build(RouterPath.Main.MEDIA_PLAYER_PATH).navigation()
             }
         }
     }

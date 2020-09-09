@@ -5,10 +5,9 @@
 
         <!--启动页-->
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.launch.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Launcher"
-            >
+            android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,6 +32,10 @@
             </intent-filter>
 
         </activity>
+
+        <activity
+            android:name=".MediaPlayerActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

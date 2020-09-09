@@ -6,16 +6,13 @@ import android.app.job.JobScheduler
 import android.content.ComponentName
 import android.content.Context
 import android.graphics.Typeface
-import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
 import android.os.PersistableBundle
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -24,11 +21,7 @@ import com.android.base.interfaces.adapter.OnTabSelectedListenerAdapter
 import com.android.base.utils.android.ClipboardUtils
 import com.android.base.utils.android.views.getStringArray
 import com.android.base.utils.android.views.newFragment
-import com.android.base.utils.android.views.onDebouncedClick
 import com.android.base.utils.ktx.tryCatchAll
-import com.android.cache.getEntity
-import com.app.base.AppContext
-import com.app.base.common.EventCenter
 import com.app.base.data.models.Song
 import com.app.base.service.DownLoadJobService
 import com.app.base.service.DownLoadJobService.Companion.HANDLER_MSG_WHAT_DOWNLOAD
@@ -40,14 +33,7 @@ import com.app.base.widget.dialog.mdstyle.core.input.input
 import com.app.base.widget.dialog.mdstyle.core.list.listItems
 import com.app.base.widget.dialog.mdstyle.util.lifecycleOwner
 import com.app.base.widget.dialog.mdstyle.util.startActivityForUriIntent
-import com.example.architecture.home.HomeViewModel
 import com.example.architecture.home.R
-import com.example.architecture.home.common.Constant.CONTROLS_REPEAT_ALL
-import com.example.architecture.home.common.Constant.CONTROLS_REPEAT_ONE
-import com.example.architecture.home.common.Constant.CONTROLS_SHUFFLE
-import com.example.architecture.home.common.Constant.PLAYED_MUSIC_CACHE_KEY
-import com.example.architecture.home.common.Constant.PLAYING_MUSIC_CACHE_KEY
-import com.example.architecture.home.common.Constant.PLAY_MODE_CACHE_KEY
 import com.example.architecture.home.common.Constant.TAB_1
 import com.example.architecture.home.common.Constant.TAB_2
 import com.example.architecture.home.common.Constant.TAB_3
@@ -56,22 +42,9 @@ import com.example.architecture.home.repository.HomeApiRepository
 import com.example.architecture.home.ui.home.lyrics.LyricsFragment
 import com.example.architecture.home.ui.home.playlist.PlayListFragment
 import com.example.architecture.home.ui.home.recommend.RecommendFragment
-import com.google.android.exoplayer2.C
-import com.google.android.exoplayer2.DefaultControlDispatcher
-import com.google.android.exoplayer2.ExoPlayerFactory
-import com.google.android.exoplayer2.Player.*
-import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.analytics.AnalyticsListener
-import com.google.android.exoplayer2.source.ExtractorMediaSource
-import com.google.android.exoplayer2.source.MediaSource
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
-import com.google.android.exoplayer2.util.Assertions
-import com.google.android.exoplayer2.util.Util
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.layout_exo_control.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
@@ -83,38 +56,15 @@ class HomeFragment : BaseFragment() {
 
     private val tabsArr = getStringArray(R.array.home_tabs)
 
-    private val buttonAlphaEnabled by lazy {
-        resources.getInteger(R.integer.exo_media_button_opacity_percentage_enabled).toFloat() / 100
-    }
-    private val buttonAlphaDisabled by lazy {
-        resources.getInteger(R.integer.exo_media_button_opacity_percentage_disabled).toFloat() / 100
-    }
-
-    @Inject lateinit var eventCenter: EventCenter
     @Inject lateinit var repo: HomeApiRepository
 
-    private val handler by lazy { Handler() }
-    private val storage by lazy { AppContext.storageManager().stableStorage() }
     private val jobScheduler: JobScheduler by lazy { activity?.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler }
-
-    private lateinit var player: SimpleExoPlayer
-    private lateinit var mediaSource: MediaSource
-    private lateinit var dataSourceFactory: DefaultDataSourceFactory
-    private lateinit var defaultControlDispatcher: DefaultControlDispatcher
 
     private val lyricsFragment by lazy { newFragment<LyricsFragment>() }
     private val recommendFragment by lazy { newFragment<RecommendFragment>() }
     private val playListFragment by lazy { newFragment<PlayListFragment>() }
 
     private val model by viewModels<HomeViewModel>()
-
-    private val updateProgressAction: Runnable = object : Runnable {
-        override fun run() {
-            val progress = player.currentPosition.toInt()
-            lyricsFragment.seekTo(progress, false)
-            handler.postDelayed(this, 900)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -129,120 +79,8 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initViewPager()
-        initExoPlayer()
-        listeners()
 
-        model.songModel.observe(viewLifecycleOwner, {
-            if (it.lyricPojo != null) {
-                lyricsFragment.setLrcRows(true, it.lyricPojo!!)
-            }
-        })
-    }
-
-    private fun initExoPlayer() {
-        player = ExoPlayerFactory.newSimpleInstance(activity)
-        binding.playerView.player = player
-
-        defaultControlDispatcher = DefaultControlDispatcher()
-
-        setButtonEnabled(false, binding.playerView.exo_next_custom)
-        setButtonEnabled(false, binding.playerView.exo_action_more)
-        setButtonEnabled(false, binding.playerView.exo_play)
-
-        dataSourceFactory =
-            DefaultDataSourceFactory(activity, Util.getUserAgent(requireActivity(), "N"))
-
-        when (storage.getInt(PLAY_MODE_CACHE_KEY, CONTROLS_REPEAT_ONE)) {
-            CONTROLS_REPEAT_ONE -> {
-                binding.playerView.exo_repeat_toggle_custom.setImageResource(R.mipmap.ic_controls_repeat_one)
-                defaultControlDispatcher.dispatchSetRepeatMode(player, REPEAT_MODE_ONE)
-            }
-            CONTROLS_REPEAT_ALL -> {
-                binding.playerView.exo_repeat_toggle_custom.setImageResource(R.mipmap.ic_controls_repeat_all)
-                defaultControlDispatcher.dispatchSetRepeatMode(player, REPEAT_MODE_OFF)
-            }
-            CONTROLS_SHUFFLE -> {
-                binding.playerView.exo_repeat_toggle_custom.setImageResource(R.mipmap.ic_controls_shuffle)
-                defaultControlDispatcher.dispatchSetRepeatMode(player, REPEAT_MODE_OFF)
-            }
-        }
-    }
-
-    private fun listeners() {
-        binding.apply {
-            player.addAnalyticsListener(object : AnalyticsListener {
-                override fun onPlayerStateChanged(
-                    eventTime: AnalyticsListener.EventTime?,
-                    playWhenReady: Boolean,
-                    playbackState: Int
-                ) {
-                    super.onPlayerStateChanged(eventTime, playWhenReady, playbackState)
-                    when (playbackState) {
-                        STATE_ENDED -> {
-                        } // todo
-                        STATE_IDLE, STATE_READY -> {
-                            if (!player.playWhenReady) {
-                                handler.removeCallbacks(updateProgressAction)
-                            } else {
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-                                    if (!handler.hasCallbacks(updateProgressAction)) {
-                                        handler.post(updateProgressAction)
-                                    }
-                                } else {
-                                    handler.removeCallbacksAndMessages(0)
-                                    handler.post(updateProgressAction)
-                                }
-                            }
-                        }
-                    }
-                }
-            })
-
-            playerView.exo_play.onDebouncedClick {
-                when (player.playbackState) {
-                    STATE_IDLE -> {
-                    } // todo
-                    STATE_ENDED -> defaultControlDispatcher.dispatchSeekTo(
-                        player,
-                        player.currentWindowIndex,
-                        C.TIME_UNSET
-                    )
-                    else -> defaultControlDispatcher.dispatchSetPlayWhenReady(player, true)
-                }
-            }
-
-            playerView.exo_next_custom.onDebouncedClick {
-
-            }
-
-            playerView.exo_prev.onDebouncedClick {
-
-            }
-
-            playerView.exo_repeat_toggle_custom.onDebouncedClick {
-                val exoRepeatToggle = playerView.exo_repeat_toggle_custom
-
-                when (player.repeatMode) {
-                    REPEAT_MODE_ONE -> {
-                        playerView.exo_repeat_toggle.performClick()
-                        exoRepeatToggle.setImageResource(R.mipmap.ic_controls_repeat_all)
-                        storage.putInt(PLAY_MODE_CACHE_KEY, CONTROLS_REPEAT_ALL)
-                    }
-                    else -> {
-                        if (isPlayModeShuffle()) {
-                            playerView.exo_repeat_toggle.performClick()
-                            exoRepeatToggle.setImageResource(R.mipmap.ic_controls_repeat_one)
-                            storage.putInt(PLAY_MODE_CACHE_KEY, CONTROLS_REPEAT_ONE)
-                        } else {
-                            exoRepeatToggle.setImageResource(R.mipmap.ic_controls_shuffle)
-                            storage.putInt(PLAY_MODE_CACHE_KEY, CONTROLS_SHUFFLE)
-                        }
-                    }
-                }
-            }
-        }
     }
 
     private fun initViewPager() {
@@ -253,8 +91,8 @@ class HomeFragment : BaseFragment() {
                 override fun createFragment(position: Int): Fragment {
                     return when (position) {
                         TAB_1 -> recommendFragment
-                        TAB_2-> lyricsFragment
-                        TAB_3-> playListFragment
+                        TAB_2 -> lyricsFragment
+                        TAB_3 -> playListFragment
                         else -> throw IllegalArgumentException("createFragment error!")
                     }
                 }
@@ -279,67 +117,6 @@ class HomeFragment : BaseFragment() {
             viewPager.offscreenPageLimit = 1
             viewPager.currentItem = TAB_1
         }
-    }
-
-    fun playWhenReady(song: Song?, pause: Boolean = true): Boolean {
-        if (song == null || song.url.isNullOrBlank()) {
-            toast(getString(R.string.error_get_song_url))
-            return false
-        }
-
-        with(player) {
-            if (!pause) {
-                mediaSource = ExtractorMediaSource.Factory(dataSourceFactory)
-                    .createMediaSource(
-                        Uri.parse(song.url)
-                    )
-                prepare(mediaSource)
-                playWhenReady = true
-
-                model.fetchLyricAndAlbumCoverImgUrl(song)
-
-                cachePlayedMusic(song)
-
-            } else {
-                defaultControlDispatcher.dispatchSetPlayWhenReady(player, !playWhenReady)
-            }
-
-            setButtonEnabled(true, binding.playerView.exo_next_custom)
-            setButtonEnabled(true, binding.playerView.exo_action_more)
-            setButtonEnabled(true, binding.playerView.exo_play)
-        }
-        return true
-    }
-
-    private fun cachePlayedMusic(song: Song) {
-        val playedList = playedList()
-        if (!playedList.contains(song)) {
-            playedList.add(song)
-            storage.putEntity(PLAYED_MUSIC_CACHE_KEY, playedList)
-        }
-
-        eventCenter.notifyPlayedListSetDataChanged()
-        storage.putEntity(PLAYING_MUSIC_CACHE_KEY, song)
-    }
-
-    private fun playedList(): MutableList<Song> {
-        return storage.getEntity<MutableList<Song>>(
-            PLAYED_MUSIC_CACHE_KEY,
-            object : TypeToken<MutableList<Song>>() {}.type
-        ) ?: mutableListOf()
-    }
-
-    fun isPlayModeShuffle(): Boolean {
-        return binding.playerView.exo_repeat_toggle_custom.drawable.constantState?.equals(
-            ContextCompat.getDrawable(
-                requireActivity(),
-                R.mipmap.ic_controls_shuffle
-            )?.constantState
-        ) == true
-    }
-
-    fun onLyricsSeekToListener(progress: Int) {
-        player.seekTo(progress.toLong())
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -376,41 +153,6 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-    private fun setButtonEnabled(enabled: Boolean, view: View?) {
-        if (view == null) {
-            return
-        }
-        view.isEnabled = enabled
-        view.alpha = if (enabled) buttonAlphaEnabled else buttonAlphaDisabled
-    }
-
-    /** 仅当单曲循环模式时，不会触发 [player.addAnalyticsListener] 的 onPlayerStateChanged 回调，其他模式通过回调开启 runnable */
-    private fun postUpdateProgressActionWhenRepeatModeOne() {
-        if (::player.isInitialized &&
-            player.playWhenReady &&
-            player.repeatMode == REPEAT_MODE_ONE
-        ) {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-                if (!handler.hasCallbacks(updateProgressAction)) {
-                    handler.post(updateProgressAction)
-                }
-            } else {
-                handler.removeCallbacksAndMessages(0)
-                handler.post(updateProgressAction)
-            }
-            handler.post(updateProgressAction)
-        }
-    }
-
-    private fun releasePlayer() {
-        Assertions.checkNotNull(binding.playerView).player = null
-        player.release()
-    }
-
-    private fun playingMusic(): Song? {
-        return storage.getEntity<Song>(PLAYING_MUSIC_CACHE_KEY)
-    }
-
     @SuppressLint("InflateParams")
     private fun getTabView(position: Int): View {
         return LayoutInflater.from(activity).inflate(R.layout.item_tab, null, false).apply {
@@ -430,25 +172,6 @@ class HomeFragment : BaseFragment() {
             }
             text = label
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        postUpdateProgressActionWhenRepeatModeOne()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        // 息屏时关闭歌词滚动
-        handler.removeCallbacks(updateProgressAction)
-    }
-
-    override fun onDestroyView() {
-        binding.playerView.onPause()
-        handler.removeCallbacks(updateProgressAction)
-        releasePlayer()
-        super.onDestroyView()
     }
 
     fun showPlayingFragment() {
