@@ -28,7 +28,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlin.collections.set
 
 @ExperimentalCoroutinesApi
-class HomeViewModel @ViewModelInject constructor(
+class MainViewModel @ViewModelInject constructor(
     @Assisted private val savedState: SavedStateHandle,
     private val repo: HomeApiRepository
 ) : VMViewModel() {

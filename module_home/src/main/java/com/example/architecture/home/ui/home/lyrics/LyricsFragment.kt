@@ -40,7 +40,7 @@ class LyricsFragment : BaseFragment() {
         binding.apply {
 
             lrcView.setOnSeekToListener { progress ->
-                (parentFragment as HomeFragment).onLyricsSeekToListener(progress)
+//                (parentFragment as HomeFragment).onLyricsSeekToListener(progress)
             }
 
             lrcView.setOnLrcClickListener {

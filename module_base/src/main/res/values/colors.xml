@@ -19,7 +19,7 @@
     <color name="error">#ffdd2c00</color>
     <color name="color_surface">@color/background_light</color>
     <color name="background_light">#ffffff</color>
-    <color name="color_background">#e0e0e0</color>
+    <color name="color_background">#fafafa</color>
     <color name="background_super_dark">#ff292929</color>
     <color name="mid_grey">#40808080</color>
     <color name="nav_bar">#99000000</color> <!-- overridden on v29+ -->
