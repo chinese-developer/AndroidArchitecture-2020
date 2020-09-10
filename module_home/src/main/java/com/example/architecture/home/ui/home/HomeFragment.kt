@@ -39,6 +39,7 @@ import com.example.architecture.home.common.Constant.TAB_2
 import com.example.architecture.home.common.Constant.TAB_3
 import com.example.architecture.home.databinding.FragHomeBinding
 import com.example.architecture.home.repository.HomeApiRepository
+import com.example.architecture.home.ui.home.album.AlbumFragment
 import com.example.architecture.home.ui.home.lyrics.LyricsFragment
 import com.example.architecture.home.ui.home.playlist.PlayListFragment
 import com.example.architecture.home.ui.home.recommend.RecommendFragment
@@ -60,8 +61,9 @@ class HomeFragment : BaseFragment() {
 
     private val jobScheduler: JobScheduler by lazy { activity?.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler }
 
-    private val lyricsFragment by lazy { newFragment<LyricsFragment>() }
     private val recommendFragment by lazy { newFragment<RecommendFragment>() }
+    private val albumFragment by lazy { newFragment<AlbumFragment>() }
+    private val lyricsFragment by lazy { newFragment<LyricsFragment>() }
     private val playListFragment by lazy { newFragment<PlayListFragment>() }
 
     private val model by viewModels<HomeViewModel>()
@@ -80,7 +82,6 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewPager()
-
     }
 
     private fun initViewPager() {
@@ -91,8 +92,8 @@ class HomeFragment : BaseFragment() {
                 override fun createFragment(position: Int): Fragment {
                     return when (position) {
                         TAB_1 -> recommendFragment
-                        TAB_2 -> lyricsFragment
-                        TAB_3 -> playListFragment
+                        TAB_2 -> albumFragment
+                        TAB_3 -> lyricsFragment
                         else -> throw IllegalArgumentException("createFragment error!")
                     }
                 }

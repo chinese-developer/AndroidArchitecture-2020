@@ -3,4 +3,5 @@
     <!-- transition shared elements -->
     <string name="transition_shot_background" translatable="false">shot_background</string>
     <string name="transition_search_back" translatable="false">transition_search_back</string>
+    <string name="transition_album_art" translatable="false">transition_album_art</string>
 </resources>

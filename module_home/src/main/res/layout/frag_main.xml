@@ -29,13 +29,15 @@
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_bar"
             app:repeat_toggle_modes="one|none"
             app:show_timeout="0"
+            android:visibility="gone"
             app:shutter_background_color="@color/white" />
 
         <com.ashokvarma.bottomnavigation.BottomNavigationBar
             android:id="@+id/bottom_navigation_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_navigation_height"
-            android:layout_gravity="bottom" />
+            android:layout_gravity="bottom"
+            app:bnbAutoHideEnabled="false"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_home"

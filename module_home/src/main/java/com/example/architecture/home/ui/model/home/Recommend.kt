@@ -7,9 +7,9 @@ package com.example.architecture.home.ui.model.home
 
 import java.io.Serializable
 
-data class AlbumModel(
+data class Recommend(
     val id: Long,
     val name: String,
     val coverImgUrl: String? = null,
-    val coverImgResource: Int? = 0
+    val coverImgResource: Int
 ): Serializable
