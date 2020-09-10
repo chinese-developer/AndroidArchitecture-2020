@@ -3,6 +3,9 @@ package com.android.sdk.net.progress;
 import java.io.IOException;
 
 import androidx.annotation.NonNull;
+
+import org.jetbrains.annotations.NotNull;
+
 import okhttp3.Interceptor;
 import okhttp3.Response;
 
@@ -10,7 +13,7 @@ public class ResponseProgressInterceptor implements Interceptor {
 
     private static final int DEFAULT_REFRESH_TIME = 150;
     private final UrlProgressListener mInterceptorProgressListener;
-    private int mRefreshTime = DEFAULT_REFRESH_TIME;//进度刷新时间(单位ms),避免高频率调用
+    private int mRefreshTime = DEFAULT_REFRESH_TIME; // 进度刷新时间(单位ms),避免高频率调用
 
     public ResponseProgressInterceptor(UrlProgressListener interceptorProgressListener) {
         mInterceptorProgressListener = interceptorProgressListener;
@@ -23,6 +26,7 @@ public class ResponseProgressInterceptor implements Interceptor {
         mRefreshTime = refreshTime;
     }
 
+    @NotNull
     @Override
     public Response intercept(@NonNull Chain chain) throws IOException {
         return wrapResponseBody(chain.proceed(chain.request()));

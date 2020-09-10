@@ -76,7 +76,7 @@ public class BaseDebugActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void initUser() {
-        mDebugApi = NetConfig.INSTANCE.getRetrofitWithoutToken().create(DebugApi.class);
+        mDebugApi = NetConfig.INSTANCE.getServiceFactoryWithoutToken().create(DebugApi.class);
 
         mAppDataSource.observableUser()
                 .observeOn(AndroidSchedulers.mainThread())

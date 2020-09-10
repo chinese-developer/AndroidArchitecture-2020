@@ -5,6 +5,9 @@ import android.os.SystemClock;
 import java.io.IOException;
 
 import androidx.annotation.NonNull;
+
+import org.jetbrains.annotations.NotNull;
+
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
 import okio.Buffer;
@@ -36,6 +39,7 @@ class ProgressResponseBody extends ResponseBody {
         return mDelegate.contentLength();
     }
 
+    @NotNull
     @Override
     public BufferedSource source() {
         if (mBufferedSource == null) {
@@ -48,7 +52,7 @@ class ProgressResponseBody extends ResponseBody {
         return new ForwardingSource(source) {
             private long mContentLength;
             private long totalBytesRead = 0L;
-            private long lastRefreshTime = 0L;  //最后一次刷新的时间
+            private long lastRefreshTime = 0L;  // 最后一次刷新的时间
 
             @Override
             public long read(@NonNull Buffer sink, long byteCount) throws IOException {
@@ -68,8 +72,8 @@ class ProgressResponseBody extends ResponseBody {
                 long curTime = SystemClock.elapsedRealtime();
 
                 if (curTime - lastRefreshTime >= mRefreshTime || bytesRead == -1 || totalBytesRead == mContentLength) {
-                    boolean finish = bytesRead == -1 && totalBytesRead == mContentLength;
-                    mProgressListener.onProgress(mContentLength, totalBytesRead, totalBytesRead * 1.0F / mContentLength, finish);
+                    boolean isFinish = bytesRead == -1 && totalBytesRead == mContentLength;
+                    mProgressListener.onProgress(mContentLength, totalBytesRead, totalBytesRead * 1.0F / mContentLength, isFinish);
                     lastRefreshTime = curTime;
                 }
                 return bytesRead;
