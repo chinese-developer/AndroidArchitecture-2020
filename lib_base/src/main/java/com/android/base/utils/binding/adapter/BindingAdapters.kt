@@ -8,6 +8,7 @@
 package com.android.base.utils.binding.adapter
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.net.Uri
 import android.view.View
 import android.webkit.WebView
@@ -30,9 +31,11 @@ import com.android.base.rx.subscribeIgnoreError
 import com.android.base.utils.ktx.no
 import com.android.base.utils.ktx.yes
 import com.blankj.utilcode.util.VibrateUtils
-import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.jakewharton.rxbinding2.view.RxView
+import com.nostra13.universalimageloader.core.DisplayImageOptions
+import com.nostra13.universalimageloader.core.ImageLoader
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer
 import java.util.concurrent.TimeUnit
 
 object ImageViewBindingAdapter {
@@ -41,13 +44,20 @@ object ImageViewBindingAdapter {
      * @param url 路径
      * @param placeholderRes 占位图
      * @param roundCorners 倒角
+     * @param imageLoader 使用 imageLoader 加载图片
      */
     @JvmStatic
     @BindingAdapter(
-        value = ["android:src", "android:placeholderRes", "android:roundCorners"],
+        value = ["android:src", "android:placeholderRes", "android:roundCorners", "android:imageLoader"],
         requireAll = false
     )
-    fun setImageUrl(view: ImageView, url: String?, placeholderRes: Int?, roundCorners: Int?) {
+    fun setImageUrl(
+        view: ImageView,
+        url: String?,
+        placeholderRes: Int?,
+        roundCorners: Int?,
+        imageLoader: Boolean? = false
+    ) {
         if (url.isNullOrBlank()) {
             if (placeholderRes != null && placeholderRes != 0) {
                 view.setImageResource(placeholderRes)
@@ -55,15 +65,29 @@ object ImageViewBindingAdapter {
                 view.setImageResource(0)
             }
         } else {
-            val config = DisplayConfig.create()
-            if (placeholderRes != null && placeholderRes > 0) {
-                config.setLoadingPlaceholder(placeholderRes)
-                config.setErrorPlaceholder(placeholderRes)
+            if (imageLoader != null && imageLoader) {
+                val options = DisplayImageOptions.Builder().cacheInMemory(true)
+                    .bitmapConfig(Bitmap.Config.RGB_565)
+                if (placeholderRes != null && placeholderRes > 0) {
+                    options.showImageOnLoading(placeholderRes).resetViewBeforeLoading(true)
+                }
+                ImageLoader.getInstance()
+                    .displayImage(
+                        url,
+                        view,
+                        options.displayer(FadeInBitmapDisplayer(400)).build()
+                    )
+            } else {
+                val config = DisplayConfig.create()
+                if (placeholderRes != null && placeholderRes > 0) {
+                    config.setLoadingPlaceholder(placeholderRes)
+                    config.setErrorPlaceholder(placeholderRes)
+                }
+                if (roundCorners != null && roundCorners > 0) {
+                    config.setRoundedCornersRadius(roundCorners)
+                }
+                GlideImageLoader().display(view, url, config)
             }
-            if (roundCorners != null && roundCorners > 0) {
-                config.setRoundedCornersRadius(roundCorners)
-            }
-            GlideImageLoader().display(view, url, config)
         }
     }
 
@@ -76,7 +100,9 @@ object ImageViewBindingAdapter {
         value = ["android:src", "android:placeholderRes", "android:roundCorners"],
         requireAll = false
     )
-    fun setImageUri(view: ImageView, uri: Uri?, placeholderRes: Int?, roundCorners: Int?) {
+    fun setImageUri(
+        view: ImageView, uri: Uri?, placeholderRes: Int?, roundCorners: Int?
+    ) {
         uri ?: return
         val config = DisplayConfig.create()
         if (placeholderRes != null && placeholderRes > 0) {

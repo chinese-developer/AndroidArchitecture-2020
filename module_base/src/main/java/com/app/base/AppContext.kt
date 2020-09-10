@@ -36,6 +36,8 @@ import com.app.base.scope.DialogCoroutineScope
 import com.app.base.widget.dialog.AppLoadingView
 import com.drake.statelayout.StateConfig
 import com.drake.tooltip.toast
+import com.nostra13.universalimageloader.core.ImageLoader
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.MaterialHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
@@ -91,6 +93,9 @@ open class AppContext : BaseAppContext() {
         }
 
         com.drake.brv.BindingAdapter.modelId = BR.item
+
+        // imageLoader init
+        ImageLoader.getInstance().init(ImageLoaderConfiguration.Builder(this).build())
 
         // 基础库配置
         Sword.get()

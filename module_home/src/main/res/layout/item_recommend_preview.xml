@@ -5,7 +5,7 @@
 
         <variable
             name="item"
-            type="com.example.architecture.home.ui.model.home.Album" />
+            type="com.example.architecture.home.ui.model.home.Recommend" />
 
     </data>
 
@@ -27,12 +27,11 @@
             app:layout_constraintBottom_toTopOf="@+id/footer"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/footer"
             android:layout_width="match_parent"
             android:layout_height="68dp"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
+            android:elevation="2dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -44,19 +43,12 @@
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-medium"
                 android:singleLine="true"
-                android:text="@{item.title}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+                android:text="@{item.name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/album_artist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:fontFamily="sans-serif"
-                android:singleLine="true"
-                android:text="@{item.artistName}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

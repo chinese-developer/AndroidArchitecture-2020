@@ -5,6 +5,14 @@
         <variable
             name="item"
             type="String" />
+
+        <variable
+            name="viewModel"
+            type="androidx.lifecycle.ViewModel" />
+
+        <variable
+            name="listener"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

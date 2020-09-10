@@ -103,6 +103,9 @@ dependencies {
     api "com.github.bumptech.glide:okhttp3-integration:${versions.glide}"
     api "de.hdodenhof:circleimageview:${versions.circleImageView}"
 
+    // image loader
+    api "com.nostra13.universalimageloader:universal-image-loader:${versions.imageloader}"
+
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:${versions.dagger}"
     kapt "com.google.dagger:hilt-android-compiler:${versions.dagger}"
