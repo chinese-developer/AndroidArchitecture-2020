@@ -25,7 +25,7 @@ object NetConfig {
         private set
     lateinit var okHttpWithoutToken: OkHttpClient
         private set
-    lateinit var retrofitWithoutToken: ServiceFactory
+    lateinit var serviceFactoryWithoutToken: ServiceFactory
         private set
     lateinit var apiHandler: ApiHandler
         private set
@@ -60,6 +60,6 @@ object NetConfig {
         netProvider.mErrorDataAdapter = errorDataAdapter
         oKHttpRegular = OkHttpRegular().getOkHttpClient(httpConfig)
         okHttpWithoutToken = okHttpWithoutTokenFactory.getOkHttpClient(httpConfig)
-        retrofitWithoutToken = okHttpWithoutTokenFactory.getServiceFactory(httpConfig)
+        serviceFactoryWithoutToken = okHttpWithoutTokenFactory.getServiceFactory(httpConfig)
     }
 }

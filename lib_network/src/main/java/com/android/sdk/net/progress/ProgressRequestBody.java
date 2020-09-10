@@ -59,9 +59,8 @@ class ProgressRequestBody extends RequestBody {
     private final class CountingSink extends ForwardingSink {
 
         private long totalBytesRead = 0L;
-        private long lastRefreshTime = 0L;  //最后一次刷新的时间
+        private long lastRefreshTime = 0L;  // 最后一次刷新的时间
         private long mContentLength;
-        private boolean mIsFinish;
 
         CountingSink(Sink delegate) {
             super(delegate);
@@ -76,15 +75,15 @@ class ProgressRequestBody extends RequestBody {
                 mProgressListener.onLoadFail(e);
                 throw e;
             }
-            if (mContentLength == 0) { //避免重复调用 contentLength()
+            if (mContentLength == 0) { // 避免重复调用 contentLength()
                 mContentLength = contentLength();
             }
             totalBytesRead += byteCount;
 
             long curTime = SystemClock.elapsedRealtime();
-            mIsFinish = totalBytesRead == mContentLength;
-            if (curTime - lastRefreshTime >= mRefreshTime || mIsFinish) {
-                mProgressListener.onProgress(totalBytesRead, mContentLength, totalBytesRead * 1.0F / mContentLength, mIsFinish);
+            boolean isFinish = totalBytesRead == mContentLength;
+            if (curTime - lastRefreshTime >= mRefreshTime || isFinish) {
+                mProgressListener.onProgress(totalBytesRead, mContentLength, totalBytesRead * 1.0F / mContentLength, isFinish);
                 lastRefreshTime = curTime;
             }
         }

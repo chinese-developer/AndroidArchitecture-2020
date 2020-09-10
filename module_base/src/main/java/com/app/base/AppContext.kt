@@ -19,9 +19,11 @@ import com.android.base.app.BaseAppContext
 import com.android.base.app.Sword
 import com.android.base.app.mvvm.VMViewModel
 import com.android.base.rx.SchedulerProvider
+import com.android.sdk.net.NetConfig
 import com.android.sdk.net.error.RequestParamsException
 import com.android.sdk.net.error.ResponseException
 import com.android.sdk.net.error.ServerResponseException
+import com.android.sdk.net.service.ServiceFactory
 import com.app.base.app.AppSecurity
 import com.app.base.app.ErrorHandler
 import com.app.base.data.DataConfig
@@ -51,6 +53,7 @@ open class AppContext : BaseAppContext() {
     @Inject lateinit var storageManager: StorageManager
     @Inject lateinit var schedulerProvider: SchedulerProvider
     @Inject lateinit var sharedPreferences: SharedPreferences
+    val serviceFactoryWithoutToken: ServiceFactory by lazy { NetConfig.serviceFactoryWithoutToken }
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
@@ -143,6 +146,11 @@ open class AppContext : BaseAppContext() {
             return context.schedulerProvider
         }
 
+        @JvmStatic
+        fun serviceFactoryWithoutToken(): ServiceFactory {
+            return context.serviceFactoryWithoutToken
+        }
+
         var onDialog: DialogCoroutineScope.(FragmentActivity) -> Dialog = {
             val progress = ProgressDialog(activity)
             progress.setMessage(activity.getString(R.string.net_dialog_msg))
@@ -157,6 +165,7 @@ fun Activity.schedulerProvider() = AppContext.schedulerProvider()
 fun Activity.storageManager() = AppContext.storageManager()
 fun Activity.errorHandler() = AppContext.errorHandler()
 fun Activity.appDataSource() = AppContext.appDataSource()
+fun Activity.serviceFactoryWithoutToken() = AppContext.serviceFactoryWithoutToken()
 
 /**
  * 设置使用DialogObserver默认弹出的加载对话框

@@ -14,7 +14,7 @@ public class RequestProgressInterceptor implements Interceptor {
 
     private static final int DEFAULT_REFRESH_TIME = 150;
     private final UrlProgressListener mInterceptorProgressListener;
-    private int mRefreshTime = DEFAULT_REFRESH_TIME;//进度刷新时间(单位ms),避免高频率调用
+    private int mRefreshTime = DEFAULT_REFRESH_TIME; // 进度刷新时间(单位ms),避免高频率调用
 
     public RequestProgressInterceptor(UrlProgressListener interceptorProgressListener) {
         mInterceptorProgressListener = interceptorProgressListener;

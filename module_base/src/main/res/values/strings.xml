@@ -37,6 +37,7 @@
     <string name="back_pre_step"><u>返回上一步</u></string>
     <string name="register">注册</string>
     <string name="download">下载</string>
+    <string name="downloading">正在为您下载，稍等片刻喔~</string>
     <string name="logout">安全退出</string>
     <string name="password">密码</string>
     <string name="photo">照片</string>
