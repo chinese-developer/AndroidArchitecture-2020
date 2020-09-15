@@ -1,4 +1,4 @@
-package com.app.base.utils
+package com.app.base.utils.ext
 
 import android.app.Notification
 import android.app.NotificationManager
@@ -8,6 +8,7 @@ import android.widget.RemoteViews
 import androidx.annotation.StringRes
 import androidx.fragment.app.FragmentActivity
 import com.app.base.R
+import com.app.base.utils.NotificationUtils
 
 fun FragmentActivity.setNotification(progress: Int, @StringRes title: Int = R.string.downloading) {
     val intent = Intent()

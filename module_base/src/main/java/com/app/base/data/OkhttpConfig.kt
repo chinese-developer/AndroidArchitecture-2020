@@ -4,6 +4,7 @@ package com.app.base.data
 
 import android.annotation.SuppressLint
 import com.android.base.LogTags
+import com.android.sdk.net.https.HttpsUtils
 import com.android.sdk.net.provider.ApiHandler
 import com.android.sdk.net.provider.ErrorDataAdapter
 import com.android.sdk.net.provider.HttpConfig
@@ -39,10 +40,12 @@ internal fun newOkHttpConfig(): HttpConfig {
 
         @SuppressLint("BinaryOperationInTimber")
         override fun configHttp(builder: OkHttpClient.Builder) {
+            val sslSocketFactory = HttpsUtils.getSslSocketFactory(null, null, null)
             // 常规配置
             builder.connectTimeout(CONNECTION_TIME_OUT.toLong(), TimeUnit.SECONDS)
                     .readTimeout(IO_TIME_OUT.toLong(), TimeUnit.SECONDS)
                     .writeTimeout(IO_TIME_OUT.toLong(), TimeUnit.SECONDS)
+                    .sslSocketFactory(sslSocketFactory.sSLSocketFactory, sslSocketFactory.trustManager)
                     .hostnameVerifier(HostnameVerifier { hostname, session ->
                         Timber.d("hostnameVerifier called with: hostname 、session = [" + hostname + "、" + session.protocol + "]")
                         true

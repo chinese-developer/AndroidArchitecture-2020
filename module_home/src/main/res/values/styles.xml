@@ -33,4 +33,8 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/color_212121</item>
     </style>
+
+    <style name="TextApperance.Artist.Title" parent="@style/TextAppearance.AppCompat.Large">
+        <item name="android:textSize">29sp</item>
+    </style>
 </resources>

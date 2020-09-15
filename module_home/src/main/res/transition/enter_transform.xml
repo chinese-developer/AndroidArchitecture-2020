@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="375"
+    android:interpolator="@android:interpolator/fast_out_slow_in"
+    android:transitionOrdering="together">>
+    <!-- 显示 View 大小和位置变化的动画 -->
+    <changeBounds />
+    <!-- 显示 View 及其父布局的缩放动画 -->
+    <changeTransform />
+    <changeClipBounds />
+    <!--  能修改图片的大小或者缩放 -->
+    <changeImageTransform />
+</transitionSet>

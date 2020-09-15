@@ -39,5 +39,10 @@ open class ErrorException(val errCode: Int, errMessage: String?) : Exception(err
          * 连接超时
          */
         const val ERROR_TIMEOUT_ERROR = 1006
+
+        /**
+         * token 过期
+         */
+        const val TOKEN_EXPIRATION = 9999
     }
 }

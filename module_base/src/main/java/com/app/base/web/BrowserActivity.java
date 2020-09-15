@@ -14,7 +14,6 @@ import com.app.base.R;
 import com.app.base.app.AppBaseActivity;
 import com.app.base.data.DataConfig;
 import com.app.base.router.RouterPath;
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -35,7 +34,7 @@ public class BrowserActivity extends AppBaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        QMUIStatusBarHelper.setStatusBarLightMode(this);
+        StatusBarKt.immersiveDark(this, null, true, 0, 0);
         setContentView(R.layout.app_base_web_activity);
         String url = targetUrl;
         if (!URLUtil.isValidUrl(targetUrl)) {

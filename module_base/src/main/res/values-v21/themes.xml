@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
 
-    <style name="AppTheme.NoActionBar">
+    <style name="BaseAppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <!-- 5.0 沉浸式 -->
@@ -25,7 +25,7 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
 
-    <style name="AppTheme.NoActionBar.MDDialog">
+    <style name="BaseAppTheme.NoActionBar.MDDialog">
         <item name="md_corner_radius">20dp</item>
         <item name="md_color_title">@color/md_color_title</item>
         <item name="md_color_content">@color/md_color_content</item>
@@ -42,7 +42,7 @@
         <item name="md_button_selector">@drawable/md_btn_selector</item>
     </style>
 
-    <style name="AppTheme.NoActionBar.MDDialog.Font">
+    <style name="BaseAppTheme.NoActionBar.MDDialog.Font">
         <item name="md_font_title">@font/raleway_bold</item>
         <item name="md_font_body">@font/raleway_medium</item>
         <item name="md_font_button">@font/raleway_semibold</item>

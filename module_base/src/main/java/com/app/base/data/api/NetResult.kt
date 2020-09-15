@@ -20,6 +20,9 @@ sealed class NetResult<out T : Any> {
 
     fun whenFailure(block: (Error) -> Unit) {
         if (this is Error) {
+            if (exception.errCode == ErrorException.TOKEN_EXPIRATION) {
+
+            }
             block(this)
         }
     }

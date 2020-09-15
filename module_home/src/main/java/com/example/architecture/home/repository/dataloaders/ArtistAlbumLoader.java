@@ -19,7 +19,7 @@ public class ArtistAlbumLoader {
         if (cursor != null) {
             if (cursor.moveToFirst())
                 do {
-                    Album album = new Album(cursor.getLong(10), cursor.getString(4), cursor.getString(3), cursor.getLong(5));
+                    Album album = new Album(cursor.getLong(0), cursor.getString(1), cursor.getString(2), artistID, cursor.getInt(3), cursor.getInt(4));
                     albumList.add(album);
                 }
                 while (cursor.moveToNext());
@@ -36,24 +36,12 @@ public class ArtistAlbumLoader {
         if (artistID == -1)
             return null;
 
-        return context.getContentResolver().query(
-                MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
-                new String[]{
-                        BaseColumns._ID,
-                        MediaStore.Audio.AudioColumns.IS_MUSIC,
-                        MediaStore.Audio.AudioColumns.TITLE,
-                        MediaStore.Audio.AudioColumns.ARTIST,
-                        MediaStore.Audio.AudioColumns.ALBUM,
-                        MediaStore.Audio.AudioColumns.ARTIST_ID,
-                        MediaStore.Audio.AudioColumns.DATA,
-                        MediaStore.Audio.AudioColumns.DISPLAY_NAME,
-                        MediaStore.Audio.AudioColumns.SIZE,
-                        MediaStore.Audio.AudioColumns.DURATION,
-                        MediaStore.Audio.AudioColumns.ALBUM_ID
-                },
-                null,
-                null,
-                MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
+        return context.getContentResolver()
+                .query(MediaStore.Audio.Artists.Albums.getContentUri("external", artistID),
+                        new String[]{"_id", "album", "artist", "numsongs", "minyear"},
+                        null,
+                        null,
+                        MediaStore.Audio.Albums.FIRST_YEAR);
     }
 
 }
