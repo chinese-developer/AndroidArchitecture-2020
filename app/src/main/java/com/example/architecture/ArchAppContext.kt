@@ -1,6 +1,7 @@
 package com.example.architecture
 
 import android.content.Intent
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.app.base.AppContext
 import com.app.base.data.DataConfig
 import com.example.architecture.home.ui.launch.SplashActivity

@@ -13,6 +13,7 @@ import com.android.sdk.net.error.ErrorException.Companion.ERROR_TIMEOUT_ERROR
 import com.android.sdk.net.error.ErrorException.Companion.ERROR_UNAUTHORIZED
 import com.android.sdk.net.error.ErrorException.Companion.ERROR_UNKNOWN
 import com.android.sdk.net.error.ErrorException.Companion.ERROR_UNKNOWN_HOST_ERROR
+import com.android.sdk.net.error.ErrorException.Companion.TOKEN_EXPIRATION
 import com.google.gson.JsonParseException
 import com.google.gson.stream.MalformedJsonException
 import org.json.JSONException
@@ -34,6 +35,7 @@ object ExceptionHandle {
                     ERROR_REQUEST_TIMEOUT -> RequestParamsException(e.code(), "服务器执行超时")
                     ERROR_INTERNAL_SERVER_ERROR -> ServerResponseException(e.code(), "服务器内部错误")
                     ERROR_SERVICE_UNAVAILABLE -> ServerResponseException(e.code(), "服务器不可用")
+                    TOKEN_EXPIRATION -> ServerResponseException(e.code(), "登录过期,请重新登录")
                     else -> ErrorException(e.code(), "网络错误")
                 }
             }

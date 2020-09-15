@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="BaseAppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="colorPrimary">#69f0ae</item>
         <item name="colorPrimaryVariant">#2bbd7e</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -12,6 +12,9 @@
         <item name="colorError">@color/error</item>
         <item name="colorOnError">#ffffff</item>
         <item name="colorSurface">@color/color_surface</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:colorBackground">@color/color_background</item>
         <item name="android:navigationBarColor">@color/background_super_dark</item>
         <item name="android:statusBarColor">@color/background_super_dark</item>
@@ -29,24 +32,24 @@
         <item name="qmui_general_shadow_alpha">0.25</item>
     </style>
 
-    <style name="AppTheme.FullScreen">
+    <style name="BaseAppTheme.FullScreen">
         <item name="android:windowFullscreen">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="BaseAppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.NoActionBar.Gray" parent="AppTheme.NoActionBar">
+    <style name="AppTheme.NoActionBar.Gray" parent="BaseAppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@color/common_bg_deep</item>
     </style>
 
-    <style name="AppTheme.FullScreen.Transparent">
+    <style name="BaseAppTheme.FullScreen.Transparent">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -54,7 +57,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.Transparent">
+    <style name="BaseAppTheme.Transparent">
         <item name="android:windowBackground">@color/scrim</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:navigationBarColor">@color/nav_bar</item>
@@ -66,7 +69,7 @@
     </style>
 
     <!--Overlay-->
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <!--Anim-->
     <style name="Style_Anim_Bottom_In" parent="android:Animation">

@@ -83,7 +83,7 @@ public class BaseDebugActivity extends AppCompatActivity {
                 .as(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY)))
                 .subscribe(user -> {
                     if (AppContext.appDataSource().isLoggedIn()) {
-                        mUserTv.setText("登录已用户：" + user.getDisplayName());
+                        mUserTv.setText("登录已用户："/* + user.getDisplayName()*/);
                     } else {
                         mUserTv.setText("没有用户登录");
                     }

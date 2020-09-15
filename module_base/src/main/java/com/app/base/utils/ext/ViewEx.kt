@@ -1,8 +1,10 @@
-package com.app.base.utils
+package com.app.base.utils.ext
 
 import com.google.android.material.textfield.TextInputLayout
 import androidx.core.content.ContextCompat
 import android.text.method.LinkMovementMethod
+import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.EditText
 import android.widget.TextView
 
@@ -22,5 +24,13 @@ fun TextView.enableSpanClickable() {
     highlightColor = ContextCompat.getColor(context, android.R.color.transparent)
 }
 
-
-
+inline fun < T: View> T.afterMeasure(crossinline action: T.() -> Unit) {
+    viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+        override fun onGlobalLayout() {
+            if (measuredWidth > 0 && measuredHeight > 0) {
+                viewTreeObserver.removeOnGlobalLayoutListener(this)
+                action()
+            }
+        }
+    })
+}

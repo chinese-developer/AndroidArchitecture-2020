@@ -7,7 +7,7 @@ import android.util.AttributeSet
 import android.view.View
 import com.android.base.utils.android.compat.AndroidVersion
 import com.app.base.R
-import com.qmuiteam.qmui.util.QMUIDisplayHelper.getStatusBarHeight
+import com.blankj.utilcode.util.BarUtils.getStatusBarHeight
 
 /**
  * StatusBar
@@ -24,7 +24,7 @@ class InsetsView @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         if (AndroidVersion.atLeast(19)) {
-            super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(getStatusBarHeight(context), MeasureSpec.EXACTLY))
+            super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(getStatusBarHeight(), MeasureSpec.EXACTLY))
         } else {
             super.onMeasure(widthMeasureSpec, 0)
         }

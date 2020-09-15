@@ -10,9 +10,9 @@ import com.app.base.data.app.AppDataSource;
 
 import timber.log.Timber;
 
-import static com.app.base.data.NetProviderImplKt.newApiHandler;
-import static com.app.base.data.NetProviderImplKt.newErrorDataAdapter;
-import static com.app.base.data.NetProviderImplKt.newOkHttpConfig;
+import static com.app.base.data.OkhttpConfigKt.newApiHandler;
+import static com.app.base.data.OkhttpConfigKt.newErrorDataAdapter;
+import static com.app.base.data.OkhttpConfigKt.newOkHttpConfig;
 import static com.app.base.data.URLProviderKt.addAllHost;
 import static com.app.base.data.URLProviderKt.addReleaseHost;
 import static com.app.base.data.URLProviderKt.getBaseUrl;

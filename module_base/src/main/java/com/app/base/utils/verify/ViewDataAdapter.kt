@@ -4,7 +4,7 @@ import com.google.android.material.textfield.TextInputLayout
 import android.view.View
 import android.widget.TextView
 import com.app.base.widget.text.ValidateCodeInputLayout
-import com.app.base.utils.textStr
+import com.app.base.utils.ext.textStr
 
 internal fun getStringData(view: View): String {
     return when (view) {

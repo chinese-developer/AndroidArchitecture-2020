@@ -1,5 +1,7 @@
 package com.example.architecture.home.ui.home.recommend
 
+import android.app.SharedElementCallback
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.palette.graphics.Palette
@@ -17,9 +20,9 @@ import com.app.base.utils.scope
 import com.drake.brv.utils.grid
 import com.drake.brv.utils.models
 import com.drake.brv.utils.setup
-import com.drake.tooltip.toast
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentRecommendBinding
+import com.example.architecture.home.ui.home.TestActivity
 import com.example.architecture.home.ui.model.home.Recommend
 import com.nostra13.universalimageloader.core.DisplayImageOptions
 import com.nostra13.universalimageloader.core.ImageLoader
@@ -32,6 +35,7 @@ class RecommendFragment : BaseFragment() {
 
     private lateinit var binding: FragmentRecommendBinding
     private val model by viewModels<RecommendViewModel>()
+    private var index = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,6 +50,19 @@ class RecommendFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
+
+        setExitSharedElementCallback(object : androidx.core.app.SharedElementCallback() {
+            override fun onMapSharedElements(
+                names: MutableList<String>,
+                sharedElements: MutableMap<String, View>
+            ) {
+                val iamgeView = binding.list.layoutManager?.findViewByPosition(index)
+                    ?.findViewById<ImageView>(R.id.album_art)!!
+                sharedElements.clear()
+                names.clear()
+                sharedElements.put(index.toString(), iamgeView)
+            }
+        })
     }
 
     private fun initAdapter() {
@@ -68,7 +85,15 @@ class RecommendFragment : BaseFragment() {
                 }
 
                 onClick(R.id.content) {
-                    toast((getModel() as Recommend).name + modelPosition)
+                    val options: ActivityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        requireActivity(), findView<ImageView>(
+                            R.id.album_art
+                        ), modelPosition.toString()
+                    )
+                    index = modelPosition
+                    val intent = Intent(activity, TestActivity::class.java)
+                    intent.putExtra("key", modelPosition)
+                    startActivity(intent, options.toBundle())
                 }
 
             }.models = model.albumDefaultItems
