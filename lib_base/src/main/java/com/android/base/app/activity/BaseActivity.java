@@ -3,16 +3,13 @@ package com.android.base.app.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.android.base.LogTags;
-import com.android.base.utils.android.compat.AndroidVersion;
+import com.android.base.TagsFactory;
 import com.github.dmstocking.optional.java.util.function.Predicate;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -32,99 +29,99 @@ public abstract class BaseActivity extends AppCompatActivity implements Activity
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onCreate before call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onCreate before call super");
         activityDelegates.callOnCreateBeforeSetContentView(savedInstanceState);
         super.onCreate(savedInstanceState);
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onCreate after call super: [bundle= " + savedInstanceState + "]");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onCreate after call super: [bundle= " + savedInstanceState + "]");
     }
 
     @Override
     protected void onRestart() {
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onRestart before call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onRestart before call super");
         super.onRestart();
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onRestart after call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onRestart after call super");
         activityDelegates.callOnRestart();
     }
 
     @Override
     protected void onStart() {
-        Timber.tag(LogTags.activity_lifecycle).i(">>>> onStart before call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i(">>>> onStart before call super");
         super.onStart();
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onStart after call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onStart after call super");
         activityDelegates.callOnStart();
     }
 
     @Override
     protected void onResume() {
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onResume before call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onResume before call super");
         super.onResume();
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onResume after call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onResume after call super");
         activityDelegates.callOnResume();
     }
 
     @Override
     protected void onPause() {
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onPause before call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onPause before call super");
         activityDelegates.callOnPause();
         super.onPause();
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onPause after call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onPause after call super");
     }
 
     @Override
     protected void onStop() {
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onStop before call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onStop before call super");
         activityDelegates.callOnStop();
         super.onStop();
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onStop after call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onStop after call super");
     }
 
     @Override
     protected void onDestroy() {
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onDestroy before call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onDestroy before call super");
         activityDelegates.callOnDestroy();
         super.onDestroy();
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onDestroy after call super");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onDestroy after call super");
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onPostCreate: [bundle= " + savedInstanceState + "]");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onPostCreate: [bundle= " + savedInstanceState + "]");
         activityDelegates.callOnPostCreate(savedInstanceState);
     }
 
     @Override
     protected void onSaveInstanceState(@NotNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onSaveInstanceState: [bundle= " + outState + "]");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onSaveInstanceState: [bundle= " + outState + "]");
         activityDelegates.callOnSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(@NotNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onRestoreInstanceState: [bundle= " + savedInstanceState + "]");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onRestoreInstanceState: [bundle= " + savedInstanceState + "]");
         activityDelegates.callOnRestoreInstanceState(savedInstanceState);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onActivityResult: [resultCode= " + resultCode + "]");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onActivityResult: [resultCode= " + resultCode + "]");
         activityDelegates.callOnActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onRequestPermissionsResult: [requestCode= " + requestCode + "]");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onRequestPermissionsResult: [requestCode= " + requestCode + "]");
         activityDelegates.callOnRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
-        Timber.tag(LogTags.activity_lifecycle).i( ">>>> onResumeFragments");
+        Timber.tag(TagsFactory.activity_lifecycle).i( ">>>> onResumeFragments");
         activityDelegates.callOnResumeFragments();
     }
 

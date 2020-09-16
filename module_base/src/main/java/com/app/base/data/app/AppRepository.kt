@@ -45,6 +45,7 @@ class AppRepository @Inject constructor(
     override fun saveUser(user: LoggedInUser) {
         this.user = user
         localDataSource.user = user
+        tokenLocalDataSource.authToken = user.token
         userObservable.onNext(user)
     }
 

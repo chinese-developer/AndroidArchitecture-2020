@@ -14,7 +14,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.fragment.app.FragmentActivity
 import androidx.multidex.MultiDex
-import com.android.base.LogTags
+import com.android.base.TagsFactory
 import com.android.base.app.BaseAppContext
 import com.android.base.app.Sword
 import com.android.base.app.mvvm.VMViewModel
@@ -102,12 +102,12 @@ open class AppContext : BaseAppContext() {
             .registerLoadingFactory { AppLoadingView(it) } // 默认的通用的LoadingDialog和Toast实现
             .setErrorClassifier(object : Sword.ErrorClassifier {
                 override fun isNetworkError(throwable: Throwable): Boolean {
-                    Timber.tag(LogTags.okHttp).d(throwable)
+                    Timber.tag(TagsFactory.okHttp).d(throwable)
                     return throwable is RequestParamsException || throwable is IOException || throwable is ResponseException
                 }
 
                 override fun isServerError(throwable: Throwable): Boolean {
-                    Timber.tag(LogTags.okHttp).d(throwable)
+                    Timber.tag(TagsFactory.okHttp).d(throwable)
                     return throwable is ServerResponseException || throwable is HttpException && throwable.code() >= 500
                 }
             })
