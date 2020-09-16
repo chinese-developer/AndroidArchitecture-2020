@@ -11,7 +11,7 @@ import com.blankj.utilcode.util.NetworkUtils
 
 open class BaseRepository {
 
-    suspend fun <T : Any> safeApiCallNoCheckResponse(
+    suspend fun <T : Any> safeApiCallNoNeedCheckCode(
         call: suspend () -> NetResult<T>
     ): NetResult<T> {
         return try {
@@ -21,7 +21,7 @@ open class BaseRepository {
         }
     }
 
-    protected suspend fun <T : Any> safeApiCall(
+    protected suspend fun <T : Any> safeApiCallWithoutCode(
         errorMessage: String? = null,
         call: suspend () -> retrofit2.Response<T>
     ): NetResult<T> {
@@ -32,12 +32,12 @@ open class BaseRepository {
         }
     }
 
-    protected suspend fun <T : Any> safeApiCallWrapResult(
+    protected suspend fun <T : Any> safeApiCall(
         errorMessage: String? = null,
         call: suspend () -> retrofit2.Response<HttpResult<T>>
     ): NetResult<T> {
         return try {
-            checkResponseWrapResult(call(), errorMessage)
+            checkResponseCode(call(), errorMessage)
         } catch (e: Exception) {
             NetResult.Error(ExceptionHandle.handleException(e))
         }
@@ -63,12 +63,12 @@ open class BaseRepository {
     }
 
     @SuppressLint("MissingPermission")
-    private fun <T : Any> checkResponseWrapResult(
+    private fun <T : Any> checkResponseCode(
         response: retrofit2.Response<HttpResult<T>>,
         errorMessage: String? = null
     ): NetResult<T> {
         val result = response.body()
-        if (response.isSuccessful) {
+        if (response.isSuccessful && response.code() == 200) {
             if (result != null && result.data != null) {
                 return NetResult.Success(result.data!!)
             }

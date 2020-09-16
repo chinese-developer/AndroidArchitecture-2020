@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.android.base.LogTags
+import com.android.base.TagsFactory
 import com.android.base.app.activity.OnBackPressListener
 import com.android.base.app.ui.LoadingView
 import timber.log.Timber
@@ -44,7 +44,7 @@ open class BottomBarFragment : BaseFragment(), LoadingView, OnBackPressListener 
             throw IllegalArgumentException("You should provide a layout id or a View")
         }
 
-        Timber.tag(LogTags.fragment_lifecycle)
+        Timber.tag(TagsFactory.fragment_lifecycle)
             .i(">>>>>>> onCreateView.parent: [container= ${cachedView!!.parent}]")
 
         if (cachedView!!.parent != null) {
@@ -59,7 +59,7 @@ open class BottomBarFragment : BaseFragment(), LoadingView, OnBackPressListener 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Timber.tag(LogTags.fragment_lifecycle)
+        Timber.tag(TagsFactory.fragment_lifecycle)
             .i(">>>>>>> onViewCreated: [savedInstanceState= ${savedInstanceState}]")
 
         if (layoutView !== view) {

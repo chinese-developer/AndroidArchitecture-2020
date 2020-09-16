@@ -1,23 +1,12 @@
 package com.example.architecture.home.ui.home.album
 
 import android.annotation.SuppressLint
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.ColorInt
 import androidx.core.app.SharedElementCallback
 import androidx.databinding.DataBindingUtil
-import androidx.palette.graphics.Palette
-import com.android.base.utils.android.compat.setStatusBarColor
 import com.app.base.app.AppBaseActivity
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.BitmapImageViewTarget
-import com.bumptech.glide.request.target.Target
-import com.bumptech.glide.request.transition.Transition
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.ActivityAlbumDetailBinding
 import com.example.architecture.home.repository.dataloaders.AlbumLoader

@@ -33,27 +33,27 @@ class HomeApiRepository @Inject constructor(
 
     fun checkIfHasToken(): Boolean = tokenSource.checkIfHasToken()
 
-    suspend fun getLyric(id: Long): NetResult<LyricPojo> = safeApiCall {
+    suspend fun getLyric(id: Long): NetResult<LyricPojo> = safeApiCallWithoutCode {
         api.lyric(buildingLyricParams(id.toString()))
     }
 
-    suspend fun albumList(id: Long): NetResult<AlbumListPojo> = safeApiCall {
+    suspend fun albumList(id: Long): NetResult<AlbumListPojo> = safeApiCallWithoutCode {
         api.albumList(buildingAlbumListParams(id.toString()))
     }
 
-    suspend fun getSongUrl(id: Long): NetResult<Song> = safeApiCall {
+    suspend fun getSongUrl(id: Long): NetResult<Song> = safeApiCallWithoutCode {
         api.songUrl(buildingSongUrlParams(id.toString()))
     }
 
-    suspend fun logout(): NetResult<Int> = safeApiCallWrapResult {
+    suspend fun logout(): NetResult<Int> = safeApiCall {
         api.logout(buildingLogoutParams())
     }
 
-    suspend fun syncAlbumListByUid(uid: String): NetResult<NetEase> = safeApiCall {
+    suspend fun syncAlbumListByUid(uid: String): NetResult<NetEase> = safeApiCallWithoutCode {
         api.syncAlbumList(buildingSyncAlbumListParams(uid))
     }
 
-    suspend fun getAlbumCoverImgUrlById(id: String?): NetResult<AlbumCoverImageUrlPojo> = safeApiCall {
+    suspend fun getAlbumCoverImgUrlById(id: String?): NetResult<AlbumCoverImageUrlPojo> = safeApiCallWithoutCode {
         api.getAlbumCoverImgUrlById(buildingAlbumCoverImgUrlParams(id))
     }
 
