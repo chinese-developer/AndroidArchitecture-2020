@@ -15,18 +15,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import androidx.annotation.NonNull;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import timber.log.Timber;
+
+import static com.app.base.data.URLProviderKt.PLATFORM_WX;
 
 public class ApiParameter {
 
     public static void init() {
         // to do，move it to native
     }
-
-    public static String BASE_URL = "http://119.8.111.148/";
+    // dev uat release
+    public static int PLATFORM_COUNT = 3;
+    @NonNull
+    public static String PLATFORM = PLATFORM_WX;
+    @NonNull
+    public static String BASE_URL = "https://zs061.com";
+    @NonNull
+    public static String BASE_URL_FOR_H5 = "https://zs061.com";
     private static String TOKEN_VALUE = "27688ab70a56db714b59a6ebc79b8509a1f81629ce8edc743e1bc23e24465735";
 
     final static String SIGN_KEY = "sign";

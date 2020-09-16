@@ -146,7 +146,7 @@ public class BaseDebugActivity extends AppCompatActivity {
         TextView tv = findViewById(R.id.debug_tv_host);
         if (hostEnvIdentification == DataConfig.BUILD_DEV) {
             tv.setText("环境：开发");
-        } else if (hostEnvIdentification == DataConfig.BUILD_TEST) {
+        } else if (hostEnvIdentification == DataConfig.BUILD_UAT) {
             tv.setText("环境：测试");
         } else if (hostEnvIdentification == DataConfig.BUILD_RELEASE) {
             tv.setText("环境：正式");
@@ -156,7 +156,7 @@ public class BaseDebugActivity extends AppCompatActivity {
     public void switchHost(View view) {
         int hostEnvIdentification = DataConfig.getInstance().hostIdentification();
         final int[] choice = new int[1];
-        if (hostEnvIdentification == DataConfig.BUILD_TEST) {
+        if (hostEnvIdentification == DataConfig.BUILD_UAT) {
             choice[0] = 1;
         } else if (hostEnvIdentification == DataConfig.BUILD_RELEASE) {
             choice[0] = 2;
@@ -168,7 +168,7 @@ public class BaseDebugActivity extends AppCompatActivity {
                     if (which == 0) {
                         host = DataConfig.BUILD_DEV;
                     } else if (which == 1) {
-                        host = DataConfig.BUILD_TEST;
+                        host = DataConfig.BUILD_UAT;
                     } else {
                         host = DataConfig.BUILD_RELEASE;
                     }

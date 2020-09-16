@@ -1,5 +1,5 @@
 <resources>
-    <style name="AppTheme.Launcher" parent="AppTheme.FullScreen">
+    <style name="AppTheme.Launcher" parent="BaseAppTheme.FullScreen">
         <!-- 是否绘制 navigation bar 区域，false 不显示 nav bar 区域，将图设置为全屏。 -->
         <item name="android:windowDrawsSystemBarBackgrounds">false</item>
         <item name="android:windowBackground">@drawable/layer_splash</item>
