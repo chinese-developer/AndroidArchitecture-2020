@@ -18,6 +18,7 @@ import static com.app.base.data.URLProviderKt.addReleaseHost;
 import static com.app.base.data.URLProviderKt.getBaseUrl;
 import static com.app.base.data.URLProviderKt.getBaseWebUrl;
 import static com.app.base.data.URLProviderKt.getEnvironment;
+import static com.app.base.data.URLProviderKt.select;
 import static com.app.base.data.api.HttpResultKt.isLoginExpired;
 
 /**
@@ -32,12 +33,12 @@ public class DataConfig {
 
     /*环境配置*/
     public static final int BUILD_DEV = 1;
-    public static final int BUILD_TEST = 2;
+    public static final int BUILD_UAT = 2;
     public static final int BUILD_RELEASE = 3;
 
     /*do not modify it*/
     static final String DEV = "dev";
-    static final String TEST = "test";
+    static final String UAT = "uat";
     static final String RELEASE = "release";
 
     public synchronized static void init(Application application) {
@@ -60,9 +61,9 @@ public class DataConfig {
 
     private DataConfig(Application application) {
         mSpCache = new SpCache(NAME, false/*不适用 apply，立即保存*/);
-        //环境初始化
+        // 环境初始化
         initEnvironment();
-        //初始化网络库
+        // 初始化网络库
         NetConfig.INSTANCE.initNet(application, newApiHandler(), newOkHttpConfig(), newErrorDataAdapter());
     }
 
@@ -88,16 +89,17 @@ public class DataConfig {
     private String hostTag() {
         if (mHostEnvIdentification == BUILD_RELEASE) {
             return RELEASE;
-        } else if (mHostEnvIdentification == BUILD_TEST) {
-            return TEST;
+        } else if (mHostEnvIdentification == BUILD_UAT) {
+            return UAT;
         }
         return DEV;
     }
 
     private void initEnvironment() {
         if (BuildConfig.openDebug) {
-            mHostEnvIdentification = mSpCache.getInt(HOST_KEY, BUILD_DEV);
-            addAllHost();
+            mHostEnvIdentification = mSpCache.getInt(HOST_KEY, -1);
+            if (mHostEnvIdentification == -1) mHostEnvIdentification = addAllHost();
+            else addAllHost();
         } else {
             mHostEnvIdentification = BUILD_RELEASE;
             addReleaseHost();
@@ -120,8 +122,9 @@ public class DataConfig {
     /**
      * 用于调试，切换主机环境。
      */
-    public void switchHost(int host) {
+    public void switchHost(int host, int position) {
         mSpCache.putInt(HOST_KEY, host);
+        select(position);
     }
 
     public void onAppDataSourcePrepared(AppDataSource appDataSource) {
@@ -143,7 +146,7 @@ public class DataConfig {
     }
 
     static String baseUrl() {
-        return getBaseUrl();
+        return getBaseUrl(null);
     }
 
     static String environment() {

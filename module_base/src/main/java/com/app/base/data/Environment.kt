@@ -12,15 +12,6 @@ object EnvironmentContext {
 
     private val envMap = HashMap<String, MutableList<Environment>>()
 
-    private fun addEnv(category: String, env: Environment) {
-        envMap[category].ifNonNull {
-            add(env)
-            Unit
-        } otherwise {
-            envMap[category] = mutableListOf<Environment>().apply { add(env) }
-        }
-    }
-
     fun startEdit(adder: EnvironmentAdder.() -> Unit) {
         adder(object : EnvironmentAdder {
             override fun add(category: String, env: Environment) {
@@ -28,6 +19,14 @@ object EnvironmentContext {
             }
         })
         endAdding()
+    }
+
+    internal fun addEnv(category: String, env: Environment) {
+        envMap[category].ifNonNull {
+            add(env)
+        } otherwise {
+            envMap[category] = mutableListOf<Environment>().apply { add(env) }
+        }
     }
 
     private fun endAdding() {
@@ -41,20 +40,23 @@ object EnvironmentContext {
         }
     }
 
-    internal fun allCategory(): Map<String, List<Environment>> {
+    fun allCategory(): Map<String, List<Environment>> {
         return envMap
     }
 
-    @JvmStatic
-    internal fun select(category: String, env: Environment) {
+    fun select(category: String, env: Environment) {
         spCache.putString(category, env.url)
     }
 
-    fun selected(category: String): Environment {
+    fun selected(category: String): Environment? {
         val url = spCache.getString(category, "")
         return envMap[category]?.find {
             url == it.url
-        } ?: throw NullPointerException("no selected Environment with category: $category")
+        }
+    }
+
+    fun lastUrl(category: String): String? {
+        return spCache.getString(category, "")
     }
 
 }

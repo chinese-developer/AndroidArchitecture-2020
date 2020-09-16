@@ -70,6 +70,8 @@ open class AppContext : BaseAppContext() {
     }
 
     private fun initApp() {
+        // 数据层
+        DataConfig.init(this)
         // 安全层
         AppSecurity.init()
         // 路由

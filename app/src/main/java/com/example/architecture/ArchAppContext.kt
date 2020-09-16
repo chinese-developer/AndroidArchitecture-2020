@@ -16,11 +16,4 @@ class ArchAppContext : AppContext() {
         startActivity(intent)
     }
 
-    override fun onCreate() {
-        /** 数据层在 dagger 注入前初始化，保证 [DataModule] 需要的依赖都已经生成 */
-        DataConfig.init(this)
-
-        super.onCreate()
-    }
-
 }
