@@ -40,6 +40,8 @@ class AppRepository @Inject constructor(
 
     override fun appToken(): String? = tokenLocalDataSource.authToken
 
+    override fun checkIfHasToken(): Boolean = tokenLocalDataSource.checkIfHasToken()
+
     override fun user(): LoggedInUser? = user
 
     override fun saveUser(user: LoggedInUser) {

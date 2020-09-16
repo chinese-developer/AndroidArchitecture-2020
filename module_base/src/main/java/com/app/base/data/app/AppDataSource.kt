@@ -11,6 +11,8 @@ interface AppDataSource {
     /**获取登录用后返回的 app_token */
     fun appToken(): String?
 
+    fun checkIfHasToken(): Boolean
+
     /**登录之后，保存用户数据 */
     fun saveUser(user: LoggedInUser)
 
