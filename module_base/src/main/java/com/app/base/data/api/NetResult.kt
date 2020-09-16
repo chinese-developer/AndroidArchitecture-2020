@@ -25,12 +25,19 @@ sealed class NetResult<out T : Any> {
     fun whenFailure(block: (Error) -> Unit) {
         if (this is Error) {
             if (exception.errCode == ErrorException.TOKEN_EXPIRATION) {
-                toast("登录状态异常，请重新登录")
-                AppContext.get().appRouter.build(RouterPath.Account.PATH)./*withFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK).*/navigation()
-                AppContext.get().appDataSource.logout()
                 val topActivity = ActivityUtils.getTopActivity()
-                if (topActivity != null && topActivity::class.java.name != "com.example.architecture.home.MainActivity") {
-                    topActivity.finish()
+
+                if (topActivity != null) {
+                    val topActivityName = topActivity::class.java.name
+                    if (topActivityName != "com.example.cp.disk.view.activity.LoginAndRegActivity") {
+                        toast("登录状态异常，请重新登录")
+                        AppContext.get().appRouter.build(RouterPath.Account.PATH)
+                            ./*withFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK).*/navigation()
+                        AppContext.get().appDataSource.logout()
+                        if (topActivityName != "com.example.cp.disk.view.activity.MainActivityTwo") {
+                            topActivity.finish()
+                        }
+                    }
                 }
                 return
             }
