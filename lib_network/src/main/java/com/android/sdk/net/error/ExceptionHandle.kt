@@ -44,7 +44,7 @@ object ExceptionHandle {
             }
 
             is ConnectException -> {
-                ErrorException(ERROR_NETWORK_ERROR, "似乎网络出现了点问题..")
+                ErrorException(ERROR_NETWORK_ERROR, "网络似乎出现了点问题..")
             }
 
             is SSLException -> {
@@ -56,7 +56,7 @@ object ExceptionHandle {
             }
 
             is UnknownHostException -> {
-                ErrorException(ERROR_UNKNOWN_HOST_ERROR, "主机地址未知")
+                ErrorException(ERROR_UNKNOWN_HOST_ERROR, "网络似乎出现了点问题..")
             }
 
             else -> ErrorException(ERROR_UNKNOWN, "未知错误")
