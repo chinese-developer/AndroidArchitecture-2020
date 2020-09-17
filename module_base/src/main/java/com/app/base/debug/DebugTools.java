@@ -1,5 +1,6 @@
 package com.app.base.debug;
 
+import com.android.base.TagsFactory;
 import com.app.base.AppContext;
 
 import org.joor.Reflect;
@@ -12,10 +13,6 @@ public class DebugTools {
 
     public static void init(AppContext appContext) {
         if (Debug.isOpenDebug()) {
-            Timber.e("=============================Base Debug mode is activate=============================");
-            Timber.e("=============================Base Debug mode is activate=============================");
-            Timber.e("=============================Base Debug mode is activate=============================");
-
             installLogger();
             installStetho(appContext);
 //            installLeakCanary(appContext);

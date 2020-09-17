@@ -16,9 +16,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.android.base.utils.android.views.getStringArray
 import com.android.base.utils.android.views.newFragment
 import com.android.base.utils.android.views.onDebouncedClick
+import com.android.base.utils.android.views.visible
 import com.app.base.app.AppBaseFragment
 import com.app.base.common.EventCenter
+import com.app.base.data.DataConfig
+import com.app.base.debug.isOpenDebug
 import com.app.base.router.RouterPath
+import com.app.base.utils.DebugModeUtils
 import com.ashokvarma.bottomnavigation.BottomNavigationBar.BACKGROUND_STYLE_STATIC
 import com.ashokvarma.bottomnavigation.BottomNavigationBar.MODE_FIXED
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
@@ -150,6 +154,15 @@ class MainFragment : AppBaseFragment() {
             fabHome.onDebouncedClick {
                 shapeBadgeItem.toggle()
                 appRouter.build(RouterPath.Main.MEDIA_PLAYER_PATH).navigation()
+            }
+
+            if (isOpenDebug()) {
+                switchHost.visible()
+                val debugModeUtils = DebugModeUtils(requireActivity())
+                debugModeUtils.displayHostName(
+                    DataConfig.getInstance().hostIdentification(), switchHost
+                )
+                switchHost.onDebouncedClick { debugModeUtils.switchHost(switchHost) }
             }
         }
     }

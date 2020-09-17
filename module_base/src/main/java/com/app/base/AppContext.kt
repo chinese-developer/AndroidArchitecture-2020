@@ -70,14 +70,14 @@ open class AppContext : BaseAppContext() {
     }
 
     private fun initApp() {
+        // 调试
+        DebugTools.init(this)
         // 数据层
         DataConfig.init(this)
         // 安全层
         AppSecurity.init()
         // 路由
         RouterManager.init(this)
-        // 调试
-        DebugTools.init(this)
 
         // 全局缺省页配置 [https://github.com/liangjingkanji/StateLayout]
         StateConfig.apply {

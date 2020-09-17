@@ -15,11 +15,12 @@ import static com.app.base.data.OkhttpConfigKt.newErrorDataAdapter;
 import static com.app.base.data.OkhttpConfigKt.newOkHttpConfig;
 import static com.app.base.data.URLProviderKt.addAllHost;
 import static com.app.base.data.URLProviderKt.addReleaseHost;
+import static com.app.base.data.URLProviderKt.firstTimeOpenApp;
 import static com.app.base.data.URLProviderKt.getBaseUrl;
 import static com.app.base.data.URLProviderKt.getBaseWebUrl;
-import static com.app.base.data.URLProviderKt.getEnvironment;
-import static com.app.base.data.URLProviderKt.select;
+import static com.app.base.data.URLProviderKt.cacheCurrentBaseUrl;
 import static com.app.base.data.api.HttpResultKt.isLoginExpired;
+import static com.app.base.debug.Debug.isOpenDebug;
 
 /**
  * Data层配置，抽象为DataContext
@@ -43,7 +44,7 @@ public class DataConfig {
 
     public synchronized static void init(Application application) {
         if (sDataConfig != null) {
-            throw new IllegalStateException("DataContext was  initialized");
+            throw new IllegalStateException("DataContext was initialized");
         }
         sDataConfig = new DataConfig(application);
     }
@@ -57,7 +58,7 @@ public class DataConfig {
 
     private AppDataSource mAppDataSource;
     private final SpCache mSpCache;
-    private int mHostEnvIdentification;
+    private static int environmentConfig;
 
     private DataConfig(Application application) {
         mSpCache = new SpCache(NAME, false/*不适用 apply，立即保存*/);
@@ -87,21 +88,23 @@ public class DataConfig {
      * @return Identification
      */
     private String hostTag() {
-        if (mHostEnvIdentification == BUILD_RELEASE) {
+        if (environmentConfig == BUILD_RELEASE) {
             return RELEASE;
-        } else if (mHostEnvIdentification == BUILD_UAT) {
+        } else if (environmentConfig == BUILD_UAT) {
             return UAT;
         }
         return DEV;
     }
 
     private void initEnvironment() {
-        if (BuildConfig.openDebug) {
-            mHostEnvIdentification = mSpCache.getInt(HOST_KEY, -1);
-            if (mHostEnvIdentification == -1) mHostEnvIdentification = addAllHost();
-            else addAllHost();
+        if (isOpenDebug()) {
+            environmentConfig = mSpCache.getInt(HOST_KEY, -1);
+            if (environmentConfig == -1) {
+                environmentConfig = firstTimeOpenApp();
+            }
+            addAllHost();
         } else {
-            mHostEnvIdentification = BUILD_RELEASE;
+            environmentConfig = BUILD_RELEASE;
             addReleaseHost();
         }
     }
@@ -116,7 +119,7 @@ public class DataConfig {
      * @return Identification
      */
     public int hostIdentification() {
-        return mHostEnvIdentification;
+        return environmentConfig;
     }
 
     /**
@@ -124,7 +127,7 @@ public class DataConfig {
      */
     public void switchHost(int host, int position) {
         mSpCache.putInt(HOST_KEY, host);
-        select(position);
+        cacheCurrentBaseUrl(position);
     }
 
     public void onAppDataSourcePrepared(AppDataSource appDataSource) {
@@ -150,7 +153,14 @@ public class DataConfig {
     }
 
     static String environment() {
-        return getEnvironment();
+        if (environmentConfig == BUILD_DEV) {
+            return "开发环境";
+        } else if (environmentConfig == BUILD_UAT) {
+            return "预演环境";
+        } else if (environmentConfig == DataConfig.BUILD_RELEASE) {
+            return "正式环境";
+        }
+        return "检测不到任何环境";
     }
 
 }

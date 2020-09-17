@@ -2,7 +2,10 @@ package com.app.base.data.api;
 
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
+
 import com.android.base.utils.StringChecker;
+import com.app.base.AppContext;
 import com.app.base.data.DataConfig;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -15,48 +18,50 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import androidx.annotation.NonNull;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import timber.log.Timber;
-
-import static com.app.base.data.URLProviderKt.PLATFORM_WX;
 
 public class ApiParameter {
 
     public static void init() {
         // to do，move it to native
     }
-    // dev uat release
-    public static int PLATFORM_COUNT = 3;
-    @NonNull
-    public static String PLATFORM = PLATFORM_WX;
-    @NonNull
-    public static String BASE_URL = "https://zs061.com";
-    @NonNull
-    public static String BASE_URL_FOR_H5 = "https://zs061.com";
-    private static String TOKEN_VALUE = "27688ab70a56db714b59a6ebc79b8509a1f81629ce8edc743e1bc23e24465735";
 
+    // dev uat release
+    public static int PLATFORM_COUNT = -1;
+    @NonNull
+    public static String PLATFORM = "setup here gradle.properties";
+    @NonNull
+    public static String BASE_URL = "setup here gradle.properties";
+    @NonNull
+    public static String BASE_URL_FOR_H5 = "setup here gradle.properties";
+
+    // keep it the same as platform name from gradle.properties
+    public static String PLATFORM_REGULAR = "regular";
+    public static String PLATFORM_B = "b";
+
+    // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // keys values
     final static String SIGN_KEY = "sign";
     final static String APP_TOKEN_KEY = "app_token";
-
     private final static String GNW_APP_ID_KEY = "dm_music_appid";
+    private final static String API_VERSION_NAME_KEY = "api_versionName";
+
+    public final static String API_VERSION_VALUE = "1.0.0"; // 接口版本
     private static String GNW_APP_ID_VALUE = "437EC0AC7F0000015E2BBF4849643C96";
 
-    private final static String API_VERSION_KEY = "version";
-    public final static String API_VERSION_VALUE = "1.0.0";//接口版本
-
+    // tags
     static final String APP_TOKEN_HEADER = "need_app_token";
     public static final String WITH_APP_TOKEN = APP_TOKEN_HEADER + ":true";
+
+    // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     static boolean isHeaderValueTrue(String value) {
         Timber.d("isHeaderValueTrue() called with: value = [" + value + "]");
         return "true".equals(value);
-    }
-
-    static String token() {
-        return TOKEN_VALUE;
     }
 
     /**
@@ -68,7 +73,7 @@ public class ApiParameter {
         checkInitialize();
         Map<String, String> map = new HashMap<>();
         map.put(GNW_APP_ID_KEY, GNW_APP_ID_VALUE);
-        map.put(API_VERSION_KEY, API_VERSION_VALUE);
+        map.put(API_VERSION_NAME_KEY, API_VERSION_VALUE);
         return map;
     }
 
@@ -81,7 +86,7 @@ public class ApiParameter {
         checkInitialize();
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty(GNW_APP_ID_KEY, GNW_APP_ID_VALUE);
-        jsonObject.addProperty(API_VERSION_KEY, API_VERSION_VALUE);
+        jsonObject.addProperty(API_VERSION_NAME_KEY, API_VERSION_VALUE);
         return jsonObject;
     }
 
@@ -111,7 +116,7 @@ public class ApiParameter {
     }
 
     private static void checkInitialize() {
-        if (StringChecker.isEmpty(TOKEN_VALUE) || StringChecker.isEmpty(GNW_APP_ID_VALUE)) {
+        if (StringChecker.isEmpty(AppContext.get().appDataSource.appToken()) || StringChecker.isEmpty(GNW_APP_ID_VALUE)) {
             throw new IllegalStateException("ApiParameter has not initialize");
         }
     }
@@ -164,7 +169,7 @@ public class ApiParameter {
                 Timber.e(e, "parse json error");
             }
         }
-        String sign = SignTools.genSign(jsonObject, String.valueOf(Timestamp.getTimestamp()), ApiParameter.token());
+        String sign = SignTools.genSign(jsonObject, String.valueOf(Timestamp.getTimestamp()), AppContext.get().appDataSource.appToken());
         jsonObject.addProperty(ApiParameter.SIGN_KEY, sign);
         return jsonObject.toString();
     }

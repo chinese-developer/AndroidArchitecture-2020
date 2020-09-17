@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseAppTheme.Launcher.Dynamic" parent="BaseAppTheme.FullScreen">
+        <!-- 是否绘制 navigation bar 区域，false 不显示 nav bar 区域，将图设置为全屏。 -->
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+        <!-- 动态配置 splash 图 -->
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+</resources>

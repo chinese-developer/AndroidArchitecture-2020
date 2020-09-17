@@ -11,6 +11,7 @@ import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.template.IProvider;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.app.base.BuildConfig;
+import com.app.base.debug.Debug;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class RouterManager {
 
     public static void init(Application application) {
         ARouter.init(application);
-        if (BuildConfig.openDebug) {
+        if (Debug.isOpenDebug()) {
             ARouter.openLog();
             ARouter.openDebug();
         }
