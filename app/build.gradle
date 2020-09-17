@@ -14,8 +14,6 @@ androidExtensions {
     experimental = true
 }
 
-boolean openDebug = isOpenDebug.toBoolean()
-
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildToolsVersion
@@ -28,10 +26,12 @@ android {
         versionName versions.versionName
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
+        flavorDimensions "default" // if you include productFlavors tags
 
         resConfigs "zh" // 只需要中文资源
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
+        // need dependency room library or gradle will throws error exception
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments << ['room.incremental': 'true']
@@ -83,16 +83,13 @@ android {
     }
 
     buildTypes {
-        // 测试
         debug {
             minifyEnabled false
             shrinkResources false
             signingConfig signingConfigs.release
             manifestPlaceholders = [screenOrientation: "unspecified"]
-            resValue("string", "app_name", "Architecture2020-测试版")
         }
 
-        // 正式发布
         release {
             zipAlignEnabled true
             minifyEnabled false
@@ -100,34 +97,50 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
             manifestPlaceholders = [screenOrientation: "portrait"]
-            resValue("string", "app_name", "Architecture2020")
+//            resValue("string", "app_name", "Architecture2020")
             ndk {
                 abiFilters 'armeabi-v7a'
             }
         }
     }
 
-    /*productFlavors {
+    productFlavors {
 
-       // 开发环境
-       flavors_dev {
-           applicationIdSuffix '.dev'
-           manifestPlaceholders = [
-                   JPUSH_PKGNAME: "me.bo.architecture.dev",
-                   JPUSH_APPKEY : "",
-                   JPUSH_CHANNEL: "developer-attrs"
-           ]
-       }
+        regular_platform {
+            versionCode appVersionCode.toInteger()
+            versionName appVersionName
+            resValue("string", "app_name", "Architecture2020")
+            resValue("string", "host", appHost)
+            resValue("string", "platform_name", appPlatformName)
+            resValue("drawable", "app_logo", "@drawable/ic_app_logo")
+            resValue("drawable", "splash", "@drawable/bg_splash")
+            signingConfig signingConfigs.release
 
-       // 线上环境
-       flavors_release {
-           manifestPlaceholders = [
-                   JPUSH_PKGNAME: "me.bo.architecture",
-                   JPUSH_APPKEY : "",
-                   JPUSH_CHANNEL: "developer-attrs"
-           ]
-       }
-   }*/
+            manifestPlaceholders = [
+                    JPUSH_PKGNAME: "me.bo.architecture.dev",
+                    JPUSH_APPKEY : "",
+                    JPUSH_CHANNEL: "developer-attrs"
+            ]
+        }
+
+        b_platform {
+            applicationIdSuffix ".b"
+            versionCode appVersionCodeB.toInteger()
+            versionName appVersionNameB
+            resValue("string", "app_name", "Architecture2020-B平台")
+            resValue("string", "host", appHostB)
+            resValue("string", "platform_name", appPlatformNameB)
+            resValue("drawable", "app_logo", "@drawable/ic_app_logo_b")
+            resValue("drawable", "splash", "@drawable/bg_splash_b")
+            signingConfig signingConfigs.release
+
+            manifestPlaceholders = [
+                    JPUSH_PKGNAME: "me.bo.architecture",
+                    JPUSH_APPKEY : "",
+                    JPUSH_CHANNEL: "developer-attrs"
+            ]
+        }
+    }
 }
 
 dependencies {
@@ -153,8 +166,4 @@ dependencies {
         implementation "com.google.android.material:material:${versions.material}"
 
     }
-}
-
-repositories {
-    mavenCentral()
 }

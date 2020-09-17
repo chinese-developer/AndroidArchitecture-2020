@@ -44,8 +44,8 @@ object EnvironmentContext {
         return envMap
     }
 
-    fun select(category: String, env: Environment) {
-        spCache.putString(category, env.url)
+    fun cacheCurrentBaseUrl(category: String, url: String) {
+        spCache.putString(category, url)
     }
 
     fun selected(category: String): Environment? {
@@ -55,7 +55,7 @@ object EnvironmentContext {
         }
     }
 
-    fun lastUrl(category: String): String? {
+    fun getPreBaseUrl(category: String): String? {
         return spCache.getString(category, "")
     }
 

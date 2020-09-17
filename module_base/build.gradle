@@ -14,7 +14,14 @@ androidExtensions {
     experimental = true
 }
 
-boolean openDebug = isOpenDebug.toBoolean()
+boolean openDebug(){
+    for(String s : gradle.startParameter.taskNames) {
+        if (s.contains("Release") | s.contains("release")) {
+            return false
+        }
+    }
+    return true
+}
 
 android {
 
@@ -26,12 +33,10 @@ android {
         targetSdkVersion versions.targetSdk
         versionCode 1
         versionName "1.0"
-        buildConfigField("boolean", "openDebug", "$openDebug")
         vectorDrawables.useSupportLibrary = true
     }
 
     buildFeatures {
-
         dataBinding true
         viewBinding true
     }
@@ -49,14 +54,14 @@ android {
         jvmTarget = '1.8'
     }
 
-    sourceSets {
+    /*sourceSets {
         main {
-            if (openDebug) {
+            if (openDebug()) {
                 java.srcDirs += "src/_debug/java"
                 res.srcDirs += "src/_debug/res"
             }
         }
-    }
+    }*/
 
     externalNativeBuild {
         cmake {
@@ -144,7 +149,7 @@ dependencies {
     api "com.jakewharton.rxbinding3:rxbinding-appcompat:${versions.rxBinding3}"
 
     // Debug
-    if (openDebug) {
+    if (openDebug()) {
         // UETool
         implementation "me.ele:uetool:${versions.ueTool}"
         // stetho

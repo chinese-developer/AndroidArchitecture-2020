@@ -3,18 +3,6 @@
 
     <application>
 
-        <!--启动页-->
-        <activity
-            android:name=".ui.launch.SplashActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Launcher">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
         <service
             android:name="com.app.base.service.DownLoadJobService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
