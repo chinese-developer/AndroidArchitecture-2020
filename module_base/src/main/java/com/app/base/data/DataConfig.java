@@ -5,7 +5,6 @@ import android.app.Application;
 import com.android.base.utils.android.cache.SpCache;
 import com.android.sdk.net.NetConfig;
 import com.app.base.AppContext;
-import com.app.base.BuildConfig;
 import com.app.base.data.app.AppDataSource;
 
 import timber.log.Timber;
