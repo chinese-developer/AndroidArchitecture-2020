@@ -55,7 +55,9 @@ open class AppContext : BaseAppContext() {
     @Inject lateinit var storageManager: StorageManager
     @Inject lateinit var schedulerProvider: SchedulerProvider
     @Inject lateinit var sharedPreferences: SharedPreferences
-    val serviceFactoryWithoutToken: ServiceFactory by lazy { NetConfig.serviceFactoryWithoutToken }
+    // Provides the user with a download/upload listener callback
+    // Alternatively, you can create a Retrofit that doesn't carry token
+    val downloadOrUploadServiceWithoutToken: ServiceFactory by lazy { NetConfig.downloadOrUploadServiceWithoutToken }
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
@@ -155,7 +157,7 @@ open class AppContext : BaseAppContext() {
 
         @JvmStatic
         fun serviceFactoryWithoutToken(): ServiceFactory {
-            return context.serviceFactoryWithoutToken
+            return context.downloadOrUploadServiceWithoutToken
         }
 
         var onDialog: DialogCoroutineScope.(FragmentActivity) -> Dialog = {

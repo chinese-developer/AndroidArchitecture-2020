@@ -2,8 +2,8 @@ package com.app.base.dagger
 
 import com.android.base.imageloader.GlideImageLoader
 import com.android.base.imageloader.ImageLoader
-import com.android.base.rx.SchedulerProviderImpl
 import com.android.base.rx.SchedulerProvider
+import com.android.base.rx.SchedulerProviderImpl
 import com.app.base.app.AppErrorHandler
 import com.app.base.app.ErrorHandler
 import com.app.base.data.app.AppDataSource
