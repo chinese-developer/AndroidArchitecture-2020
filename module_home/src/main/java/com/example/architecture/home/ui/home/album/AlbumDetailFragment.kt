@@ -6,16 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.SharedElementCallback
 import androidx.fragment.app.viewModels
 import androidx.palette.graphics.Palette
-import androidx.transition.ChangeBounds
 import androidx.transition.TransitionInflater
+import com.android.base.app.fragment.BaseFragment
 import com.android.base.utils.android.compat.setStatusBarColor
-import com.app.base.app.AppBaseFragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.BitmapImageViewTarget
 import com.bumptech.glide.request.transition.Transition
@@ -26,12 +24,11 @@ import com.example.architecture.home.repository.dataloaders.AlbumLoader
 import com.example.architecture.home.utils.GlideOptions.albumOptions
 import com.example.architecture.home.utils.MediaTimberUtils
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class AlbumDetailFragment : AppBaseFragment() {
+class AlbumDetailFragment : BaseFragment() {
 
     private lateinit var binding: FragmentAlbumDetailBinding
 

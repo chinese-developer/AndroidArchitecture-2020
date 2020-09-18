@@ -14,21 +14,22 @@ import android.webkit.URLUtil;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.android.base.app.fragment.BaseFragment;
 import com.android.base.utils.android.WebViewUtils;
 import com.android.base.utils.android.views.FragmentExKt;
 import com.app.base.R;
-import com.app.base.app.AppBaseFragment;
 import com.app.base.utils.ToolbarUtils;
 import com.app.base.widget.toolbar.TopBarLayout;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import timber.log.Timber;
 
-public class BaseWebFragment extends AppBaseFragment {
+public class BaseWebFragment extends BaseFragment {
 
     protected View mLayout;
     protected WebView mWebView;
