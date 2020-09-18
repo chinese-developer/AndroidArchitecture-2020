@@ -13,11 +13,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.android.base.app.fragment.BaseFragment
 import com.android.base.utils.android.views.getStringArray
 import com.android.base.utils.android.views.newFragment
 import com.android.base.utils.android.views.onDebouncedClick
 import com.android.base.utils.android.views.visible
-import com.app.base.app.AppBaseFragment
+import com.app.base.AppContext
 import com.app.base.common.EventCenter
 import com.app.base.data.DataConfig
 import com.app.base.debug.isOpenDebug
@@ -41,7 +42,7 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class MainFragment : AppBaseFragment() {
+class MainFragment : BaseFragment() {
 
     private val tabsArr = getStringArray(R.array.main_tabs)
 
@@ -153,7 +154,7 @@ class MainFragment : AppBaseFragment() {
         binding.apply {
             fabHome.onDebouncedClick {
                 shapeBadgeItem.toggle()
-                appRouter.build(RouterPath.Main.MEDIA_PLAYER_PATH).navigation()
+                AppContext.get().appRouter.build(RouterPath.Main.MEDIA_PLAYER_PATH).navigation()
             }
 
             if (isOpenDebug()) {

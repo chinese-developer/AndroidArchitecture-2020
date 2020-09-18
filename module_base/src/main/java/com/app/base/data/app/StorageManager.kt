@@ -10,28 +10,29 @@ import java.lang.ref.WeakReference
 class StorageManager internal constructor(private val context: Context, private val appDataSource: AppDataSource) {
 
     companion object {
-        private const val STABLE_CACHE_ID = "mvvm-forever-cache-id"
-        private const val USER_ASSOCIATED_CACHE_ID = "mvvm-UserAssociated-attrs-cache-id"
-        private const val ALL_USER_ASSOCIATED_CACHE_ID_KEY = "all_user_associated_cache_id_key"
+        // data/data/package/files/mmkv/mvvm-stable-storage-id
+        private const val STABLE_CACHE_ID = "mvvm-stable-storage-id"
+        private const val USER_STORAGE_ID = "mvvm-user-storage-id"
+        private const val ALL_USER_STORAGE_ID_KEY = "all_user_storage_id_key"
     }
 
     private val storageFactory = MMKVStorageFactoryImpl()
 
     private val userAssociated: Storage = storageFactory
-            .newBuilder(context)
-            .storageId(USER_ASSOCIATED_CACHE_ID)
-            .build()
+        .newBuilder(context)
+        .storageId(USER_STORAGE_ID)
+        .build()
 
     private val stable: Storage = storageFactory
-            .newBuilder(context)
-            .storageId(STABLE_CACHE_ID)
-            .build()
+        .newBuilder(context)
+        .storageId(STABLE_CACHE_ID)
+        .build()
 
-    private val userAssociatedIdList by lazy {
+    private val userStorageIdsList by lazy {
         stable.getEntity<MutableList<String>>(
-                ALL_USER_ASSOCIATED_CACHE_ID_KEY,
-                object : TypeFlag<MutableList<String>>() {}.rawType)
-                ?: mutableListOf()
+            ALL_USER_STORAGE_ID_KEY,
+            object : TypeFlag<MutableList<String>>() {}.rawType)
+            ?: mutableListOf()
     }
 
     private val storageCache = HashMap<String, WeakReference<Storage>>()
@@ -45,9 +46,9 @@ class StorageManager internal constructor(private val context: Context, private 
     @Synchronized
     fun newStorage(storageId: String, userAssociated: Boolean = false): Storage {
         if (userAssociated) {
-            if (!userAssociatedIdList.contains(storageId)) {
-                userAssociatedIdList.add(storageId)
-                stableStorage().putEntity(ALL_USER_ASSOCIATED_CACHE_ID_KEY, userAssociatedIdList)
+            if (!userStorageIdsList.contains(storageId)) {
+                userStorageIdsList.add(storageId)
+                stableStorage().putEntity(ALL_USER_STORAGE_ID_KEY, userStorageIdsList)
             }
         }
 
@@ -61,30 +62,30 @@ class StorageManager internal constructor(private val context: Context, private 
         }
 
         val storage = storageFactory.newBuilder(context)
-                .storageId(storageId)
-                .build()
+            .storageId(storageId)
+            .build()
 
         storageCache[storageId] = WeakReference(storage)
 
         return storage
     }
 
-    /**仅由[AppDataSource.logout]在退出登录时调用*/
+    /**仅由[AppDataSource.logout]在退出登录时调用,当用户退出后，清除[userStorage]存储的该用户缓存数据*/
     internal fun clearUserAssociated() {
         userStorage().clearAll()
 
-        if (userAssociatedIdList.isEmpty()) {
+        if (userStorageIdsList.isEmpty()) {
             return
         }
-        for (cacheId in userAssociatedIdList) {
+        for (cacheId in userStorageIdsList) {
             if (cacheId.isEmpty()) {
                 continue
             }
             storageFactory.newBuilder(context).storageId(cacheId).build().clearAll()
             Timber.d("clear user associated cache：$cacheId")
         }
-        userAssociatedIdList.clear()
-        stableStorage().remove(ALL_USER_ASSOCIATED_CACHE_ID_KEY)
+        userStorageIdsList.clear()
+        stableStorage().remove(ALL_USER_STORAGE_ID_KEY)
     }
 
 }
