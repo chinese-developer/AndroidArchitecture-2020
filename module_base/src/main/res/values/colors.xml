@@ -4,7 +4,7 @@
     <!--action bar-->
     <color name="colorPrimary">#03a9f4</color>
     <!--status bar-->
-    <color name="colorPrimaryDark">#FFD1D2D1</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
     <!--控件-->
     <color name="colorAccent">#FF4081</color>
 
