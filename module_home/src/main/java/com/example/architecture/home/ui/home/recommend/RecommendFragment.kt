@@ -99,7 +99,9 @@ class RecommendFragment : BaseFragment() {
                     intent.putExtra("key", modelPosition)
                     startActivity(intent, options.toBundle())
                 }
-            }/*.models = model.albumDefaultItems*/
+            }/*.models = model.fetchNewData()*/
+
+            swipeRefresh.preloadIndex = 15
 
             swipeRefresh.onRefresh {
                 scope {
