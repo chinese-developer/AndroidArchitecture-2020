@@ -20,8 +20,8 @@ import androidx.palette.graphics.Palette
 import com.android.base.app.fragment.BaseFragment
 import com.android.base.utils.android.compat.immersiveDark
 import com.android.base.utils.ktx.getBlackWhiteColor
-import com.drake.brv.utils.grid
-import com.drake.brv.utils.setup
+import com.android.base.widget.adapter.utils.grid
+import com.android.base.widget.adapter.utils.setup
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentAlbumBinding
 import com.example.architecture.home.repository.dataloaders.AlbumLoader

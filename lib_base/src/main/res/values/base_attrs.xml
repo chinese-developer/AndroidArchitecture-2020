@@ -2,15 +2,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
 
     <declare-styleable name="RatioLayout">
-        <attr name="layout_ratio" format="float"/>
+        <attr name="layout_ratio" format="float" />
     </declare-styleable>
 
     <declare-styleable name="RatioImageView">
-        <attr name="layout_ratio"/>
+        <attr name="layout_ratio" />
     </declare-styleable>
 
     <declare-styleable name="RatioTextView">
-        <attr name="layout_ratio"/>
+        <attr name="layout_ratio" />
+    </declare-styleable>
+
+    <!--下拉刷新上拉加载布局-->
+    <declare-styleable name="PageRefreshLayout">
+        <attr name="empty_layout" format="reference" />
+        <attr name="error_layout" format="reference" />
+        <attr name="loading_layout" format="reference" />
+        <!-- 启用缺省页-->
+        <attr name="stateEnabled" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="StateLayout">
+        <attr name="sl_empty_layout" format="reference" />
+        <attr name="sl_error_layout" format="reference" />
+        <attr name="sl_loading_layout" format="reference" />
     </declare-styleable>
 
 </resources>

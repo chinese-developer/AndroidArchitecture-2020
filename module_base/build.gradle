@@ -134,8 +134,6 @@ dependencies {
     api "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:${versions.keyboardtools}"
     api "com.github.chrisbanes:PhotoView:${versions.photoView}"
 
-    // https://github.com/liangjingkanji/BRV
-    api "com.github.liangjingkanji:BRV:${versions.brv}"
     api "androidx.paging:paging-runtime-ktx:${versions.paging}"
 
     // toast

@@ -34,7 +34,7 @@ import com.app.base.router.AppRouter
 import com.app.base.router.RouterManager
 import com.app.base.scope.DialogCoroutineScope
 import com.app.base.widget.dialog.AppLoadingView
-import com.drake.statelayout.StateConfig
+import com.android.base.widget.statusLayout.StateConfig
 import com.drake.tooltip.toast
 import com.nostra13.universalimageloader.core.ImageLoader
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
@@ -81,7 +81,6 @@ open class AppContext : BaseAppContext() {
         // 路由
         RouterManager.init(this)
 
-        // 全局缺省页配置 [https://github.com/liangjingkanji/StateLayout]
         StateConfig.apply {
             emptyLayout = R.layout.base_layout_empty
             loadingLayout = R.layout.base_layout_loading
@@ -96,7 +95,7 @@ open class AppContext : BaseAppContext() {
             ClassicsFooter(context)
         }
 
-        com.drake.brv.BindingAdapter.modelId = BR.item
+        com.android.base.widget.adapter.BindingAdapter.modelId = BR.item
 
         // imageLoader init
         ImageLoader.getInstance().init(ImageLoaderConfiguration.Builder(this).build())

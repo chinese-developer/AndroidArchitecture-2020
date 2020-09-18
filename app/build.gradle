@@ -107,7 +107,7 @@ android {
     productFlavors {
 
         regular_platform {
-            versionCode appVersionCode.toInteger()
+            versionCode appVersionCode as int
             versionName appVersionName
             resValue("string", "app_name", "Architecture2020")
             resValue("string", "host", appHost)
@@ -125,7 +125,7 @@ android {
 
         b_platform {
             applicationIdSuffix ".b"
-            versionCode appVersionCodeB.toInteger()
+            versionCode appVersionCodeB as int
             versionName appVersionNameB
             resValue("string", "app_name", "Architecture2020-B平台")
             resValue("string", "host", appHostB)

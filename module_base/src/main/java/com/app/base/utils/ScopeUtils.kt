@@ -7,8 +7,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.android.sdk.net.transform.DeferredTransform
 import com.app.base.scope.*
-import com.drake.brv.PageRefreshLayout
-import com.drake.statelayout.StateLayout
+import com.android.base.widget.adapter.PageRefreshLayout
+import com.android.base.widget.statusLayout.StateLayout
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow

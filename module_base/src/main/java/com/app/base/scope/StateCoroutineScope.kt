@@ -2,7 +2,7 @@ package com.app.base.scope
 
 import android.view.View
 import com.android.sdk.net.NetConfig
-import com.drake.statelayout.StateLayout
+import com.android.base.widget.statusLayout.StateLayout
 import kotlinx.coroutines.CancellationException
 
 /**

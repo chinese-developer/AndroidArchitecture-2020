@@ -2,7 +2,7 @@ package com.app.base.scope
 
 import android.view.View
 import com.android.sdk.net.NetConfig
-import com.drake.brv.PageRefreshLayout
+import com.android.base.widget.adapter.PageRefreshLayout
 import kotlinx.coroutines.CancellationException
 
 @Suppress("unused", "MemberVisibilityCanBePrivate", "NAME_SHADOWING")

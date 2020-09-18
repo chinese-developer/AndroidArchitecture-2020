@@ -1,6 +1,5 @@
 package com.example.architecture.home.ui.home.recommend
 
-import android.app.SharedElementCallback
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -14,12 +13,13 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.palette.graphics.Palette
+import com.android.base.TagsFactory
 import com.android.base.app.fragment.BaseFragment
 import com.android.base.utils.ktx.getBlackWhiteColor
+import com.android.base.widget.adapter.animation.SlideInTopItemAnimation
 import com.app.base.utils.scope
-import com.drake.brv.utils.grid
-import com.drake.brv.utils.models
-import com.drake.brv.utils.setup
+import com.android.base.widget.adapter.utils.grid
+import com.android.base.widget.adapter.utils.setup
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentRecommendBinding
 import com.example.architecture.home.ui.home.TestActivity
@@ -27,9 +27,9 @@ import com.example.architecture.home.ui.model.home.Recommend
 import com.nostra13.universalimageloader.core.DisplayImageOptions
 import com.nostra13.universalimageloader.core.ImageLoader
 import com.nostra13.universalimageloader.core.assist.FailReason
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener
 import kotlinx.coroutines.delay
+import timber.log.Timber
 
 class RecommendFragment : BaseFragment() {
 
@@ -68,6 +68,9 @@ class RecommendFragment : BaseFragment() {
     private fun initAdapter() {
         binding.apply {
             list.grid(2).setup {
+                setAnimation(SlideInTopItemAnimation(55f))
+                setDuration(700)
+                isFirstOnly(false)
                 addType<Recommend>(R.layout.item_recommend_preview)
                 onBind {
                     val item = getModel<Recommend>()
@@ -85,23 +88,32 @@ class RecommendFragment : BaseFragment() {
                 }
 
                 onClick(R.id.content) {
-                    val options: ActivityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        requireActivity(), findView<ImageView>(
-                            R.id.album_art
-                        ), modelPosition.toString()
-                    )
+                    val options: ActivityOptionsCompat =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(
+                            requireActivity(), findView<ImageView>(
+                                R.id.album_art
+                            ), modelPosition.toString()
+                        )
                     index = modelPosition
                     val intent = Intent(activity, TestActivity::class.java)
                     intent.putExtra("key", modelPosition)
                     startActivity(intent, options.toBundle())
                 }
-
-            }.models = model.albumDefaultItems
+            }/*.models = model.albumDefaultItems*/
 
             swipeRefresh.onRefresh {
                 scope {
                     delay(600)
-                    list.models = model.albumDefaultItems
+                    Timber.tag(TagsFactory.debug).d(binding.list.adapter?.itemCount.toString())
+                    addData(model.fetchNewData(), isEmpty = { index < 0 }, hasMore = { true })
+                    Timber.tag(TagsFactory.debug).d("after: ${binding.list.adapter?.itemCount}")
+                }
+            }.autoRefresh()
+
+            swipeRefresh.onLoadMore {
+                scope {
+                    delay(600)
+                    addData(model.fetchNewData())
                 }
             }
         }
@@ -116,8 +128,10 @@ class RecommendFragment : BaseFragment() {
         val newOptions = DisplayImageOptions.Builder()
             .cacheInMemory(true)
             .bitmapConfig(Bitmap.Config.RGB_565)
-            .resetViewBeforeLoading(true).showImageOnLoading(item.coverImgResource)
-            .displayer(FadeInBitmapDisplayer(400)).build()
+            .resetViewBeforeLoading(true)
+            .showImageOnLoading(item.coverImgResource)
+//            .displayer(FadeInBitmapDisplayer(400))
+            .build()
 
         val imageUrl =
             if (item.coverImgUrl.isNullOrBlank()) "drawable://${item.coverImgResource}" else item.coverImgUrl
