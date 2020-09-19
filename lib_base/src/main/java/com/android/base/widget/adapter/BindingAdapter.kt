@@ -28,6 +28,7 @@ import com.android.base.widget.adapter.listener.OnBindViewHolderListener
 import com.android.base.widget.adapter.listener.OnHoverAttachListener
 import com.android.base.widget.adapter.utils.BRV
 import com.drake.brv.listener.throttleClick
+import kotlin.properties.Delegates
 
 /**
  * < Android上最强大的RecyclerView框架 >
@@ -118,7 +119,7 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: BindingViewHolder, position: Int) {
-        holder.bind(getModel(position))
+        holder.bind(getModel(position), selectedPosition)
     }
 
     override fun onBindViewHolder(
@@ -262,6 +263,7 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
 
     private var itemAnimation: ItemAnimation = AlphaItemAnimation()
     private var lastPosition = -1
+    private var selectedPosition: Int = -1
     private var isFirst = true
 
     // 是否启用条目动画
@@ -307,7 +309,7 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
             AnimationType.SLIDE_BOTTOM -> this.itemAnimation = SlideBottomItemAnimation()
             AnimationType.SLIDE_LEFT -> this.itemAnimation = SlideLeftItemAnimation()
             AnimationType.SLIDE_RIGHT -> this.itemAnimation = SlideRightItemAnimation()
-            AnimationType.SLIDE_RIGHT -> this.itemAnimation = SlideRightItemAnimation()
+            AnimationType.SLIDE_TOP -> this.itemAnimation = SlideInTopItemAnimation()
         }
     }
 
@@ -711,6 +713,13 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
         }
     }
 
+    /**
+     * 设置选中的 item position, [onBind] 回调可以获取到 [isSelected] 状态
+     */
+    fun setSelectedPosition(position: Int) {
+        selectedPosition = position
+        notifyDataSetChanged()
+    }
 
     /**
      * 设置选中
@@ -824,6 +833,8 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
         var context: Context = this@BindingAdapter.context!!
         val adapter: BindingAdapter = this@BindingAdapter
         val modelPosition get() = layoutPosition - headerCount
+        var isSelected by Delegates.notNull<Boolean>()
+            private set
 
         private var viewDataBinding: ViewDataBinding? = null
 
@@ -854,11 +865,12 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
             }
         }
 
-        internal fun bind(model: Any) {
+        internal fun bind(model: Any, selectedPosition: Int) {
             this._data = model
+            this.isSelected = selectedPosition == modelPosition
 
             onBindList.forEach {
-                it.onBindViewHolder(rv!!, adapter, this, adapterPosition)
+                it.onBindViewHolder(rv!!, adapter, this, bindingAdapterPosition)
             }
 
             if (model is ItemPosition) {

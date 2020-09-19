@@ -4,4 +4,13 @@
         <item>下载</item>
         <item>分享</item>
     </string-array>
+
+    <string-array name="group_title">
+        <item>抒情</item>
+        <item>热歌</item>
+        <item>新歌</item>
+        <item>流行</item>
+        <item>怀旧</item>
+        <item>经典</item>
+    </string-array>
 </resources>

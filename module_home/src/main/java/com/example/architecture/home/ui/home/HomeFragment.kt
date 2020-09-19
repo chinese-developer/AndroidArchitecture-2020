@@ -93,7 +93,7 @@ class HomeFragment : BaseFragment() {
                     return when (position) {
                         TAB_1 -> recommendFragment
                         TAB_2 -> albumFragment
-                        TAB_3 -> lyricsFragment
+                        TAB_3 -> playListFragment
                         else -> throw IllegalArgumentException("createFragment error!")
                     }
                 }

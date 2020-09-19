@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import timber.log.Timber;
 
 /**
- * <pre>
+ * ·
  *          1，封装通用流程。
  *          2，onBackPressed 事件分发，优先交给 Fragment 处理。
  *          3，提供 RxJava 的生命周期绑定。
