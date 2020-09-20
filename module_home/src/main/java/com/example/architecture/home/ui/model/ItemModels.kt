@@ -10,7 +10,7 @@ open class BaseModel(open val title: String, open var checked: Boolean = false) 
 data class Model(override val title: String, override var itemPosition: Int = 0) : ItemPosition,
     BaseModel(title)
 
-data class DoubleItemModel(override val title: String) : BaseModel(title)
+data class DoubleItemModel(override val title: String, val coverImgUrl: String? = "") : BaseModel(title)
 
 data class ThreeItemModel(override val title: String) : BaseModel(title)
 

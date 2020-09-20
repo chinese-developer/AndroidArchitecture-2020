@@ -8,7 +8,7 @@
             type="com.example.architecture.home.ui.model.home.ItemTitle" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -53,5 +53,5 @@
                 app:layout_constraintTop_toBottomOf="@+id/ic_group"
                 tools:text="groupName" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 </layout>

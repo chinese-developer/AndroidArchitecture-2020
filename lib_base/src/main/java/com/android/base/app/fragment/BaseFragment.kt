@@ -33,17 +33,17 @@ open class BaseFragment : Fragment(), LoadingView, OnBackPressListener {
     override fun onPrimaryNavigationFragmentChanged(isPrimaryNavigationFragment: Boolean) {
         super.onPrimaryNavigationFragmentChanged(isPrimaryNavigationFragment)
         Timber.tag(TagsFactory.fragment_lifecycle)
-            .i(">>>>>>> onPrimaryNavigationFragmentChanged: [isPrimaryNavigationFragment= $isPrimaryNavigationFragment]")
+            .i("<${javaClass.simpleName}> onPrimaryNavigationFragmentChanged: [isPrimaryNavigationFragment= $isPrimaryNavigationFragment]")
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onAttach: [context= $context]")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onAttach: [context= $context]")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onCreate ${ if (savedInstanceState != null) ": [savedInstanceState= $savedInstanceState]" else ""}")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onCreate ${ if (savedInstanceState != null) ": [savedInstanceState= $savedInstanceState]" else ""}")
     }
 
     override fun onCreateView(
@@ -51,64 +51,64 @@ open class BaseFragment : Fragment(), LoadingView, OnBackPressListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onCreateView ")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onCreateView")
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onViewCreated ${ if (savedInstanceState != null) ": [savedInstanceState= $savedInstanceState]" else ""}")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onViewCreated ${ if (savedInstanceState != null) ": [savedInstanceState= $savedInstanceState]" else ""}")
     }
 
     override fun onStart() {
         super.onStart()
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onStart")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onStart")
     }
 
     override fun onResume() {
         super.onResume()
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onResume")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onResume")
     }
 
     override fun onPause() {
         super.onPause()
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onPause")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onStop")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onStop")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onDestroy")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onDestroy")
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onDestroyView")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onDestroyView")
     }
 
     override fun onDetach() {
         super.onDetach()
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onDetach")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onDetach")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onSaveInstanceState: [outState= ${outState}]")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onSaveInstanceState: [outState= ${outState}]")
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         Timber.tag(TagsFactory.fragment_lifecycle)
-            .i(">>>>>>> onViewStateRestored: [savedInstanceState= ${savedInstanceState}]")
+            .i("<${javaClass.simpleName}> onViewStateRestored: [savedInstanceState= ${savedInstanceState}]")
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        Timber.tag(TagsFactory.fragment_lifecycle).i(">>>>>>> onHiddenChanged: [hidden= ${hidden}]")
+        Timber.tag(TagsFactory.fragment_lifecycle).i("<${javaClass.simpleName}> onHiddenChanged: [hidden= ${hidden}]")
     }
 
     override fun showLoadingDialog() = loadingView.showLoadingDialog(true)

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_white_solid_round_10"
+    android:background="@drawable/shape_white_solid_corners_10"
     tools:ignore="ContentDescription">
 
     <ImageView

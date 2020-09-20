@@ -10,11 +10,13 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
+import com.app.base.AppContext
 import com.app.base.R
 import com.app.base.data.*
 import com.app.base.data.BUILD_RELEASE
 import com.app.base.data.BUILD_UAT
 import com.app.base.data.api.ApiParameter
+import com.app.base.scope.DialogCoroutineScope
 
 class DebugModeUtils(
     val activity: FragmentActivity,
@@ -74,7 +76,7 @@ class DebugModeUtils(
             }.show()
     }
 
-    private fun showRestartAction(activity: Activity, host: Int, position: Int, view: TextView?) {
+    private fun showRestartAction(activity: FragmentActivity, host: Int, position: Int, view: TextView?) {
         AlertDialog.Builder(activity)
             .setMessage("应用将会重启！当前环境的登录状态与数据缓存将会清空，确定要切换吗？")
             .setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
@@ -82,9 +84,8 @@ class DebugModeUtils(
                 dialog.dismiss()
                 displayHostName(host, view)
                 DataConfig.getInstance().switchHost(host, position)
-                // 清除所有数据
-                com.app.base.AppContext.appDataSource().logout()
-                // AppContext.storageManager().stableStorage().clearAll(); 不清除持久化的数据
+                // 清除所有数据（除了持久化数据 stableStorage)
+                AppContext.appDataSource().logout()
                 // 重启
                 activity.window.decorView.post { doRestart() }
             }.show()

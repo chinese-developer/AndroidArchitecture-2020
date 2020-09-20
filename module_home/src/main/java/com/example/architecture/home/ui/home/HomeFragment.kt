@@ -115,7 +115,7 @@ class HomeFragment : BaseFragment() {
                 }
             })
 
-            viewPager.offscreenPageLimit = 1
+            viewPager.offscreenPageLimit = 2 // 至少预加载2屏，保证滑到下一页不会造成卡顿。
             viewPager.currentItem = TAB_1
         }
     }

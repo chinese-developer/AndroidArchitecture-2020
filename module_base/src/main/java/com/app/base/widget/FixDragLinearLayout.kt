@@ -14,7 +14,7 @@ import com.app.base.R
  * 2. RecyclerView或SwipeRefreshLayout中嵌套ViewPager2，
  *    ViewPager2左右滑动困难，事件容易给RecyclerView或SwipeRefreshLayout吃掉。
  *
- *    *注意父布局继承的是 LinearLayout，使用 ConstraintLayout 当高度为 0dp时，子 view 动态设置 layoutParams 会有问题。
+ *    *注意父布局继承的是 LinearLayout，使用 ConstraintLayout 当高度为 0dp 时，子 view 动态计算子view宽高并设置 layoutParams 会出问题，所以推荐使用 FixDragLinearLayout
  *    *如果存在上拉加载操作，在上拉加载过程中（上拉动画执行过程中时）依然存在事件被抢，上下滑动时会造成左右滑动。为了避免这种问题，尽量预加载。
  */
 class FixDragLinearLayout @JvmOverloads constructor(

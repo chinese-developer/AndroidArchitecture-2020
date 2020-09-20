@@ -29,7 +29,7 @@ public class RecyclerViewScrollHelper {
         RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
         if (layoutManager instanceof LinearLayoutManager) {
             LinearLayoutManager manager = (LinearLayoutManager) layoutManager;
-            LinearSmoothScroller mScroller = null;
+            LinearSmoothScroller mScroller;
             if (snapMode == LinearSmoothScroller.SNAP_TO_START) {
                 mScroller = new TopSmoothScroller(recyclerView.getContext());
             } else if (snapMode == LinearSmoothScroller.SNAP_TO_END) {

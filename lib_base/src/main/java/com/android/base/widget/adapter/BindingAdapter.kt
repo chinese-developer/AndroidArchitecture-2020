@@ -108,8 +108,7 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
             viewType,
             parent,
             false
-        )
-            ?: return BindingViewHolder(parent.getView(viewType))
+        ) ?: return BindingViewHolder(parent.getView(viewType))
 
         return BindingViewHolder(viewDataBinding)
     }
@@ -119,7 +118,7 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: BindingViewHolder, position: Int) {
-        holder.bind(getModel(position), selectedPosition)
+        holder.bind(getModel(position), currentSelectedPosition)
     }
 
     override fun onBindViewHolder(
@@ -131,6 +130,14 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
             onPayload?.invoke(holder, payloads[0])
         } else {
             super.onBindViewHolder(holder, position, payloads)
+        }
+    }
+
+    override fun getItemId(position: Int): Long {
+        return if (hasStableIds()) {
+            position.toLong()
+        } else {
+            super.getItemId(position)
         }
     }
 
@@ -263,11 +270,12 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
 
     private var itemAnimation: ItemAnimation = AlphaItemAnimation()
     private var lastPosition = -1
-    private var selectedPosition: Int = -1
+    private var currentSelectedPosition: Int = -1
     private var isFirst = true
 
     // 是否启用条目动画
     private var animationEnabled = false
+
     // 是否动画只执行一次
     private var firstOnlyEnable = false
     private var duration: Int = 300
@@ -713,12 +721,17 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
         }
     }
 
+    fun setSelectItemPosition(position: Int) {
+        this.currentSelectedPosition = position
+    }
+
     /**
-     * 设置选中的 item position, [onBind] 回调可以获取到 [isSelected] 状态
+     * 设置 item 选中状态及取消上一次选中的 item 状态（背景颜色变化或文字变化时用到）
      */
-    fun setSelectedPosition(position: Int) {
-        selectedPosition = position
-        notifyDataSetChanged()
+    fun notifyItemChangedSelectedPosition(currentSelectedPosition: Int, lastSelectedPosition: Int) {
+        setSelectItemPosition(currentSelectedPosition)
+        notifyItemChanged(lastSelectedPosition)
+        notifyItemChanged(currentSelectedPosition)
     }
 
     /**

@@ -31,7 +31,8 @@
     <dimen name="common_bottom_bar_height">56dp</dimen>
     <dimen name="common_edge">16dp</dimen>  <!--边距-->
     <dimen name="common_edge_big">32dp</dimen>  <!--大边距-->
-    <dimen name="common_corner_radius">8dp</dimen>
+    <dimen name="common_corner_radius_8">8dp</dimen>
+    <dimen name="common_corner_radius_12">12dp</dimen>
     <dimen name="common_icon_size">40dp</dimen>
     <dimen name="common_avatar_image_width">50dp</dimen>
     <dimen name="common_text_margin_from_icon">16dp</dimen>

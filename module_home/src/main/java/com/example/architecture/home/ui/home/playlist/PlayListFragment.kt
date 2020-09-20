@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
+import com.android.base.TagsFactory
 import com.android.base.app.fragment.BaseFragment
 import com.android.base.utils.adapter.RecyclerViewScrollHelper
 import com.android.base.utils.android.views.getStringArray
@@ -19,7 +20,7 @@ import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentPlayListBinding
 import com.example.architecture.home.ui.model.*
 import com.example.architecture.home.ui.model.home.ItemTitle
-import com.google.android.material.card.MaterialCardView
+import timber.log.Timber
 
 class PlayListFragment : BaseFragment() {
 
@@ -43,22 +44,25 @@ class PlayListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initGroupList()
-        initContentList()
+        initPrimaryAdapter()
+        initSecondaryAdapter()
         listeners()
     }
 
     private fun listeners() {
     }
 
-    private fun initGroupList() {
+    private fun initPrimaryAdapter() {
         binding.apply {
             footer.waitForHeight {
-                primaryAdapter = listGroup.setup {
+                rvPrimary.itemAnimator = null
+                primaryAdapter = rvPrimary.setup {
+                    setHasStableIds(true)
+                    setSelectItemPosition(0)
                     addType<ItemTitle>(R.layout.item_group)
                     onBind {
-                        val container = findView<MaterialCardView>(R.id.container)
-                        val icon = findView<ImageView>(R.id.ic_group)
+                        Timber.tag(TagsFactory.debug).d("itemId:$itemId")
+                        val container = findView<CardView>(R.id.container)
 
                         val model = getModel() as ItemTitle
                         model.checked = isSelected
@@ -77,9 +81,13 @@ class PlayListFragment : BaseFragment() {
                     }
                     addFastClickable(R.id.container)
                     onClick {
-                        setSelectedPosition(modelPosition)
-                        RecyclerViewScrollHelper.smoothScrollToPosition(
-                            listContent,
+                        notifyItemChangedSelectedPosition(
+                            currentSelectedPosition = modelPosition,
+                            lastSelectedPosition = lastVisibleItemPosition
+                        )
+                        lastVisibleItemPosition = modelPosition
+                            RecyclerViewScrollHelper.smoothScrollToPosition(
+                            rvSecondary,
                             LinearSmoothScroller.SNAP_TO_START,
                             modelPosition
                         )
@@ -91,10 +99,11 @@ class PlayListFragment : BaseFragment() {
         }
     }
 
-    private fun initContentList() {
+    private fun initSecondaryAdapter() {
         binding.apply {
             val secondaryItems = secondaryItems()
-            secondaryAdapter = listContent.setup {
+            secondaryAdapter = rvSecondary.setup {
+                setHasStableIds(true)
                 setAnimation(SlideInTopItemAnimation(10f))
                 setDuration(1000)
                 isFirstOnly(false)
@@ -120,9 +129,9 @@ class PlayListFragment : BaseFragment() {
 
             secondaryAdapter.models = secondaryItems
 
-            val secondaryLayoutManager = listContent.layoutManager!! as LinearLayoutManager
+            val secondaryLayoutManager = rvSecondary.layoutManager!! as LinearLayoutManager
 
-            listContent.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            rvSecondary.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     when (newState) {
                         RecyclerView.SCROLL_STATE_DRAGGING -> isDragging = true
@@ -135,9 +144,12 @@ class PlayListFragment : BaseFragment() {
                         val firstVisibleItemPosition =
                             secondaryLayoutManager.findFirstVisibleItemPosition()
                         if (lastVisibleItemPosition != firstVisibleItemPosition && firstVisibleItemPosition >= 0) {
+                                primaryAdapter.notifyItemChangedSelectedPosition(
+                                    currentSelectedPosition = firstVisibleItemPosition,
+                                    lastSelectedPosition = lastVisibleItemPosition
+                                )
                             lastVisibleItemPosition = firstVisibleItemPosition
-                            listGroup.smoothScrollToPosition(firstVisibleItemPosition)
-                            primaryAdapter.setSelectedPosition(firstVisibleItemPosition)
+                            rvPrimary.smoothScrollToPosition(firstVisibleItemPosition)
                         }
                     }
                 }

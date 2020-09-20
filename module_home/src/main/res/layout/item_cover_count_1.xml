@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.card.MaterialCardView
+    <data>
+
+        <import type="com.example.architecture.home.R" />
+
+        <variable
+            name="item"
+            type="com.example.architecture.home.ui.model.Model" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cv_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="@dimen/z_card"
-        app:cardMaxElevation="@dimen/z_card"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true">
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_micro"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:layout_marginBottom="@dimen/spacing_micro"
+        android:background="@drawable/shape_white_solid_corners_10"
+        android:elevation="@dimen/z_card">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:roundCornersDimenRes="@{R.dimen.item_card_corners}"
             android:scaleType="fitXY"
-            android:src="@mipmap/bg_album_playing"
-            tools:ignore="ContentDescription" />
+            android:src="@{R.mipmap.bg_album_bsb}"
+            tools:ignore="ContentDescription"
+            tools:src="@mipmap/bg_album_bsb" />
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

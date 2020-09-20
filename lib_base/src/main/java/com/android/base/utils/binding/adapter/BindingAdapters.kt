@@ -16,6 +16,8 @@ import android.widget.CompoundButton
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.RadioGroup
+import androidx.annotation.DimenRes
+import androidx.annotation.IdRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -23,14 +25,16 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingListener
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.transition.TransitionManager
-import com.android.base.imageloader.DisplayConfig
-import com.android.base.imageloader.GlideImageLoader
-import com.android.base.imageloader.Source
 import com.android.base.rx.observeOnUI
 import com.android.base.rx.subscribeIgnoreError
 import com.android.base.utils.ktx.no
 import com.android.base.utils.ktx.yes
 import com.blankj.utilcode.util.VibrateUtils
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.jakewharton.rxbinding2.view.RxView
 import com.nostra13.universalimageloader.core.DisplayImageOptions
@@ -48,7 +52,7 @@ object ImageViewBindingAdapter {
      */
     @JvmStatic
     @BindingAdapter(
-        value = ["android:src", "android:placeholderRes", "android:roundCorners", "android:imageLoader"],
+        value = ["android:src", "android:placeholderRes", "android:roundCorners", "android:roundCornersDimenRes", "android:imageLoader", "android:withCrossFade"],
         requireAll = false
     )
     fun setImageUrl(
@@ -56,7 +60,9 @@ object ImageViewBindingAdapter {
         url: String?,
         placeholderRes: Int?,
         roundCorners: Int?,
-        imageLoader: Boolean? = false
+        @DimenRes roundCornersDimenRes: Int?,
+        imageLoader: Boolean? = false,
+        withCrossFade: Boolean? = false
     ) {
         if (url.isNullOrBlank()) {
             if (placeholderRes != null && placeholderRes != 0) {
@@ -65,29 +71,54 @@ object ImageViewBindingAdapter {
                 view.setImageResource(0)
             }
         } else {
-            if (imageLoader != null && imageLoader) {
-                val options = DisplayImageOptions.Builder().cacheInMemory(true)
-                    .bitmapConfig(Bitmap.Config.RGB_565)
-                if (placeholderRes != null && placeholderRes > 0) {
-                    options.showImageOnLoading(placeholderRes).resetViewBeforeLoading(true)
-                }
-                ImageLoader.getInstance()
-                    .displayImage(
-                        url,
-                        view,
-                        options.displayer(FadeInBitmapDisplayer(400)).build()
-                    )
+            display(
+                view,
+                url,
+                imageLoader != null && imageLoader == true,
+                placeholderRes,
+                roundCornersDimenRes,
+                roundCorners,
+                withCrossFade != null && withCrossFade == true
+            )
+        }
+    }
+
+    /** imageView 通过 url 获取图片、设置占位图、圆形、圆角
+     * @param url 路径
+     * @param placeholderRes 占位图
+     * @param roundCorners 倒角
+     * @param imageLoader 使用 imageLoader 加载图片
+     */
+    @JvmStatic
+    @BindingAdapter(
+        value = ["android:src", "android:placeholderRes", "android:roundCorners", "android:roundCornersDimenRes", "android:imageLoader", "android:withCrossFade"],
+        requireAll = false
+    )
+    fun setImageRes(
+        view: ImageView,
+        @IdRes imageResId: Int?,
+        placeholderRes: Int?,
+        roundCorners: Int?,
+        @DimenRes roundCornersDimenRes: Int?,
+        imageLoader: Boolean? = false,
+        withCrossFade: Boolean? = false
+    ) {
+        if (imageResId == null || imageResId == 0) {
+            if (placeholderRes != null && placeholderRes != 0) {
+                view.setImageResource(placeholderRes)
             } else {
-                val config = DisplayConfig.create()
-                if (placeholderRes != null && placeholderRes > 0) {
-                    config.setLoadingPlaceholder(placeholderRes)
-                    config.setErrorPlaceholder(placeholderRes)
-                }
-                if (roundCorners != null && roundCorners > 0) {
-                    config.setRoundedCornersRadius(roundCorners)
-                }
-                GlideImageLoader().display(view, url, config)
+                view.setImageResource(0)
             }
+        } else {
+            display(
+                view,
+                imageResId,
+                imageLoader != null && imageLoader == true,
+                placeholderRes,
+                roundCornersDimenRes,
+                roundCorners,
+                withCrossFade != null && withCrossFade == true
+            )
         }
     }
 
@@ -95,24 +126,102 @@ object ImageViewBindingAdapter {
      * @param uri 路径
      * @param placeholderRes 占位图
      * @param roundCorners 倒角*/
+    @SuppressLint("CheckResult")
     @JvmStatic
     @BindingAdapter(
-        value = ["android:src", "android:placeholderRes", "android:roundCorners"],
+        value = ["android:src", "android:placeholderRes", "android:roundCorners", "android:roundCornersDimenRes"],
         requireAll = false
     )
     fun setImageUri(
-        view: ImageView, uri: Uri?, placeholderRes: Int?, roundCorners: Int?
+        view: ImageView,
+        uri: Uri?,
+        placeholderRes: Int?,
+        roundCorners: Int?,
+        @DimenRes roundCornersDimenRes: Int?
     ) {
         uri ?: return
-        val config = DisplayConfig.create()
+
+        val requestOptions = RequestOptions()
         if (placeholderRes != null && placeholderRes > 0) {
-            config.setLoadingPlaceholder(placeholderRes)
-            config.setErrorPlaceholder(placeholderRes)
+            requestOptions.placeholder(placeholderRes)
+            requestOptions.error(placeholderRes)
+        }
+
+        if (roundCorners != null && roundCorners > 0) {
+            requestOptions.transform(RoundedCorners(roundCorners))
+        }
+
+        if (roundCornersDimenRes != null) {
+            val dimensionPixelOffset = view.resources.getDimensionPixelOffset(roundCornersDimenRes)
+            requestOptions.transform(RoundedCorners(dimensionPixelOffset))
         }
         if (roundCorners != null && roundCorners > 0) {
-            config.setRoundedCornersRadius(roundCorners)
+            requestOptions.transform(RoundedCorners(roundCorners))
         }
-        GlideImageLoader().display(view, Source.createWithUri(uri), config)
+        Glide.with(view).setDefaultRequestOptions(requestOptions).load(uri).into(view)
+    }
+
+    @SuppressLint("CheckResult")
+    private fun display(
+        view: ImageView,
+        source: Any,
+        loadByImageLoader: Boolean,
+        placeholderRes: Int?,
+        @DimenRes roundCornersDimenRes: Int?,
+        roundCorners: Int?,
+        withCrossFade: Boolean
+    ) {
+        val url = if (source is String) {
+            source
+        } else if (source is Int) {
+            if (loadByImageLoader) "drawable://$source" else source.toString()
+        } else {
+            return
+        }
+        if (loadByImageLoader) {
+            val options = DisplayImageOptions.Builder().cacheInMemory(true)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+            if (placeholderRes != null && placeholderRes > 0) {
+                options.showImageOnLoading(placeholderRes).resetViewBeforeLoading(true)
+            }
+            if (withCrossFade) {
+                options.displayer(FadeInBitmapDisplayer(400))
+            }
+            ImageLoader.getInstance()
+                .displayImage(
+                    url,
+                    view,
+                    options.build()
+                )
+        } else {
+            val requestOptions = RequestOptions()
+            if (placeholderRes != null && placeholderRes > 0) {
+                requestOptions.placeholder(placeholderRes)
+                requestOptions.error(placeholderRes)
+            }
+
+            if (roundCorners != null && roundCorners > 0) {
+                requestOptions.transform(RoundedCorners(roundCorners))
+            }
+
+            if (roundCornersDimenRes != null) {
+                val dimensionPixelOffset =
+                    view.resources.getDimensionPixelOffset(roundCornersDimenRes)
+                requestOptions.transform(RoundedCorners(dimensionPixelOffset))
+            }
+
+            val loader = if (source is Int) {
+                Glide.with(view).setDefaultRequestOptions(requestOptions).load(url.toInt())
+            } else {
+                Glide.with(view).setDefaultRequestOptions(requestOptions).load(url)
+            }
+
+            if (withCrossFade) {
+                loader.diskCacheStrategy(DiskCacheStrategy.ALL).transition(DrawableTransitionOptions.withCrossFade()).into(view)
+            } else {
+                loader.diskCacheStrategy(DiskCacheStrategy.ALL).into(view)
+            }
+        }
     }
 }
 
