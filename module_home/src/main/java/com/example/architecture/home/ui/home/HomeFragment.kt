@@ -37,12 +37,14 @@ import com.example.architecture.home.R
 import com.example.architecture.home.common.Constant.TAB_1
 import com.example.architecture.home.common.Constant.TAB_2
 import com.example.architecture.home.common.Constant.TAB_3
+import com.example.architecture.home.common.Constant.TAB_4
 import com.example.architecture.home.databinding.FragHomeBinding
 import com.example.architecture.home.repository.HomeApiRepository
 import com.example.architecture.home.ui.home.album.AlbumFragment
 import com.example.architecture.home.ui.home.lyrics.LyricsFragment
-import com.example.architecture.home.ui.home.playlist.PlayListFragment
+import com.example.architecture.home.ui.home.square.SquareWithRecyclerViewFragment
 import com.example.architecture.home.ui.home.recommend.RecommendFragment
+import com.example.architecture.home.ui.home.square.SquareWithViewPagerFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,7 +66,8 @@ class HomeFragment : BaseFragment() {
     private val recommendFragment by lazy { newFragment<RecommendFragment>() }
     private val albumFragment by lazy { newFragment<AlbumFragment>() }
     private val lyricsFragment by lazy { newFragment<LyricsFragment>() }
-    private val playListFragment by lazy { newFragment<PlayListFragment>() }
+    private val squareWithRvFragment by lazy { newFragment<SquareWithRecyclerViewFragment>() }
+    private val squareWithVpFragment by lazy { newFragment<SquareWithViewPagerFragment>() }
 
     private val model by viewModels<HomeViewModel>()
 
@@ -93,7 +96,8 @@ class HomeFragment : BaseFragment() {
                     return when (position) {
                         TAB_1 -> recommendFragment
                         TAB_2 -> albumFragment
-                        TAB_3 -> playListFragment
+                        TAB_3 -> squareWithRvFragment
+                        TAB_4 -> squareWithVpFragment
                         else -> throw IllegalArgumentException("createFragment error!")
                     }
                 }

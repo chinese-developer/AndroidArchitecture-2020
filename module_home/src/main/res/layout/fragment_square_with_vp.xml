@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingDefaultResource">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -15,17 +14,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.home.playlist.PlayListFragment">
+        tools:context=".ui.home.square.SquareWithViewPagerFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
             android:layout_marginStart="@dimen/spacing_normal"
             android:layout_marginTop="@dimen/padding_normal"
             android:layout_marginEnd="@dimen/spacing_normal"
             android:layout_marginBottom="@dimen/spacing_micro"
+            android:layout_weight="4"
             android:background="@drawable/shape_white_solid_corners_10"
             android:elevation="@dimen/z_card">
 
@@ -34,9 +33,9 @@
                 android:layout_height="match_parent"
                 android:roundCornersDimenRes="@{R.dimen.item_card_corners}"
                 android:scaleType="fitXY"
-                android:src="@{R.mipmap.bg_album_china_top_100}"
+                android:src="@{R.mipmap.bg_album_china_top_100_hk}"
                 tools:ignore="ContentDescription"
-                tools:src="@mipmap/bg_album_bsb" />
+                tools:src="@mipmap/bg_album_china_top_100_hk" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -56,16 +55,15 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 tools:listitem="@layout/item_group" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_secondary"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp_secondary"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:orientation="vertical"
                 android:overScrollMode="never"
                 android:scrollbars="none"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintLeft_toRightOf="@+id/rv_primary"
-                app:layout_constraintRight_toRightOf="parent"
-                tools:listitem="@layout/item_cover_count_2" />
+                app:layout_constraintRight_toRightOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.app.base.widget.FixDragLinearLayout>

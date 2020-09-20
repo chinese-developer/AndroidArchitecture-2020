@@ -1,4 +1,4 @@
-package com.example.architecture.home.ui.home.playlist
+package com.example.architecture.home.ui.home.square
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
-import com.android.base.TagsFactory
 import com.android.base.app.fragment.BaseFragment
 import com.android.base.utils.adapter.RecyclerViewScrollHelper
 import com.android.base.utils.android.views.getStringArray
@@ -17,14 +16,13 @@ import com.android.base.widget.adapter.animation.SlideInTopItemAnimation
 import com.android.base.widget.adapter.utils.setup
 import com.app.base.widget.dialog.mdstyle.util.MDUtil.waitForHeight
 import com.example.architecture.home.R
-import com.example.architecture.home.databinding.FragmentPlayListBinding
+import com.example.architecture.home.databinding.FragmentSquareWithRvBinding
 import com.example.architecture.home.ui.model.*
 import com.example.architecture.home.ui.model.home.ItemTitle
-import timber.log.Timber
 
-class PlayListFragment : BaseFragment() {
+class SquareWithRecyclerViewFragment : BaseFragment() {
 
-    private lateinit var binding: FragmentPlayListBinding
+    private lateinit var binding: FragmentSquareWithRvBinding
 
     private var isDragging = false
     private var lastVisibleItemPosition: Int = 0
@@ -36,7 +34,7 @@ class PlayListFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPlayListBinding.inflate(inflater, container, false)
+        binding = FragmentSquareWithRvBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
@@ -61,23 +59,16 @@ class PlayListFragment : BaseFragment() {
                     setSelectItemPosition(0)
                     addType<ItemTitle>(R.layout.item_group)
                     onBind {
-                        val container = findView<CardView>(R.id.container)
-
                         val model = getModel() as ItemTitle
                         model.checked = isSelected
 
-                        with(container.layoutParams as RecyclerView.LayoutParams) {
-                            var top = 8
-                            var bottom = 8
-                            if (modelPosition == 0) {
-                                top = 16
-                            } else if (modelPosition == itemCount - 1) {
-                                bottom = 16
-                            }
-                            setMargins(32, top, 4, bottom)
-                            height = (measuredHeight - (itemCount * (top + bottom))) / itemCount
-                        }
+                        findView<CardView>(R.id.container).adjustAndAverageHeight(
+                            position = modelPosition,
+                            itemCount = itemCount,
+                            newHeight = measuredHeight
+                        )
                     }
+
                     addFastClickable(R.id.container)
                     onClick {
                         notifyItemChangedSelectedPosition(
@@ -85,7 +76,7 @@ class PlayListFragment : BaseFragment() {
                             lastSelectedPosition = lastVisibleItemPosition
                         )
                         lastVisibleItemPosition = modelPosition
-                            RecyclerViewScrollHelper.smoothScrollToPosition(
+                        RecyclerViewScrollHelper.smoothScrollToPosition(
                             rvSecondary,
                             LinearSmoothScroller.SNAP_TO_START,
                             modelPosition
@@ -93,7 +84,7 @@ class PlayListFragment : BaseFragment() {
                     }
                 }
 
-                primaryAdapter.models = primaryItems()
+                primaryAdapter.models = fetchPrimaryItems()
             }
         }
     }
@@ -143,10 +134,10 @@ class PlayListFragment : BaseFragment() {
                         val firstVisibleItemPosition =
                             secondaryLayoutManager.findFirstVisibleItemPosition()
                         if (lastVisibleItemPosition != firstVisibleItemPosition && firstVisibleItemPosition >= 0) {
-                                primaryAdapter.notifyItemChangedSelectedPosition(
-                                    currentSelectedPosition = firstVisibleItemPosition,
-                                    lastSelectedPosition = lastVisibleItemPosition
-                                )
+                            primaryAdapter.notifyItemChangedSelectedPosition(
+                                currentSelectedPosition = firstVisibleItemPosition,
+                                lastSelectedPosition = lastVisibleItemPosition
+                            )
                             lastVisibleItemPosition = firstVisibleItemPosition
                             rvPrimary.smoothScrollToPosition(firstVisibleItemPosition)
                         }
@@ -156,24 +147,8 @@ class PlayListFragment : BaseFragment() {
         }
     }
 
-    private fun primaryItems(): MutableList<ItemTitle> {
-        return mutableListOf<ItemTitle>().apply {
-            secondaryItems().forEachIndexed { index, item ->
-                add(ItemTitle(name = item.title, index == 0))
-            }
-        }
-    }
 
-    private val titleArrays = getStringArray(R.array.group_title)
 
-    private fun secondaryItems(): List<BaseModel> {
-        return listOf(
-            Model(titleArrays[0]),
-            DoubleItemModel(titleArrays[1]),
-            ThreeItemModel(titleArrays[2]),
-            FourItemModel(titleArrays[3]),
-            FiveItemModel(titleArrays[4]),
-            SixItemModel(titleArrays[5])
-        )
-    }
+
+
 }
