@@ -61,7 +61,6 @@ class PlayListFragment : BaseFragment() {
                     setSelectItemPosition(0)
                     addType<ItemTitle>(R.layout.item_group)
                     onBind {
-                        Timber.tag(TagsFactory.debug).d("itemId:$itemId")
                         val container = findView<CardView>(R.id.container)
 
                         val model = getModel() as ItemTitle
