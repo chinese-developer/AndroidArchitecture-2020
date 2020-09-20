@@ -1,11 +1,14 @@
 package com.example.architecture.home.ui.home.square
 
 import android.view.View
+import android.view.View.OVER_SCROLL_NEVER
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.android.base.utils.android.views.getStringArray
 import com.example.architecture.home.R
 import com.example.architecture.home.ui.model.*
 import com.example.architecture.home.ui.model.home.ItemTitle
+
 
 fun View.adjustAndAverageHeight(position: Int, itemCount: Int, newHeight: Int) {
     with(layoutParams as RecyclerView.LayoutParams) {
@@ -39,4 +42,8 @@ fun secondaryItems(): List<BaseModel> {
         FiveItemModel(titleArrays[4]),
         SixItemModel(titleArrays[5])
     )
+}
+
+fun ViewPager2.setOverScrollModeNever() {
+    (getChildAt(0) as? RecyclerView)?.overScrollMode = OVER_SCROLL_NEVER
 }

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import com.android.base.app.fragment.BaseFragment
 import com.android.base.utils.adapter.RecyclerViewScrollHelper
-import com.android.base.utils.android.views.getStringArray
 import com.android.base.widget.adapter.BindingAdapter
 import com.android.base.widget.adapter.animation.SlideInTopItemAnimation
 import com.android.base.widget.adapter.utils.setup
@@ -41,10 +40,10 @@ class SquareWithRecyclerViewFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initPrimaryAdapter()
         initSecondaryAdapter()
         listeners()
+
     }
 
     private fun listeners() {
@@ -146,9 +145,5 @@ class SquareWithRecyclerViewFragment : BaseFragment() {
             })
         }
     }
-
-
-
-
 
 }

@@ -45,6 +45,7 @@ import com.example.architecture.home.ui.home.lyrics.LyricsFragment
 import com.example.architecture.home.ui.home.square.SquareWithRecyclerViewFragment
 import com.example.architecture.home.ui.home.recommend.RecommendFragment
 import com.example.architecture.home.ui.home.square.SquareWithViewPagerFragment
+import com.example.architecture.home.ui.home.square.setOverScrollModeNever
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -119,7 +120,8 @@ class HomeFragment : BaseFragment() {
                 }
             })
 
-            viewPager.offscreenPageLimit = 2 // 至少预加载2屏，保证滑到下一页不会造成卡顿。
+            viewPager.setOverScrollModeNever()
+            viewPager.offscreenPageLimit = tabsArr.size
             viewPager.currentItem = TAB_1
         }
     }

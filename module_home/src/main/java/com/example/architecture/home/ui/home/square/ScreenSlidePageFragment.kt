@@ -4,21 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
 import com.android.base.app.fragment.BaseFragment
 import com.android.base.widget.adapter.BindingAdapter
-import com.android.base.widget.adapter.animation.SlideInTopItemAnimation
+import com.android.base.widget.adapter.animation.SlideScaleYItemAnimation
 import com.android.base.widget.adapter.utils.linear
 import com.android.base.widget.adapter.utils.setup
+import com.app.base.AppContext
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentScreenSlidePageBinding
 import com.example.architecture.home.ui.model.*
+import kotlin.properties.Delegates
 
 
 class ScreenSlidePageFragment : BaseFragment() {
 
     private lateinit var binding: FragmentScreenSlidePageBinding
-
     private lateinit var adapter: BindingAdapter
+
+    private var whoAmI by Delegates.notNull<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,19 +37,23 @@ class ScreenSlidePageFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        whoAmI = arguments?.getString(KEY_FOR_WHICH_PAGE)?.toInt() ?: 0
+
         initAdapter()
+
+        AppContext.get().appDataSource.eventBus().mayStartAnim.observe(viewLifecycleOwner, {
+            if (whoAmI == it && lifecycle.currentState == Lifecycle.State.STARTED) {
+                adapter.notifyDataSetChanged()
+            }
+        })
     }
 
     private fun initAdapter() {
         binding.apply {
-            val position = arguments?.getString(KEY_FOR_DATA)?.toInt() ?: 0
             adapter = list.linear(scrollEnabled = false).setup {
-                setHasStableIds(true)
-                setAnimation(SlideInTopItemAnimation(10f))
-                setDuration(1000)
+                setDuration(370)
                 isFirstOnly(false)
-
-                when (position) {
+                when (whoAmI) {
                     0 -> addType<Model>(R.layout.item_cover_count_1)
                     1 -> addType<DoubleItemModel>(R.layout.item_cover_count_2)
                     2 -> addType<ThreeItemModel>(R.layout.item_cover_count_3)
@@ -55,6 +63,8 @@ class ScreenSlidePageFragment : BaseFragment() {
                 }
 
                 onBind {
+                    setAnimation(SlideScaleYItemAnimation())
+
                     when (itemViewType) {
                         R.layout.item_cover_count_2 -> {
 
@@ -66,7 +76,7 @@ class ScreenSlidePageFragment : BaseFragment() {
                 }
             }
 
-            val model = when (position) {
+            val model = when (whoAmI) {
                 0 -> Model("")
                 1 -> DoubleItemModel("")
                 2 -> ThreeItemModel("")
@@ -81,6 +91,7 @@ class ScreenSlidePageFragment : BaseFragment() {
     }
 
     companion object {
-        const val KEY_FOR_DATA = "key_for_data"
+        const val KEY_FOR_WHICH_PAGE = "key_for_data"
     }
+
 }

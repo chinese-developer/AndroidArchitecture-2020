@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
-        android:id="@+id/container"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.home.square.ScreenSlidePageFragment">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:scrollbars="none"
-            tools:listitem="@layout/item_cover_count_6" />
-
-    </FrameLayout>
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        tools:context=".ui.home.square.ScreenSlidePageFragment"
+        tools:listitem="@layout/item_cover_count_6" />
 
 </layout>
 

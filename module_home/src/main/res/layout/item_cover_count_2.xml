@@ -30,8 +30,8 @@
             android:layout_marginTop="@dimen/spacing_micro"
             android:layout_marginEnd="@dimen/spacing_normal"
             android:layout_marginBottom="@dimen/spacing_micro"
-            android:elevation="@dimen/z_card"
             android:background="@drawable/shape_white_solid_corners_10"
+            android:elevation="@dimen/z_card"
             app:layout_constraintBottom_toBottomOf="@+id/mid_horizontal"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -53,8 +53,8 @@
             android:layout_marginTop="@dimen/spacing_micro"
             android:layout_marginEnd="@dimen/spacing_normal"
             android:layout_marginBottom="@dimen/spacing_micro"
-            android:elevation="@dimen/z_card"
             android:background="@drawable/shape_white_solid_corners_10"
+            android:elevation="@dimen/z_card"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mid_horizontal">
 

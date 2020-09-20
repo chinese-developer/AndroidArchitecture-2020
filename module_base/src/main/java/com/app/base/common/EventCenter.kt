@@ -13,10 +13,15 @@ class EventCenter @Inject constructor() {
 
     /** 将听过的歌曲放入最近播放列表里，如果已经存在则忽略 */
     private val _mayAddNewMusicToPlayedList = MutableLiveData<Any>()
+    private val _mayStartAnim = MutableLiveData<Int>()
 
     fun notifyPlayedListSetDataChanged() = _mayAddNewMusicToPlayedList.postValue(1)
+    fun startAnim(whichFragment: Int) = _mayStartAnim.postValue(whichFragment)
 
     val mayAddNewMusicToPlayedList: LiveData<Any>
         get() = _mayAddNewMusicToPlayedList
+
+    val mayStartAnim: LiveData<Int>
+        get() = _mayStartAnim
 
 }

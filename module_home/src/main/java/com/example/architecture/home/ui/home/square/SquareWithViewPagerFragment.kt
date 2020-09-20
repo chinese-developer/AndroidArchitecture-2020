@@ -14,16 +14,16 @@ import com.android.base.app.fragment.BaseFragment
 import com.android.base.utils.android.views.newFragment
 import com.android.base.widget.adapter.BindingAdapter
 import com.android.base.widget.adapter.utils.setup
+import com.app.base.AppContext
 import com.app.base.widget.dialog.mdstyle.util.MDUtil.waitForHeight
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentSquareWithVpBinding
-import com.example.architecture.home.ui.home.square.ScreenSlidePageFragment.Companion.KEY_FOR_DATA
+import com.example.architecture.home.ui.home.square.ScreenSlidePageFragment.Companion.KEY_FOR_WHICH_PAGE
 import com.example.architecture.home.ui.model.home.ItemTitle
 
 class SquareWithViewPagerFragment : BaseFragment() {
 
     private lateinit var binding: FragmentSquareWithVpBinding
-
     private lateinit var primaryAdapter: BindingAdapter
 
     private var lastVisibleItemPosition: Int = 0
@@ -73,6 +73,7 @@ class SquareWithViewPagerFragment : BaseFragment() {
                         )
                         lastVisibleItemPosition = modelPosition
                         vpSecondary.currentItem = modelPosition
+                        AppContext.get().appDataSource.eventBus().startAnim(modelPosition)
                     }
                 }
 
@@ -83,12 +84,14 @@ class SquareWithViewPagerFragment : BaseFragment() {
 
     private fun initSecondaryAdapter() {
         binding.apply {
-            vpSecondary.offscreenPageLimit = fetchPrimaryItems().size
+            val itemCount = fetchPrimaryItems().size
+            vpSecondary.offscreenPageLimit = itemCount
+            vpSecondary.setOverScrollModeNever()
             vpSecondary.adapter = object : FragmentStateAdapter(childFragmentManager, lifecycle) {
-                override fun getItemCount(): Int = fetchPrimaryItems().size
+                override fun getItemCount(): Int = itemCount
 
                 override fun createFragment(position: Int): Fragment {
-                    return newFragment<ScreenSlidePageFragment>(Pair(KEY_FOR_DATA, position.toString()))
+                    return newFragment<ScreenSlidePageFragment>(Pair(KEY_FOR_WHICH_PAGE, position.toString()))
                 }
             }
 

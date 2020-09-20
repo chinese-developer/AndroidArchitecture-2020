@@ -9,7 +9,7 @@ import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.LinearInterpolator
+import android.view.animation.*
 import androidx.annotation.IdRes
 import androidx.annotation.IntRange
 import androidx.annotation.LayoutRes
@@ -291,7 +291,7 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
     }
 
     /**
-     * true 每次都会执行，false 执行一次后不再执行
+     * true 执行一次后不再执行，false 每次都会执行
      */
     fun isFirstOnly(isFirstOnly: Boolean) {
         this.firstOnlyEnable = isFirstOnly
