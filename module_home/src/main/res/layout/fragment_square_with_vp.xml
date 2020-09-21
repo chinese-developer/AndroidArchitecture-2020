@@ -59,8 +59,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:overScrollMode="never"
-                android:scrollbars="none"
                 app:layout_constraintLeft_toRightOf="@+id/rv_primary"
                 app:layout_constraintRight_toRightOf="parent" />
 

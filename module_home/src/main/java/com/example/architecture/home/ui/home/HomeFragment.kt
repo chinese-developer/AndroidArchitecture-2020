@@ -26,6 +26,7 @@ import com.app.base.data.models.Song
 import com.app.base.service.DownLoadJobService
 import com.app.base.service.DownLoadJobService.Companion.HANDLER_MSG_WHAT_DOWNLOAD
 import com.app.base.toast
+import com.app.base.utils.ext.setOverScrollModeNever
 import com.app.base.widget.dialog.mdstyle.MaterialDialog
 import com.app.base.widget.dialog.mdstyle.core.LayoutMode
 import com.app.base.widget.dialog.mdstyle.core.bottomsheets.BottomSheet
@@ -45,7 +46,6 @@ import com.example.architecture.home.ui.home.lyrics.LyricsFragment
 import com.example.architecture.home.ui.home.square.SquareWithRecyclerViewFragment
 import com.example.architecture.home.ui.home.recommend.RecommendFragment
 import com.example.architecture.home.ui.home.square.SquareWithViewPagerFragment
-import com.example.architecture.home.ui.home.square.setOverScrollModeNever
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint

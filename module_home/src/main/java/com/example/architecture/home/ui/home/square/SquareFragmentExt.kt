@@ -43,7 +43,3 @@ fun secondaryItems(): List<BaseModel> {
         SixItemModel(titleArrays[5])
     )
 }
-
-fun ViewPager2.setOverScrollModeNever() {
-    (getChildAt(0) as? RecyclerView)?.overScrollMode = OVER_SCROLL_NEVER
-}

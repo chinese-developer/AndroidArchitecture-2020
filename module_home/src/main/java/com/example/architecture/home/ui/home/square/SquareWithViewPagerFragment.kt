@@ -15,6 +15,7 @@ import com.android.base.utils.android.views.newFragment
 import com.android.base.widget.adapter.BindingAdapter
 import com.android.base.widget.adapter.utils.setup
 import com.app.base.AppContext
+import com.app.base.utils.ext.setOverScrollModeNever
 import com.app.base.widget.dialog.mdstyle.util.MDUtil.waitForHeight
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentSquareWithVpBinding

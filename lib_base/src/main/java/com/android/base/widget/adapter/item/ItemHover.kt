@@ -6,9 +6,9 @@ package com.android.base.widget.adapter.item
 interface ItemHover {
     /**
      * 是否启用粘性头部
-     * [com.drake.brv.utils.RecyclerUtilsKt.linear]
-     * [com.drake.brv.utils.RecyclerUtilsKt.grid]
-     * [com.drake.brv.utils.RecyclerUtilsKt.staggered]
+     * [com.android.base.widget.adapter.utils.RecyclerUtilsKt.linear]
+     * [com.android.base.widget.adapter.utils.RecyclerUtilsKt.grid]
+     * [com.android.base.widget.adapter.utils.RecyclerUtilsKt.staggered]
      */
     var itemHover: Boolean
 }

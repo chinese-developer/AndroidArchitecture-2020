@@ -27,7 +27,7 @@ import com.android.base.widget.adapter.listener.DefaultItemTouchCallback
 import com.android.base.widget.adapter.listener.OnBindViewHolderListener
 import com.android.base.widget.adapter.listener.OnHoverAttachListener
 import com.android.base.widget.adapter.utils.BRV
-import com.drake.brv.listener.throttleClick
+import com.android.base.widget.adapter.listener.throttleClick
 import kotlin.properties.Delegates
 
 /**
@@ -35,10 +35,10 @@ import kotlin.properties.Delegates
  *
  * 一行代码添加多类型 [addType]
  * 数据模型可以为任何对象 [models]
- * 通过接口实现来扩展功能 [com.drake.brv.item]
+ * 通过接口实现来扩展功能 [com.android.base.widget.adapter.item]
  * 快速添加触摸事件(防抖点击/快速点击/长按/选择/侧滑/拖拽)
  * 强大的分组/展开/折叠/粘性头部/递归深度/动画/组position [expandOrCollapse]
- * 自定义列表动画 [setAnimation] 默认动画 [com.drake.brv.animation]
+ * 自定义列表动画 [setAnimation] 默认动画 [com.android.base.widget.adapter.animation]
  * 头布局/脚布局 [addHeader] [addFooter]
  * 快速设置分隔物
  * 缺省页 [PageRefreshLayout]
@@ -61,7 +61,7 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
         示例:
             <variable
                 name="m"
-                type="com.drake.brv.sample.mod.CheckModel" />
+                type="com.android.base.widget.adapter.sample.mod.CheckModel" />
 
         则应在Application中的[onCreate]函数内设置:
             BindingAdapter.modelId = BR.m

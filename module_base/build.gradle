@@ -122,8 +122,8 @@ dependencies {
     api 'org.greenrobot:eventbus:3.2.0'
 
     // UI
-    // https://github.com/Tencent/QMUI_Android
-    api "com.qmuiteam:qmui:${versions.qmui}"
+    // https://github.com/lihangleo2/ShadowLayout
+    api "com.github.lihangleo2:ShadowLayout:${versions.shadowLayout}"
     // https://github.com/code-mc/material-icon-lib
     api 'net.steamcrafted:materialiconlib:1.1.5'
     // https://github.com/chenBingX/SuperTextView
