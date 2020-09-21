@@ -22,6 +22,7 @@ abstract class AppBaseActivity : BaseActivity(), AutoDisposeLifecycleOwnerEx {
 
         RouterManager.inject(this)
     }
+
     protected open fun tintStatusBar() = true
     protected open fun enableStatusBarLightMode() = false
 

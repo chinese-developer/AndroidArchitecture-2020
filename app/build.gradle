@@ -71,6 +71,18 @@ android {
         }
     }
 
+    sourceSets {
+        main {
+            if (rootProject.isMultiApp) {
+                manifest.srcFile 'src/app_fake/AndroidManifest.xml'
+            } else {
+                java.srcDirs += "src/main/java"
+                res.srcDirs += "src/main/res"
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+
     signingConfigs {
         release {
             v1SigningEnabled true
@@ -166,4 +178,8 @@ dependencies {
         implementation "com.google.android.material:material:${versions.material}"
 
     }
+}
+
+repositories {
+    mavenCentral()
 }

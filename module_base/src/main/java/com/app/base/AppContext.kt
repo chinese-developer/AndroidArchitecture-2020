@@ -179,7 +179,7 @@ fun Activity.serviceFactoryWithoutToken() = AppContext.serviceFactoryWithoutToke
  * 设置使用DialogObserver默认弹出的加载对话框
  * 默认使用系统自带的ProgressDialog
  */
-fun CoroutineContext.Dialog(block: (DialogCoroutineScope.(context: FragmentActivity) -> Dialog)) {
+fun CoroutineContext.dialog(block: (DialogCoroutineScope.(context: FragmentActivity) -> Dialog)) {
     AppContext.onDialog = block
 }
 

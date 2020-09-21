@@ -3,8 +3,6 @@ package com.example.architecture.home.ui.home
 import android.app.SharedElementCallback
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
-import androidx.databinding.DataBindingUtil
 import com.app.base.app.AppBaseActivity
 import com.bumptech.glide.Glide
 import com.example.architecture.home.R
@@ -13,8 +11,6 @@ import kotlinx.android.synthetic.main.test.*
 
 @AndroidEntryPoint
 class TestActivity : AppBaseActivity() {
-
-    private val mViewModel: HomeViewModel by viewModels()
 
     var id: Int = 0
 
@@ -32,7 +28,7 @@ class TestActivity : AppBaseActivity() {
 //        setContentView(binding.root)
 //        binding.lifecycleOwner = this
 
-        id = intent.extras?.getInt("key" ) ?: 0
+        id = intent.extras?.getInt("key") ?: 0
 
         Glide.with(this)
             .load(R.mipmap.ic_empty_music)
