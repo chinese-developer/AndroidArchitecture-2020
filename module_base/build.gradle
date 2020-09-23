@@ -121,13 +121,12 @@ dependencies {
     // EventBus
     api 'org.greenrobot:eventbus:3.2.0'
 
-    // UI
+    // UI ------------------------------------------------------------------------
+
     // https://github.com/lihangleo2/ShadowLayout
     api "com.github.lihangleo2:ShadowLayout:${versions.shadowLayout}"
     // https://github.com/code-mc/material-icon-lib
     api 'net.steamcrafted:materialiconlib:1.1.5'
-    // https://github.com/chenBingX/SuperTextView
-//    api "com.github.chenBingX:SuperTextView:${versions.superTextView}"
     // https://github.com/kyleduo/SwitchButton
     api "com.kyleduo.switchbutton:library:${versions.switchbutton}"
     // https://github.com/yshrsmz/KeyboardVisibilityEvent

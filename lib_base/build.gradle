@@ -59,8 +59,6 @@ dependencies {
     api "androidx.recyclerview:recyclerview:${versions.recyclerview}"
     api "com.google.android.material:material:${versions.material}"
     api "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
-    api "androidx.navigation:navigation-fragment:${versions.navigation}"
-    api "androidx.navigation:navigation-ui:${versions.navigation}"
     api "androidx.arch.core:core-runtime:${versions.arch}"
     api "androidx.arch.core:core-common:${versions.arch}"
     api "androidx.lifecycle:lifecycle-common:${versions.lifecycle}"
@@ -101,9 +99,6 @@ dependencies {
     api "com.github.bumptech.glide:glide:${versions.glide}"
     api "com.github.bumptech.glide:okhttp3-integration:${versions.glide}"
     api "de.hdodenhof:circleimageview:${versions.circleImageView}"
-
-    // image loader
-    api "com.nostra13.universalimageloader:universal-image-loader:${versions.imageloader}"
 
     // SmartRefreshLayout
     api "com.scwang.smart:refresh-layout-kernel:${versions.smartRefreshLayout}"
