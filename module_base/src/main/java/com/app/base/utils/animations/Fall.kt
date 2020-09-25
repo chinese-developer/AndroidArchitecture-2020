@@ -13,24 +13,24 @@ import android.view.View
 
 
 fun View.allEnter(duration: Long = 500L): AnimatorSet {
-    return AnimatorSet().apply {
-        playTogether(
+    return AnimatorSet().also {
+        it.playTogether(
                 ObjectAnimator.ofFloat(this, "scaleX", 2f, 1.5f, 1f).setDuration(duration),
                 ObjectAnimator.ofFloat(this, "scaleY", 2f, 1.5f, 1f).setDuration(duration),
                 ObjectAnimator.ofFloat(this, "alpha", 0f, 1f).setDuration(duration)
         )
-        this.duration = duration
+        it.duration = duration
     }
 }
 
 fun View.fallRotateEnter(duration: Long = 500L): AnimatorSet {
-    return AnimatorSet().apply {
-        playTogether(
+    return AnimatorSet().also {
+        it.playTogether(
                 ObjectAnimator.ofFloat(this, "scaleX", 2f, 1.5f, 1f),
                 ObjectAnimator.ofFloat(this, "scaleY", 2f, 1.5f, 1f),
                 ObjectAnimator.ofFloat(this, "rotation", 45f, 0f),
                 ObjectAnimator.ofFloat(this, "alpha", 0f, 1f)
         )
-        this.duration = duration
+        it.duration = duration
     }
 }

@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.observe
 import com.android.base.app.fragment.BaseFragment
 import com.android.base.widget.adapter.BindingAdapter
 import com.android.base.widget.adapter.animation.SlideScaleYItemAnimation
 import com.android.base.widget.adapter.utils.linear
 import com.android.base.widget.adapter.utils.setup
 import com.app.base.AppContext
+import com.app.base.utils.animations.*
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentScreenSlidePageBinding
 import com.example.architecture.home.ui.model.*
@@ -41,11 +44,11 @@ class ScreenSlidePageFragment : BaseFragment() {
 
         initAdapter()
 
-        AppContext.get().appDataSource.eventBus().mayStartAnim.observe(viewLifecycleOwner, {
+        AppContext.get().appDataSource.eventBus().mayStartAnim.observe(viewLifecycleOwner) {
             if (whoAmI == it && lifecycle.currentState == Lifecycle.State.STARTED) {
                 adapter.notifyDataSetChanged()
             }
-        })
+        }
     }
 
     private fun initAdapter() {
@@ -72,6 +75,31 @@ class ScreenSlidePageFragment : BaseFragment() {
                         R.layout.item_cover_count_3 -> {
 
                         }
+                    }
+                }
+
+                addClickable(
+                    R.id.cl_top_left_container,
+                    R.id.cl_top_right_container,
+                    R.id.cl_mid_left_container,
+                    R.id.cl_mid_right_container,
+                    R.id.cl_bottom_left_container,
+                    R.id.cl_bottom_right_container
+                )
+                onClick {
+                    when (it) {
+                        R.id.cl_top_left_container -> findView<ConstraintLayout>(R.id.cl_top_left_container).allEnter()
+                            .start()
+                        R.id.cl_top_right_container -> findView<ConstraintLayout>(R.id.cl_top_right_container).fallRotateEnter()
+                            .start()
+                        R.id.cl_mid_left_container -> findView<ConstraintLayout>(R.id.cl_mid_left_container).flipBottomEnter()
+                            .start()
+                        R.id.cl_mid_right_container -> findView<ConstraintLayout>(R.id.cl_mid_right_container).flipVerticalEnter()
+                            .start()
+                        R.id.cl_bottom_left_container -> findView<ConstraintLayout>(R.id.cl_bottom_left_container).flipVerticalSwingEnter()
+                            .start()
+                        R.id.cl_bottom_right_container -> findView<ConstraintLayout>(R.id.cl_bottom_right_container).flipHorizontalExit()
+                            .start()
                     }
                 }
             }

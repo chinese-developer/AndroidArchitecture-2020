@@ -13,19 +13,19 @@ import android.view.View
 
 
 fun View.fadeEnter(duration: Long = 500L): AnimatorSet {
-    return AnimatorSet().apply {
-        playTogether(
+    return AnimatorSet().also {
+        it.playTogether(
                 ObjectAnimator.ofFloat(this, "alpha", 0f, 1f)
         )
-        this.duration = duration
+        it.duration = duration
     }
 }
 
 fun View.fadeExit(duration: Long = 500L): AnimatorSet {
-    return AnimatorSet().apply {
-        playTogether(
+    return AnimatorSet().also {
+        it.playTogether(
                 ObjectAnimator.ofFloat(this, "alpha", 1f, 0f)
         )
-        this.duration = duration
+        it.duration = duration
     }
 }
