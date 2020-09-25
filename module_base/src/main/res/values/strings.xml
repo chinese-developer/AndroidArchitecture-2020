@@ -101,9 +101,15 @@
     <string name="nick_name_empty_tips">昵称不能为空！</string>
     <string name="child_nick_name_tips">昵称不能包含特殊字符</string>
     <string name="child_nick_length_ove_limit_tips">昵称长度不能超过8位</string>
-    <string name="username_empty_tips">用户名不能为空</string>
+    <string name="username_empty_tips">用户名不能为空！</string>
+    <string name="real_name_empty_tips">真实姓名不能为空！</string>
+    <string name="real_name_error_tips">请输入2–15位中文姓名。特殊字符无法填写，可联系客服进行处理。</string>
+    <string name="real_name_length_ove_limit_tips">用户名长度在2–15位之间</string>
     <string name="username_name_tips">用户名必须包含字母和数字，不能包含特殊字符</string>
     <string name="username_length_ove_limit_tips">用户名长度在8–16位之间</string>
+    <string name="email_empty_tips">邮箱地址不能为空！</string>
+    <string name="email_error_tips">邮箱地址不合法！</string>
+    <string name="email_length_ove_limit_tips">邮箱地址长度超出限制</string>
     <string name="error_search_text_must_be_not_null_tips">搜索内容不能为空！</string>
 
     <!-- ====================================其他提示==================================== -->
@@ -227,4 +233,5 @@
     <string name="actionbar_webview_collect">添加到收藏</string>
     <string name="actionbar_share">分享给朋友\(^o^)/~</string>
     <string name="picture_has_save_to">已保存至 %s</string>
+
 </resources>

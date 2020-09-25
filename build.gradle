@@ -138,3 +138,6 @@ ext {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+// type this when .gradle locked file
+// find ~/.gradle -type f -name "*.lock" | while read f; do rm $f; done
