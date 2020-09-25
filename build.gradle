@@ -139,5 +139,30 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+/**
+ * 根据不同平台用于动态生成发送 email 的文本信息.
+ * 手动执行: app/task/other/autoWritingEmailContent 或者 ./gradlew autoWritingEmailContent (chmod +x ./gradlew ..)
+ */
+task autoWritingEmailContent {
+    doLast {
+        android.applicationVariants.all { variant ->
+            variant.outputs.all {
+                def apkNameReplace = variant.flavorName
+                def versionNameReplace = variant.versionName
+                def platformReplace
+                if (apkNameReplace == "regular_platform") {
+                    platformReplace = "Regular"
+                } else {
+                    platformReplace = "Others"
+                }
+                exec {
+                    workingDir '../'
+                    commandLine "sh", "./sh/shell_email_content.sh", apkNameReplace, versionNameReplace, platformReplace
+                }
+            }
+        }
+    }
+}
+
 // type this when .gradle locked file
 // find ~/.gradle -type f -name "*.lock" | while read f; do rm $f; done
