@@ -3,10 +3,10 @@ buildscript {
         apply from: 'repositories.gradle',
                 to: scriptHandle
         ext.versions = [
-                'compileSdk'        : 29,
+                'compileSdk'        : 30,
                 'minSdk'            : 23,
-                'targetSdk'         : 29,
-                'buildToolsVersion' : '29.0.2',
+                'targetSdk'         : 30,
+                'buildToolsVersion' : '30.0.2',
                 'versionCode'       : 1000,
                 'versionName'       : "1.0.0",
                 'appcompat'         : '1.2.0',
