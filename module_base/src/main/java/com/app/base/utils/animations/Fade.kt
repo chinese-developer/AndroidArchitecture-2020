@@ -12,6 +12,7 @@ import android.animation.ObjectAnimator
 import android.view.View
 
 
+/** 点击闪烁一下 alpha 由 gone-> visible */
 fun View.fadeEnter(duration: Long = 500L): AnimatorSet {
     return AnimatorSet().also {
         it.playTogether(
@@ -21,6 +22,7 @@ fun View.fadeEnter(duration: Long = 500L): AnimatorSet {
     }
 }
 
+/** 点击闪烁一下 alpha 由 visible-> gone(消失,点击空白处可再次触发点击事件) */
 fun View.fadeExit(duration: Long = 500L): AnimatorSet {
     return AnimatorSet().also {
         it.playTogether(

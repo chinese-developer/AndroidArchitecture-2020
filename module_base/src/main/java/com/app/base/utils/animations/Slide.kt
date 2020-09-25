@@ -11,7 +11,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.view.View
 
-
+/** 上下缩小.抖动两下后逐渐放到最大 */
 fun View.slideBottomEnter(duration: Long = 500L): AnimatorSet {
     return AnimatorSet().also {
         it.playTogether(
@@ -33,6 +33,7 @@ fun View.slideLeftEnter(duration: Long = 500L): AnimatorSet {
     }
 }
 
+/** 屏幕右侧平移 250dp 进入 */
 fun View.slideRightEnter(duration: Long = 500L): AnimatorSet {
     val dm = context.resources.displayMetrics
     return AnimatorSet().also {
@@ -88,6 +89,7 @@ fun View.slideRightExit(duration: Long = 500L): AnimatorSet {
     }
 }
 
+/** 向上平移 250dp 后 彻底消失 */
 fun View.slideTopExit(duration: Long = 500L): AnimatorSet {
     val dm = context.resources.displayMetrics
     return AnimatorSet().also {

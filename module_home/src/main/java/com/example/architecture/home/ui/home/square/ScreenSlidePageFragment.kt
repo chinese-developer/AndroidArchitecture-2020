@@ -88,17 +88,17 @@ class ScreenSlidePageFragment : BaseFragment() {
                 )
                 onClick {
                     when (it) {
-                        R.id.cl_top_left_container -> findView<ConstraintLayout>(R.id.cl_top_left_container).allEnter()
+                        R.id.cl_top_left_container -> findView<ConstraintLayout>(R.id.cl_top_left_container).buttonPressedRubberBand()
                             .start()
-                        R.id.cl_top_right_container -> findView<ConstraintLayout>(R.id.cl_top_right_container).fallRotateEnter()
+                        R.id.cl_top_right_container -> findView<ConstraintLayout>(R.id.cl_top_right_container).buttonPressedScaleXY()
                             .start()
-                        R.id.cl_mid_left_container -> findView<ConstraintLayout>(R.id.cl_mid_left_container).flipBottomEnter()
+                        R.id.cl_mid_left_container -> findView<ConstraintLayout>(R.id.cl_mid_left_container).fadeExit()
                             .start()
-                        R.id.cl_mid_right_container -> findView<ConstraintLayout>(R.id.cl_mid_right_container).flipVerticalEnter()
+                        R.id.cl_mid_right_container -> findView<ConstraintLayout>(R.id.cl_mid_right_container).slideRightEnter()
                             .start()
-                        R.id.cl_bottom_left_container -> findView<ConstraintLayout>(R.id.cl_bottom_left_container).flipVerticalSwingEnter()
+                        R.id.cl_bottom_left_container -> findView<ConstraintLayout>(R.id.cl_bottom_left_container).zoomOutLeftExit()
                             .start()
-                        R.id.cl_bottom_right_container -> findView<ConstraintLayout>(R.id.cl_bottom_right_container).flipHorizontalExit()
+                        R.id.cl_bottom_right_container -> findView<ConstraintLayout>(R.id.cl_bottom_right_container).zoomOutExit()
                             .start()
                     }
                 }

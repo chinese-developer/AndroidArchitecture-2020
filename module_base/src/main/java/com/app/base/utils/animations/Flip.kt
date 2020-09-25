@@ -12,6 +12,7 @@ import android.animation.ObjectAnimator
 import android.view.View
 
 
+/** 从底部平移上方200dp==,像抓麻将牌 */
 fun View.flipBottomEnter(duration: Long = 500L): AnimatorSet {
     val dm = context.resources.displayMetrics
     return AnimatorSet().also {
@@ -77,6 +78,7 @@ fun View.flipTopEnter(duration: Long = 500L): AnimatorSet {
     }
 }
 
+/** 像上下两端, 只按压上端后, 下端翘起, 上端下压的效果 */
 fun View.flipVerticalEnter(duration: Long = 500L): AnimatorSet {
     return AnimatorSet().also {
         it.playTogether(ObjectAnimator.ofFloat(this, "rotationX", 90f, 0f))
@@ -84,6 +86,7 @@ fun View.flipVerticalEnter(duration: Long = 500L): AnimatorSet {
     }
 }
 
+/** 像上下两端, 只按压上端后, 下端翘起, 上端下压的效果. 最终加bounce抖动 */
 fun View.flipVerticalSwingEnter(duration: Long = 1000L): AnimatorSet {
     return AnimatorSet().also {
         it.playTogether(
@@ -94,6 +97,7 @@ fun View.flipVerticalSwingEnter(duration: Long = 1000L): AnimatorSet {
     }
 }
 
+/** 像左右两端, 只按压右端后的效果, 最终 view 彻底消失, 无法在触碰 */
 fun View.flipHorizontalExit(duration: Long = 500L): AnimatorSet {
     return AnimatorSet().also {
         it.playTogether(

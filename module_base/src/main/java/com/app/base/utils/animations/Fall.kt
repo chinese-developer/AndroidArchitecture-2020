@@ -11,7 +11,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.view.View
 
-
+/** 放大 -> 缩小 with alpha */
 fun View.allEnter(duration: Long = 500L): AnimatorSet {
     return AnimatorSet().also {
         it.playTogether(
@@ -23,6 +23,7 @@ fun View.allEnter(duration: Long = 500L): AnimatorSet {
     }
 }
 
+/** 放大 -> 缩小 with rotate */
 fun View.fallRotateEnter(duration: Long = 500L): AnimatorSet {
     return AnimatorSet().also {
         it.playTogether(

@@ -25,6 +25,7 @@ fun View.zoomInBottomEnter(duration: Long = 600L): AnimatorSet {
     }
 }
 
+/** 缩放, 由小到大 with alpha */
 fun View.zoomInEnter(duration: Long = 500L): AnimatorSet {
     return AnimatorSet().also {
         it.playTogether(
@@ -79,6 +80,7 @@ fun View.zoomInTopEnter(duration: Long = 600L): AnimatorSet {
     }
 }
 
+/** 缩放由大到小, 然后右下方向抛物线彻底消失 */
 fun View.zoomInExit(duration: Long = 600L): AnimatorSet {
     measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
     val h = measuredHeight.toFloat()
@@ -93,6 +95,7 @@ fun View.zoomInExit(duration: Long = 600L): AnimatorSet {
     }
 }
 
+/** 缩放由大到小, 消失(空白处可再次被点击事件触发) */
 fun View.zoomOutExit(duration: Long = 500L): AnimatorSet {
     return AnimatorSet().also {
         it.playTogether(
@@ -104,6 +107,7 @@ fun View.zoomOutExit(duration: Long = 500L): AnimatorSet {
     }
 }
 
+/** 缩放由大到小, 然后 translationY 下方消失 */
 fun View.zoomOutBottomExit(duration: Long = 600L): AnimatorSet {
     measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
     val h = measuredHeight.toFloat()
@@ -118,6 +122,7 @@ fun View.zoomOutBottomExit(duration: Long = 600L): AnimatorSet {
     }
 }
 
+/** 缩放由大到小, 然后上方平移消失 */
 fun View.zoomOutLeftExit(duration: Long = 1000L): AnimatorSet {
     measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
     val w = measuredWidth.toFloat()
