@@ -22,7 +22,7 @@
             android:id="@+id/album_art"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:transitionName="@string/transition_album_art"
             app:layout_constraintBottom_toTopOf="@+id/footer"
             app:layout_constraintTop_toTopOf="parent" />

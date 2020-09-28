@@ -193,10 +193,7 @@ class RecommendFragment : BaseFragment() {
                     }
                     return false
                 }
-            })
-
-            .into(albumArt)
-
+            }).into(albumArt)
     }
 
 }
