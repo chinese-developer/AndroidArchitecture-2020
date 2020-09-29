@@ -9,7 +9,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/vcilTilValidateCode"
         android:layout_width="match_parent"
-        style="@style/Widget.DaMi.TextEntry"
+        style="@style/Widget.Base.TextEntry"
         android:layout_height="wrap_content">
 
         <com.app.base.widget.text.FixedTextInputEditText

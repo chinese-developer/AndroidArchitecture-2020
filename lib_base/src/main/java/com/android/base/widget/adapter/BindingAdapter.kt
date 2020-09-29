@@ -182,6 +182,10 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
 
     val typePool = mutableMapOf<Class<*>, Any.(Int) -> Int>()
 
+    fun set(context: Context) {
+        this.context = context
+    }
+
     /**
      * 添加多类型
      */

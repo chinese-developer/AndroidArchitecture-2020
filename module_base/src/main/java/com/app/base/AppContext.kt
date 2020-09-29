@@ -98,6 +98,7 @@ open class AppContext : BaseAppContext() {
         // 基础库配置
         Sword.get()
             .registerLoadingFactory { AppLoadingView(it) } // 默认的通用的LoadingDialog和Toast实现
+            .setCrashProcessor { _, _ ->  }
             .setErrorClassifier(object : Sword.ErrorClassifier {
                 override fun isNetworkError(throwable: Throwable): Boolean {
                     Timber.tag(TagsFactory.okHttp).d(throwable)

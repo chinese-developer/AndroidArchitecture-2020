@@ -43,8 +43,8 @@ import com.example.architecture.home.databinding.FragHomeBinding
 import com.example.architecture.home.repository.HomeApiRepository
 import com.example.architecture.home.ui.home.album.AlbumFragment
 import com.example.architecture.home.ui.home.lyrics.LyricsFragment
-import com.example.architecture.home.ui.home.square.SquareWithRecyclerViewFragment
 import com.example.architecture.home.ui.home.recommend.RecommendFragment
+import com.example.architecture.home.ui.home.square.SquareWithRecyclerViewFragment
 import com.example.architecture.home.ui.home.square.SquareWithViewPagerFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
