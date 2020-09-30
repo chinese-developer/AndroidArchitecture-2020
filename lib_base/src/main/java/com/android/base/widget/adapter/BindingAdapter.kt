@@ -9,7 +9,9 @@ import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.*
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.LinearInterpolator
 import androidx.annotation.IdRes
 import androidx.annotation.IntRange
 import androidx.annotation.LayoutRes
@@ -19,6 +21,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.android.base.widget.adapter.animation.*
 import com.android.base.widget.adapter.annotaion.AnimationType
+import com.android.base.widget.adapter.annotaion.InterpolatorType
 import com.android.base.widget.adapter.item.ItemBind
 import com.android.base.widget.adapter.item.ItemExpand
 import com.android.base.widget.adapter.item.ItemHover
@@ -26,8 +29,8 @@ import com.android.base.widget.adapter.item.ItemPosition
 import com.android.base.widget.adapter.listener.DefaultItemTouchCallback
 import com.android.base.widget.adapter.listener.OnBindViewHolderListener
 import com.android.base.widget.adapter.listener.OnHoverAttachListener
-import com.android.base.widget.adapter.utils.BRV
 import com.android.base.widget.adapter.listener.throttleClick
+import com.android.base.widget.adapter.utils.BRV
 import kotlin.properties.Delegates
 
 /**
@@ -67,6 +70,22 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
             BindingAdapter.modelId = BR.m
         */
         var modelId: Int = BRV.modelId
+
+        const val LinearInterpolator = 0x00000001
+        const val DecelerateInterpolator = 0x00000002
+        const val AccelerateDecelerateInterpolator = 0x00000003
+
+        const val ALPHA = 0x00000004
+        const val SCALE = 0x00000005
+        const val SLIDE_BOTTOM = 0x00000006
+        const val SLIDE_TOP = 0x00000007
+        const val SLIDE_LEFT = 0x00000008
+        const val SLIDE_RIGHT = 0x00000009
+
+        const val VERTICAL = 0x000000010
+        const val HORIZONTAL = 0x000000011
+        const val GRID = 0x000000012
+
     }
 
 
@@ -166,9 +185,18 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
             val layoutPosition = holder.layoutPosition
             if (!firstOnlyEnable || lastPosition < layoutPosition) {
                 val animators = itemAnimation.getAnimators(holder.itemView)
-                animators.forEach {
+                val skipEnabled = skip != null
+                animators.forEachIndexed skip@{ index, it ->
+                    if (skipEnabled) {
+                        if (skip!!.contains(index)) return@skip
+                    }
                     it.setDuration(duration.toLong()).start()
-                    it.interpolator = linearInterpolator
+
+                    when (interpolatorType) {
+                        LinearInterpolator -> it.interpolator = linearInterpolator
+                        AccelerateDecelerateInterpolator -> it.interpolator = accelerateDecelerateInterpolator
+                        DecelerateInterpolator -> it.interpolator = decelerateInterpolator
+                    }
                 }
                 lastPosition = layoutPosition
             }
@@ -182,7 +210,7 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
 
     val typePool = mutableMapOf<Class<*>, Any.(Int) -> Int>()
 
-    fun set(context: Context) {
+    fun setContext(context: Context) {
         this.context = context
     }
 
@@ -276,6 +304,7 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
     private var lastPosition = -1
     private var currentSelectedPosition: Int = -1
     private var isFirst = true
+    private var skip: IntArray? = null
 
     // 是否启用条目动画
     private var animationEnabled = false
@@ -284,14 +313,22 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
     private var firstOnlyEnable = false
     private var duration: Int = 300
 
-    private val linearInterpolator = LinearInterpolator()
+    private val linearInterpolator by lazy { LinearInterpolator() }
+    private val decelerateInterpolator by lazy { DecelerateInterpolator() }
+    private val accelerateDecelerateInterpolator by lazy { AccelerateDecelerateInterpolator() }
+    private var interpolatorType = LinearInterpolator
 
     /**
      * 自定义条目的动画样式
      */
-    fun setAnimation(itemAnimation: ItemAnimation) {
+    fun setAnimation(itemAnimation: ItemAnimation, skip: IntArray? = null) {
         this.animationEnabled = true
         this.itemAnimation = itemAnimation
+        this.skip = skip
+    }
+
+    fun setInterpolator(@InterpolatorType interpolatorType: Int) {
+        this.interpolatorType = interpolatorType
     }
 
     /**
@@ -313,15 +350,15 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
     /**
      * 设置当前库自带的条目的动画样式
      */
-    fun setAnimation(animationType: AnimationType) {
+    fun setAnimation(@AnimationType animationType: Int) {
         this.animationEnabled = true
         when (animationType) {
-            AnimationType.ALPHA -> this.itemAnimation = AlphaItemAnimation()
-            AnimationType.SCALE -> this.itemAnimation = ScaleItemAnimation()
-            AnimationType.SLIDE_BOTTOM -> this.itemAnimation = SlideBottomItemAnimation()
-            AnimationType.SLIDE_LEFT -> this.itemAnimation = SlideLeftItemAnimation()
-            AnimationType.SLIDE_RIGHT -> this.itemAnimation = SlideRightItemAnimation()
-            AnimationType.SLIDE_TOP -> this.itemAnimation = SlideInTopItemAnimation()
+            ALPHA -> this.itemAnimation = AlphaItemAnimation()
+            SCALE -> this.itemAnimation = ScaleItemAnimation()
+            SLIDE_BOTTOM -> this.itemAnimation = SlideBottomItemAnimation()
+            SLIDE_LEFT -> this.itemAnimation = SlideLeftItemAnimation()
+            SLIDE_RIGHT -> this.itemAnimation = SlideRightItemAnimation()
+            SLIDE_TOP -> this.itemAnimation = SlideInTopItemAnimation()
         }
     }
 
@@ -877,7 +914,7 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
                 val view = itemView.findViewById<View>(longClickableId) ?: continue
                 view.setOnLongClickListener {
                     onLongClick?.invoke(this, view.id)
-                    true
+                    false
                 }
             }
         }

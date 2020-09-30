@@ -4,6 +4,6 @@ import androidx.annotation.IntDef
 import com.android.base.widget.adapter.BindingAdapter
 
 
-@IntDef(*[BindingAdapter.ALPHA, BindingAdapter.SCALE, BindingAdapter.SLIDE_BOTTOM, BindingAdapter.SLIDE_TOP, BindingAdapter.SLIDE_LEFT, BindingAdapter.SLIDE_RIGHT])
+@IntDef(*[BindingAdapter.LinearInterpolator, BindingAdapter.DecelerateInterpolator, BindingAdapter.AccelerateDecelerateInterpolator])
 @kotlin.annotation.Retention(AnnotationRetention.SOURCE)
-annotation class AnimationType
+annotation class InterpolatorType
