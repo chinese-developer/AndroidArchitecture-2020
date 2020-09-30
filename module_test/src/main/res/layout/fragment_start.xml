@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@id/ivBg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/bottom_url"
+        android:layout_width="@dimen/dp_219"
+        android:layout_height="@dimen/dp_53"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/ivBg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_27"
+            android:background="@drawable/start_shape_pic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@id/guide_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/dp_27" />
+
+        <ImageView
+            android:id="@id/iv_tital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dp_14"
+            android:src="@mipmap/icon_search_414655"
+            android:textSize="@dimen/dp_13"
+            app:layout_constraintBottom_toBottomOf="@id/guide_line"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@id/text_domain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_1"
+            android:fontFamily="@font/dinpro"
+            android:maxLines="1"
+            android:text="yabo10.com"
+            android:textColor="@color/color_text1"
+            android:textSize="@dimen/dp_15"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/guide_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@id/button4"
+            android:layout_width="@dimen/dp_33"
+            android:layout_height="@dimen/dp_35"
+            android:layout_marginTop="@dimen/dp_6"
+            android:background="@mipmap/icon_start_gesture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@id/fl_video_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone">
+
+        <com.yabo.livevideo.widget.media.LiveVideoView
+            android:id="@id/lvv_login_video"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clipChildren="false">
+
+            <ImageView
+                android:id="@id/ivPic"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="centerCrop" />
+        </com.yabo.livevideo.widget.media.LiveVideoView>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@id/rl_jump"
+        android:layout_width="@dimen/dp_75"
+        android:layout_height="@dimen/dp_25"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dp_36"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:background="@drawable/start_circle_bg"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@id/tv_jump_num"
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="fill_parent"
+            android:layout_alignEnd="@id/jump_divider_line"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/dinpro"
+            android:gravity="center"
+            android:textColor="@color/color_ffffff"
+            android:textSize="@dimen/sp_15" />
+
+        <View
+            android:id="@id/jump_divider_line"
+            android:layout_width="0.5dip"
+            android:layout_height="fill_parent"
+            android:layout_marginStart="@dimen/dp_25"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:background="@color/color_ffffff" />
+
+        <TextView
+            android:id="@id/tvJump"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_34"
+            android:gravity="center"
+            android:text="跳过"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@id/close_sound"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_36"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_10"
+        android:src="@mipmap/icon_volume_close"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@id/rl_jump"
+        app:layout_constraintTop_toTopOf="@id/ivBg" />
+</androidx.constraintlayout.widget.ConstraintLayout>

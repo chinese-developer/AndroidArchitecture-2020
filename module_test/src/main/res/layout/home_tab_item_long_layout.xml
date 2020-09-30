@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ImageView
+        android:id="@id/iv_bg_layer"
+        android:layout_width="0.0dip"
+        android:layout_height="@dimen/dp_0"
+        android:background="@mipmap/main_boxbg_large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@id/iv_bg_watermark_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_1"
+        android:layout_marginEnd="@dimen/dp_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@id/guide_line_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.27" />
+
+    <com.ty.allgame.tabcontent.ClipImageView
+        android:id="@id/iv_clip"
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guide_line_vertical"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@id/iv_left_icon"
+        android:layout_width="@dimen/dp_35"
+        android:layout_height="@dimen/dp_35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@id/iv_font_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/cl_lock_venue"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/with_alpha60"
+        android:visibility="gone">
+
+        <View
+            android:id="@id/view_lock_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_24"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:background="@drawable/venue_lock_fg" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@id/guide_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.46" />
+
+        <TextView
+            android:id="@id/tv_lock_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="维护中"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/guide_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/view_lock_bg" />
+
+        <View
+            android:id="@id/line_white"
+            android:layout_width="@dimen/dp_13"
+            android:layout_height="@dimen/dp_2"
+            android:background="@drawable/platform_lock_line"
+            app:layout_constraintBottom_toBottomOf="@id/view_lock_bg"
+            app:layout_constraintEnd_toEndOf="@id/view_lock_bg"
+            app:layout_constraintStart_toStartOf="@id/view_lock_bg"
+            app:layout_constraintTop_toBottomOf="@id/guide_line"
+            app:layout_constraintVertical_bias="0.35" />
+
+        <TextView
+            android:id="@id/tv_lock_m_d_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dinpro"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_8"
+            app:layout_constraintEnd_toStartOf="@id/line_white"
+            app:layout_constraintStart_toStartOf="@id/view_lock_bg"
+            app:layout_constraintTop_toBottomOf="@id/guide_line" />
+
+        <TextView
+            android:id="@id/tv_lock_m_d_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/dinpro"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_8"
+            app:layout_constraintEnd_toEndOf="@id/view_lock_bg"
+            app:layout_constraintStart_toEndOf="@id/line_white"
+            app:layout_constraintTop_toBottomOf="@id/guide_line" />
+
+        <TextView
+            android:id="@id/tv_lock_time_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_2"
+            android:fontFamily="@font/dinpro"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/view_lock_bg"
+            app:layout_constraintEnd_toStartOf="@id/line_white"
+            app:layout_constraintStart_toStartOf="@id/view_lock_bg"
+            app:layout_constraintTop_toBottomOf="@id/tv_lock_m_d_left"
+            app:layout_constraintVertical_bias="0.35" />
+
+        <TextView
+            android:id="@id/tv_lock_time_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_2"
+            android:fontFamily="@font/dinpro"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/view_lock_bg"
+            app:layout_constraintEnd_toEndOf="@id/view_lock_bg"
+            app:layout_constraintStart_toEndOf="@id/line_white"
+            app:layout_constraintTop_toBottomOf="@id/tv_lock_m_d_right"
+            app:layout_constraintVertical_bias="0.35" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

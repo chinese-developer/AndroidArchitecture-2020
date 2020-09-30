@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/wave_view" android:background="@drawable/shape_circle_dcbe9e" android:layout_width="@dimen/dp_46" android:layout_height="@dimen/dp_46" android:layout_marginTop="@dimen/dp_6" android:alpha="0.0" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <ImageView android:id="@id/title_img" android:layout_width="@dimen/dp_24" android:layout_height="@dimen/dp_24" android:layout_marginTop="@dimen/dp_11" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <View android:id="@id/view_red_point" android:background="@drawable/shape_red_point_db6372" android:visibility="gone" android:layout_width="@dimen/dp_6" android:layout_height="@dimen/dp_6" app:layout_constraintEnd_toEndOf="@id/title_img" app:layout_constraintTop_toTopOf="@id/title_img" />
+    <TextView android:textSize="@dimen/sp_10" android:textColor="@color/color_less2" android:id="@id/title_text" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/title_img" />
+</androidx.constraintlayout.widget.ConstraintLayout>

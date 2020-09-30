@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
+        android:layout_marginTop="@dimen/dp_23"
+        android:background="@drawable/bg_corners16_ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@id/base_dialog_container"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_icon">
+
+        <LinearLayout
+            android:id="@id/ll_Progress"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_25"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_3"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@id/startProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dinpro_medium"
+                android:gravity="center"
+                android:textColor="@color/color_a5a9b3"
+                android:textSize="12.0sp" />
+
+            <ProgressBar
+                android:id="@id/npb_progress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0.0dip"
+                android:layout_height="@dimen/dp_10"
+                android:layout_gravity="center"
+                android:layout_marginStart="10.0dip"
+                android:layout_marginTop="@dimen/dp_1_5"
+                android:layout_marginEnd="10.0dip"
+                android:layout_weight="1.0"
+                android:max="100"
+                android:progressDrawable="@drawable/progress_bg" />
+
+            <TextView
+                android:id="@id/tvProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/dinpro_medium"
+                android:gravity="center"
+                android:textColor="@color/color_a5a9b3"
+                android:textSize="12.0sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@id/tv_base_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_23"
+            android:paddingTop="@dimen/dp_18"
+            android:paddingEnd="@dimen/dp_23"
+            android:text="本次更新:"
+            android:textColor="@color/color_565656"
+            android:textSize="14.0sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@id/tv_dialog_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_23"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_marginEnd="@dimen/dp_23"
+            android:layout_marginBottom="@dimen/dp_33"
+            android:lineSpacingExtra="5.0dip"
+            android:maxHeight="@dimen/dp_200"
+            android:maxLines="5"
+            android:scrollbarThumbVertical="@drawable/bg_scroller_tumb"
+            android:scrollbars="vertical"
+            android:textColor="@color/color_a5a9b3"
+            android:textSize="14.0sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="15.0dip"
+            android:layout_marginEnd="15.0dip"
+            android:layout_marginBottom="20.0dip"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@id/tv_ignore"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_weight="1.0"
+                android:background="@drawable/shape_corners4_stroke1_ab9482"
+                android:gravity="center"
+                android:paddingTop="10.0dip"
+                android:paddingBottom="10.0dip"
+                android:text="@string/not_update"
+                android:textColor="@color/color_ab9482"
+                android:textSize="13.0sp" />
+
+            <TextView
+                android:id="@id/btn_update"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5.0dip"
+                android:layout_marginLeft="5.0dip"
+                android:layout_weight="1.0"
+                android:background="@drawable/btn_disable_corners_bg"
+                android:gravity="center"
+                android:paddingTop="10.0dip"
+                android:paddingBottom="10.0dip"
+                android:text="@string/update_now"
+                android:textColor="@color/white"
+                android:textSize="13.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@id/top_icon"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_92"
+        android:layout_marginTop="@dimen/dp_23"
+        android:background="@mipmap/update_topbg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@id/update_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_30"
+        android:src="@mipmap/update_icon"
+        app:layout_constraintDimensionRatio="152:122"
+        app:layout_constraintStart_toStartOf="@id/top_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/title_context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_177"
+        android:layout_marginTop="@dimen/dp_49"
+        android:includeFontPadding="false"
+        android:text="发现新版本"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/title_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_7"
+        android:includeFontPadding="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_14"
+        app:layout_constraintStart_toStartOf="@id/title_context"
+        app:layout_constraintTop_toBottomOf="@id/title_context" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:skin="http://schemas.android.com/android/skin"
+    android:id="@id/loading_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:focusable="true"
+    android:gravity="center"
+    android:minWidth="@dimen/dp_180"
+    android:minHeight="@dimen/dp_50"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/dp_10"
+        android:gravity="center"
+        android:padding="@dimen/dp_20"
+        skin:enable="true">
+
+        <com.ty.allgame.widget.GifImageView
+            android:id="@id/reg_req_code_gif_view"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48" />
+    </LinearLayout>
+</LinearLayout>

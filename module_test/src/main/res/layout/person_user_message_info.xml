@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/color_f2f6f6" android:layout_width="fill_parent" android:layout_height="fill_parent" skin:enable="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:skin="http://schemas.android.com/android/skin">
+    <include layout="@layout/custom_toolbar" />
+    <View android:background="#ff7e879b" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:orientation="vertical" android:background="@color/background_ffffff" android:padding="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" skin:enable="true">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="15.0dip">
+            <TextView android:textSize="12.0sp" android:textColor="@color/color_263440" android:id="@id/message_date" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2017-12-15 12:20:30" android:layout_alignParentRight="true" android:layout_centerVertical="true" skin:enable="true" />
+            <TextView android:textSize="15.0sp" android:textColor="@color/color_263440" android:id="@id/message_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="获取优惠信息列表" android:layout_toLeftOf="@id/message_date" android:layout_alignParentLeft="true" android:layout_centerVertical="true" skin:enable="true" />
+        </RelativeLayout>
+        <View android:background="@color/color_c5ccdc" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="10.0dip" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/color_263440" android:id="@id/message_content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:text="关机后我按时间更没矮冬瓜 阿尔哦我个加热我估计阿婆家GVaporeguja90regj" skin:enable="true" />
+    </LinearLayout>
+</LinearLayout>

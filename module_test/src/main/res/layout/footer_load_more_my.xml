@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/dp_30"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/ly_loading" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ProgressBar android:layout_width="@dimen/dp_20" android:layout_height="@dimen/dp_20" android:indeterminateDrawable="@drawable/footer_progress_draw" />
+        <TextView android:textSize="@dimen/dp_12" android:textColor="@color/text_808080" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_6" android:text="加载更多" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/dp_12" android:textColor="@color/text_808080" android:id="@id/tv_no_data" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="暂无更多数据" />
+    <TextView android:textSize="@dimen/dp_12" android:textColor="@color/text_808080" android:id="@id/tv_10_data" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已为您成功加载16条数据" />
+</RelativeLayout>

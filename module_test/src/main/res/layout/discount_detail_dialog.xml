@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_corners5_ffffff" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ll_top_view" android:padding="@dimen/dp_19" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/sp_16" android:textStyle="bold" android:textColor="@color/color_565656" android:id="@id/tv_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="优惠活动" />
+        <TextView android:textSize="@dimen/sp_14" android:textColor="@color/color_999999" android:id="@id/tv_content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_5" android:text="" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10">
+            <TextView android:textSize="@dimen/sp_16" android:textStyle="bold" android:textColor="@color/color_565656" android:id="@id/tv_amount_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="中心钱包：" />
+            <TextView android:textSize="@dimen/sp_17" android:textStyle="bold" android:textColor="@color/color_896A4B" android:id="@id/tv_amount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0.00 " />
+            <TextView android:textSize="@dimen/sp_12" android:textStyle="bold" android:textColor="@color/color_896A4B" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="元" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_5">
+            <TextView android:textSize="@dimen/sp_16" android:textStyle="bold" android:textColor="@color/color_565656" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选择场馆：" />
+            <TextView android:textSize="@dimen/sp_16" android:textColor="@color/color_999999" android:id="@id/tv_venue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_5">
+            <TextView android:textSize="@dimen/sp_16" android:textStyle="bold" android:textColor="@color/color_565656" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选择类型：" />
+            <TextView android:textSize="@dimen/sp_16" android:textColor="@color/color_999999" android:id="@id/tv_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_db6372" android:id="@id/tv_tips" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_5" android:text="转账金额不能大于中心钱包余额" />
+        <EditText android:textSize="@dimen/dp_12" android:textColor="@color/c333333" android:textColorHint="@color/color_999999" android:gravity="center_vertical" android:id="@id/et_amount" android:background="@drawable/bg_edittext_color_eeeeee" android:paddingLeft="@dimen/dp_10" android:paddingRight="@dimen/dp_10" android:layout_width="fill_parent" android:layout_height="@dimen/dp_45" android:layout_marginTop="@dimen/dp_5" android:hint="输入金额" android:maxLength="32" android:inputType="numberDecimal" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/ll_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_19" android:layout_marginRight="@dimen/dp_19" android:layout_marginBottom="@dimen/dp_20">
+        <TextView android:textSize="15.0dip" android:textColor="@color/color_ab9482" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/left_button" android:background="@drawable/shape_corners4_stroke1_ab9482" android:focusable="false" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="取消" android:layout_weight="1.0" android:layout_marginEnd="@dimen/dp_5" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/background_ffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/right_button" android:background="@drawable/selector_btn_next" android:focusable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="下一步" android:layout_weight="1.0" android:layout_marginStart="@dimen/dp_5" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:skin="http://schemas.android.com/android/skin"
+    android:id="@id/rl_root"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/dp_50"
+    android:background="@color/background_ffffff"
+    android:clickable="true"
+    android:descendantFocusability="blocksDescendants"
+    android:minHeight="@dimen/dp_50"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/dp_17"
+    android:paddingRight="@dimen/dp_17"
+    skin:enable="true">
+
+    <ImageView
+        android:id="@id/bank_icon"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/bank_icon_abc"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/bank_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/dp_5"
+        android:layout_toEndOf="@id/bank_icon"
+        android:gravity="center"
+        android:textColor="@color/color_4a4a4a"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bank_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/bank_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/dp_5"
+        android:layout_toEndOf="@id/bank_name"
+        android:gravity="center"
+        android:textColor="@color/color_9b9b9b"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bank_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@id/icon_right"
+        android:layout_width="16.0dip"
+        android:layout_height="16.0dip"
+        android:layout_alignBottom="@id/bank_number"
+        android:layout_alignParentEnd="true"
+        android:src="@mipmap/icon_no_selected"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/bank_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bank_number" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dip"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_eeeeee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

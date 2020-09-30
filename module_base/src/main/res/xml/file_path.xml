@@ -3,22 +3,26 @@
 
     <files-path
         name="app_internal"
-        path="/"/>
+        path="/" />
 
     <cache-path
         name="app_internal_cache"
-        path="/"/>
+        path="/" />
 
     <external-cache-path
         name="app_external_cache"
-        path="/"/>
+        path="/" />
 
     <external-files-path
         name="app_external"
-        path="/"/>
+        path="/" />
 
     <external-path
         name="app_external"
-        path="/"/>
+        path="/" />
+
+    <external-path
+        name="external_files"
+        path="." />
 
 </paths>

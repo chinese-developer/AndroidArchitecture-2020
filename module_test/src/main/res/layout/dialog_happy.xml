@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:paddingStart="@dimen/dp_39"
+    android:paddingEnd="@dimen/dp_39">
+
+    <View
+        android:id="@id/hot_game_close"
+        android:layout_width="@dimen/dp_28"
+        android:layout_height="@dimen/dp_28"
+        android:background="@mipmap/hot_game_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/tv_hot_game_change_batch_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_1"
+        android:text="换一批"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_12"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/hot_game_close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/hot_game_close" />
+
+    <ImageView
+        android:id="@id/hot_game_change_batch_image"
+        android:layout_width="@dimen/dp_65"
+        android:layout_height="@dimen/dp_28"
+        android:paddingStart="@dimen/dp_41"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingEnd="@dimen/dp_4"
+        android:paddingBottom="@dimen/dp_4"
+        android:src="@mipmap/hot_game_change_batch"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/hot_game_close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/hot_game_close" />
+
+    <View
+        android:id="@id/hot_game_image_background"
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip"
+        android:layout_marginTop="@dimen/dp_13"
+        android:layout_marginEnd="@dimen/dp_3"
+        android:background="@mipmap/shengri"
+        app:layout_constraintDimensionRatio="280:400"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hot_game_close" />
+
+    <TextView
+        android:id="@id/birthday_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_29"
+        android:layout_marginTop="@dimen/dp_229"
+        android:lineSpacingExtra="2.0sp"
+        android:text="亲爱的用户"
+        android:textColor="#fffffdfc"
+        android:textSize="@dimen/sp_14"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_229"
+        android:lineSpacingExtra="2.0sp"
+        android:textColor="#ff967757"
+        android:textSize="@dimen/sp_14"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/birthday_tip"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/birthday_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_257"
+        android:fontFamily="@font/dinpro_medium"
+        android:lineSpacingExtra="8.0sp"
+        android:paddingStart="@dimen/dp_30"
+        android:paddingEnd="@dimen/dp_30"
+        android:textColor="#ffffffff"
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintEnd_toEndOf="@id/hot_game_image_background"
+        app:layout_constraintStart_toStartOf="@id/hot_game_image_background"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/tv_start"
+        android:layout_width="0.0dip"
+        android:layout_height="@dimen/dp_45"
+        android:layout_marginStart="@dimen/dp_19"
+        android:layout_marginTop="@dimen/dp_373"
+        android:layout_marginEnd="@dimen/dp_19"
+        android:layout_marginBottom="@dimen/dp_25"
+        android:background="@drawable/bg_ffffff_r22"
+        android:gravity="center"
+        android:text="领取生日礼盒"
+        android:textColor="@color/color_b1987f"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/hot_game_image_background"
+        app:layout_constraintEnd_toEndOf="@id/hot_game_image_background"
+        app:layout_constraintStart_toStartOf="@id/hot_game_image_background"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_193"
+        android:layout_marginEnd="@dimen/dp_30"
+        android:lineSpacingExtra="@dimen/dp_8"
+        android:textColor="#ffffffff"
+        android:textSize="@dimen/dp_12"
+        app:layout_constraintEnd_toEndOf="@id/hot_game_image_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/birthday_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>

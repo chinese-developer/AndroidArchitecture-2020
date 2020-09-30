@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_common_bg">
+
+    <TextView
+        android:id="@id/tv_bank_notice_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:gravity="center_horizontal"
+        android:textColor="@color/color_414655"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/tv_bank_notice_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:gravity="center_horizontal"
+        android:maxLines="10"
+        android:scrollbarThumbVertical="@drawable/bg_scroller_tumb"
+        android:scrollbars="vertical"
+        android:textColor="@color/color_a5a9b3"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_bank_notice_title"
+        app:layout_goneMarginTop="@dimen/dp_20" />
+
+    <View
+        android:id="@id/divide_line"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_0_5"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@color/color_eeeeee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_bank_notice_content" />
+
+    <TextView
+        android:id="@id/btn_bank_notice_confirm"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_49"
+        android:gravity="center"
+        android:textColor="@color/color_main2"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/red_button"
+        app:layout_constraintTop_toBottomOf="@id/divide_line" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/dp_15" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0dip" android:textColor="@color/c_7e7e7e" android:gravity="center|top" android:id="@id/tv_name" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="25414" android:layout_weight="1.0" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/c_7e7e7e" android:gravity="center|top" android:id="@id/tv_value" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="1.请转帐时必须填写“附言”内容,否则无法到帐\n2.转帐金额必须与订单金额一致，否则无法到帐\n3.支付宝账号不定期更换，每次转账请根据提交订单的支付宝号进行转账，切勿直接转账到之前的支付宝号，否则无法到账，概不负责！" android:layout_weight="1.0" />
+</LinearLayout>

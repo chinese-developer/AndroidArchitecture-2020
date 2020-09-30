@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/lay_container" android:background="@drawable/feed_back_background" android:layout_width="fill_parent" android:layout_height="@dimen/dp_74" android:paddingStart="@dimen/dp_14">
+        <TextView android:textSize="@dimen/dp_16" android:textColor="@color/color_414655" android:id="@id/txtTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <TextView android:textSize="@dimen/dp_16" android:textColor="@color/color_b1987f" android:id="@id/txtRight" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:background="@color/color_f8f8f8" android:layout_width="fill_parent" android:layout_height="@dimen/dp_0_5" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/list_view" android:background="@color/color_white" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/dp_260" android:overScrollMode="never" />
+</LinearLayout>

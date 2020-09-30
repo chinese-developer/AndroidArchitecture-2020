@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/cl_item_root" android:background="@drawable/shape_corners5_stroke1_eeeeee" android:layout_width="fill_parent" android:layout_height="@dimen/dp_35" android:minWidth="@dimen/dp_58"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginStart="@dimen/dp_3" android:layout_marginEnd="@dimen/dp_3" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+        <ImageView android:id="@id/iv_pay_vc" android:layout_width="@dimen/dp_18" android:layout_height="@dimen/dp_18" />
+        <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_414655" android:gravity="center" android:id="@id/tv_pay_vc" android:descendantFocusability="blocksDescendants" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:fontFamily="@font/dinpro_medium" android:layout_marginStart="@dimen/dp_3" />
+    </LinearLayout>
+    <ImageView android:id="@id/imageSelected" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ico_box_selected_label_flag" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

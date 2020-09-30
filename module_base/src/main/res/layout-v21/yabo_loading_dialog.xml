@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/dialog_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:minWidth="180.0dip"
+    android:minHeight="50.0dip"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/yabo_toast_bg"
+        android:elevation="10.0dip"
+        android:gravity="center"
+        android:padding="20.0dip">
+
+        <ProgressBar
+            android:id="@id/reg_req_code_gif_view"
+            android:layout_width="23.0dip"
+            android:layout_height="23.0dip"
+            android:indeterminateBehavior="repeat"
+            android:indeterminateDrawable="@drawable/yabo_balance_loading" />
+
+        <TextView
+            android:id="@id/tipTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="10.0dip"
+            android:text="请稍后…"
+            android:textColor="@color/yabonet_white"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

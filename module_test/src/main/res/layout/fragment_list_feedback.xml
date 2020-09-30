@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/title_feedback_14sp" />
+    <View android:id="@id/top_view" android:background="@color/color_EEEEEE" android:layout_width="fill_parent" android:layout_height="@dimen/dp_10" />
+    <FrameLayout android:orientation="vertical" android:id="@id/cl_content" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_999999" android:gravity="center_horizontal" android:id="@id/tv_tip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_20" android:text="请选择您想要咨询的问题类型" app:layout_constraintHorizontal_bias="0.0" />
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/rv_list" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" android:layout_marginStart="@dimen/dp_32" android:layout_marginEnd="@dimen/dp_32" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

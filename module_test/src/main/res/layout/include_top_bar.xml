@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="48.0dip"
+    android:background="@android:color/transparent"
+    android:clickable="true">
+
+    <ImageView
+        android:id="@id/btn_back"
+        android:layout_width="48.0dip"
+        android:layout_height="fill_parent"
+        android:layout_centerVertical="true"
+        android:background="@drawable/selector_back_press"
+        android:padding="16.0dip"
+        android:src="@mipmap/icon_picker_back" />
+
+    <TextView
+        android:id="@id/tv_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="图片"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="#ff414655"
+        android:textSize="18.0sp" />
+
+    <Button
+        android:id="@id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8.0dip"
+        android:layout_marginRight="8.0dip"
+        android:background="#ffdccab8"
+        android:minWidth="48.0dip"
+        android:minHeight="30.0dip"
+        android:paddingLeft="16.0dip"
+        android:paddingRight="16.0dip"
+        android:text="完成(0/3)"
+        android:textColor="#ffffffff"
+        android:textSize="14.0sp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@id/btn_del"
+        android:layout_width="48.0dip"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/selector_back_press"
+        android:padding="12.0dip"
+        android:src="@mipmap/icon_feedcat_delete_white"
+        android:visibility="gone" />
+</RelativeLayout>

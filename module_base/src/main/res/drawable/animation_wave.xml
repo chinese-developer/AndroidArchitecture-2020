@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="40" android:drawable="@drawable/wave_01" />
+    <item android:duration="40" android:drawable="@drawable/wave_02" />
+    <item android:duration="40" android:drawable="@drawable/wave_03" />
+    <item android:duration="40" android:drawable="@drawable/wave_04" />
+    <item android:duration="40" android:drawable="@drawable/wave_05" />
+    <item android:duration="40" android:drawable="@drawable/wave_06" />
+    <item android:duration="40" android:drawable="@drawable/wave_07" />
+    <item android:duration="40" android:drawable="@drawable/wave_08" />
+    <item android:duration="40" android:drawable="@drawable/wave_09" />
+    <item android:duration="40" android:drawable="@drawable/wave_10" />
+    <item android:duration="40" android:drawable="@drawable/wave_11" />
+    <item android:duration="40" android:drawable="@drawable/wave_12" />
+    <item android:duration="40" android:drawable="@drawable/wave_13" />
+    <item android:duration="40" android:drawable="@drawable/wave_14" />
+    <item android:duration="40" android:drawable="@drawable/wave_15" />
+    <item android:duration="40" android:drawable="@drawable/wave_16" />
+    <item android:duration="40" android:drawable="@drawable/wave_17" />
+    <item android:duration="40" android:drawable="@drawable/wave_18" />
+    <item android:duration="40" android:drawable="@drawable/wave_19" />
+    <item android:duration="40" android:drawable="@drawable/wave_20" />
+    <item android:duration="40" android:drawable="@drawable/wave_21" />
+    <item android:duration="40" android:drawable="@drawable/wave_22" />
+    <item android:duration="40" android:drawable="@drawable/wave_23" />
+    <item android:duration="40" android:drawable="@drawable/wave_24" />
+    <item android:duration="40" android:drawable="@drawable/wave_25" />
+</animation-list>

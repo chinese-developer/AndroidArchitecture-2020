@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/flItemRoot" android:background="@drawable/shape_corners5_stroke1_d2b79c" android:layout_width="fill_parent" android:layout_height="@dimen/dp_62"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/dp_62">
+        <ImageView android:id="@id/imageBankIcon" android:layout_width="@dimen/dp_25" android:layout_height="@dimen/dp_25" android:src="@mipmap/ico_onlinepay" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/color_414655" android:id="@id/txtItemBankName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_1" />
+        <TextView android:textSize="9.0sp" android:textColor="@color/color_db6372" android:id="@id/txtItemOffers" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_1" />
+    </LinearLayout>
+    <ImageView android:id="@id/imageSelected" android:layout_width="@dimen/dp_15" android:layout_height="@dimen/dp_15" android:src="@mipmap/ico_box_selected_label_flag" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/iv_recommend" android:visibility="gone" android:layout_width="@dimen/dp_28" android:layout_height="@dimen/dp_30" android:layout_marginTop="-1.0dip" android:src="@mipmap/icon_recommend" android:layout_alignParentRight="true" />
+</RelativeLayout>

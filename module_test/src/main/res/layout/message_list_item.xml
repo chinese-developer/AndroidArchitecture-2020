@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/color_f8faff" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ll_message" android:background="@drawable/corners" android:padding="@dimen/dp_14" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_17" android:layout_marginRight="@dimen/dp_16">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/sp_11" android:textColor="@color/text_808080" android:id="@id/message_date_right" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_5" android:layout_marginTop="@dimen/dp_5" android:text="2017-12-15 12:20:30" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/sp_14" android:textColor="@color/text_282f33" android:ellipsize="end" android:id="@id/message_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="获取优惠信息列表" android:singleLine="true" android:layout_toLeftOf="@id/message_date_right" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/sp_11" android:textColor="@color/text_808080" android:id="@id/message_date" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_5" android:layout_marginBottom="@dimen/dp_5" />
+        <TextView android:textSize="@dimen/sp_13" android:textColor="@color/text_808080" android:id="@id/message_content" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

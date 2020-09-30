@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/dp_10"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RadioGroup android:orientation="vertical" android:id="@id/rb_layout" android:animationCache="true" android:layout_width="@dimen/dp_65" android:layout_height="fill_parent" android:adjustViewBounds="true" android:checkedButton="@id/rb_ybty" android:layout_marginStart="@dimen/dp_9">
+        <com.ty.allgame.widget.ShadowViewGroup android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" app:containerCornerRadius="@dimen/dp_16" app:containerDeltaLength="@dimen/dp_3" app:containerShadowColor="@color/color_33000000" app:containerShadowRadius="@dimen/dp_3" app:deltaX="0.0dip" app:deltaY="@dimen/dp_2" app:enable="true">
+            <com.ty.allgame.tabcontent.ImageRadioButton android:id="@id/rb_ybty" android:layout_width="fill_parent" android:layout_height="fill_parent" android:checked="true" android:text="体育" app:drawableLeft="@drawable/tab_yabotiyu_icon_selector" app:drawableSizes="@dimen/dp_40" style="@style/tab_short_style" />
+        </com.ty.allgame.widget.ShadowViewGroup>
+        <com.ty.allgame.widget.ShadowViewGroup android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" app:containerCornerRadius="@dimen/dp_16" app:containerDeltaLength="@dimen/dp_3" app:containerShadowColor="@color/color_33000000" app:containerShadowRadius="@dimen/dp_3" app:deltaX="0.0dip" app:deltaY="@dimen/dp_4" app:enable="true">
+            <com.ty.allgame.tabcontent.ImageRadioButton android:id="@id/rb_zryl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="真人" app:drawableLeft="@drawable/tab_zhenrenyule_icon_selector" app:drawableSizes="@dimen/dp_40" style="@style/tab_short_style" />
+        </com.ty.allgame.widget.ShadowViewGroup>
+        <com.ty.allgame.widget.ShadowViewGroup android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" app:containerCornerRadius="@dimen/dp_16" app:containerDeltaLength="@dimen/dp_3" app:containerShadowColor="@color/color_33000000" app:containerShadowRadius="@dimen/dp_3" app:deltaX="0.0dip" app:deltaY="@dimen/dp_2" app:enable="true">
+            <com.ty.allgame.tabcontent.ImageRadioButton android:id="@id/rb_cptz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="彩票" app:drawableLeft="@drawable/tab_caipiaotouzhu_icon_selector" app:drawableSizes="@dimen/dp_40" style="@style/tab_short_style" />
+        </com.ty.allgame.widget.ShadowViewGroup>
+        <com.ty.allgame.widget.ShadowViewGroup android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" app:containerCornerRadius="@dimen/dp_16" app:containerDeltaLength="@dimen/dp_3" app:containerShadowColor="@color/color_33000000" app:containerShadowRadius="@dimen/dp_3" app:deltaX="0.0dip" app:deltaY="@dimen/dp_2" app:enable="true">
+            <com.ty.allgame.tabcontent.ImageRadioButton android:id="@id/rb_ybdj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="电竞" app:drawableLeft="@drawable/tab_yabodianjin_icon_selector" app:drawableSizes="@dimen/dp_40" style="@style/tab_short_style" />
+        </com.ty.allgame.widget.ShadowViewGroup>
+        <com.ty.allgame.widget.ShadowViewGroup android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" app:containerCornerRadius="@dimen/dp_16" app:containerDeltaLength="@dimen/dp_3" app:containerShadowColor="@color/color_33000000" app:containerShadowRadius="@dimen/dp_3" app:deltaX="0.0dip" app:deltaY="@dimen/dp_2" app:enable="true">
+            <com.ty.allgame.tabcontent.ImageRadioButton android:id="@id/rb_pydw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="电子" app:drawableLeft="@drawable/tab_puyudianwan_icon_selector" app:drawableSizes="@dimen/dp_40" style="@style/tab_short_style" />
+        </com.ty.allgame.widget.ShadowViewGroup>
+        <com.ty.allgame.widget.ShadowViewGroup android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" app:containerCornerRadius="@dimen/dp_16" app:containerDeltaLength="@dimen/dp_3" app:containerShadowColor="@color/color_33000000" app:containerShadowRadius="@dimen/dp_3" app:deltaX="0.0dip" app:deltaY="@dimen/dp_2" app:enable="true">
+            <com.ty.allgame.tabcontent.ImageRadioButton android:id="@id/rb_qpyx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="棋牌" app:drawableLeft="@drawable/tab_qipaiyouxi_icon_selector" app:drawableSizes="@dimen/dp_40" style="@style/tab_short_style" />
+        </com.ty.allgame.widget.ShadowViewGroup>
+    </RadioGroup>
+    <com.ty.allgame.tabcontent.VerticalPager android:id="@id/view_pager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

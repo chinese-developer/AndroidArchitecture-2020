@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent">
+
+    <View
+        android:id="@id/bg_mask_shadow"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_200"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_margin_top" />
+
+    <com.ty.allgame.tabcontent.TabItemCompoLayout
+        android:id="@id/item_game_view"
+        style="@style/venue_lock_big"
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip"
+        android:layout_marginStart="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_13"
+        app:font_gravity="left"
+        app:font_margin_left="@dimen/dp_11"
+        app:font_margin_top="@dimen/dp_21"
+        app:layout_constraintBottom_toBottomOf="@id/bg_mask_shadow"
+        app:layout_constraintEnd_toEndOf="@id/bg_mask_shadow"
+        app:layout_constraintStart_toStartOf="@id/bg_mask_shadow"
+        app:layout_constraintTop_toTopOf="@id/bg_mask_shadow" />
+
+    <View
+        android:id="@id/item_margin_top"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_2"
+        android:background="@color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

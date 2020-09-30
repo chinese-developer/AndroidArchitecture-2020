@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/line" android:visibility="gone" layout="@layout/layout_10dp_header" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/dp_70">
+        <LinearLayout android:gravity="right" android:id="@id/ll_left_cb" android:layout_width="@dimen/dp_0" android:layout_height="fill_parent">
+            <library.SmoothCheckBox android:layout_gravity="center_vertical" android:id="@id/smoothCheckBox" android:layout_width="@dimen/dp_20" android:layout_height="@dimen/dp_20" android:layout_marginLeft="@dimen/dp_14" app:cb_stroke_width="1.0dip" app:color_checked="@color/color_main2" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/ll_content" android:layout_width="fill_parent" android:layout_height="@dimen/dp_70">
+            <FrameLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/dp_14">
+                <ImageView android:id="@id/iv_icon" android:layout_width="@dimen/dp_32" android:layout_height="@dimen/dp_32" />
+                <View android:layout_gravity="center|right|top" android:id="@id/v_unread" android:background="@drawable/simple_count_badge_bg" android:visibility="gone" android:layout_width="@dimen/dp_8" android:layout_height="@dimen/dp_8" />
+            </FrameLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/dp_10">
+                <View android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                <androidx.constraintlayout.widget.ConstraintLayout android:orientation="horizontal" android:id="@id/ll_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/dp_14">
+                    <TextView android:textSize="@dimen/sp_14" android:textStyle="bold" android:textColor="@color/color_text1" android:ellipsize="end" android:id="@id/tv_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" android:layout_marginEnd="@dimen/dp_5" app:layout_constrainedWidth="true" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@id/tv_tips" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintHorizontal_chainStyle="packed" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                    <TextView android:textSize="@dimen/sp_9" android:textColor="@color/color_db6372" android:layout_gravity="left" android:id="@id/tv_tips" android:background="@drawable/shape_line_db6372_bg" android:paddingLeft="@dimen/dp_5" android:paddingRight="@dimen/dp_5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="重要" android:layout_marginEnd="@dimen/dp_5" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@id/iv_right_top_tip" app:layout_constraintStart_toEndOf="@id/tv_title" app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView android:layout_gravity="center" android:id="@id/iv_right_top_tip" android:background="@mipmap/icon_message_pin" android:visibility="gone" android:layout_width="@dimen/dp_12" android:layout_height="@dimen/dp_12" android:layout_marginEnd="@dimen/dp_5" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@id/tv_time" app:layout_constraintStart_toEndOf="@id/tv_tips" app:layout_constraintTop_toTopOf="parent" />
+                    <TextView android:textSize="@dimen/sp_10" android:textColor="#ff999999" android:layout_gravity="left" android:id="@id/tv_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/dinpro" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_3" android:layout_marginEnd="@dimen/dp_14">
+                    <TextView android:textSize="@dimen/sp_12" android:textColor="#ff9b9b9b" android:ellipsize="end" android:id="@id/tv_content" android:layout_width="0.0dip" android:layout_height="wrap_content" android:lines="1" android:layout_weight="1.0" />
+                </LinearLayout>
+                <View android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                <View android:id="@id/view3" android:background="@color/line_ececec" android:layout_width="fill_parent" android:layout_height="@dimen/dp_0_5" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

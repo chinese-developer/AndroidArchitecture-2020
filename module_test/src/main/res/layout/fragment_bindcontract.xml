@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" skin:enable="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:skin="http://schemas.android.com/android/skin">
+    <include layout="@layout/custom_toolbar" />
+    <View android:background="@color/color_eeeeee" android:layout_width="fill_parent" android:layout_height="@dimen/dp_0_5" />
+    <TextView android:id="@id/tv_error_msg" style="@style/bind_info_error" />
+    <TextView android:background="@color/color_white" android:layout_width="fill_parent" android:layout_height="@dimen/dp_20" />
+    <com.ty.allgame.widget.PersonBindView android:id="@id/personBindView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_14" android:layout_marginRight="@dimen/dp_14" app:etBingHintValue="请输入邮箱账号" app:etCode="请输入邮箱验证码" app:tvBingKey="邮箱账号" app:tvBingKey2="邮箱验证码" />
+    <include layout="@layout/layout_bottom_tips" />
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/wap_custom_toolbar" />
+    <FrameLayout android:id="@id/fl" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@id/refresh" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.ty.allgame.widget.MyWebview android:id="@id/webView" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        <include android:visibility="gone" layout="@layout/loading_dialog" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/iv_full" android:paddingLeft="@dimen/dp_20" android:paddingRight="@dimen/dp_20" android:paddingBottom="@dimen/dp_30" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/icon_game_showall" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:alpha="0.0" />
+        <com.ty.allgame.widget.H5Progress android:id="@id/web_progress" android:layout_width="fill_parent" android:layout_height="@dimen/dp_2" />
+    </FrameLayout>
+    <com.ty.allgame.widget.YaboEmptyView android:id="@id/emptyView" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

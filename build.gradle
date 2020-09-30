@@ -105,6 +105,9 @@ buildscript {
             maven { url uri('repo') }
             google()
         }
+        ext {
+            kotlin_version = '1.4.0'
+        }
         dependencies {
             // android
             classpath 'com.android.tools.build:gradle:4.0.1'

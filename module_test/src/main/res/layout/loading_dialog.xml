@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/loading_view" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minWidth="@dimen/dp_180" android:minHeight="@dimen/dp_50"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:skin="http://schemas.android.com/android/skin">
+    <LinearLayout android:gravity="center" android:padding="@dimen/dp_20" android:layout_width="wrap_content" android:layout_height="wrap_content" skin:enable="true">
+        <com.ty.allgame.widget.GifImageView android:id="@id/reg_req_code_gif_view" android:layout_width="@dimen/dp_48" android:layout_height="@dimen/dp_48" />
+    </LinearLayout>
+</LinearLayout>

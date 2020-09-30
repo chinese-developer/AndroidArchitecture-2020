@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/ll_choice_pic" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/dp_10" android:layout_marginEnd="@dimen/dp_10">
+        <TextView android:textSize="@dimen/dp_20" android:textColor="#ff007aff" android:gravity="center" android:id="@id/tv_album" android:background="@drawable/bg_check_white_r13_top" android:layout_width="fill_parent" android:layout_height="@dimen/dp_58" android:text="相册" />
+        <View android:background="@color/color_d6d6d6" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <TextView android:textSize="@dimen/dp_20" android:textColor="#ff007aff" android:gravity="center" android:id="@id/tv_photograph" android:background="@drawable/bg_check_white_r13_bottom" android:layout_width="fill_parent" android:layout_height="@dimen/dp_58" android:text="拍照" />
+        <TextView android:textSize="@dimen/dp_20" android:textColor="#ff007aff" android:gravity="center" android:id="@id/tv_cancel" android:background="@drawable/bg_check_white_r13" android:layout_width="fill_parent" android:layout_height="@dimen/dp_58" android:layout_marginTop="@dimen/dp_10" android:layout_marginBottom="8.0dip" android:text="取消" />
+    </LinearLayout>
+</LinearLayout>

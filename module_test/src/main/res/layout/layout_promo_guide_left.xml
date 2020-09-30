@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/iv_guide" android:layout_width="@dimen/dp_248" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_20" android:src="@mipmap/bg_recharge_guide_left" android:adjustViewBounds="true" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <TextView android:id="@id/tv_ok" android:layout_width="@dimen/dp_120" android:layout_height="@dimen/dp_32" app:layout_constraintBottom_toBottomOf="@id/iv_guide" app:layout_constraintLeft_toLeftOf="@id/iv_guide" app:layout_constraintRight_toRightOf="@id/iv_guide" />
+</androidx.constraintlayout.widget.ConstraintLayout>

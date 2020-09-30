@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_corners10_ffffff"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@id/tv_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:gravity="center"
+        android:text="支持银行"
+        android:textColor="@color/color_414655"
+        android:textSize="@dimen/sp_18" />
+
+    <TextView
+        android:id="@id/tv_message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_20"
+        android:gravity="center"
+        android:lineSpacingExtra="5.0dip"
+        android:maxHeight="@dimen/dp_200"
+        android:maxLines="5"
+        android:scrollbarThumbVertical="@drawable/bg_scroller_tumb"
+        android:scrollbars="vertical"
+        android:text="手势密码输错5次，密码已失效，请重新验证登录密码"
+        android:textColor="@color/color_a5a9b3"
+        android:textSize="@dimen/sp_14" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_0_5"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/color_eeeeee" />
+
+    <LinearLayout
+        android:id="@id/ll_cancel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_13"
+        android:paddingTop="@dimen/dp_11">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_25"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:gravity="center"
+            android:text="我知道了"
+            android:textColor="@color/color_d2b79c"
+            android:textSize="@dimen/dp_18" />
+    </LinearLayout>
+</LinearLayout>

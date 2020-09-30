@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/collect_view" android:background="@drawable/collect_dialog_bg" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="@dimen/dp_85" android:layout_height="@dimen/dp_85">
+        <ImageView android:id="@id/img_hard" android:background="@mipmap/icon_collection_sel" android:layout_width="@dimen/dp_21" android:layout_height="@dimen/dp_19" />
+        <TextView android:textSize="@dimen/dp_14" android:textColor="@color/white" android:id="@id/tv_hint" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:text="收藏成功" />
+    </LinearLayout>
+</FrameLayout>

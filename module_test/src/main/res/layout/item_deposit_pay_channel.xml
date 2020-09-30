@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_414655" android:gravity="center" android:id="@id/tv_item_root" android:background="@drawable/shape_corners5_stroke1_eeeeee" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/dp_35" android:minWidth="@dimen/dp_58"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

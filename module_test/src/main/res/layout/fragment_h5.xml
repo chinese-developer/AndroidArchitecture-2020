@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/h5_mainLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@id/headerLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/custom_toolbar" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@id/iv_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/noticebar"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@id/llDaiKeHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_30"
+        android:background="@color/color_fefcec"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_14"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dp_14"
+            android:layout_marginEnd="@dimen/dp_6"
+            android:background="@mipmap/icon_warning" />
+
+        <TextView
+            android:id="@id/tvDaiKeXCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/dai_ke_code_header"
+            android:textColor="@color/color_f5a623"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@id/web_fl"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@id/swipeRefreshLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <com.ty.allgame.widget.WebViewScroll
+                android:id="@id/webView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:fadingEdge="none"
+                android:layerType="hardware"
+                android:overScrollMode="never" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.ty.allgame.widget.H5Progress
+            android:id="@id/web_progress"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_2" />
+    </FrameLayout>
+
+    <com.ty.allgame.widget.YaboEmptyView
+        android:id="@id/placeholder"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone" />
+</LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:background="@mipmap/bg_intercept" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ban_logo" />
+        <TextView android:textSize="@dimen/dp_36" android:textStyle="bold" android:textColor="@color/color_333333" android:layout_gravity="center_horizontal" android:id="@id/interception_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="访问受限制" />
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ip_layout" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_14">
+            <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text1" android:id="@id/tv_country" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="您的IP来自于：" />
+            <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text4" android:id="@id/tv_ip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="@font/dinpro" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text4" android:gravity="center_horizontal" android:id="@id/maintain_time" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fontFamily="@font/dinpro" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/ivPerson" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_10" android:src="@mipmap/pic_ban_limit" />
+        <TextView android:textSize="@dimen/dp_12" android:textStyle="bold" android:textColor="@color/color_text1" android:layout_gravity="center_horizontal" android:id="@id/tv_nt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/system_notify" />
+        <TextView android:textSize="@dimen/dp_12" android:textColor="@color/color_text1" android:gravity="center_horizontal" android:id="@id/interception_context" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="尊敬的用户，由于相关法规限制，您所在的地区无法使用亚博产品，如有任何疑问，请通过在线客服，或发送邮件至cs@yabotiyu.com，我们将第一时间给您回复，对您造成的不便，我们深表歉意，感谢您的理解与支持！" android:lineSpacingExtra="5.0dip" android:fontFamily="@font/dinpro" android:layout_marginStart="@dimen/dp_24" android:layout_marginEnd="@dimen/dp_24" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/call_service" android:background="@mipmap/ban_button_blue_normal" android:paddingTop="@dimen/dp_1" android:paddingBottom="@dimen/dp_1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_14" android:text="在线客服" android:paddingStart="@dimen/dp_12" android:paddingEnd="@dimen/dp_12" />
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_17">
+            <TextView android:textSize="@dimen/dp_12" android:textColor="@color/color_text1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="如需帮助，请 " />
+            <TextView android:textSize="@dimen/dp_12" android:textColor="@color/color_text4" android:id="@id/tv_service" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="联系客服" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/iv_sponsor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:src="@mipmap/icon_maintain_sponsor" />
+    </LinearLayout>
+</RelativeLayout>
