@@ -1,5 +1,9 @@
 package com.android.base.widget.adapter.annotaion
 
-enum class AnimationType {
-    ALPHA, SCALE, SLIDE_BOTTOM, SLIDE_TOP, SLIDE_LEFT, SLIDE_RIGHT
-}
+import androidx.annotation.IntDef
+import com.android.base.widget.adapter.BindingAdapter
+
+
+@IntDef(*[BindingAdapter.ALPHA, BindingAdapter.SCALE, BindingAdapter.SLIDE_BOTTOM, BindingAdapter.SLIDE_TOP, BindingAdapter.SLIDE_LEFT, BindingAdapter.SLIDE_RIGHT])
+@kotlin.annotation.Retention(AnnotationRetention.SOURCE)
+annotation class AnimationType

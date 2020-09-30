@@ -26,7 +26,7 @@ import kotlinx.coroutines.sync.withLock
 
 /**
  * 作用域开始时自动显示加载对话框, 结束时自动关闭加载对话框
- * 可以设置全局对话框 [com.drake.net.NetConfig.onDialog]
+ * 可以设置全局对话框 [com.app.base.onDialog]
  * @param dialog 仅该作用域使用的对话框
  *
  * 对话框被取消或者界面关闭作用域被取消
@@ -51,7 +51,7 @@ fun Fragment.scopeDialog(
  * 作用域开始执行时显示加载中缺省页
  * 作用域正常结束时显示成功缺省页
  * 作用域抛出异常时显示错误缺省页
- * 并且自动吐司错误信息, 可配置 [com.drake.net.NetConfig.onStateError]
+ * 并且自动吐司错误信息, 可配置 [com.android.sdk.net.NetConfig.onStateError]
  * 自动打印异常日志
  * @receiver 当前视图会被缺省页包裹
  *
@@ -70,7 +70,7 @@ fun StateLayout.scope(block: suspend CoroutineScope.() -> Unit): NetCoroutineSco
  * 2. 上拉加载自动结束
  * 3. 捕获异常
  * 4. 打印异常日志
- * 5. 吐司部分异常[com.drake.net.NetConfig.onStateError]
+ * 5. 吐司部分异常[com.android.sdk.net.NetConfig.onStateError]
  * 6. 判断添加还是覆盖数据
  * 7. 自动显示缺省页
  *

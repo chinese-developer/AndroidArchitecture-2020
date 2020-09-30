@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.base.widget.adapter.BindingAdapter;
 import com.android.base.widget.adapter.listener.OnHoverAttachListener;
-import com.drake.brv.listener.SnapLinearSmoothScroller;
+import com.android.base.widget.adapter.listener.SnapLinearSmoothScroller;
 
 import java.util.ArrayList;
 import java.util.List;

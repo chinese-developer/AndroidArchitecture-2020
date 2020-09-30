@@ -8,7 +8,8 @@
 package com.android.base.utils.binding.adapter
 
 import android.annotation.SuppressLint
-import android.graphics.Bitmap
+import android.content.res.ColorStateList
+import android.graphics.PorterDuff
 import android.net.Uri
 import android.view.View
 import android.webkit.WebView
@@ -21,6 +22,7 @@ import androidx.annotation.IdRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingListener
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -37,22 +39,19 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.AppBarLayout
 import com.jakewharton.rxbinding2.view.RxView
-import com.nostra13.universalimageloader.core.DisplayImageOptions
-import com.nostra13.universalimageloader.core.ImageLoader
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer
 import java.util.concurrent.TimeUnit
 
 object ImageViewBindingAdapter {
 
-    /** imageView 通过 url 获取图片、设置占位图、圆形、圆角
+    /**
+     * imageView 通过 url 获取图片、设置占位图、圆形、圆角
      * @param url 路径
      * @param placeholderRes 占位图
      * @param roundCorners 倒角
-     * @param imageLoader 使用 imageLoader 加载图片
      */
     @JvmStatic
     @BindingAdapter(
-        value = ["android:src", "android:placeholderRes", "android:roundCorners", "android:roundCornersDimenRes", "android:imageLoader", "android:withCrossFade"],
+        value = ["android:src", "android:placeholderRes", "android:roundCorners", "android:roundCornersDimenRes", "android:withCrossFade"],
         requireAll = false
     )
     fun setImageUrl(
@@ -61,7 +60,6 @@ object ImageViewBindingAdapter {
         placeholderRes: Int?,
         roundCorners: Int?,
         @DimenRes roundCornersDimenRes: Int?,
-        imageLoader: Boolean? = false,
         withCrossFade: Boolean? = false
     ) {
         if (url.isNullOrBlank()) {
@@ -74,7 +72,6 @@ object ImageViewBindingAdapter {
             display(
                 view,
                 url,
-                imageLoader != null && imageLoader == true,
                 placeholderRes,
                 roundCornersDimenRes,
                 roundCorners,
@@ -87,11 +84,10 @@ object ImageViewBindingAdapter {
      * @param url 路径
      * @param placeholderRes 占位图
      * @param roundCorners 倒角
-     * @param imageLoader 使用 imageLoader 加载图片
      */
     @JvmStatic
     @BindingAdapter(
-        value = ["android:src", "android:placeholderRes", "android:roundCorners", "android:roundCornersDimenRes", "android:imageLoader", "android:withCrossFade"],
+        value = ["android:src", "android:placeholderRes", "android:roundCorners", "android:roundCornersDimenRes", "android:withCrossFade"],
         requireAll = false
     )
     fun setImageRes(
@@ -100,7 +96,6 @@ object ImageViewBindingAdapter {
         placeholderRes: Int?,
         roundCorners: Int?,
         @DimenRes roundCornersDimenRes: Int?,
-        imageLoader: Boolean? = false,
         withCrossFade: Boolean? = false
     ) {
         if (imageResId == null || imageResId == 0) {
@@ -113,7 +108,6 @@ object ImageViewBindingAdapter {
             display(
                 view,
                 imageResId,
-                imageLoader != null && imageLoader == true,
                 placeholderRes,
                 roundCornersDimenRes,
                 roundCorners,
@@ -122,7 +116,8 @@ object ImageViewBindingAdapter {
         }
     }
 
-    /** imageView 通过 uri 获取图片、设置占位图、圆形、圆角
+    /**
+     * imageView 通过 uri 获取图片、设置占位图、圆形、圆角
      * @param uri 路径
      * @param placeholderRes 占位图
      * @param roundCorners 倒角*/
@@ -165,63 +160,61 @@ object ImageViewBindingAdapter {
     private fun display(
         view: ImageView,
         source: Any,
-        loadByImageLoader: Boolean,
         placeholderRes: Int?,
         @DimenRes roundCornersDimenRes: Int?,
         roundCorners: Int?,
         withCrossFade: Boolean
     ) {
-        val url = if (source is String) {
-            source
-        } else if (source is Int) {
-            if (loadByImageLoader) "drawable://$source" else source.toString()
+        val requestOptions = RequestOptions()
+        if (placeholderRes != null && placeholderRes > 0) {
+            requestOptions.placeholder(placeholderRes)
+            requestOptions.error(placeholderRes)
+        }
+
+        if (roundCorners != null && roundCorners > 0) {
+            requestOptions.transform(RoundedCorners(roundCorners))
+        }
+
+        if (roundCornersDimenRes != null) {
+            val dimensionPixelOffset =
+                view.resources.getDimensionPixelOffset(roundCornersDimenRes)
+            requestOptions.transform(RoundedCorners(dimensionPixelOffset))
+        }
+
+        if (withCrossFade) {
+            Glide.with(view).setDefaultRequestOptions(requestOptions).load(source).diskCacheStrategy(DiskCacheStrategy.ALL).transition(DrawableTransitionOptions.withCrossFade()).into(view)
         } else {
+            Glide.with(view).setDefaultRequestOptions(requestOptions).load(source).diskCacheStrategy(DiskCacheStrategy.ALL).into(view)
+        }
+    }
+
+    /**
+     * 设置drawable 文件夹中的图片本地资源图片
+     * @param resID res id
+     */
+    @JvmStatic
+    @BindingAdapter(value = ["android:src"], requireAll = false)
+    fun setLocalImageRes(imageView: ImageView, resID: Int) {
+        if (resID <= 0) {
+            imageView.setImageResource(0)
+        }
+        imageView.setImageResource(resID)
+    }
+
+    @JvmStatic
+    @BindingAdapter(value = ["android:tint"])
+    fun setImageTintList(imageView: ImageView, color: Int) {
+        if (color <= 0) {
             return
         }
-        if (loadByImageLoader) {
-            val options = DisplayImageOptions.Builder().cacheInMemory(true)
-                .bitmapConfig(Bitmap.Config.RGB_565)
-            if (placeholderRes != null && placeholderRes > 0) {
-                options.showImageOnLoading(placeholderRes).resetViewBeforeLoading(true)
-            }
-            if (withCrossFade) {
-                options.displayer(FadeInBitmapDisplayer(400))
-            }
-            ImageLoader.getInstance()
-                .displayImage(
-                    url,
-                    view,
-                    options.build()
-                )
-        } else {
-            val requestOptions = RequestOptions()
-            if (placeholderRes != null && placeholderRes > 0) {
-                requestOptions.placeholder(placeholderRes)
-                requestOptions.error(placeholderRes)
-            }
+        imageView.imageTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(imageView.context, color))
+    }
 
-            if (roundCorners != null && roundCorners > 0) {
-                requestOptions.transform(RoundedCorners(roundCorners))
-            }
-
-            if (roundCornersDimenRes != null) {
-                val dimensionPixelOffset =
-                    view.resources.getDimensionPixelOffset(roundCornersDimenRes)
-                requestOptions.transform(RoundedCorners(dimensionPixelOffset))
-            }
-
-            val loader = if (source is Int) {
-                Glide.with(view).setDefaultRequestOptions(requestOptions).load(url.toInt())
-            } else {
-                Glide.with(view).setDefaultRequestOptions(requestOptions).load(url)
-            }
-
-            if (withCrossFade) {
-                loader.diskCacheStrategy(DiskCacheStrategy.ALL).transition(DrawableTransitionOptions.withCrossFade()).into(view)
-            } else {
-                loader.diskCacheStrategy(DiskCacheStrategy.ALL).into(view)
-            }
-        }
+    @JvmStatic
+    @BindingAdapter(value = ["android:tintMode"])
+    fun setImageTintMode(imageView: ImageView, tintMode: PorterDuff.Mode) {
+        imageView.imageTintMode = tintMode
     }
 }
 

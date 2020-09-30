@@ -8,4 +8,7 @@ dependencies {
     // https://github.com/Ashok-Varma/BottomNavigation
     implementation "com.ashokvarma.android:bottom-navigation-bar:${versions.bottomBar}"
     implementation 'androidx.palette:palette-ktx:1.0.0'
+    // 获取媒体信息
+    api "androidx.exifinterface:exifinterface:1.3.0"
+
 }

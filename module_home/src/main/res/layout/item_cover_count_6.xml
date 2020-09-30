@@ -69,6 +69,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_top_right_container"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/spacing_micro"
@@ -107,6 +108,7 @@
                 app:layout_constraintGuide_percent="0.5" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_mid_left_container"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/spacing_normal"
@@ -129,6 +131,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_mid_right_container"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/spacing_micro"
@@ -165,6 +168,7 @@
                 app:layout_constraintGuide_percent="0.5" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_bottom_left_container"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/spacing_normal"
@@ -187,6 +191,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_bottom_right_container"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/spacing_micro"

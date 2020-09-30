@@ -50,6 +50,20 @@ fun validateUsername(view: View, doOnAfterTextChanged: Boolean = false): Boolean
     return UsernameValidator.validate(view, doOnAfterTextChanged)
 }
 
+/**
+ * 验证用户名是否合法
+ */
+fun validateEmail(view: View, doOnAfterTextChanged: Boolean = false): Boolean {
+    return EmailValidator.validate(view, doOnAfterTextChanged)
+}
+
+/**
+ * 验证真实姓名是否合法
+ */
+fun validateRealName(view: View, doOnAfterTextChanged: Boolean = false): Boolean {
+    return RealNameValidator.validate(view, doOnAfterTextChanged)
+}
+
 ///////////////////////////////////////////////////////////////////////////
 // utils
 ///////////////////////////////////////////////////////////////////////////

@@ -40,15 +40,13 @@ final class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
-
+        // 收集异常信息，写入到sd卡
+        restoreCrash(thread, ex);
         if (crashProcessor != null) {
             crashProcessor.uncaughtException(thread, ex);
-        } else {
-            // 收集异常信息，写入到sd卡
-            restoreCrash(thread, ex);
-            // 退出
-            killProcess();
         }
+        // 退出
+        killProcess();
     }
 
     private void restoreCrash(@SuppressWarnings("unused") Thread thread, Throwable ex) {

@@ -1,17 +1,17 @@
 <resources>
     <style name="SearchViewTheme" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
         <item name="colorControlActivated">?android:colorAccent</item>
-        <item name="android:searchViewStyle">@style/Widget.DaMi.SearchView</item>
+        <item name="android:searchViewStyle">@style/Widget.Base.SearchView</item>
     </style>
 
-    <style name="Widget.DaMi.SearchView" parent="android:style/Widget.Material.SearchView">
+    <style name="Widget.Base.SearchView" parent="android:style/Widget.Material.SearchView">
         <item name="android:searchIcon">@android:color/transparent</item>
         <item name="android:searchHintIcon">@android:color/transparent</item>
         <item name="android:queryBackground">@android:color/transparent</item>
         <item name="android:submitBackground">@android:color/transparent</item>
     </style>
 
-    <style name="Widget.DaMi.SongerView">
+    <style name="Widget.Base.SongerView">
         <item name="android:layout_width">120dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">195dp</item>
@@ -23,7 +23,7 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="Widget.DaMi.TabTextAppearance">
+    <style name="Widget.Base.TabTextAppearance">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/color_212121</item>
     </style>

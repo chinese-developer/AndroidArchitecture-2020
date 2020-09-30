@@ -22,6 +22,14 @@ import com.android.base.utils.android.compat.immersiveDark
 import com.android.base.utils.ktx.getBlackWhiteColor
 import com.android.base.widget.adapter.utils.grid
 import com.android.base.widget.adapter.utils.setup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentAlbumBinding
 import com.example.architecture.home.repository.dataloaders.AlbumLoader
@@ -29,11 +37,6 @@ import com.example.architecture.home.ui.home.album.AlbumDetailActivity.Companion
 import com.example.architecture.home.ui.home.album.AlbumDetailActivity.Companion.TRANSITION_NAME
 import com.example.architecture.home.ui.model.home.Album
 import com.example.architecture.home.utils.MediaTimberUtils
-import com.nostra13.universalimageloader.core.DisplayImageOptions
-import com.nostra13.universalimageloader.core.ImageLoader
-import com.nostra13.universalimageloader.core.assist.FailReason
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
@@ -144,40 +147,45 @@ class AlbumFragment : BaseFragment() {
         albumArtist: TextView,
         albumArt: ImageView
     ) {
-        val newOptions = DisplayImageOptions.Builder()
-            .cacheInMemory(true)
-            .bitmapConfig(Bitmap.Config.RGB_565)
-            .resetViewBeforeLoading(true).showImageOnLoading(R.mipmap.ic_empty_music)
-            .displayer(FadeInBitmapDisplayer(400)).build()
-
-        ImageLoader.getInstance()
-            .displayImage(
-                MediaTimberUtils.getAlbumArtUri(item.id).toString(),
-                albumArt,
-                newOptions,
-                object : SimpleImageLoadingListener() {
-                    override fun onLoadingFailed(
-                        imageUri: String,
-                        view: View,
-                        failReason: FailReason
-                    ) {
-                        setColor(
-                            ContextCompat.getColor(
-                                view.context,
-                                R.color.ripple_color
-                            ), ContextCompat.getColor(
-                                view.context,
-                                R.color.textPrimary
-                            )
+        val options = RequestOptions().apply {
+            placeholder(R.mipmap.ic_empty_music)
+            error(R.mipmap.ic_empty_music)
+//            transform(RoundedCorners(resources.getDimensionPixelOffset(R.dimen.common_corner_radius_8)))
+        }
+        Glide.with(this)
+            .setDefaultRequestOptions(options)
+            .asBitmap()
+            .load(MediaTimberUtils.getAlbumArtUri(item.id).toString())
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+//            .transition(DrawableTransitionOptions.withCrossFade())
+            .addListener(object : RequestListener<Bitmap?> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Bitmap?>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    setColor(
+                        ContextCompat.getColor(
+                            context!!,
+                            R.color.ripple_color
+                        ), ContextCompat.getColor(
+                            context!!,
+                            R.color.textPrimary
                         )
-                    }
+                    )
+                    return false
+                }
 
-                    override fun onLoadingComplete(
-                        imageUri: String,
-                        view: View,
-                        loadedImage: Bitmap
-                    ) {
-                        Palette.Builder(loadedImage).generate {
+                override fun onResourceReady(
+                    resource: Bitmap?,
+                    model: Any?,
+                    target: Target<Bitmap?>?,
+                    dataSource: DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    resource?.let { loadBitmapResource ->
+                        Palette.Builder(loadBitmapResource).generate {
                             it?.vibrantSwatch?.let { swatch ->
                                 setColor(
                                     swatch.rgb,
@@ -191,12 +199,15 @@ class AlbumFragment : BaseFragment() {
                             }
                         }
                     }
+                    return false
+                }
 
-                    private fun setColor(@ColorInt bgColor: Int?, @ColorInt textColor: Int?) {
-                        footer.setBackgroundColor(bgColor ?: 0)
-                        albumTitle.setTextColor(textColor ?: 0)
-                        albumArtist.setTextColor(textColor ?: 0)
-                    }
-                })
+                private fun setColor(@ColorInt bgColor: Int?, @ColorInt textColor: Int?) {
+                    footer.setBackgroundColor(bgColor ?: 0)
+                    albumTitle.setTextColor(textColor ?: 0)
+                    albumArtist.setTextColor(textColor ?: 0)
+                }
+            })
+            .into(albumArt)
     }
 }

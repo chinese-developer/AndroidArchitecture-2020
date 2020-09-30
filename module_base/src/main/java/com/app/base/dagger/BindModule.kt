@@ -1,7 +1,5 @@
 package com.app.base.dagger
 
-import com.android.base.imageloader.GlideImageLoader
-import com.android.base.imageloader.ImageLoader
 import com.android.base.rx.SchedulerProvider
 import com.android.base.rx.SchedulerProviderImpl
 import com.app.base.app.AppErrorHandler
@@ -21,6 +19,5 @@ abstract class BindModule {
     @Binds abstract fun bindErrorHandler(appErrorHandler: AppErrorHandler): ErrorHandler
     @Binds abstract fun bindAppRouter(appErrorHandler: AppRouterImpl): AppRouter
     @Binds abstract fun bindSchedulerProvider(schedulerProvider: SchedulerProviderImpl): SchedulerProvider
-    @Binds abstract fun bindImageLoader(imageLoader: GlideImageLoader): ImageLoader
     @Binds abstract fun bindAppDataSource(appRepository: AppRepository): AppDataSource
 }

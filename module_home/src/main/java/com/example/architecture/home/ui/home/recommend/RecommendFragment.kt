@@ -17,17 +17,22 @@ import com.android.base.TagsFactory
 import com.android.base.app.fragment.BaseFragment
 import com.android.base.utils.ktx.getBlackWhiteColor
 import com.android.base.widget.adapter.animation.SlideInTopItemAnimation
-import com.app.base.utils.scope
 import com.android.base.widget.adapter.utils.grid
 import com.android.base.widget.adapter.utils.setup
+import com.app.base.utils.scope
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentRecommendBinding
 import com.example.architecture.home.ui.home.TestActivity
 import com.example.architecture.home.ui.model.home.Recommend
-import com.nostra13.universalimageloader.core.DisplayImageOptions
-import com.nostra13.universalimageloader.core.ImageLoader
-import com.nostra13.universalimageloader.core.assist.FailReason
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener
 import kotlinx.coroutines.delay
 import timber.log.Timber
 
@@ -127,43 +132,44 @@ class RecommendFragment : BaseFragment() {
         albumTitle: TextView,
         albumArt: ImageView
     ) {
-        val newOptions = DisplayImageOptions.Builder()
-            .cacheInMemory(true)
-            .bitmapConfig(Bitmap.Config.RGB_565)
-            .resetViewBeforeLoading(true)
-            .showImageOnLoading(item.coverImgResource)
-//            .displayer(FadeInBitmapDisplayer(400))
-            .build()
+        val options = RequestOptions().apply {
+            placeholder(item.coverImgResource)
+            error(item.coverImgResource)
+//            transform(RoundedCorners(resources.getDimensionPixelOffset(R.dimen.common_corner_radius_8)))
+        }
 
-        val imageUrl =
-            if (item.coverImgUrl.isNullOrBlank()) "drawable://${item.coverImgResource}" else item.coverImgUrl
-
-        ImageLoader.getInstance()
-            .displayImage(
-                imageUrl,
-                albumArt,
-                newOptions,
-                object : SimpleImageLoadingListener() {
-                    override fun onLoadingFailed(
-                        imageUri: String,
-                        view: View,
-                        failReason: FailReason
-                    ) {
-                        footer.setBackgroundColor(0)
-                        albumTitle.setTextColor(
-                            ContextCompat.getColor(
-                                view.context,
-                                R.color.textPrimary
-                            )
+        Glide.with(this)
+            .setDefaultRequestOptions(options)
+            .asBitmap()
+            .load(item.coverImgResource)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+//            .transition(DrawableTransitionOptions.withCrossFade())
+            .addListener(object : RequestListener<Bitmap?> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Bitmap?>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    footer.setBackgroundColor(0)
+                    albumTitle.setTextColor(
+                        ContextCompat.getColor(
+                            context!!,
+                            R.color.textPrimary
                         )
-                    }
+                    )
+                    return false
+                }
 
-                    override fun onLoadingComplete(
-                        imageUri: String,
-                        view: View,
-                        loadedImage: Bitmap
-                    ) {
-                        Palette.Builder(loadedImage).generate {
+                override fun onResourceReady(
+                    resource: Bitmap?,
+                    model: Any?,
+                    target: Target<Bitmap?>?,
+                    dataSource: DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    resource?.let { loadBitmapResource ->
+                        Palette.Builder(loadBitmapResource).generate {
                             it?.let { palette ->
                                 val swatch = palette.vibrantSwatch
                                 if (swatch != null) {
@@ -185,7 +191,9 @@ class RecommendFragment : BaseFragment() {
                             }
                         }
                     }
-                })
+                    return false
+                }
+            }).into(albumArt)
     }
 
 }

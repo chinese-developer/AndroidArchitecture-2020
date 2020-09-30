@@ -62,6 +62,15 @@ fun CharSequence?.matchUsernameLength(): Boolean {
     }
 }
 
+/**是否符合真实姓名长度规范*/
+fun CharSequence?.matchRealNameLength(): Boolean {
+    return if (this == null) {
+        false
+    } else {
+        eqRealNameLength(this.toString())
+    }
+}
+
 /**是否符合用户名规范*/
 fun CharSequence?.matchUserName(): Boolean {
     return this?.isLegalUsername() ?: false
@@ -98,6 +107,10 @@ private fun eqPasswordLength(string: String): Boolean {
 /**8-16位*/
 private fun eqUserNameLength(string: String): Boolean {
     return StringChecker.isLengthIn(string, 6, 16)
+}
+/**2-15位*/
+private fun eqRealNameLength(string: String): Boolean {
+    return StringChecker.isLengthIn(string, 2, 15)
 }
 
 /**获取到焦点后就清空错误*/

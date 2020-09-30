@@ -40,7 +40,7 @@
             app:tabPaddingTop="8dp"
             app:tabRippleColor="@color/transparent"
             app:tabSelectedTextColor="@color/color_212121"
-            app:tabTextAppearance="@style/Widget.DaMi.TabTextAppearance"
+            app:tabTextAppearance="@style/Widget.Base.TabTextAppearance"
             app:tabTextColor="@color/color_212121" />
 
         <androidx.viewpager2.widget.ViewPager2

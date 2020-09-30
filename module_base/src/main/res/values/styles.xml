@@ -5,9 +5,9 @@
 
     <style name="TextAppearance" />
 
-    <style name="Widget.DaMi" parent="android:Widget" />
+    <style name="Widget.Base" parent="android:Widget" />
 
-    <style name="Widget.DaMi.LayoutStatus">
+    <style name="Widget.Base.LayoutStatus">
         <item name="android:clickable">true</item>
         <item name="android:textColor">@color/color_button_green</item>
         <item name="android:layout_width">match_parent</item>
@@ -22,7 +22,7 @@
         <item name="android:stateListAnimator" tools:ignore="NewApi">@null</item>
     </style>
 
-    <style name="Widget.DaMi.TextEntry" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+    <style name="Widget.Base.TextEntry" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="boxBackgroundColor">@color/acc_surface_contrast</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.DaMi.TextEntry</item>
     </style>
@@ -32,13 +32,13 @@
     </style>
 
 
-    <style name="Widget.DaMi.Toolbar" parent="Widget.AppCompat.Toolbar">
+    <style name="Widget.Base.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:background">?attr/colorPrimary</item>
         <item name="android:elevation">@dimen/z_app_bar</item>
         <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Light</item>
     </style>
 
-    <style name="Widget.DaMi.PrimaryToolbar" parent="Widget.DaMi.Toolbar.SmallCapsTitle">
+    <style name="Widget.Base.PrimaryToolbar" parent="Widget.Base.Toolbar.SmallCapsTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?android:actionBarSize</item>
         <item name="android:elevation">0dp</item>
@@ -50,7 +50,7 @@
         <item name="contentInsetRight">0dp</item>
     </style>
 
-    <style name="Widget.DaMi.Toolbar.SmallCapsTitle">
+    <style name="Widget.Base.Toolbar.SmallCapsTitle">
         <item name="android:titleTextAppearance">@style/TextAppearance.ToolbarTitleSmallCaps</item>
     </style>
 

@@ -17,6 +17,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.android.base.widget.adapter.BindingAdapter.Companion.GRID
+import com.android.base.widget.adapter.BindingAdapter.Companion.HORIZONTAL
+import com.android.base.widget.adapter.BindingAdapter.Companion.VERTICAL
 import com.android.base.widget.adapter.DefaultDecoration.Edge.Companion.computeEdge
 import com.android.base.widget.adapter.annotaion.DividerOrientation
 import com.android.base.widget.adapter.item.ItemExpand
@@ -66,7 +69,7 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
      */
     var expandVisible = false
 
-    var orientation = DividerOrientation.HORIZONTAL
+    var orientation = HORIZONTAL
 
     private var size = 1
     private var marginStart = 0
@@ -121,7 +124,7 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
      */
     fun setDrawable(@DrawableRes drawableRes: Int) {
         val drawable = ContextCompat.getDrawable(context, drawableRes)
-                       ?: throw IllegalArgumentException("Drawable cannot be find")
+            ?: throw IllegalArgumentException("Drawable cannot be find")
         divider = drawable
     }
     //</editor-fold>
@@ -234,11 +237,11 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
 
     //<editor-fold desc="覆写">
     override fun getItemOffsets(
-            outRect: Rect,
-            view: View,
-            parent: RecyclerView,
-            state: RecyclerView.State
-                               ) {
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
 
         val layoutManager = parent.layoutManager ?: return
 
@@ -269,17 +272,17 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
         adjustOrientation(layoutManager)
 
         when (orientation) {
-            DividerOrientation.HORIZONTAL -> {
+            HORIZONTAL -> {
                 val top = if (startVisible && edge.top) height else 0
                 val bottom = if ((endVisible && edge.bottom) || !edge.bottom) height else 0
                 outRect.set(0, top, 0, bottom)
             }
-            DividerOrientation.VERTICAL -> {
+            VERTICAL -> {
                 val left = if (startVisible && edge.left) width else 0
                 val right = if ((endVisible && edge.right) || !edge.right) width else 0
                 outRect.set(left, 0, right, 0)
             }
-            DividerOrientation.GRID -> {
+            GRID -> {
 
                 val spanCount = when (layoutManager) {
                     is GridLayoutManager -> layoutManager.spanCount
@@ -369,9 +372,9 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
         adjustOrientation(layoutManager)
 
         when (orientation) {
-            DividerOrientation.HORIZONTAL -> drawHorizontal(canvas, parent)
-            DividerOrientation.VERTICAL -> drawVertical(canvas, parent)
-            DividerOrientation.GRID -> drawGrid(canvas, parent)
+            HORIZONTAL -> drawHorizontal(canvas, parent)
+            VERTICAL -> drawVertical(canvas, parent)
+            GRID -> drawGrid(canvas, parent)
         }
     }
     //</editor-fold>
@@ -382,9 +385,9 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
     private fun adjustOrientation(layoutManager: RecyclerView.LayoutManager) {
         if (layoutManager !is GridLayoutManager && layoutManager is LinearLayoutManager) {
             orientation =
-                    if ((layoutManager as? LinearLayoutManager)?.orientation == RecyclerView.VERTICAL) DividerOrientation.HORIZONTAL else DividerOrientation.VERTICAL
+                if ((layoutManager as? LinearLayoutManager)?.orientation == RecyclerView.VERTICAL) HORIZONTAL else VERTICAL
         } else if (layoutManager is StaggeredGridLayoutManager) {
-            orientation = DividerOrientation.GRID
+            orientation = GRID
         }
     }
 
@@ -419,7 +422,7 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
             val layoutManager = parent.layoutManager ?: return
             val edge = computeEdge(position, layoutManager)
 
-            if (orientation != DividerOrientation.GRID && !endVisible && edge.bottom) {
+            if (orientation != GRID && !endVisible && edge.bottom) {
                 continue@loop
             }
 
@@ -428,7 +431,7 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
                 parent.getDecoratedBoundsWithMargins(child, decoratedBounds)
 
                 val firstBottom =
-                        if (intrinsicHeight == -1) decoratedBounds.top + size else decoratedBounds.top + intrinsicHeight
+                    if (intrinsicHeight == -1) decoratedBounds.top + size else decoratedBounds.top + intrinsicHeight
                 val firstTop = decoratedBounds.top
 
                 val bottom = decoratedBounds.bottom
@@ -441,16 +444,16 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
 
                     if (startVisible && edge.top) {
                         val firstRect = Rect(
-                                parent.paddingLeft,
-                                firstTop,
-                                parent.width - parent.paddingRight,
-                                firstBottom
-                                            )
+                            parent.paddingLeft,
+                            firstTop,
+                            parent.width - parent.paddingRight,
+                            firstBottom
+                        )
                         canvas.drawRect(firstRect, paint)
                     }
 
                     val rect =
-                            Rect(parent.paddingLeft, top, parent.width - parent.paddingRight, bottom)
+                        Rect(parent.paddingLeft, top, parent.width - parent.paddingRight, bottom)
                     canvas.drawRect(rect, paint)
                 }
 
@@ -499,7 +502,7 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
             val layoutManager = parent.layoutManager ?: return
             val edge = computeEdge(position, layoutManager)
 
-            if (orientation != DividerOrientation.GRID && !endVisible && edge.right) {
+            if (orientation != GRID && !endVisible && edge.right) {
                 continue@loop
             }
 
@@ -508,7 +511,7 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
                 parent.getDecoratedBoundsWithMargins(child, decoratedBounds)
 
                 val firstRight =
-                        if (intrinsicWidth == -1) decoratedBounds.left + size else decoratedBounds.left + intrinsicWidth
+                    if (intrinsicWidth == -1) decoratedBounds.left + size else decoratedBounds.left + intrinsicWidth
                 val firstLeft = decoratedBounds.left
 
                 val right = (decoratedBounds.right + child.translationX).roundToInt()
@@ -525,7 +528,7 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
                     }
 
                     val rect =
-                            Rect(left, parent.paddingTop, right, parent.height - parent.paddingBottom)
+                        Rect(left, parent.paddingTop, right, parent.height - parent.paddingBottom)
                     canvas.drawRect(rect, paint)
                 }
 
@@ -582,9 +585,9 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
             divider?.apply {
                 val layoutParams = child.layoutParams as RecyclerView.LayoutParams
                 val bounds = Rect(child.left + layoutParams.leftMargin,
-                                  child.top + layoutParams.topMargin,
-                                  child.right + layoutParams.rightMargin,
-                                  child.bottom + layoutParams.bottomMargin)
+                    child.top + layoutParams.topMargin,
+                    child.right + layoutParams.rightMargin,
+                    child.bottom + layoutParams.bottomMargin)
 
                 // top
                 if (!endVisible && edge.right) {
@@ -669,8 +672,8 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
                         is StaggeredGridLayoutManager -> {
                             val spanCount = layoutManager.spanCount
                             val spanIndex =
-                                    (layoutManager.findViewByPosition(position)!!.layoutParams
-                                            as StaggeredGridLayoutManager.LayoutParams).spanIndex + 1
+                                (layoutManager.findViewByPosition(position)!!.layoutParams
+                                        as StaggeredGridLayoutManager.LayoutParams).spanIndex + 1
 
                             if (layoutManager.orientation == RecyclerView.VERTICAL) {
                                 left = spanIndex == 1
@@ -688,7 +691,7 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
                             val spanSizeLookup = layoutManager.spanSizeLookup
                             val spanCount = layoutManager.spanCount
                             val spanGroupIndex =
-                                    spanSizeLookup.getSpanGroupIndex(position, spanCount)
+                                spanSizeLookup.getSpanGroupIndex(position, spanCount)
                             val maxSpanGroupIndex = ceil(itemCount / spanCount.toFloat()).toInt()
                             val spanIndex = spanSizeLookup.getSpanIndex(position, spanCount) + 1
                             val spanSize = spanSizeLookup.getSpanSize(position)
@@ -697,10 +700,10 @@ class DefaultDecoration constructor(private val context: Context) : RecyclerView
                                 left = spanIndex == 1
                                 right = spanIndex + spanSize - 1 == spanCount
                                 top =
-                                        index <= spanCount && spanGroupIndex == spanSizeLookup.getSpanGroupIndex(
-                                                position - 1,
-                                                spanCount
-                                                                                                                )
+                                    index <= spanCount && spanGroupIndex == spanSizeLookup.getSpanGroupIndex(
+                                        position - 1,
+                                        spanCount
+                                    )
                                 bottom = spanGroupIndex == maxSpanGroupIndex - 1
 
                             } else {

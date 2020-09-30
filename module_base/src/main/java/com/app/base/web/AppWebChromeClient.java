@@ -29,6 +29,7 @@ import timber.log.Timber;
  * </pre>
  *
  */
+@SuppressWarnings("unchecked")
 class AppWebChromeClient extends WebChromeClient {
 
     private static final String TAG = AppWebChromeClient.class.getSimpleName();
@@ -105,7 +106,7 @@ class AppWebChromeClient extends WebChromeClient {
     }
 
     //  Android  >= 3.0
-    public void openFileChooser(ValueCallback valueCallback, String acceptType) {
+    public void openFileChooser(@SuppressWarnings("rawtypes") ValueCallback valueCallback, String acceptType) {
         Timber.d("Android  >= 3.0 openFileChooser() called with: valueCallback = [" + valueCallback + "], acceptType = [" + acceptType + "]");
         doOpenFileChooser(valueCallback, acceptType);
     }
@@ -125,7 +126,6 @@ class AppWebChromeClient extends WebChromeClient {
         if (fileChooserParams != null && fileChooserParams.getAcceptTypes().length > 0) {
             acceptType = fileChooserParams.getAcceptTypes()[0];
         }
-        Log.d("AppWebChromeClient", "fileChooserParams.getAcceptTypes():" + acceptType);
         doOpenFileChooserAboveL(filePathCallback, acceptType);
         return true;
     }
@@ -163,7 +163,6 @@ class AppWebChromeClient extends WebChromeClient {
         selection[1] = mFragment.getString(R.string.album);
         Context context = mFragment.getContext();
         assert context != null;
-        MaterialDialog materialDialog = new MaterialDialog(context);
         Dialogs.showListDialog(context, listDialogBuilder -> {
             listDialogBuilder.setItems(selection);
             listDialogBuilder.setPositiveListener((which, charSequence) -> {
@@ -198,7 +197,6 @@ class AppWebChromeClient extends WebChromeClient {
     }
 
     private void returnFile(String path) {
-        Log.d("AppWebChromeClient", "select file " + path);
         if (mUriValueCallbacks != null) {
             mUriValueCallbacks.onReceiveValue(new Uri[]{Uri.fromFile(new File(path))});
         }
@@ -210,7 +208,6 @@ class AppWebChromeClient extends WebChromeClient {
     }
 
     private void returnEmptyFile() {
-        Log.d(TAG, "onTakeFail() called");
         if (mUriValueCallback != null) {
             mUriValueCallback.onReceiveValue(null);
         }

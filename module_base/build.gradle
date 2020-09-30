@@ -62,13 +62,6 @@ android {
             }
         }
     }*/
-
-    externalNativeBuild {
-        cmake {
-            // path "src/main/cpp/CMakeLists.txt"
-        }
-    }
-
 }
 
 dependencies {
@@ -84,7 +77,6 @@ dependencies {
     // AndroidX Support
     api "androidx.cardview:cardview:${versions.cardview}"
     api "androidx.multidex:multidex:${versions.multidex}"
-    api "androidx.exifinterface:exifinterface:${versions.androidx}"
 
     // kotlin
     api "io.reactivex.rxjava2:rxkotlin:${versions.rxkotlin}"
@@ -121,20 +113,18 @@ dependencies {
     // EventBus
     api 'org.greenrobot:eventbus:3.2.0'
 
-    // UI
-    // https://github.com/Tencent/QMUI_Android
-    api "com.qmuiteam:qmui:${versions.qmui}"
+    // UI ------------------------------------------------------------------------
+
+    // https://github.com/lihangleo2/ShadowLayout
+    api "com.github.lihangleo2:ShadowLayout:${versions.shadowLayout}"
     // https://github.com/code-mc/material-icon-lib
+    // 记得删除 module_base/assets 下面字体文件
     api 'net.steamcrafted:materialiconlib:1.1.5'
-    // https://github.com/chenBingX/SuperTextView
-//    api "com.github.chenBingX:SuperTextView:${versions.superTextView}"
     // https://github.com/kyleduo/SwitchButton
     api "com.kyleduo.switchbutton:library:${versions.switchbutton}"
     // https://github.com/yshrsmz/KeyboardVisibilityEvent
     api "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:${versions.keyboardtools}"
     api "com.github.chrisbanes:PhotoView:${versions.photoView}"
-
-    api "androidx.paging:paging-runtime-ktx:${versions.paging}"
 
     // toast
     api "com.github.liangjingkanji:Tooltip:${versions.toast}"

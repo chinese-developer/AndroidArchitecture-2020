@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.android.base.app.fragment.BaseFragment
-import com.android.base.imageloader.GlideImageLoader
+import com.bumptech.glide.Glide
 import com.example.architecture.home.ui.home.HomeFragment
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentLyricBinding
@@ -66,7 +66,7 @@ class LyricsFragment : BaseFragment() {
         if (albumCoverImgUrl.isNullOrBlank()) {
             binding.ivDiscHalo.setImageResource(R.mipmap.ic_play_disc_halo)
         } else {
-            GlideImageLoader().display(binding.ivDiscHalo, albumCoverImgUrl)
+            Glide.with(this).load(albumCoverImgUrl).into(binding.ivDiscHalo)
         }
     }
 

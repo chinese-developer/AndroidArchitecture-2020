@@ -36,8 +36,6 @@ import com.app.base.scope.DialogCoroutineScope
 import com.app.base.widget.dialog.AppLoadingView
 import com.android.base.widget.statusLayout.StateConfig
 import com.drake.tooltip.toast
-import com.nostra13.universalimageloader.core.ImageLoader
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.MaterialHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
@@ -97,12 +95,10 @@ open class AppContext : BaseAppContext() {
 
         com.android.base.widget.adapter.BindingAdapter.modelId = BR.item
 
-        // imageLoader init
-        ImageLoader.getInstance().init(ImageLoaderConfiguration.Builder(this).build())
-
         // 基础库配置
         Sword.get()
             .registerLoadingFactory { AppLoadingView(it) } // 默认的通用的LoadingDialog和Toast实现
+            .setCrashProcessor { _, _ ->  }
             .setErrorClassifier(object : Sword.ErrorClassifier {
                 override fun isNetworkError(throwable: Throwable): Boolean {
                     Timber.tag(TagsFactory.okHttp).d(throwable)
@@ -179,7 +175,7 @@ fun Activity.serviceFactoryWithoutToken() = AppContext.serviceFactoryWithoutToke
  * 设置使用DialogObserver默认弹出的加载对话框
  * 默认使用系统自带的ProgressDialog
  */
-fun CoroutineContext.Dialog(block: (DialogCoroutineScope.(context: FragmentActivity) -> Dialog)) {
+fun CoroutineContext.dialog(block: (DialogCoroutineScope.(context: FragmentActivity) -> Dialog)) {
     AppContext.onDialog = block
 }
 

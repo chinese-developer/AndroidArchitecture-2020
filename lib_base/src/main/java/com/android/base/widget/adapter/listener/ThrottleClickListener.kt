@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.drake.brv.listener
+package com.android.base.widget.adapter.listener
 
 import android.view.View
 
