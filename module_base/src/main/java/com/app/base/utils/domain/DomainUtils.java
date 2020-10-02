@@ -1,22 +1,18 @@
 package com.app.base.utils.domain;
 
 import android.annotation.SuppressLint;
-import android.text.TextUtils;
 
 import com.android.base.TagsFactory;
 import com.android.cache.Storage;
 import com.android.cache.TypeFlag;
 import com.app.base.AppContext;
 import com.app.base.common.Keys;
-import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 
 import java.util.ArrayList;
 
 import io.reactivex.Observable;
 import timber.log.Timber;
-
-import static com.app.base.common.Keys.KEY_DOMAIN_LIST;
 
 /**
  * 获取最快的域名
@@ -73,14 +69,9 @@ public class DomainUtils {
     public void getFastDomain(ArrayList<String> domainList) {
         try {
             Storage storage = AppContext.get().storageManager.stableStorage();
-            // 先取出上一次的缓存，有就先替换
-            String lastFastDomain = SPUtils.getInstance().getString(KEY_FAST_DOMAIN);
-            if (!TextUtils.isEmpty(lastFastDomain)) {
-                storage.putEntity(Keys.KEY_FAST_DOMAIN, lastFastDomain);
-            }
+
             if (domainList == null || domainList.size() == 0) {
-                domainList = AppContext.get().storageManager.stableStorage().getEntity(Keys.KEY_DOMAIN_LIST, new TypeFlag<ArrayList<String>>() {
-                }.getType());
+                domainList = storage.getEntity(Keys.KEY_DOMAIN_LIST, new TypeFlag<ArrayList<String>>() {}.getType());
             }
 
             Observable.fromIterable(domainList).flatMap((String domain) -> AppContext.get().appDataSource.fetchDomain(domain)
@@ -89,7 +80,6 @@ public class DomainUtils {
                         if (domainResponse == null) {
                             selectStatus = 2;
                             Timber.tag(TagsFactory.debug).d("域名选择失败");
-                            ToastUtils.showShort("域名选择失败");
                         }
                     }).subscribe(response -> {
                 if (domainResponse == null) {
@@ -100,9 +90,7 @@ public class DomainUtils {
                     domainResponse = response;
                     selectStatus = 1;
                 }
-            }, throwable -> {
-                        ToastUtils.showShort(throwable.getMessage());
-            });
+            }, throwable -> ToastUtils.showShort(throwable.getMessage()));
         } catch (Exception e) {
             e.printStackTrace();
         }
