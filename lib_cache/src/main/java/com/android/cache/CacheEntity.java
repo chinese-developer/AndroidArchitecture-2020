@@ -7,7 +7,7 @@ package com.android.cache;
 @SuppressWarnings("JavadocReference")
 class CacheEntity {
 
-    String jsonData; // 数据
+    Object obj; // 数据
     /**
      * {@link CacheConstantKt.TIME_HOUR * 3 保存3小时}
      * {@link CacheConstantKt.TIME_DAY * 2 保存2天}
@@ -15,8 +15,8 @@ class CacheEntity {
     long cacheTime;
     long storeTime; // 存储时间戳
 
-    CacheEntity(String jsonData, long cacheTime) {
-        this.jsonData = jsonData;
+    CacheEntity(Object obj, long cacheTime) {
+        this.obj = obj;
         this.cacheTime = cacheTime;
         storeTime = System.currentTimeMillis();
     }

@@ -1,77 +1,811 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/color_f8f8f8" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout android:background="@color/white" android:layout_width="fill_parent" android:layout_height="@dimen/dp_70">
-        <ImageView android:id="@id/iv_logo" android:layout_width="@dimen/dp_68" android:layout_height="@dimen/dp_50" android:layout_marginTop="@dimen/dp_20" android:src="@mipmap/icon_logo_horizontal" android:layout_marginStart="@dimen/dp_14" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-        <ImageView android:id="@id/iv_msg" android:paddingTop="@dimen/dp_6" android:paddingBottom="@dimen/dp_6" android:layout_width="@dimen/dp_28" android:layout_height="@dimen/dp_32" android:src="@mipmap/icon_msg_center" android:paddingStart="@dimen/dp_2" android:paddingEnd="@dimen/dp_6" android:layout_marginEnd="@dimen/dp_7" app:layout_constraintBottom_toBottomOf="@id/iv_logo" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@id/iv_logo" />
-        <View android:id="@id/home_red_point_message" android:background="@drawable/shape_red_point_db6372" android:visibility="gone" android:layout_width="@dimen/dp_6" android:layout_height="@dimen/dp_6" android:layout_marginTop="@dimen/dp_5" android:layout_marginEnd="@dimen/dp_9" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@id/iv_msg" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/color_f8f8f8"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_70"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@id/iv_logo"
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginStart="@dimen/dp_14"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@mipmap/icon_logo_horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@id/iv_msg"
+            android:layout_width="@dimen/dp_28"
+            android:layout_height="@dimen/dp_32"
+            android:layout_marginEnd="@dimen/dp_7"
+            android:paddingStart="@dimen/dp_2"
+            android:paddingTop="@dimen/dp_6"
+            android:paddingEnd="@dimen/dp_6"
+            android:paddingBottom="@dimen/dp_6"
+            android:src="@mipmap/icon_msg_center"
+            app:layout_constraintBottom_toBottomOf="@id/iv_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_logo" />
+
+        <View
+            android:id="@id/home_red_point_message"
+            android:layout_width="@dimen/dp_6"
+            android:layout_height="@dimen/dp_6"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_9"
+            android:background="@drawable/shape_red_point_db6372"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_msg" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout android:id="@id/swipe_layout" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <androidx.core.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
-            <androidx.constraintlayout.widget.ConstraintLayout android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <cn.bingoogolapple.bgabanner.BGABanner android:id="@id/banner" android:layout_width="0.0dip" android:layout_height="0.0dip" app:banner_isHideIndicator="true" app:banner_pointContainerBackground="@color/transparent" app:banner_pointLeftRightMargin="@dimen/dp_2_5" app:banner_pointTopBottomMargin="@dimen/dp_5" app:layout_constraintDimensionRatio="360:144" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-                <com.ty.allgame.widget.StickinessIndicatorView android:id="@id/home_indicator" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/dp_13" app:layout_constraintBottom_toBottomOf="@id/banner" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" />
-                <View android:id="@id/home_horn_image" android:background="@mipmap/icon_noitce" android:layout_width="@dimen/dp_16" android:layout_height="@dimen/dp_16" android:layout_marginTop="@dimen/dp_11" android:layout_marginStart="@dimen/dp_14" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/banner" />
-                <com.ty.allgame.widget.MarqueView android:layout_gravity="center_vertical" android:id="@id/notice_title" android:layout_width="@dimen/dp_0" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_11" android:layout_marginStart="@dimen/dp_5" android:layout_marginEnd="@dimen/dp_2" app:layout_constraintEnd_toStartOf="@id/iv_hot_game" app:layout_constraintStart_toEndOf="@id/home_horn_image" app:layout_constraintTop_toBottomOf="@id/banner" />
-                <ImageView android:id="@id/iv_hot_game" android:layout_width="@dimen/dp_60" android:layout_height="@dimen/dp_18" android:layout_marginTop="@dimen/dp_10" android:src="@mipmap/icon_hot_events" android:layout_marginEnd="@dimen/dp_14" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@id/notice_title" app:layout_constraintTop_toBottomOf="@id/banner" />
-                <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/guide_line_home_login" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.45" />
-                <TextView android:textSize="@dimen/sp_14" android:textColor="@color/core_9aa4c2" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/tvUserName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_14" android:lines="1" android:fontFamily="@font/dinpro" android:layout_marginStart="@dimen/dp_14" app:layout_constrainedWidth="true" app:layout_constraintEnd_toStartOf="@id/iv_home_vip_level" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintHorizontal_chainStyle="packed" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <ImageView android:id="@id/iv_home_vip_level" android:layout_width="@dimen/dp_40" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_3" android:layout_marginTop="@dimen/dp_15" android:layout_marginEnd="@dimen/dp_10" app:layout_constraintLeft_toRightOf="@id/tvUserName" app:layout_constraintRight_toLeftOf="@id/guide_line_home_login" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <ImageView android:id="@id/iv_sign" android:visibility="gone" android:layout_width="@dimen/dp_10" android:layout_height="@dimen/dp_14" android:layout_marginTop="@dimen/dp_42" android:src="@mipmap/icon_rmb" android:layout_marginStart="@dimen/dp_14" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <TextView android:textSize="@dimen/sp_20" android:textColor="@color/core_414655" android:gravity="center_vertical" android:id="@id/tv_balance" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_2" android:maxWidth="@dimen/dp_110" android:maxLines="1" android:includeFontPadding="false" android:fontFamily="@font/dinpro_bold" app:layout_constraintBottom_toBottomOf="@id/iv_sign" app:layout_constraintStart_toEndOf="@id/iv_sign" app:layout_constraintTop_toTopOf="@id/iv_sign" />
-                <ImageView android:id="@id/iv_maney" android:padding="@dimen/dp_3" android:layout_width="@dimen/dp_20" android:layout_height="@dimen/dp_20" android:layout_marginTop="@dimen/dp_2" android:src="@mipmap/home_maney_icon" app:layout_constraintBottom_toBottomOf="@id/tv_balance" app:layout_constraintStart_toEndOf="@id/tv_balance" app:layout_constraintTop_toTopOf="@id/tv_balance" />
-                <View android:id="@id/double_horizontal_line" android:background="@mipmap/double_horizontal_line" android:visibility="gone" android:layout_width="@dimen/dp_20" android:layout_height="@dimen/dp_19" android:layout_marginTop="@dimen/dp_40" app:layout_constraintStart_toStartOf="@id/tvUserName" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_a5a9b3" android:id="@id/tv_login_now" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_39" android:text="登录/注册后查看" android:layout_marginStart="@dimen/dp_14" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <View android:id="@id/home_wallet_deposit_image" android:background="@mipmap/icon_wallet_deposit" android:layout_width="@dimen/dp_36" android:layout_height="@dimen/dp_36" android:layout_marginTop="@dimen/dp_10" app:layout_constraintEnd_toStartOf="@id/home_wallet_transfer_image" app:layout_constraintHorizontal_chainStyle="spread_inside" app:layout_constraintStart_toEndOf="@id/guide_line_home_login" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <View android:id="@id/home_wallet_transfer_image" android:background="@mipmap/icon_wallet_transfer" android:layout_width="@dimen/dp_36" android:layout_height="@dimen/dp_36" android:layout_marginTop="@dimen/dp_10" app:layout_constraintEnd_toStartOf="@id/home_wallet_withdraw_image" app:layout_constraintStart_toEndOf="@id/home_wallet_deposit_image" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <View android:id="@id/home_wallet_withdraw_image" android:background="@mipmap/icon_wallet_withdraw" android:layout_width="@dimen/dp_36" android:layout_height="@dimen/dp_36" android:layout_marginTop="@dimen/dp_10" app:layout_constraintEnd_toStartOf="@id/home_wallet_vip_image" app:layout_constraintStart_toEndOf="@id/home_wallet_transfer_image" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <View android:id="@id/home_wallet_vip_image" android:background="@mipmap/icon_wallet_vip" android:layout_width="@dimen/dp_36" android:layout_height="@dimen/dp_36" android:layout_marginTop="@dimen/dp_10" android:layout_marginEnd="@dimen/dp_13" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@id/home_wallet_withdraw_image" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_b1987f" android:gravity="center" android:id="@id/home_wallet_deposit_text" android:layout_width="@dimen/dp_36" android:layout_height="@dimen/dp_17" android:layout_marginTop="@dimen/dp_43" android:text="@string/deposit" app:layout_constraintEnd_toStartOf="@id/home_wallet_transfer_text" app:layout_constraintHorizontal_chainStyle="spread_inside" app:layout_constraintStart_toStartOf="@id/home_wallet_deposit_image" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_b1987f" android:gravity="center" android:id="@id/home_wallet_transfer_text" android:layout_width="@dimen/dp_36" android:layout_height="@dimen/dp_17" android:layout_marginTop="@dimen/dp_43" android:text="转账" app:layout_constraintEnd_toStartOf="@id/home_wallet_withdraw_text" app:layout_constraintStart_toEndOf="@id/home_wallet_deposit_text" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_b1987f" android:gravity="center" android:id="@id/home_wallet_withdraw_text" android:layout_width="@dimen/dp_36" android:layout_height="@dimen/dp_17" android:layout_marginTop="@dimen/dp_43" android:text="取款" app:layout_constraintEnd_toStartOf="@id/home_wallet_vip_text" app:layout_constraintStart_toEndOf="@id/home_wallet_transfer_text" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_b1987f" android:gravity="center" android:id="@id/home_wallet_vip_text" android:layout_width="@dimen/dp_36" android:layout_height="@dimen/dp_17" android:layout_marginTop="@dimen/dp_43" android:text="VIP" android:fontFamily="@font/dinpro" app:layout_constraintEnd_toEndOf="@id/home_wallet_vip_image" app:layout_constraintStart_toEndOf="@id/home_wallet_withdraw_text" app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
-                <View android:id="@id/v_game_layout_height" android:layout_width="1.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/dianzi_shadow" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@id/tiyu_shadow" />
-                <com.ty.allgame.widget.ShadowLayout android:id="@id/tiyu_shadow" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginStart="@dimen/dp_11" app:layout_constraintBottom_toTopOf="@id/home_tab_live_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@id/home_tab_sports_selected_bg" app:sl_cornerRadius="@dimen/dp_10" app:sl_dx="0.0dip" app:sl_dy="0.0dip" app:sl_shadowColor="@color/color_4741465c" app:sl_shadowRadius="@dimen/dp_4" />
-                <com.ty.allgame.widget.ShadowLayout android:visibility="visible" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginStart="@dimen/dp_11" app:layout_constraintBottom_toTopOf="@id/home_tab_chess_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@id/home_tab_live_selected_bg" app:sl_cornerRadius="@dimen/dp_10" app:sl_dx="0.0dip" app:sl_dy="0.0dip" app:sl_shadowColor="@color/color_4741465c" app:sl_shadowRadius="@dimen/dp_4" />
-                <com.ty.allgame.widget.ShadowLayout android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginStart="@dimen/dp_11" app:layout_constraintBottom_toTopOf="@id/home_tab_e_sports_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@id/home_tab_chess_selected_bg" app:sl_cornerRadius="@dimen/dp_10" app:sl_dx="0.0dip" app:sl_dy="0.0dip" app:sl_shadowColor="@color/color_4741465c" app:sl_shadowRadius="@dimen/dp_4" />
-                <com.ty.allgame.widget.ShadowLayout android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginStart="@dimen/dp_11" app:layout_constraintBottom_toTopOf="@id/home_tab_lottery_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@id/home_tab_e_sports_selected_bg" app:sl_cornerRadius="@dimen/dp_10" app:sl_dx="0.0dip" app:sl_dy="0.0dip" app:sl_shadowColor="@color/color_4741465c" app:sl_shadowRadius="@dimen/dp_4" />
-                <com.ty.allgame.widget.ShadowLayout android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginStart="@dimen/dp_11" app:layout_constraintBottom_toTopOf="@id/home_tab_fishes_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@id/home_tab_lottery_selected_bg" app:sl_cornerRadius="@dimen/dp_10" app:sl_dx="0.0dip" app:sl_dy="0.0dip" app:sl_shadowColor="@color/color_4741465c" app:sl_shadowRadius="@dimen/dp_4" />
-                <com.ty.allgame.widget.ShadowLayout android:id="@id/dianzi_shadow" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/dp_48" android:layout_marginStart="@dimen/dp_11" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@id/home_tab_fishes_selected_bg" app:sl_cornerRadius="@dimen/dp_10" app:sl_dx="0.0dip" app:sl_dy="0.0dip" app:sl_shadowColor="@color/color_4741465c" app:sl_shadowRadius="@dimen/dp_4" />
-                <View android:id="@id/home_guide_line_shadow" android:visibility="invisible" android:layout_width="@dimen/dp_1" android:layout_height="wrap_content" android:layout_marginStart="@dimen/dp_3" app:layout_constraintStart_toEndOf="@id/home_tab_sports_selected_bg" app:layout_constraintTop_toTopOf="parent" />
-                <View android:id="@id/home_tab_sports_selected_bg" android:background="@mipmap/btn_tab_golden_active" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="@dimen/dp_15" android:layout_marginBottom="@dimen/dp_6" android:layout_marginStart="@dimen/dp_14" app:layout_constraintBottom_toTopOf="@id/home_tab_live_selected_bg" app:layout_constraintDimensionRatio="w,54:60" app:layout_constraintHeight_max="@dimen/dp_60" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/home_wallet_deposit_text" app:layout_constraintVertical_chainStyle="spread_inside" />
-                <View android:id="@id/home_tab_live_selected_bg" android:background="@mipmap/btn_tab_golden_active" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/dp_6" android:layout_marginStart="@dimen/dp_14" app:layout_constraintBottom_toTopOf="@id/home_tab_chess_selected_bg" app:layout_constraintDimensionRatio="w,54:60" app:layout_constraintHeight_max="@dimen/dp_60" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/home_tab_sports_selected_bg" />
-                <View android:id="@id/home_tab_chess_selected_bg" android:background="@mipmap/btn_tab_golden_active" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/dp_6" android:layout_marginStart="@dimen/dp_14" app:layout_constraintBottom_toTopOf="@id/home_tab_e_sports_selected_bg" app:layout_constraintDimensionRatio="w,54:60" app:layout_constraintHeight_max="@dimen/dp_60" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/home_tab_live_selected_bg" />
-                <View android:id="@id/home_tab_e_sports_selected_bg" android:background="@mipmap/btn_tab_golden_active" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/dp_6" android:layout_marginStart="@dimen/dp_14" app:layout_constraintBottom_toTopOf="@id/home_tab_lottery_selected_bg" app:layout_constraintDimensionRatio="w,54:60" app:layout_constraintHeight_max="@dimen/dp_60" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/home_tab_chess_selected_bg" />
-                <View android:id="@id/home_tab_lottery_selected_bg" android:background="@mipmap/btn_tab_golden_active" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/dp_6" android:layout_marginStart="@dimen/dp_14" app:layout_constraintBottom_toTopOf="@id/home_tab_fishes_selected_bg" app:layout_constraintDimensionRatio="w,54:60" app:layout_constraintHeight_max="@dimen/dp_60" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/home_tab_e_sports_selected_bg" />
-                <View android:id="@id/home_tab_fishes_selected_bg" android:background="@mipmap/btn_tab_golden_active" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/dp_55" android:layout_marginStart="@dimen/dp_14" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintDimensionRatio="w,54:60" app:layout_constraintHeight_max="@dimen/dp_60" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/home_tab_lottery_selected_bg" />
-                <View android:id="@id/home_tab_sports_normal_bg" android:background="@mipmap/btn_tab_golden_un_active" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_tab_sports_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_sports_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_sports_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_sports_selected_bg" />
-                <View android:id="@id/home_tab_live_normal_bg" android:background="@mipmap/btn_tab_golden_un_active" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_tab_live_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_live_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_live_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_live_selected_bg" />
-                <View android:id="@id/home_tab_chess_normal_bg" android:background="@mipmap/btn_tab_golden_un_active" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_tab_chess_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_chess_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_chess_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_chess_selected_bg" />
-                <View android:id="@id/home_tab_e_sports_normal_bg" android:background="@mipmap/btn_tab_golden_un_active" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_tab_e_sports_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_e_sports_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_e_sports_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_e_sports_selected_bg" />
-                <View android:id="@id/home_tab_lottery_normal_bg" android:background="@mipmap/btn_tab_golden_un_active" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_tab_lottery_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_lottery_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_lottery_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_lottery_selected_bg" />
-                <View android:id="@id/home_tab_fishes_normal_bg" android:background="@mipmap/btn_tab_golden_un_active" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_tab_fishes_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_fishes_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_fishes_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_fishes_selected_bg" />
-                <View android:id="@id/home_sports_selected_icon" android:background="@mipmap/icon_sports_darkgolden" android:layout_width="0.0dip" android:layout_height="0.0dip" android:alpha="0.0" android:layout_marginStart="@dimen/dp_4" android:layout_marginEnd="@dimen/dp_4" app:layout_constraintDimensionRatio="1:1" app:layout_constraintEnd_toEndOf="@id/home_tab_sports_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_sports_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_sports_selected_bg" />
-                <View android:id="@id/home_sports_normal_icon" android:background="@mipmap/icon_sports_white" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_sports_selected_icon" app:layout_constraintEnd_toEndOf="@id/home_sports_selected_icon" app:layout_constraintStart_toStartOf="@id/home_sports_selected_icon" app:layout_constraintTop_toTopOf="@id/home_sports_selected_icon" />
-                <View android:id="@id/home_live_selected_icon" android:background="@mipmap/icon_livecasino_darkgolden" android:layout_width="0.0dip" android:layout_height="0.0dip" android:alpha="0.0" android:layout_marginStart="@dimen/dp_4" android:layout_marginEnd="@dimen/dp_4" app:layout_constraintDimensionRatio="1:1" app:layout_constraintEnd_toEndOf="@id/home_tab_live_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_live_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_live_selected_bg" />
-                <View android:id="@id/home_live_normal_icon" android:background="@mipmap/icon_livecasino_white" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_live_selected_icon" app:layout_constraintEnd_toEndOf="@id/home_live_selected_icon" app:layout_constraintStart_toStartOf="@id/home_live_selected_icon" app:layout_constraintTop_toTopOf="@id/home_live_selected_icon" />
-                <View android:id="@id/home_chess_selected_icon" android:background="@mipmap/icon_boardgame_darkgolden" android:layout_width="0.0dip" android:layout_height="0.0dip" android:alpha="0.0" android:layout_marginStart="@dimen/dp_4" android:layout_marginEnd="@dimen/dp_4" app:layout_constraintDimensionRatio="1:1" app:layout_constraintEnd_toEndOf="@id/home_tab_chess_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_chess_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_chess_selected_bg" />
-                <View android:id="@id/home_chess_normal_icon" android:background="@mipmap/icon_boardgame_white" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_chess_selected_icon" app:layout_constraintEnd_toEndOf="@id/home_chess_selected_icon" app:layout_constraintStart_toStartOf="@id/home_chess_selected_icon" app:layout_constraintTop_toTopOf="@id/home_chess_selected_icon" />
-                <View android:id="@id/home_e_sports_selected_icon" android:background="@mipmap/icon_esports_darkgolden" android:layout_width="0.0dip" android:layout_height="0.0dip" android:alpha="0.0" android:layout_marginStart="@dimen/dp_4" android:layout_marginEnd="@dimen/dp_4" app:layout_constraintDimensionRatio="1:1" app:layout_constraintEnd_toEndOf="@id/home_tab_e_sports_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_e_sports_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_e_sports_selected_bg" />
-                <View android:id="@id/home_e_sports_normal_icon" android:background="@mipmap/icon_esports_white" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_e_sports_selected_icon" app:layout_constraintEnd_toEndOf="@id/home_e_sports_selected_icon" app:layout_constraintStart_toStartOf="@id/home_e_sports_selected_icon" app:layout_constraintTop_toTopOf="@id/home_e_sports_selected_icon" />
-                <View android:id="@id/home_lottery_selected_icon" android:background="@mipmap/icon_lottery_darkgolden" android:layout_width="0.0dip" android:layout_height="0.0dip" android:alpha="0.0" android:layout_marginStart="@dimen/dp_4" android:layout_marginEnd="@dimen/dp_4" app:layout_constraintDimensionRatio="1:1" app:layout_constraintEnd_toEndOf="@id/home_tab_lottery_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_lottery_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_lottery_selected_bg" />
-                <View android:id="@id/home_lottery_normal_icon" android:background="@mipmap/icon_lottery_white" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_lottery_selected_icon" app:layout_constraintEnd_toEndOf="@id/home_lottery_selected_icon" app:layout_constraintStart_toStartOf="@id/home_lottery_selected_icon" app:layout_constraintTop_toTopOf="@id/home_lottery_selected_icon" />
-                <View android:id="@id/home_fishes_selected_icon" android:background="@mipmap/icon_slotgame_darkgolden" android:layout_width="0.0dip" android:layout_height="0.0dip" android:alpha="0.0" android:layout_marginStart="@dimen/dp_4" android:layout_marginEnd="@dimen/dp_4" app:layout_constraintDimensionRatio="1:1" app:layout_constraintEnd_toEndOf="@id/home_tab_fishes_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_fishes_selected_bg" app:layout_constraintTop_toTopOf="@id/home_tab_fishes_selected_bg" />
-                <View android:id="@id/home_fishes_normal_icon" android:background="@mipmap/icon_slotgame_white" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/home_fishes_selected_icon" app:layout_constraintEnd_toEndOf="@id/home_fishes_selected_icon" app:layout_constraintStart_toStartOf="@id/home_fishes_selected_icon" app:layout_constraintTop_toTopOf="@id/home_fishes_selected_icon" />
-                <TextView android:textSize="@dimen/sp_12" android:textColor="@color/core_9aa4c2" android:id="@id/tv_home_sports_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_5" android:text="体育" app:layout_constraintBottom_toBottomOf="@id/home_tab_sports_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_sports_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_sports_selected_bg" />
-                <TextView android:textSize="@dimen/sp_12" android:textColor="@color/core_9aa4c2" android:id="@id/tv_home_live_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_5" android:text="真人" app:layout_constraintBottom_toBottomOf="@id/home_tab_live_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_live_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_live_selected_bg" />
-                <TextView android:textSize="@dimen/sp_12" android:textColor="@color/core_9aa4c2" android:id="@id/tv_home_chess_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_5" android:text="棋牌" app:layout_constraintBottom_toBottomOf="@id/home_tab_chess_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_chess_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_chess_selected_bg" />
-                <TextView android:textSize="@dimen/sp_12" android:textColor="@color/core_9aa4c2" android:id="@id/tv_home_lottery_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_5" android:text="彩票" app:layout_constraintBottom_toBottomOf="@id/home_tab_lottery_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_lottery_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_lottery_selected_bg" />
-                <TextView android:textSize="@dimen/sp_12" android:textColor="@color/core_9aa4c2" android:id="@id/tv_home_e_sports_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_5" android:text="电竞" app:layout_constraintBottom_toBottomOf="@id/home_tab_e_sports_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_e_sports_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_e_sports_selected_bg" />
-                <TextView android:textSize="@dimen/sp_12" android:textColor="@color/core_9aa4c2" android:id="@id/tv_home_fishes_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dp_5" android:text="电子" app:layout_constraintBottom_toBottomOf="@id/home_tab_fishes_selected_bg" app:layout_constraintEnd_toEndOf="@id/home_tab_fishes_selected_bg" app:layout_constraintStart_toStartOf="@id/home_tab_fishes_selected_bg" />
-                <com.chong.widget.verticalviewpager.DummyViewPager android:orientation="vertical" android:id="@id/home_game_list" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="@dimen/dp_8" android:layout_marginBottom="@dimen/dp_41" android:layout_marginStart="@dimen/dp_4" app:layout_behavior="@string/appbar_scrolling_view_behavior" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@id/home_tab_sports_selected_bg" app:layout_constraintTop_toBottomOf="@id/home_wallet_deposit_text" />
-                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ll_maney_popup" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.0" app:layout_constraintEnd_toEndOf="@id/iv_maney" app:layout_constraintStart_toStartOf="@id/iv_maney" app:layout_constraintTop_toBottomOf="@id/iv_maney">
-                    <ImageView android:layout_width="12.0dip" android:layout_height="@dimen/dp_6" android:src="@drawable/shape_triangle_up" />
-                    <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_ffffff" android:gravity="center" android:background="@drawable/shape_rect_cc414655" android:layout_width="@dimen/dp_76" android:layout_height="@dimen/dp_28" android:text="中心钱包" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@id/swipe_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/white">
+
+                <cn.bingoogolapple.bgabanner.BGABanner
+                    android:id="@id/banner"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    app:banner_isHideIndicator="true"
+                    app:banner_pointContainerBackground="@color/transparent"
+                    app:banner_pointLeftRightMargin="@dimen/dp_2_5"
+                    app:banner_pointTopBottomMargin="@dimen/dp_5"
+                    app:layout_constraintDimensionRatio="360:144"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.ty.allgame.widget.StickinessIndicatorView
+                    android:id="@id/home_indicator"
+                    android:layout_width="0.0dip"
+                    android:layout_height="@dimen/dp_13"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/banner"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:id="@id/home_horn_image"
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="@dimen/dp_16"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_11"
+                    android:background="@mipmap/icon_noitce"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/banner" />
+
+                <com.ty.allgame.widget.MarqueView
+                    android:id="@id/notice_title"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_11"
+                    android:layout_marginEnd="@dimen/dp_2"
+                    app:layout_constraintEnd_toStartOf="@id/iv_hot_game"
+                    app:layout_constraintStart_toEndOf="@id/home_horn_image"
+                    app:layout_constraintTop_toBottomOf="@id/banner" />
+
+                <ImageView
+                    android:id="@id/iv_hot_game"
+                    android:layout_width="@dimen/dp_60"
+                    android:layout_height="@dimen/dp_18"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_14"
+                    android:src="@mipmap/icon_hot_events"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/notice_title"
+                    app:layout_constraintTop_toBottomOf="@id/banner" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@id/guide_line_home_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.45" />
+
+                <TextView
+                    android:id="@id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_14"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:textColor="@color/core_9aa4c2"
+                    android:textSize="@dimen/sp_14"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintEnd_toStartOf="@id/iv_home_vip_level"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <ImageView
+                    android:id="@id/iv_home_vip_level"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_3"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    app:layout_constraintLeft_toRightOf="@id/tvUserName"
+                    app:layout_constraintRight_toLeftOf="@id/guide_line_home_login"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <ImageView
+                    android:id="@id/iv_sign"
+                    android:layout_width="@dimen/dp_10"
+                    android:layout_height="@dimen/dp_14"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_42"
+                    android:src="@mipmap/icon_rmb"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <TextView
+                    android:id="@id/tv_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_2"
+                    android:fontFamily="@font/dinpro_bold"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxWidth="@dimen/dp_110"
+                    android:maxLines="1"
+                    android:textColor="@color/core_414655"
+                    android:textSize="@dimen/sp_20"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_sign"
+                    app:layout_constraintStart_toEndOf="@id/iv_sign"
+                    app:layout_constraintTop_toTopOf="@id/iv_sign" />
+
+                <ImageView
+                    android:id="@id/iv_maney"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:padding="@dimen/dp_3"
+                    android:src="@mipmap/home_maney_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_balance"
+                    app:layout_constraintStart_toEndOf="@id/tv_balance"
+                    app:layout_constraintTop_toTopOf="@id/tv_balance" />
+
+                <View
+                    android:id="@id/double_horizontal_line"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_19"
+                    android:layout_marginTop="@dimen/dp_40"
+                    android:background="@mipmap/double_horizontal_line"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@id/tvUserName"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <TextView
+                    android:id="@id/tv_login_now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_39"
+                    android:text="登录/注册后查看"
+                    android:textColor="@color/color_a5a9b3"
+                    android:textSize="@dimen/sp_12"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <View
+                    android:id="@id/home_wallet_deposit_image"
+                    android:layout_width="@dimen/dp_36"
+                    android:layout_height="@dimen/dp_36"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@mipmap/icon_wallet_deposit"
+                    app:layout_constraintEnd_toStartOf="@id/home_wallet_transfer_image"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toEndOf="@id/guide_line_home_login"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <View
+                    android:id="@id/home_wallet_transfer_image"
+                    android:layout_width="@dimen/dp_36"
+                    android:layout_height="@dimen/dp_36"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@mipmap/icon_wallet_transfer"
+                    app:layout_constraintEnd_toStartOf="@id/home_wallet_withdraw_image"
+                    app:layout_constraintStart_toEndOf="@id/home_wallet_deposit_image"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <View
+                    android:id="@id/home_wallet_withdraw_image"
+                    android:layout_width="@dimen/dp_36"
+                    android:layout_height="@dimen/dp_36"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@mipmap/icon_wallet_withdraw"
+                    app:layout_constraintEnd_toStartOf="@id/home_wallet_vip_image"
+                    app:layout_constraintStart_toEndOf="@id/home_wallet_transfer_image"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <View
+                    android:id="@id/home_wallet_vip_image"
+                    android:layout_width="@dimen/dp_36"
+                    android:layout_height="@dimen/dp_36"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_13"
+                    android:background="@mipmap/icon_wallet_vip"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/home_wallet_withdraw_image"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <TextView
+                    android:id="@id/home_wallet_deposit_text"
+                    android:layout_width="@dimen/dp_36"
+                    android:layout_height="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_43"
+                    android:gravity="center"
+                    android:text="@string/deposit"
+                    android:textColor="@color/color_b1987f"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toStartOf="@id/home_wallet_transfer_text"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="@id/home_wallet_deposit_image"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <TextView
+                    android:id="@id/home_wallet_transfer_text"
+                    android:layout_width="@dimen/dp_36"
+                    android:layout_height="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_43"
+                    android:gravity="center"
+                    android:text="转账"
+                    android:textColor="@color/color_b1987f"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toStartOf="@id/home_wallet_withdraw_text"
+                    app:layout_constraintStart_toEndOf="@id/home_wallet_deposit_text"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <TextView
+                    android:id="@id/home_wallet_withdraw_text"
+                    android:layout_width="@dimen/dp_36"
+                    android:layout_height="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_43"
+                    android:gravity="center"
+                    android:text="取款"
+                    android:textColor="@color/color_b1987f"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toStartOf="@id/home_wallet_vip_text"
+                    app:layout_constraintStart_toEndOf="@id/home_wallet_transfer_text"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <TextView
+                    android:id="@id/home_wallet_vip_text"
+                    android:layout_width="@dimen/dp_36"
+                    android:layout_height="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_43"
+                    android:fontFamily="@font/dinpro"
+                    android:gravity="center"
+                    android:text="VIP"
+                    android:textColor="@color/color_b1987f"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintEnd_toEndOf="@id/home_wallet_vip_image"
+                    app:layout_constraintStart_toEndOf="@id/home_wallet_withdraw_text"
+                    app:layout_constraintTop_toBottomOf="@id/iv_hot_game" />
+
+                <View
+                    android:id="@id/v_game_layout_height"
+                    android:layout_width="1.0dip"
+                    android:layout_height="0.0dip"
+                    app:layout_constraintBottom_toBottomOf="@id/dianzi_shadow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tiyu_shadow" />
+
+                <com.ty.allgame.widget.ShadowLayout
+                    android:id="@id/tiyu_shadow"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_11"
+                    app:layout_constraintBottom_toTopOf="@id/home_tab_live_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_sports_selected_bg"
+                    app:sl_cornerRadius="@dimen/dp_10"
+                    app:sl_dx="0.0dip"
+                    app:sl_dy="0.0dip"
+                    app:sl_shadowColor="@color/color_4741465c"
+                    app:sl_shadowRadius="@dimen/dp_4" />
+
+                <com.ty.allgame.widget.ShadowLayout
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_11"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/home_tab_chess_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_live_selected_bg"
+                    app:sl_cornerRadius="@dimen/dp_10"
+                    app:sl_dx="0.0dip"
+                    app:sl_dy="0.0dip"
+                    app:sl_shadowColor="@color/color_4741465c"
+                    app:sl_shadowRadius="@dimen/dp_4" />
+
+                <com.ty.allgame.widget.ShadowLayout
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_11"
+                    app:layout_constraintBottom_toTopOf="@id/home_tab_e_sports_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_chess_selected_bg"
+                    app:sl_cornerRadius="@dimen/dp_10"
+                    app:sl_dx="0.0dip"
+                    app:sl_dy="0.0dip"
+                    app:sl_shadowColor="@color/color_4741465c"
+                    app:sl_shadowRadius="@dimen/dp_4" />
+
+                <com.ty.allgame.widget.ShadowLayout
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_11"
+                    app:layout_constraintBottom_toTopOf="@id/home_tab_lottery_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_e_sports_selected_bg"
+                    app:sl_cornerRadius="@dimen/dp_10"
+                    app:sl_dx="0.0dip"
+                    app:sl_dy="0.0dip"
+                    app:sl_shadowColor="@color/color_4741465c"
+                    app:sl_shadowRadius="@dimen/dp_4" />
+
+                <com.ty.allgame.widget.ShadowLayout
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_11"
+                    app:layout_constraintBottom_toTopOf="@id/home_tab_fishes_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_lottery_selected_bg"
+                    app:sl_cornerRadius="@dimen/dp_10"
+                    app:sl_dx="0.0dip"
+                    app:sl_dy="0.0dip"
+                    app:sl_shadowColor="@color/color_4741465c"
+                    app:sl_shadowRadius="@dimen/dp_4" />
+
+                <com.ty.allgame.widget.ShadowLayout
+                    android:id="@id/dianzi_shadow"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_11"
+                    android:layout_marginBottom="@dimen/dp_48"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/home_guide_line_shadow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_fishes_selected_bg"
+                    app:sl_cornerRadius="@dimen/dp_10"
+                    app:sl_dx="0.0dip"
+                    app:sl_dy="0.0dip"
+                    app:sl_shadowColor="@color/color_4741465c"
+                    app:sl_shadowRadius="@dimen/dp_4" />
+
+                <View
+                    android:id="@id/home_guide_line_shadow"
+                    android:layout_width="@dimen/dp_1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_3"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@id/home_tab_sports_selected_bg"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@id/home_tab_sports_selected_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_marginBottom="@dimen/dp_6"
+                    android:background="@mipmap/btn_tab_golden_active"
+                    app:layout_constraintBottom_toTopOf="@id/home_tab_live_selected_bg"
+                    app:layout_constraintDimensionRatio="w,54:60"
+                    app:layout_constraintHeight_max="@dimen/dp_60"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_wallet_deposit_text"
+                    app:layout_constraintVertical_chainStyle="spread_inside" />
+
+                <View
+                    android:id="@id/home_tab_live_selected_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginBottom="@dimen/dp_6"
+                    android:background="@mipmap/btn_tab_golden_active"
+                    app:layout_constraintBottom_toTopOf="@id/home_tab_chess_selected_bg"
+                    app:layout_constraintDimensionRatio="w,54:60"
+                    app:layout_constraintHeight_max="@dimen/dp_60"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_tab_sports_selected_bg" />
+
+                <View
+                    android:id="@id/home_tab_chess_selected_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginBottom="@dimen/dp_6"
+                    android:background="@mipmap/btn_tab_golden_active"
+                    app:layout_constraintBottom_toTopOf="@id/home_tab_e_sports_selected_bg"
+                    app:layout_constraintDimensionRatio="w,54:60"
+                    app:layout_constraintHeight_max="@dimen/dp_60"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_tab_live_selected_bg" />
+
+                <View
+                    android:id="@id/home_tab_e_sports_selected_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginBottom="@dimen/dp_6"
+                    android:background="@mipmap/btn_tab_golden_active"
+                    app:layout_constraintBottom_toTopOf="@id/home_tab_lottery_selected_bg"
+                    app:layout_constraintDimensionRatio="w,54:60"
+                    app:layout_constraintHeight_max="@dimen/dp_60"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_tab_chess_selected_bg" />
+
+                <View
+                    android:id="@id/home_tab_lottery_selected_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginBottom="@dimen/dp_6"
+                    android:background="@mipmap/btn_tab_golden_active"
+                    app:layout_constraintBottom_toTopOf="@id/home_tab_fishes_selected_bg"
+                    app:layout_constraintDimensionRatio="w,54:60"
+                    app:layout_constraintHeight_max="@dimen/dp_60"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_tab_e_sports_selected_bg" />
+
+                <View
+                    android:id="@id/home_tab_fishes_selected_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginBottom="@dimen/dp_55"
+                    android:background="@mipmap/btn_tab_golden_active"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="w,54:60"
+                    app:layout_constraintHeight_max="@dimen/dp_60"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_tab_lottery_selected_bg" />
+
+                <View
+                    android:id="@id/home_tab_sports_normal_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/btn_tab_golden_un_active"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_sports_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_sports_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_sports_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_sports_selected_bg" />
+
+                <View
+                    android:id="@id/home_tab_live_normal_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/btn_tab_golden_un_active"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_live_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_live_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_live_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_live_selected_bg" />
+
+                <View
+                    android:id="@id/home_tab_chess_normal_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/btn_tab_golden_un_active"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_chess_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_chess_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_chess_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_chess_selected_bg" />
+
+                <View
+                    android:id="@id/home_tab_e_sports_normal_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/btn_tab_golden_un_active"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_e_sports_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_e_sports_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_e_sports_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_e_sports_selected_bg" />
+
+                <View
+                    android:id="@id/home_tab_lottery_normal_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/btn_tab_golden_un_active"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_lottery_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_lottery_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_lottery_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_lottery_selected_bg" />
+
+                <View
+                    android:id="@id/home_tab_fishes_normal_bg"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/btn_tab_golden_un_active"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_fishes_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_fishes_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_fishes_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_fishes_selected_bg" />
+
+                <View
+                    android:id="@id/home_sports_selected_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:alpha="0.0"
+                    android:background="@mipmap/icon_sports_darkgolden"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_sports_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_sports_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_sports_selected_bg" />
+
+                <View
+                    android:id="@id/home_sports_normal_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/icon_sports_white"
+                    app:layout_constraintBottom_toBottomOf="@id/home_sports_selected_icon"
+                    app:layout_constraintEnd_toEndOf="@id/home_sports_selected_icon"
+                    app:layout_constraintStart_toStartOf="@id/home_sports_selected_icon"
+                    app:layout_constraintTop_toTopOf="@id/home_sports_selected_icon" />
+
+                <View
+                    android:id="@id/home_live_selected_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:alpha="0.0"
+                    android:background="@mipmap/icon_livecasino_darkgolden"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_live_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_live_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_live_selected_bg" />
+
+                <View
+                    android:id="@id/home_live_normal_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/icon_livecasino_white"
+                    app:layout_constraintBottom_toBottomOf="@id/home_live_selected_icon"
+                    app:layout_constraintEnd_toEndOf="@id/home_live_selected_icon"
+                    app:layout_constraintStart_toStartOf="@id/home_live_selected_icon"
+                    app:layout_constraintTop_toTopOf="@id/home_live_selected_icon" />
+
+                <View
+                    android:id="@id/home_chess_selected_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:alpha="0.0"
+                    android:background="@mipmap/icon_boardgame_darkgolden"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_chess_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_chess_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_chess_selected_bg" />
+
+                <View
+                    android:id="@id/home_chess_normal_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/icon_boardgame_white"
+                    app:layout_constraintBottom_toBottomOf="@id/home_chess_selected_icon"
+                    app:layout_constraintEnd_toEndOf="@id/home_chess_selected_icon"
+                    app:layout_constraintStart_toStartOf="@id/home_chess_selected_icon"
+                    app:layout_constraintTop_toTopOf="@id/home_chess_selected_icon" />
+
+                <View
+                    android:id="@id/home_e_sports_selected_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:alpha="0.0"
+                    android:background="@mipmap/icon_esports_darkgolden"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_e_sports_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_e_sports_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_e_sports_selected_bg" />
+
+                <View
+                    android:id="@id/home_e_sports_normal_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/icon_esports_white"
+                    app:layout_constraintBottom_toBottomOf="@id/home_e_sports_selected_icon"
+                    app:layout_constraintEnd_toEndOf="@id/home_e_sports_selected_icon"
+                    app:layout_constraintStart_toStartOf="@id/home_e_sports_selected_icon"
+                    app:layout_constraintTop_toTopOf="@id/home_e_sports_selected_icon" />
+
+                <View
+                    android:id="@id/home_lottery_selected_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:alpha="0.0"
+                    android:background="@mipmap/icon_lottery_darkgolden"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_lottery_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_lottery_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_lottery_selected_bg" />
+
+                <View
+                    android:id="@id/home_lottery_normal_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/icon_lottery_white"
+                    app:layout_constraintBottom_toBottomOf="@id/home_lottery_selected_icon"
+                    app:layout_constraintEnd_toEndOf="@id/home_lottery_selected_icon"
+                    app:layout_constraintStart_toStartOf="@id/home_lottery_selected_icon"
+                    app:layout_constraintTop_toTopOf="@id/home_lottery_selected_icon" />
+
+                <View
+                    android:id="@id/home_fishes_selected_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:alpha="0.0"
+                    android:background="@mipmap/icon_slotgame_darkgolden"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_fishes_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_fishes_selected_bg"
+                    app:layout_constraintTop_toTopOf="@id/home_tab_fishes_selected_bg" />
+
+                <View
+                    android:id="@id/home_fishes_normal_icon"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:background="@mipmap/icon_slotgame_white"
+                    app:layout_constraintBottom_toBottomOf="@id/home_fishes_selected_icon"
+                    app:layout_constraintEnd_toEndOf="@id/home_fishes_selected_icon"
+                    app:layout_constraintStart_toStartOf="@id/home_fishes_selected_icon"
+                    app:layout_constraintTop_toTopOf="@id/home_fishes_selected_icon" />
+
+                <TextView
+                    android:id="@id/tv_home_sports_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:text="体育"
+                    android:textColor="@color/core_9aa4c2"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_sports_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_sports_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_sports_selected_bg" />
+
+                <TextView
+                    android:id="@id/tv_home_live_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:text="真人"
+                    android:textColor="@color/core_9aa4c2"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_live_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_live_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_live_selected_bg" />
+
+                <TextView
+                    android:id="@id/tv_home_chess_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:text="棋牌"
+                    android:textColor="@color/core_9aa4c2"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_chess_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_chess_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_chess_selected_bg" />
+
+                <TextView
+                    android:id="@id/tv_home_lottery_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:text="彩票"
+                    android:textColor="@color/core_9aa4c2"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_lottery_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_lottery_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_lottery_selected_bg" />
+
+                <TextView
+                    android:id="@id/tv_home_e_sports_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:text="电竞"
+                    android:textColor="@color/core_9aa4c2"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_e_sports_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_e_sports_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_e_sports_selected_bg" />
+
+                <TextView
+                    android:id="@id/tv_home_fishes_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:text="电子"
+                    android:textColor="@color/core_9aa4c2"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintBottom_toBottomOf="@id/home_tab_fishes_selected_bg"
+                    app:layout_constraintEnd_toEndOf="@id/home_tab_fishes_selected_bg"
+                    app:layout_constraintStart_toStartOf="@id/home_tab_fishes_selected_bg" />
+
+                <com.chong.widget.verticalviewpager.DummyViewPager
+                    android:id="@id/home_game_list"
+                    android:layout_width="0.0dip"
+                    android:layout_height="0.0dip"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_41"
+                    android:orientation="vertical"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/home_tab_sports_selected_bg"
+                    app:layout_constraintTop_toBottomOf="@id/home_wallet_deposit_text" />
+
+                <LinearLayout
+                    android:id="@id/ll_maney_popup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.0"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@id/iv_maney"
+                    app:layout_constraintStart_toStartOf="@id/iv_maney"
+                    app:layout_constraintTop_toBottomOf="@id/iv_maney">
+
+                    <ImageView
+                        android:layout_width="12.0dip"
+                        android:layout_height="@dimen/dp_6"
+                        android:src="@drawable/shape_triangle_up" />
+
+                    <TextView
+                        android:layout_width="@dimen/dp_76"
+                        android:layout_height="@dimen/dp_28"
+                        android:background="@drawable/shape_rect_cc414655"
+                        android:gravity="center"
+                        android:text="中心钱包"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="@dimen/dp_14" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

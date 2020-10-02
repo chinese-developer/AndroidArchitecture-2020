@@ -5,7 +5,6 @@
 package com.android.cache;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.github.dmstocking.optional.java.util.Optional;
 
@@ -24,7 +23,7 @@ final class CommonImpl {
             storage.remove(key);
             return;
         }
-        CacheEntity cacheEntity = new CacheEntity(StorageContext.provideSerializer().toJson(entity), cacheTime);
+        CacheEntity cacheEntity = new CacheEntity(entity, cacheTime);
         storage.putString(key, StorageContext.provideSerializer().toJson(cacheEntity));
     }
 
@@ -41,7 +40,7 @@ final class CommonImpl {
         }
 
         if (cacheEntity.cacheTime == 0) {
-            return cacheEntity.jsonData;
+            return StorageContext.provideSerializer().toJson(cacheEntity.obj);
         }
 
         long currentTimeMillis = System.currentTimeMillis();
@@ -49,7 +48,7 @@ final class CommonImpl {
         Timber.tag(TAG).d("expiryDate:%s < %s", String.valueOf(expiryTimeMillis), cacheEntity.cacheTime);
 
         if (expiryTimeMillis < cacheEntity.cacheTime) {
-            return cacheEntity.jsonData;
+            return StorageContext.provideSerializer().toJson(cacheEntity.obj);
         } else {
             storage.remove(key);
         }

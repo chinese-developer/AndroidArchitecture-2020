@@ -4,7 +4,9 @@ import com.app.base.common.EventCenter
 import com.app.base.data.api.NetResult
 import com.app.base.data.models.LoggedInUser
 import com.app.base.data.models.Song
+import com.app.base.utils.domain.DomainResponse
 import io.reactivex.Flowable
+import io.reactivex.Observable
 
 interface AppDataSource {
 
@@ -35,6 +37,8 @@ interface AppDataSource {
 
     /** 通过 id 获取歌曲可播放的 url 地址 */
     suspend fun getSongUrl(id: String): NetResult<Song>
+
+    fun fetchDomain(domain: String): Observable<DomainResponse>
 
 }
 

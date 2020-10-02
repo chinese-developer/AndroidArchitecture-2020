@@ -9,12 +9,16 @@ import com.app.base.data.api.AuthTokenLocalDataSource
 import com.app.base.data.api.NetResult
 import com.app.base.data.models.LoggedInUser
 import com.app.base.data.models.Song
+import com.app.base.utils.domain.DomainResponse
 import com.app.base.utils.scope
 import com.app.base.utils.withIO
 import com.bumptech.glide.Glide
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Flowable
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.processors.BehaviorProcessor
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -63,6 +67,17 @@ class AppRepository @Inject constructor(
     }
 
     override fun eventBus(): EventCenter = eventbus
+
+    override fun fetchDomain(domain: String): Observable<DomainResponse> {
+        return appApi.testFastDomain("$domain/ping.jpg")
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map {
+                val response = DomainResponse()
+                response.fastDomain = domain
+                response
+            }
+    }
 
     override suspend fun getSongUrl(id: String): NetResult<Song> {
         val response = appApi.songUrl(buildingSongUrlParams(id))
