@@ -27,8 +27,8 @@ class DownLoadJobService : JobService() {
     private lateinit var handlerThread: HandlerThread
 
     private class JobServiceHandler constructor(
-            @NonNull looper: Looper,
-            @NonNull private val jobFinished: (JobParameters) -> Unit
+        @NonNull looper: Looper,
+        @NonNull private val jobFinished: (JobParameters) -> Unit
     ) : Handler(looper) {
         private val appDataSource by lazy { AppContext.appDataSource() }
         private var onlyOnceRequestJob: Job? = null
@@ -43,7 +43,7 @@ class DownLoadJobService : JobService() {
                         val params = msg.obj as JobParameters
                         with(params.extras) {
                             val songJson = getString(KEY_FOR_DOWNLOAD_SONG_DATA)
-                                    ?: return@handleMessage
+                                ?: return@handleMessage
                             val songListFocusOn = getString(KEY_FOR_WHICH_FRAGMENT)
 
                             val song = GsonUtils.fromJson(songJson, Song::class.java)
@@ -60,12 +60,16 @@ class DownLoadJobService : JobService() {
         private suspend fun fetchSongUrlAndPost(song: Song, songListFocusOn: String?) {
             val response = appDataSource.getSongUrl(song.sourceOfSongId.toString())
             response.whenSuccess {
-                val newSong = createSong(song, it.url)
-                EventBus.getDefault().post(EventJobService().apply { setSong(newSong, songListFocusOn) })
+                if (it != null) {
+                    val newSong = createSong(song, it.url)
+                    EventBus.getDefault()
+                        .post(EventJobService().apply { setSong(newSong, songListFocusOn) })
+                }
             }
             response.whenFailure {
                 val newSong = createSong(song, "")
-                EventBus.getDefault().post(EventJobService().apply { setSong(newSong, songListFocusOn) })
+                EventBus.getDefault()
+                    .post(EventJobService().apply { setSong(newSong, songListFocusOn) })
             }
         }
 

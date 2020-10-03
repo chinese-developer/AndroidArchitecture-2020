@@ -78,17 +78,19 @@ class HomeViewModel @ViewModelInject constructor(
                 val albumCoverResponse = maybeFetchAlbumCoverImgUrl(song)
 
                 lyricResponse.whenSuccess {
-                    var albumCoverImageUrl: String? = song.albumCoverImgUrl
+                    if (it != null) {
+                        var albumCoverImageUrl: String? = song.albumCoverImgUrl
 
-                    albumCoverResponse?.whenSuccess { imgUrlData ->
-                        albumCoverImageUrl = imgUrlData.imgUrl
+                        albumCoverResponse?.whenSuccess { imgUrlData ->
+                            albumCoverImageUrl = imgUrlData?.imgUrl
+                        }
+
+                        val newLyric = LyricPojo(it.lyric, it.tlyric, albumCoverImageUrl)
+                        _songModel.value = createSongModel(lyricPojo = newLyric)
+
+                        cache[sourceOfSongId] = newLyric
+                        stableStorage.putEntity(Constant.LYRIC_CACHE_KEY, cache)
                     }
-
-                    val newLyric = LyricPojo(it.lyric, it.tlyric, albumCoverImageUrl)
-                    _songModel.value = createSongModel(lyricPojo = newLyric)
-
-                    cache[sourceOfSongId] = newLyric
-                    stableStorage.putEntity(Constant.LYRIC_CACHE_KEY, cache)
                 }
 
                 albumCoverResponse?.whenFailure {
@@ -115,7 +117,9 @@ class HomeViewModel @ViewModelInject constructor(
 
             val response = repo.download(song.url!!)
 
-            response.whenSuccess(AppContext.get()::toast)
+            response.whenSuccess {
+                if (it != null) AppContext.get().toast(it)
+            }
             response.whenFailure { error ->
                 toast(error.exception.message)
             }

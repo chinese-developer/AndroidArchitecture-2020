@@ -13,10 +13,10 @@ import com.blankj.utilcode.util.ActivityUtils
 
 sealed class NetResult<out T : Any> {
 
-    data class Success<out T : Any>(val data: T) : NetResult<T>()
+    data class Success<out T : Any>(val data: T?) : NetResult<T>()
     data class Error(val exception: ErrorException) : NetResult<Nothing>()
 
-    fun whenSuccess(block: (T) -> Unit) {
+    fun whenSuccess(block: (T?) -> Unit) {
         if (this is Success<T>) {
             block(this.data)
         }
