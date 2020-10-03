@@ -127,6 +127,8 @@ dependencies {
     api "com.github.chrisbanes:PhotoView:${versions.photoView}"
     // https://github.com/airbnb/lottie-android
     api "com.airbnb.android:lottie:${versions.lottie}"
+    // https://github.com/afollestad/vvalidator
+    api 'com.afollestad:vvalidator:0.5.2'
 
     // toast
     api "com.github.liangjingkanji:Tooltip:${versions.toast}"
