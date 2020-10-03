@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/custom_toolbar" />
+    <com.ty.allgame.widget.RecordTypeSelector android:id="@id/record_selector" android:layout_width="fill_parent" android:layout_height="@dimen/dp_50" />
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout android:id="@id/refresh_layout" android:background="@color/color_f8f8f8" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/rv_record" android:background="@color/color_f8f8f8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+            <com.ty.allgame.stickyitemdecoration.StickyHeadContainer android:id="@id/stickyHeader" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include android:id="@id/section_header" layout="@layout/layout_bet_record_section_header" />
+            </com.ty.allgame.stickyitemdecoration.StickyHeadContainer>
+            <com.ty.allgame.widget.YaboEmptyView android:id="@id/status_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:id="@id/rl_root" android:background="@color/background_ffffff" android:clickable="true" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/dp_50" skin:enable="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:skin="http://schemas.android.com/android/skin">
+    <ImageView android:id="@id/bank_icon" android:visibility="visible" android:layout_width="@dimen/dp_26" android:layout_height="@dimen/dp_27" android:src="@mipmap/bank_icon_abc" android:layout_centerVertical="true" android:layout_marginStart="@dimen/dp_16" />
+    <TextView android:textSize="@dimen/sp_14" android:textColor="@color/color_4a4a4a" android:gravity="center" android:id="@id/bank_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="10.0dip" android:layout_toEndOf="@id/bank_icon" />
+    <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_9b9b9b" android:gravity="center" android:id="@id/bank_number" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/dp_10" android:layout_toEndOf="@id/bank_name" />
+    <ImageView android:id="@id/icon_right" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@mipmap/icon_no_selected" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/dp_22" android:layout_alignParentEnd="true" />
+    <View android:background="@color/color_c5ccdc" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/dp_17" />
+</RelativeLayout>

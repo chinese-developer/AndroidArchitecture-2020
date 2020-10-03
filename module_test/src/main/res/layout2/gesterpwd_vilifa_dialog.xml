@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yabo.livevideo.widget.media.LiveVideoView android:id="@id/lvv_login_video" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/rootView" android:background="@drawable/gester_login_background" android:paddingTop="@dimen/dp_35" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/topIcon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/ybo_logo" />
+        <TextView android:textSize="@dimen/sp_12" android:textColor="@color/white" android:gravity="center" android:id="@id/textMsg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_93" android:text="msg" />
+        <com.github.ihsg.patternlocker.PatternLockerView android:id="@id/patternLockerView" android:layout_width="fill_parent" android:layout_height="@dimen/dp_280" android:layout_marginLeft="@dimen/dp_40" android:layout_marginTop="@dimen/dp_20" android:layout_marginRight="@dimen/dp_40" app:plv_color="#80ffffff" app:plv_enableAutoClean="true" app:plv_enableHapticFeedback="true" app:plv_enableSkip="true" app:plv_errorColor="@color/red_fc5c5c" app:plv_fillColor="#ff1c2418" app:plv_freezeDuration="1000" app:plv_hitColor="#ff78d1ff" app:plv_lineWidth="@dimen/dp_2" />
+        <TextView android:textSize="@dimen/sp_14" android:textColor="@color/white" android:gravity="center" android:id="@id/tv_gester_pwd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_40" android:text="账号密码登录" android:drawableRight="@mipmap/hot_game_icon_arrow" android:drawablePadding="@dimen/dp_5" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/lin_not_net" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/iv_default" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/network_error" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_30">
+                <TextView android:textSize="@dimen/sp_14" android:textColor="#ffadadae" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="网络异常，请检查您的信号及服务后" />
+                <TextView android:textSize="@dimen/sp_14" android:textColor="#ff50c6ff" android:id="@id/tv_again_net" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="重试" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.yabo.livevideo.widget.media.LiveVideoView>

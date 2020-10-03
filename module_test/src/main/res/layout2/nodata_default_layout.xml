@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/rl_root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ll_default" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/iv_default" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/icon_bet_nodata" />
+        <TextView android:textSize="@dimen/dp_14" android:textColor="@color/text_808080" android:gravity="center_horizontal" android:id="@id/tv_default" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="暂无记录，前往今日赛程娱乐一波~" android:layout_below="@id/iv_default" />
+        <TextView android:textSize="@dimen/dp_14" android:textStyle="bold" android:textColor="@color/color_c2c2c2" android:gravity="center_horizontal" android:id="@id/tv_default_bold" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_11" android:text="盘口已关闭" />
+        <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_c2c2c2" android:gravity="center_horizontal" android:id="@id/tv_default_sub" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_11" android:text="当前无法进行投注" />
+        <TextView android:textColor="@color/color_ffffff" android:gravity="center" android:id="@id/tv_refresh" android:background="@drawable/shape_dccab8_d2b496_radius_5" android:visibility="gone" android:layout_width="@dimen/dp_140" android:layout_height="@dimen/dp_40" android:layout_marginTop="20.0dip" android:text="数据加载失败，点击重试" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/color_01adfe" android:gravity="center" android:id="@id/tv_next" android:background="@drawable/shape_corners19_blue" android:visibility="gone" android:layout_width="@dimen/dp_96" android:layout_height="@dimen/dp_31" android:layout_marginTop="@dimen/dp_29" android:text="立即前往" />
+    </LinearLayout>
+</RelativeLayout>

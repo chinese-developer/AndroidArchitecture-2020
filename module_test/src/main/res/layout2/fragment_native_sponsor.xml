@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/color_f8f8f8" android:paddingBottom="@dimen/dp_38" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/custom_toolbar" />
+    <View android:background="@color/color_eeeeee" android:layout_width="fill_parent" android:layout_height="@dimen/dp_0_5" />
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout android:id="@id/swipeRefreshLayout" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/recyclerView" android:background="@color/color_f8f8f8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    <com.ty.allgame.widget.YaboEmptyView android:id="@id/placeholder" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

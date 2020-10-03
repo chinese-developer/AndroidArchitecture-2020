@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textColor="@color/black" android:id="@id/messageLogTime" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentTop="true" android:layout_marginStart="10.0dip" android:layout_marginEnd="10.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff9c9999" android:orientation="vertical" android:id="@id/textViewMsg" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:maxLines="4" android:layout_below="@id/messageLogTime" android:layout_marginStart="10.0dip" android:layout_marginEnd="10.0dip" />
+    <View android:background="#ffdcdada" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="3.0dip" android:layout_below="@id/textViewMsg" />
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center" android:background="@android:color/transparent" android:paddingBottom="@dimen/dp_20" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/rlHead" android:layout_width="@dimen/dp_60" android:layout_height="@dimen/dp_60">
+        <com.ty.allgame.widget.CircleImageView android:id="@id/ivUnSelect" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@mipmap/head_1" android:scaleType="centerCrop" />
+        <com.ty.allgame.widget.CircleImageView android:id="@id/ivSelect" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@mipmap/head_1" android:scaleType="centerCrop" app:civ_border_color="@color/color_main2" app:civ_border_width="@dimen/dp_2" />
+        <ImageView android:id="@id/ivHeadSelected" android:visibility="visible" android:layout_width="@dimen/dp_18" android:layout_height="@dimen/dp_18" android:src="@mipmap/pic_bind_sussce" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</FrameLayout>

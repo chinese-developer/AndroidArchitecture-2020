@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:skin="http://schemas.android.com/android/skin"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:gravity="center_vertical">
+    <TextView android:id="@id/title_arrow" android:layout_width="fill_parent"
+        android:layout_height="fill_parent" android:drawableRight="@mipmap/ico_mess_enter"
+        android:gravity="center_vertical" android:singleLine="true" android:text="14sp"
+        android:textColor="@color/text_43494d" skin:enable="true" />
+</RelativeLayout>

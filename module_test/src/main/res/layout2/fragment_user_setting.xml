@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/color_f8f8f8" android:layout_width="fill_parent" android:layout_height="fill_parent" skin:enable="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:skin="http://schemas.android.com/android/skin">
+    <include layout="@layout/custom_toolbar" />
+    <ScrollView android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never">
+        <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/dp_20" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/background_mine" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:paddingStart="@dimen/dp_14" android:paddingEnd="@dimen/dp_14" skin:enable="true">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ll_lock" android:layout_width="fill_parent" android:layout_height="@dimen/dp_49" skin:enable="true">
+                    <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/unlock_set" android:layout_weight="1.0" skin:enable="true" />
+                    <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="手势密码" android:includeFontPadding="false" android:layout_marginEnd="@dimen/dp_10" skin:enable="true" />
+                    <ImageView android:background="@mipmap/icon_arrow" android:layout_width="@dimen/dp_8" android:layout_height="@dimen/dp_14" />
+                </LinearLayout>
+                <View android:background="@color/line_ececec" android:layout_width="fill_parent" android:layout_height="1.0px" skin:enable="true" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/pwd_update" android:layout_width="fill_parent" android:layout_height="@dimen/dp_49" skin:enable="true">
+                    <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text1" android:gravity="left" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/change_pwd" android:layout_weight="1.0" skin:enable="true" />
+                    <ImageView android:background="@mipmap/icon_arrow" android:layout_width="@dimen/dp_8" android:layout_height="@dimen/dp_14" />
+                </LinearLayout>
+                <View android:background="@color/line_ececec" android:layout_width="fill_parent" android:layout_height="1.0px" skin:enable="true" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ll_cache" android:layout_width="fill_parent" android:layout_height="@dimen/dp_49" skin:enable="true">
+                    <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text1" android:gravity="left" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="清除缓存" android:layout_weight="1.0" skin:enable="true" />
+                    <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text1" android:id="@id/tv_cache" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="11.83Mb" skin:enable="true" />
+                </LinearLayout>
+                <View android:background="@color/line_ececec" android:layout_width="fill_parent" android:layout_height="1.0px" skin:enable="true" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/background_mine" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:paddingStart="@dimen/dp_14" android:paddingEnd="@dimen/dp_14" skin:enable="true">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/feedback" android:layout_width="fill_parent" android:layout_height="@dimen/dp_49" skin:enable="true">
+                    <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text1" android:gravity="left" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/write_message" android:layout_weight="1.0" skin:enable="true" />
+                    <ImageView android:background="@mipmap/icon_arrow" android:layout_width="@dimen/dp_8" android:layout_height="@dimen/dp_14" />
+                </LinearLayout>
+                <View android:background="@color/line_ececec" android:layout_width="fill_parent" android:layout_height="1.0px" skin:enable="true" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/check_version" android:layout_width="fill_parent" android:layout_height="@dimen/dp_49" skin:enable="true">
+                    <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text1" android:gravity="left" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="检查更新" android:layout_weight="1.0" skin:enable="true" />
+                    <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text2" android:id="@id/tv_app_version" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/dp_10" skin:enable="true" />
+                    <ImageView android:id="@id/iv_update" android:background="@mipmap/icon_newto_update" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/dp_10" />
+                    <ImageView android:background="@mipmap/icon_arrow" android:layout_width="@dimen/dp_8" android:layout_height="@dimen/dp_14" />
+                </LinearLayout>
+                <View android:background="@color/line_ececec" android:layout_width="fill_parent" android:layout_height="1.0px" skin:enable="true" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_text1" android:gravity="center" android:id="@id/tv_exit" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="@dimen/dp_50" android:layout_marginTop="@dimen/dp_10" android:layout_marginBottom="@dimen/dp_10" android:text="退出" skin:enable="true" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textSize="@dimen/sp_8" android:textColor="@android:color/white" android:gravity="center" android:background="@drawable/simple_count_badge_bg" android:layout_width="@dimen/dp_18" android:layout_height="@dimen/dp_12"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

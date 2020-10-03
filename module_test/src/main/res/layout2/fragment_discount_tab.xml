@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/discount_layout" android:background="@color/color_f8f8f8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/custom_toolbar" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="@dimen/dp_45">
+        <net.lucode.hackware.magicindicator.MagicIndicator android:layout_gravity="center_horizontal" android:id="@id/tab_layout" android:background="@color/color_ffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/iv_highlight" android:layout_width="0.0dip" android:layout_height="fill_parent" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintWidth_percent="0.25" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View android:background="@color/color_eeeeee" android:layout_width="fill_parent" android:layout_height="@dimen/dp_0_5" />
+    <androidx.viewpager.widget.ViewPager android:id="@id/view_pager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.ty.allgame.widget.YaboEmptyView android:id="@id/placeholder" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

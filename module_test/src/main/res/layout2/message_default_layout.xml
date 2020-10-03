@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_default" android:background="@color/color_f8faff" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" skin:enable="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:skin="http://schemas.android.com/android/skin">
+    <ImageView android:id="@id/iv_default" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/network_error" skin:enable="true" />
+    <TextView android:textSize="13.0sp" android:textColor="@color/text_808080" android:gravity="center_horizontal" android:id="@id/tv_default" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="暂无消息" android:layout_below="@id/iv_default" skin:enable="true" />
+    <TextView android:textColor="@color/game_color_ffffff" android:gravity="center" android:id="@id/tv_refresh" android:background="@drawable/btn_blue" android:visibility="gone" android:layout_width="130.0dip" android:layout_height="30.0dip" android:layout_marginTop="20.0dip" android:text="点击重试" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/color_01adfe" android:gravity="center" android:id="@id/tv_next" android:background="@drawable/shape_corners19_blue" android:visibility="gone" android:layout_width="@dimen/dp_96" android:layout_height="@dimen/dp_31" android:layout_marginTop="@dimen/dp_29" android:text="立即前往" />
+</LinearLayout>

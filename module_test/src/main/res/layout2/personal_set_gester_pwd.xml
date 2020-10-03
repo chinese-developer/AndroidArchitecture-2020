@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ll_root_view" android:background="@color/white" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" skin:enable="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:skin="http://schemas.android.com/android/skin">
+    <include layout="@layout/custom_toolbar" />
+    <View android:background="@color/color_F5F5F9" android:layout_width="fill_parent" android:layout_height="@dimen/dp_10" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ll_top" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.github.ihsg.patternlocker.PatternIndicatorView android:layout_gravity="center" android:id="@id/patternIndicatorView" android:layout_width="@dimen/dp_32" android:layout_height="@dimen/dp_32" app:piv_color="@color/line_eaecf4" app:piv_errorColor="@color/color_db6372" app:piv_fillColor="@color/color_ffffff" app:piv_hitColor="#ff6aaaf5" app:plv_lineWidth="2.0dip" />
+        <TextView android:textSize="@dimen/sp_14" android:textColor="@color/color_414655" android:gravity="center" android:id="@id/textMsg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_30" android:text="msg" />
+        <com.github.ihsg.patternlocker.PatternLockerView android:id="@id/patternLockerView" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="@dimen/dp_280" android:layout_marginLeft="@dimen/dp_40" android:layout_marginTop="@dimen/dp_30" android:layout_marginRight="@dimen/dp_40" app:plv_color="@color/line_eaecf4" app:plv_enableAutoClean="true" app:plv_enableHapticFeedback="true" app:plv_enableSkip="true" app:plv_errorColor="@color/color_db6372" app:plv_fillColor="@color/color_ffffff" app:plv_freezeDuration="1000" app:plv_hitColor="#ff6aaaf5" app:plv_lineWidth="@dimen/dp_2" />
+        <TextView android:textSize="@dimen/sp_16" android:textColor="@color/color_6aaafa" android:gravity="center" android:id="@id/tv_gester_pwd" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_30" android:text="验证登录密码" />
+        <Button android:id="@id/btn_clean" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="clean" />
+    </LinearLayout>
+    <com.ty.allgame.widget.YaboEmptyView android:id="@id/empty_not_net" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

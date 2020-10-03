@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/color_f4f4f4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/custom_toolbar" />
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout android:id="@id/swipe_layout" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.ty.allgame.widget.header.YaBoHeader android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/rv_record_list" android:background="@color/white" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/dp_10" android:overScrollMode="never" />
+        <com.scwang.smartrefresh.layout.footer.BallPulseFooter android:layout_width="fill_parent" android:layout_height="@dimen/dp_50" app:layout_srlBackgroundColor="@color/mainColor" app:srlAnimatingColor="@color/mainColor" app:srlNormalColor="@color/mainColor" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

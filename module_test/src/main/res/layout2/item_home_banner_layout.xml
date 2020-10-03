@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_horizontal" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/iv_shader" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@mipmap/banner_shadow" android:scaleType="fitXY" android:layout_alignParentBottom="true" android:translationY="10.0dip" android:scaleX="0.95" android:scaleY="0.95" />
+        <androidx.viewpager.widget.ViewPager android:id="@id/vp_image_title" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="bottom|center" android:orientation="horizontal" android:id="@id/ll_dot" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" />
+</merge>

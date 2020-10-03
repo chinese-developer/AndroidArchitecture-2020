@@ -125,6 +125,8 @@ dependencies {
     // https://github.com/yshrsmz/KeyboardVisibilityEvent
     api "net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:${versions.keyboardtools}"
     api "com.github.chrisbanes:PhotoView:${versions.photoView}"
+    // https://github.com/airbnb/lottie-android
+    api "com.airbnb.android:lottie:${versions.lottie}"
 
     // toast
     api "com.github.liangjingkanji:Tooltip:${versions.toast}"

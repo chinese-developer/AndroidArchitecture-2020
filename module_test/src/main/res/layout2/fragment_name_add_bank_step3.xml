@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/custom_toolbar" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ll_phone_or_email" android:background="@color/white" android:paddingBottom="@dimen/dp_20" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_1" android:paddingStart="@dimen/dp_14" android:paddingEnd="@dimen/dp_14">
+        <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_db6372" android:gravity="center_vertical" android:id="@id/bank_step3_error" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_7" android:layout_marginBottom="@dimen/dp_22" android:text="" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/dp_60">
+            <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_414655" android:id="@id/tv_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="手机号码" />
+            <EditText android:textSize="@dimen/sp_16" android:textColor="@color/color_414655" android:textColorHint="@color/color_cbced8" android:id="@id/bank_step3_phone" android:background="@null" android:paddingTop="@dimen/dp_3" android:layout_width="fill_parent" android:layout_height="@dimen/dp_25" android:hint="@string/usercenter_phone_null" android:singleLine="true" android:maxLength="11" android:inputType="number" android:fontFamily="@font/dinpro" />
+        </LinearLayout>
+        <View android:background="@color/color_f8f8f8" android:layout_marginTop="@dimen/dp_10" style="@style/h_line_d7e2e9" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/dp_60" android:layout_marginTop="@dimen/dp_15">
+            <TextView android:textSize="@dimen/dp_14" android:textColor="@color/text_43494d" android:id="@id/tv_title_type" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/verify" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/dp_3" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <EditText android:textSize="@dimen/dp_18" android:textColor="@color/color_414655" android:textColorHint="@color/color_cbced8" android:gravity="center_vertical" android:id="@id/bank_step3_code" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/dp_25" android:text="" android:hint="@string/verification_code_hide" android:singleLine="true" android:maxLength="10" android:layout_weight="1.0" android:inputType="number" android:fontFamily="@font/dinpro" android:layout_marginEnd="@dimen/dp_10" />
+                <TextView android:textSize="@dimen/dp_14" android:textColor="@color/color_white" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/tv_phone_getcode" android:background="@drawable/main_gradation_radius5" android:layout_width="@dimen/dp_100" android:layout_height="@dimen/dp_30" android:checked="false" android:button="@null" android:minWidth="90.0dip" android:text="@string/get_code2" android:paddingStart="8.0dip" android:paddingEnd="@dimen/dp_8" />
+            </LinearLayout>
+        </LinearLayout>
+        <View android:background="@color/color_f8f8f8" android:layout_marginTop="@dimen/dp_10" style="@style/h_line_d7e2e9" />
+        <TextView android:textSize="@dimen/dp_12" android:textColor="@color/color_a5a9b3" android:id="@id/voice_tip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_20" />
+        <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_a5a9b3" android:id="@id/bottom_tip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_22" android:text="手机号码将有助于您找回账号，同时也是客服人员确认您身份的重要依据" />
+        <TextView android:enabled="false" android:textSize="@dimen/dp_16" android:textColor="@color/white" android:gravity="center" android:id="@id/bank_step3_next" android:background="@drawable/btn_not_disable_corners_bg" android:layout_width="fill_parent" android:layout_height="@dimen/dp_45" android:layout_marginTop="@dimen/dp_40" android:text="@string/deposit_offline_submit" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/sp_14" android:textColor="@color/color_a5a9b3" android:gravity="center" android:id="@id/jump_step3_customer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_50" android:text="如需帮助，请 联系客服" />
+</LinearLayout>

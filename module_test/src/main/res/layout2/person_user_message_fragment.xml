@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/color_f8faff" android:layout_width="fill_parent" android:layout_height="fill_parent" skin:enable="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:skin="http://schemas.android.com/android/skin">
+    <include layout="@layout/custom_toolbar" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ll_content" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <net.lucode.hackware.magicindicator.MagicIndicator android:id="@id/tab_indicator" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="@dimen/dp_45" android:layout_marginBottom="2.0dip" />
+        <androidx.viewpager.widget.ViewPager android:id="@id/viewPager" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+    </LinearLayout>
+</LinearLayout>

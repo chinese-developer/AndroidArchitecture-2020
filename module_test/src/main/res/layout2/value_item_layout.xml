@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/dp_13" android:textColor="@color/setting_left_text_color" android:gravity="center|left" android:id="@id/tv_key" android:layout_width="fill_parent" android:layout_height="@dimen/dp_49" android:text="key" android:drawablePadding="@dimen/dp_12" android:layout_weight="1.0" android:drawableStart="@mipmap/icon_login_name_1" android:layout_marginStart="@dimen/dp_12" />
+    <TextView android:textSize="@dimen/dp_13" android:textColor="@color/setting_right_text_color" android:gravity="center" android:id="@id/tv_value" android:layout_width="wrap_content" android:layout_height="@dimen/dp_49" android:drawablePadding="@dimen/dp_5" android:drawableEnd="@mipmap/ico_list_enter" android:layout_marginEnd="@dimen/dp_13" android:layout_alignParentEnd="true" />
+</merge>

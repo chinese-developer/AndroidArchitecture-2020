@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" skin:enable="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:skin="http://schemas.android.com/android/skin">
+    <include layout="@layout/custom_toolbar" />
+    <View android:background="@color/color_eeeeee" android:layout_width="fill_parent" android:layout_height="@dimen/dp_0_5" />
+    <TextView android:id="@id/tv_error_msg" style="@style/bind_info_error" />
+    <TextView android:background="@color/color_white" android:layout_width="fill_parent" android:layout_height="@dimen/dp_20" />
+    <com.ty.allgame.widget.PersonBindView android:id="@id/personBindView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_14" android:layout_marginRight="@dimen/dp_14" app:etBingHintValue="请输入手机号码" app:etCode="请输入手机验证码" app:tvBingKey="@string/phone_number" app:tvBingKey2="手机验证码" />
+    <TextView android:textSize="@dimen/dp_12" android:textColor="@color/color_a5a9b3" android:id="@id/voice_tip" android:background="@color/white" android:paddingTop="@dimen/dp_20" android:paddingBottom="@dimen/dp_20" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_14" android:layout_marginRight="@dimen/dp_14" />
+    <include layout="@layout/layout_bottom_tips" />
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/rl_content" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/tool_bar_layout" layout="@layout/custom_toolbar" />
+    <com.ty.allgame.widget.X5WebView android:id="@id/x5webview" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/tool_bar_layout" />
+    <include layout="@layout/loading_dialog" />
+</RelativeLayout>

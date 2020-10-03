@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/color_f8faff" android:layout_width="fill_parent" android:layout_height="fill_parent" skin:enable="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:skin="http://schemas.android.com/android/skin">
+    <include layout="@layout/custom_toolbar" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ll_content" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:orientation="vertical" android:id="@id/swipe_layout" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:id="@id/rl_view" android:layout_width="fill_parent" android:layout_height="wrap_content" skin:enable="true">
+                <com.yanzhenjie.recyclerview.SwipeRecyclerView android:id="@id/message_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_19" android:layout_marginRight="@dimen/dp_10" />
+                <RelativeLayout android:gravity="center" android:id="@id/rl_add_bank" android:background="@drawable/bg_corners5_blue_stoke_ffffff" android:paddingBottom="@dimen/dp_4" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/dp_53" android:layout_marginLeft="@dimen/dp_43" android:layout_marginTop="@dimen/dp_40" android:layout_marginRight="@dimen/dp_43" android:layout_below="@id/message_list">
+                    <ImageView android:id="@id/icon" android:layout_width="@dimen/dp_14" android:layout_height="@dimen/dp_14" android:src="@mipmap/ico_add" android:layout_alignTop="@id/text" android:layout_alignBottom="@id/text" />
+                    <TextView android:textSize="@dimen/dp_14" android:textColor="#ff5fa4e8" android:id="@id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_5" android:text="添加银行卡" android:layout_toRightOf="@id/icon" />
+                </RelativeLayout>
+                <TextView android:textSize="10.0sp" android:textColor="@color/color_999999" android:gravity="center" android:id="@id/tv_hint" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/dp_40" android:text="如需删除银行卡，请联系在线客服" android:layout_alignParentBottom="true" skin:enable="true" />
+            </RelativeLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/llayBindInfoLayout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_50">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/default_nobankcard" skin:enable="true" />
+            <TextView android:textSize="@dimen/dp_15" android:textColor="@color/color_a9a9a9" android:id="@id/tvErrorMsg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" skin:enable="true" />
+            <RelativeLayout android:gravity="center" android:id="@id/btnJump" android:background="@drawable/bg_corners5_blue_stoke_ffffff" android:paddingBottom="@dimen/dp_4" android:layout_width="fill_parent" android:layout_height="@dimen/dp_53" android:layout_marginLeft="@dimen/dp_43" android:layout_marginRight="@dimen/dp_43" android:layout_below="@id/message_list">
+                <ImageView android:id="@id/icon_empty" android:layout_width="@dimen/dp_14" android:layout_height="@dimen/dp_14" android:src="@mipmap/ico_add" android:layout_alignTop="@id/text_empty" android:layout_alignBottom="@id/text_empty" />
+                <TextView android:textSize="@dimen/dp_14" android:textColor="#ff5fa4e8" android:id="@id/text_empty" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_5" android:text="添加银行卡" android:layout_toRightOf="@id/icon_empty" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

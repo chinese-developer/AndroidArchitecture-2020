@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.ty.allgame.widget.wheelpicker.widgets.WheelDatePicker android:id="@id/wheel_date_picker_year" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textColor="#ff536d8a" android:id="@id/wheel_date_picker_year_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="年" />
+    <com.ty.allgame.widget.wheelpicker.widgets.WheelMonthPicker android:id="@id/wheel_date_picker_month" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textColor="#ff536d8a" android:id="@id/wheel_date_picker_month_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="月" />
+    <com.ty.allgame.widget.wheelpicker.widgets.WheelDayPicker android:id="@id/wheel_date_picker_day" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textColor="#ff536d8a" android:id="@id/wheel_date_picker_day_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="日" />
+</LinearLayout>

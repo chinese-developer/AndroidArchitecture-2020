@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background_ffffff" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="#ffd0d0d0" android:layout_width="fill_parent" android:layout_height="@dimen/dp_0_5" />
+    <RelativeLayout android:background="@color/color_fafaf8" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="46.0dip">
+        <TextView android:textSize="@dimen/sp_15" android:textColor="@color/color_main1" android:id="@id/tv_cancle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancle" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/color_263440" android:id="@id/tv_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/title" android:layout_centerInParent="true" />
+        <TextView android:textSize="@dimen/sp_15" android:textColor="@color/color_main1" android:id="@id/tv_select" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/finish" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <View android:background="#ffe1e0e0" android:layout_width="fill_parent" android:layout_height="@dimen/dp_1" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:background="@color/background" android:paddingLeft="20.0dip" android:paddingTop="15.0dip" android:paddingRight="20.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip">
+            <com.ty.allgame.widget.data_picker.DatePickerView android:id="@id/year_pv" android:layout_width="0.0dip" android:layout_height="@dimen/dp_190" android:layout_weight="3.0" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/color_263440" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/year" android:layout_weight="1.0" />
+            <com.ty.allgame.widget.data_picker.DatePickerView android:id="@id/month_pv" android:layout_width="0.0dip" android:layout_height="@dimen/dp_190" android:layout_weight="2.0" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/color_263440" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/month" android:layout_weight="1.0" />
+            <com.ty.allgame.widget.data_picker.DatePickerView android:id="@id/day_pv" android:layout_width="0.0dip" android:layout_height="@dimen/dp_190" android:layout_weight="2.0" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/color_263440" android:gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/day" android:layout_weight="1.0" />
+            <com.ty.allgame.widget.data_picker.DatePickerView android:id="@id/hour_pv" android:layout_width="0.0dip" android:layout_height="@dimen/dp_190" android:layout_weight="2.0" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/color_263440" android:gravity="center" android:id="@id/hour_text" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/hour" android:layout_weight="1.0" />
+            <com.ty.allgame.widget.data_picker.DatePickerView android:id="@id/minute_pv" android:layout_width="0.0dip" android:layout_height="@dimen/dp_190" android:layout_weight="2.0" />
+            <TextView android:textSize="18.0sp" android:textColor="@color/color_263440" android:gravity="center" android:id="@id/minute_text" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/minute" android:layout_weight="1.0" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

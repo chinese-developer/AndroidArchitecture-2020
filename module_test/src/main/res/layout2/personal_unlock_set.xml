@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ll_root_view" android:background="@color/color_f8f8f8" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" skin:enable="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:skin="http://schemas.android.com/android/skin">
+    <include layout="@layout/custom_toolbar" />
+    <androidx.constraintlayout.widget.ConstraintLayout android:background="@color/white" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:paddingStart="@dimen/dp_14" android:paddingEnd="@dimen/dp_14">
+        <View android:id="@id/view" android:background="@color/white" android:layout_width="@dimen/dp_0" android:layout_height="@dimen/dp_0" app:layout_constraintBottom_toBottomOf="@id/lin_gester_pwd" app:layout_constraintLeft_toLeftOf="@id/lin_gester_pwd" app:layout_constraintRight_toRightOf="@id/lin_gester_pwd" app:layout_constraintTop_toTopOf="@id/lin_gester_pwd" />
+        <LinearLayout android:orientation="vertical" android:id="@id/lin_gester_pwd" android:background="@color/color_transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout android:orientation="vertical" android:background="@drawable/bg_corners3_ffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/rela_gester_pwd" android:layout_width="fill_parent" android:layout_height="@dimen/dp_50">
+                    <ImageView android:id="@id/img_gester_pwd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@mipmap/icon_login_password_1" android:layout_centerVertical="true" android:layout_marginStart="@dimen/dp_12" android:layout_alignParentStart="true" />
+                    <TextView android:textSize="@dimen/sp_14" android:textColor="@color/color_414655" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="手势密码" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+                    <ImageView android:id="@id/unlock_check" android:background="@mipmap/icon_switch_off" android:layout_width="@dimen/dp_50" android:layout_height="@dimen/dp_30" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+                <View android:layout_gravity="center_vertical" android:id="@id/view_line" android:background="#ffeeeeee" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/dp_0_5" skin:enable="true" />
+                <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/rela_modify_pwd" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/dp_50">
+                    <TextView android:textSize="@dimen/sp_14" android:textColor="@color/color_414655" android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/dp_50" android:text="修改手势密码" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/img_modify" android:layout_width="@dimen/dp_8" android:layout_height="@dimen/dp_14" android:checked="false" android:button="@null" android:src="@mipmap/icon_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_a5a9b3" android:id="@id/tv_gester_content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_10" android:text="开启后，可使用手势密码提高账户安全性。" android:layout_marginStart="@dimen/dp_14" />
+</LinearLayout>

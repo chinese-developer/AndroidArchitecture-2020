@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/h5_mainLayout" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/headerLayout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/custom_toolbar" />
+    </FrameLayout>
+    <ImageView android:id="@id/iv_top" android:background="@mipmap/noticebar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/llDaiKeHeader" android:background="@color/color_fefcec" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/dp_30">
+        <ImageView android:layout_gravity="center_vertical" android:background="@mipmap/icon_warning" android:layout_width="@dimen/dp_16" android:layout_height="@dimen/dp_14" android:layout_marginStart="@dimen/dp_14" android:layout_marginEnd="@dimen/dp_6" />
+        <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_f5a623" android:layout_gravity="center_vertical" android:id="@id/tvDaiKeXCode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dai_ke_code_header" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/web_fl" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout android:id="@id/swipeRefreshLayout" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.ty.allgame.widget.WebViewScroll android:id="@id/webView" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" android:layerType="hardware" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        <com.ty.allgame.widget.H5Progress android:id="@id/web_progress" android:layout_width="fill_parent" android:layout_height="@dimen/dp_2" />
+    </FrameLayout>
+    <com.ty.allgame.widget.YaboEmptyView android:id="@id/placeholder" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>
