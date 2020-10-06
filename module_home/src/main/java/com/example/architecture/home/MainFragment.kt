@@ -34,6 +34,7 @@ import com.example.architecture.home.common.Constant.TAB_2
 import com.example.architecture.home.common.Constant.TAB_3
 import com.example.architecture.home.common.OnTabSelectedListenerAdapter
 import com.example.architecture.home.databinding.FragMainBinding
+import com.example.architecture.home.ui.allgames.AllGamesFragment
 import com.example.architecture.home.ui.home.HomeFragment
 import com.example.architecture.home.ui.mine.MineFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,7 +50,7 @@ class MainFragment : BaseFragment() {
     private lateinit var binding: FragMainBinding
     private lateinit var shapeBadgeItem: ShapeBadgeItem
     private lateinit var homeFragment: HomeFragment
-    private lateinit var mineFragment: MineFragment
+    private lateinit var allGamesFragment: AllGamesFragment
     private lateinit var mediaController: MediaController
 
     @Inject lateinit var eventCenter: EventCenter
@@ -85,14 +86,14 @@ class MainFragment : BaseFragment() {
         binding.apply {
 
             homeFragment = newFragment()
-            mineFragment = newFragment()
+            allGamesFragment = newFragment()
 
             viewPager.adapter = object : FragmentStateAdapter(childFragmentManager, lifecycle) {
                 override fun getItemCount(): Int = tabsArr.size
                 override fun createFragment(position: Int): Fragment {
                     return when (position) {
                         TAB_1 -> homeFragment
-                        TAB_2 -> mineFragment
+                        TAB_2 -> allGamesFragment
                         TAB_3 -> newFragment<MineFragment>()
                         else -> throw IllegalArgumentException("createFragment error!")
                     }

@@ -3,5 +3,4 @@
     <dimen name="singer_margin">120dp</dimen>
     <dimen name="song_margin">78dp</dimen>
 
-    <dimen name="item_card_corners">@dimen/common_corner_radius_12</dimen>
 </resources>

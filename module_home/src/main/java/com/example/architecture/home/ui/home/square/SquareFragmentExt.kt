@@ -27,7 +27,7 @@ fun View.adjustAndAverageHeight(position: Int, itemCount: Int, newHeight: Int) {
 fun fetchPrimaryItems(): MutableList<ItemTitle> {
     return mutableListOf<ItemTitle>().apply {
         secondaryItems().forEachIndexed { index, item ->
-            add(ItemTitle(name = item.title, index == 0))
+            add(ItemTitle(name = item.content!!, index == 0))
         }
     }
 }
