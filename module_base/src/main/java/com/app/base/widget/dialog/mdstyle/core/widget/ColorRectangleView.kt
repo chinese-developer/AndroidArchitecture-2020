@@ -86,7 +86,7 @@ internal class ColorRectangleView(
             if (transparentGrid == null) {
                 transparentGrid = getDrawable(
                   context,
-                  R.drawable.transparent_rect
+                  R.drawable.md_transparent
                 )
             }
             transparentGrid?.setBounds(0, 0, dpToPx(rectangleDefault), dpToPx(rectangleDefault))

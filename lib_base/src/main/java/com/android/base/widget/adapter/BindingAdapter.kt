@@ -914,7 +914,7 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
                 val view = itemView.findViewById<View>(longClickableId) ?: continue
                 view.setOnLongClickListener {
                     onLongClick?.invoke(this, view.id)
-                    false
+                    true
                 }
             }
         }
@@ -1014,8 +1014,8 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
                     }
                     if (scrollTop) {
                         rv?.postDelayed({
-                            rv?.smoothScrollToPosition(realPosition)
-                        }, 200)
+                                            rv?.smoothScrollToPosition(realPosition)
+                                        }, 200)
                     }
                     previousExpandPosition = realPosition
                     sublistFlat.size

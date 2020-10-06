@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.android.base.utils.android.views.getStringArray
 import com.example.architecture.home.R
 import com.example.architecture.home.ui.model.*
+import com.example.architecture.home.ui.model.allgames.*
 import com.example.architecture.home.ui.model.home.ItemTitle
 
 

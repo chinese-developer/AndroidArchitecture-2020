@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="80dp"
-        android:src="@drawable/ic_launcher_background_logo"
         tools:ignore="ContentDescription" />
 
 </FrameLayout>

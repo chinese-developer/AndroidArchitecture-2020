@@ -5,6 +5,7 @@ import com.android.base.widget.adapter.item.ItemExpand
 import com.android.base.widget.adapter.item.ItemHover
 import com.android.base.widget.adapter.item.ItemPosition
 import com.example.architecture.home.R
+import com.example.architecture.home.ui.model.allgames.Model
 
 class GroupModel: ItemExpand, ItemHover, ItemPosition, BaseObservable() {
 

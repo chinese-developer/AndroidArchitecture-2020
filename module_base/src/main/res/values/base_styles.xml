@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Widget.Base.LayoutStatus">
+        <item name="android:clickable">true</item>
+        <item name="android:textColor">@color/color_ffffff</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp_8</item>
+        <item name="android:layout_marginEnd">@dimen/dp_8</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:foreground">@drawable/ripple_cccccc_r6</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/dinpro</item>
+        <item name="android:paddingTop">@dimen/dp_14</item>
+        <item name="android:paddingBottom">@dimen/dp_14</item>
+        <item name="android:stateListAnimator" tools:ignore="NewApi">@null</item>
+    </style>
+
+    <style name="Widget.Base.TextEntry" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/theme_surface_contrast</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Base.TextEntry</item>
+    </style>
+
+    <style name="ThemeOverlay.Base.TextEntry" parent="@style/ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="colorPrimary">?attr/colorSecondary</item>
+    </style>
+
+    <style name="Widget.Base.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:elevation">@dimen/dp_4</item>
+        <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Light</item>
+    </style>
+
+    <style name="Widget.Base.PrimaryToolbar" parent="Widget.Base.Toolbar.SmallCapsTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?android:actionBarSize</item>
+        <item name="android:elevation">0dp</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.MaterialComponents.Light</item>
+        <item name="popupTheme">@style/ThemeOverlay.MaterialComponents.Light</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+        <item name="contentInsetLeft">0dp</item>
+        <item name="contentInsetRight">0dp</item>
+    </style>
+
+    <style name="Widget.Base.Toolbar.SmallCapsTitle">
+        <item name="android:titleTextAppearance">@style/TextAppearance.ToolbarTitleSmallCaps</item>
+    </style>
+
+    <style name="TextAppearance.ToolbarTitleSmallCaps" parent="@style/TextAppearance.MaterialComponents.Headline6">
+        <item name="android:fontFeatureSettings">smcp</item>
+        <item name="android:letterSpacing">0.2</item>
+    </style>
+
+</resources>

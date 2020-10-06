@@ -108,7 +108,7 @@ internal class ListDialog(listDialogBuilder: ListDialogBuilder) :
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val textView = AppCompatTextView(context)
-            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.sel_choice, 0, 0, 0)
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.radio_button_style_gold, 0, 0, 0)
             textView.compoundDrawablePadding = UnitConverter.dpToPx(10)
             textView.gravity = Gravity.CENTER_VERTICAL
             textView.layoutParams = LinearLayout.LayoutParams(

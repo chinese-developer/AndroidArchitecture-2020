@@ -17,6 +17,7 @@ import com.app.base.widget.dialog.mdstyle.util.MDUtil.waitForHeight
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentSquareWithRvBinding
 import com.example.architecture.home.ui.model.*
+import com.example.architecture.home.ui.model.allgames.*
 import com.example.architecture.home.ui.model.home.ItemTitle
 
 class SquareWithRecyclerViewFragment : BaseFragment() {

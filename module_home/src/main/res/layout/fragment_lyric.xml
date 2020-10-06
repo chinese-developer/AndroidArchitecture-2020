@@ -14,7 +14,7 @@
                 android:id="@+id/iv_disc_halo"
                 android:layout_width="168dp"
                 android:layout_height="167dp"
-                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/dp_32"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/ic_play_disc_halo"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -26,7 +26,7 @@
                 android:id="@+id/lrc_view"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="@dimen/padding_normal"
+                android:layout_marginTop="@dimen/dp_16"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_disc_halo" />
 

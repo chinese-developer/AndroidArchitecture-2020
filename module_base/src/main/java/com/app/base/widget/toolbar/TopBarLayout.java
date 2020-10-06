@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -71,7 +70,7 @@ public class TopBarLayout extends LinearLayout {
 
     private void setupToolbar() {
         //nav
-        mToolbar.setNavigationIcon(R.drawable.ic_back);
+        mToolbar.setNavigationIcon(R.drawable.icon_back);
         mToolbar.setContentInsetStartWithNavigation(0);
         mToolbar.setNavigationOnClickListener(this::onNavigationOnClick);
         if (getBackground() != null) {
@@ -105,8 +104,6 @@ public class TopBarLayout extends LinearLayout {
         FragmentActivity realContext = ViewUtils.getRealContext(this);
         if (realContext != null) {
             FragmentExKt.exitFragment(realContext, false);
-        } else {
-            Log.w(TAG, "perform onNavigationOnClick --> fragmentBack, but real context can not be found");
         }
     }
 

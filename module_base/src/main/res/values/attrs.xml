@@ -39,4 +39,12 @@
         <attr name="sl_dy" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="BaselineGridTextView">
+        <attr name="lineHeightMultiplierHint" format="float" />
+        <attr name="lineHeightHint" format="dimension" />
+        <attr name="maxLinesByHeight" format="boolean" />
+        <attr name="android:textAppearance" />
+        <attr name="android:fontFamily" />
+    </declare-styleable>
+
 </resources>

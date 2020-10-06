@@ -63,8 +63,7 @@ public class LrcView extends View implements ILrcView {
     /**
      * 高亮歌词的默认字体颜色
      **/
-    private static final int DEFAULT_COLOR_FOR_HIGHT_LIGHT_LRC = ContextCompat.getColor(AppContext.get(), R.color.red_level1);
-
+    private static final int DEFAULT_COLOR_FOR_HIGHT_LIGHT_LRC = ContextCompat.getColor(AppContext.get(), R.color.red);
     /**
      * 高亮歌词当前的字体颜色
      **/
@@ -90,7 +89,6 @@ public class LrcView extends View implements ILrcView {
      * 其他歌词当前的字体颜色
      **/
     private int mCurColorForOtherLrc = DEFAULT_COLOR_FOR_OTHER_LRC;
-
     /**
      * 画时间线的画笔
      ***/
@@ -107,7 +105,6 @@ public class LrcView extends View implements ILrcView {
      * 是否画时间线
      **/
     private boolean mIsDrawTimeLine = false;
-
     /**
      * 歌词间默认的行距
      **/
@@ -133,7 +130,6 @@ public class LrcView extends View implements ILrcView {
      * 歌词的当前缩放比例
      **/
     private float mCurScalingFactor = DEFAULT_SCALING_FACTOR;
-
     /**
      * 实现歌词竖直方向平滑滚动的辅助对象
      **/
@@ -146,7 +142,6 @@ public class LrcView extends View implements ILrcView {
      * 停止触摸时 如果View需要滚动 时的持续时间
      **/
     private static final int DURATION_FOR_ACTION_UP = 400;
-
     /**
      * 控制文字缩放的因子
      **/

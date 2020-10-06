@@ -16,9 +16,8 @@
 
     <!--下拉刷新通用颜色-->
     <array name="simple_swipe_refresh_color">
-        <item>@color/green_main</item>
-        <item>@color/green_level2</item>
+        <item>@color/color_22d59c</item>
+        <item>@color/green</item>
     </array>
-
 
 </resources>

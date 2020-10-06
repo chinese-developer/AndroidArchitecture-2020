@@ -26,7 +26,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
@@ -148,8 +147,8 @@ class AlbumFragment : BaseFragment() {
         albumArt: ImageView
     ) {
         val options = RequestOptions().apply {
-            placeholder(R.mipmap.ic_empty_music)
-            error(R.mipmap.ic_empty_music)
+            placeholder(R.mipmap.bg_empty_music)
+            error(R.mipmap.bg_empty_music)
 //            transform(RoundedCorners(resources.getDimensionPixelOffset(R.dimen.common_corner_radius_8)))
         }
         Glide.with(this)

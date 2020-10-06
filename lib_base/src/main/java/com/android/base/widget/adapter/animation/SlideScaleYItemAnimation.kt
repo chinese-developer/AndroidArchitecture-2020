@@ -11,7 +11,7 @@ open class SlideScaleYItemAnimation: ItemAnimation {
             ObjectAnimator.ofFloat(
                 view,
                 "scaleY",
-                1.07F,
+                1.04F,
                 1f
             )
         )

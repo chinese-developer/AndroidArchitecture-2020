@@ -50,7 +50,7 @@ class MainFragment : BaseFragment() {
     private lateinit var binding: FragMainBinding
     private lateinit var shapeBadgeItem: ShapeBadgeItem
     private lateinit var homeFragment: HomeFragment
-    private lateinit var allGamesFragment: AllGamesFragment
+    private lateinit var allGamesFragment: MineFragment
     private lateinit var mediaController: MediaController
 
     @Inject lateinit var eventCenter: EventCenter
@@ -114,7 +114,7 @@ class MainFragment : BaseFragment() {
             bottomNavigationBar.setBackgroundStyle(BACKGROUND_STYLE_STATIC)
 
             shapeBadgeItem = ShapeBadgeItem()
-                .setShapeColorResource(R.color.red_dot)
+                .setShapeColorResource(R.color.red)
                 .setGravity(Gravity.TOP or Gravity.END)
                 .setShape(SHAPE_OVAL)
                 .setSizeInDp(activity, 7, 7)
@@ -125,19 +125,19 @@ class MainFragment : BaseFragment() {
                     BottomNavigationItem(
                         R.mipmap.ic_home_white_24dp,
                         getString(R.string.main_tab_1)
-                    ).setActiveColorResource(R.color.green_primary)
+                    ).setActiveColorResource(R.color.color_22d59c)
                 )
                 .addItem(
                     BottomNavigationItem(
                         R.mipmap.ic_tv_white_24dp,
                         getString(R.string.main_tab_2)
-                    ).setActiveColorResource(R.color.green_primary)
+                    ).setActiveColorResource(R.color.color_22d59c)
                 )
                 .addItem(
                     BottomNavigationItem(
                         R.mipmap.ic_music_note_white_24dp,
                         getString(R.string.main_tab_3)
-                    ).setActiveColorResource(R.color.green_primary).setBadgeItem(shapeBadgeItem)
+                    ).setActiveColorResource(R.color.color_22d59c).setBadgeItem(shapeBadgeItem)
                 )
                 .setFirstSelectedPosition(TAB_1)
                 .initialise()

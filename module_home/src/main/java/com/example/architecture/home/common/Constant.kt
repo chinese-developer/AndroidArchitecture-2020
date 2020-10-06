@@ -25,6 +25,7 @@ object Constant {
     const val TAB_2: Int = 1
     const val TAB_3: Int = 2
     const val TAB_4: Int = 3
+    const val TAB_5: Int = 4
 
     /** play mode */
     const val CONTROLS_REPEAT_ONE: Int = 0

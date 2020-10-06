@@ -6,6 +6,7 @@
         <item>@string/home_tab_2</item>
         <item>@string/home_tab_3</item>
         <item>@string/home_tab_4</item>
+        <item>@string/home_tab_5</item>
     </string-array>
 
     <string-array name="main_tabs">

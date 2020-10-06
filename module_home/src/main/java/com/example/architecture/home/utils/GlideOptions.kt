@@ -7,6 +7,6 @@ object GlideOptions {
 
     val albumOptions = RequestOptions()
         .centerCrop()
-        .placeholder(R.mipmap.ic_empty_music)
-        .error(R.mipmap.ic_empty_music)
+        .placeholder(R.mipmap.bg_empty_music)
+        .error(R.mipmap.bg_empty_music)
 }

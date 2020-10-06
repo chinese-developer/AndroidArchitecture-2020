@@ -64,6 +64,13 @@ class AllGamesFragment : BaseFragment() {
 
     private fun listeners() {
         binding.apply {
+            startAnimation(
+                homeTabSportsSelectedBg,
+                homeSportsSelectedIcon,
+                homeTabSportsNormalBg,
+                homeSportsNormalIcon,
+                tvHomeSportsText
+            )
             homeTabSportsNormalBg.setOnClickListener {
                 startAnimation(
                     homeTabSportsSelectedBg,
@@ -130,22 +137,17 @@ class AllGamesFragment : BaseFragment() {
                 override fun getItemCount(): Int = itemCount
 
                 override fun createFragment(position: Int): Fragment {
-                    return newFragment<GamesSecondaryFragment>(
-                        Pair(
-                            KEY_FOR_WHICH_PAGE,
-                            position.toString()
-                        )
-                    )
+                    return newFragment<GamesSecondaryFragment>(Pair(KEY_FOR_WHICH_PAGE, position.toString()))
                 }
             }
 
             homeGameVp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     if (isDragging) {
-                        adapter.notifyItemChangedSelectedPosition(
+                        /*adapter.notifyItemChangedSelectedPosition(
                             currentSelectedPosition = position,
                             lastSelectedPosition = lastVisibleItemPosition
-                        )
+                        )*/
                         lastVisibleItemPosition = position
                     }
                 }

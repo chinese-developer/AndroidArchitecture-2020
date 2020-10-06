@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.android.base.widget.adapter.BindingAdapter
+import com.android.base.widget.adapter.BindingAdapter.Companion.HORIZONTAL
 import com.android.base.widget.adapter.DefaultDecoration
 import com.android.base.widget.adapter.annotaion.DividerOrientation
 import com.android.base.widget.adapter.layoutmanager.HoverGridLayoutManager
@@ -124,7 +125,7 @@ fun RecyclerView.divider(
  */
 fun RecyclerView.divider(
     @DrawableRes drawable: Int,
-    orientation: DividerOrientation = DividerOrientation.HORIZONTAL
+    @DividerOrientation orientation: Int = HORIZONTAL
 ): RecyclerView {
     return divider {
         setDrawable(drawable)

@@ -8,21 +8,22 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/vcilTilValidateCode"
-        android:layout_width="match_parent"
         style="@style/Widget.Base.TextEntry"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.app.base.widget.text.FixedTextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="0123456789"
-            android:drawablePadding="@dimen/input_text_drawable_padding"
-            android:gravity="center_vertical"
             android:layout_gravity="center_vertical"
+            android:digits="0123456789"
+            android:drawablePadding="@dimen/dp_6"
+            android:gravity="center_vertical"
             android:hint="@string/sms_code_enter_tips"
             android:inputType="number"
-            android:textSize="14sp"
-            android:maxLength="@integer/validate_code_length" />
+            android:maxLength="@integer/validate_code_length"
+            android:textSize="@dimen/dp_14"
+            tools:ignore="SpUsage" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -32,17 +33,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/sel_counter_state"
-        android:paddingStart="11dp"
-        android:paddingTop="6dp"
-        android:paddingEnd="11dp"
-        android:layout_marginEnd="@dimen/spacing_normal"
-        android:paddingBottom="6dp"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:background="@drawable/sel_ffffff_stroke_disable"
+        android:paddingStart="@dimen/dp_11"
+        android:paddingTop="@dimen/dp_6"
+        android:paddingEnd="@dimen/dp_11"
+        android:paddingBottom="@dimen/dp_6"
         android:singleLine="true"
         android:text="@string/obtain_validate_code"
         android:textColor="@color/color_text_primary_enabled"
-        android:textSize="@dimen/text_small"
-        app:ccb_text_hint_format="@string/sms_code_again_tips_mask" />
+        android:textSize="@dimen/dp_12"
+        app:ccb_text_hint_format="@string/sms_code_again_tips_mask"
+        tools:ignore="SpUsage" />
 
     <!--design_text_input_password_icon-->
     <ImageButton
@@ -52,9 +54,9 @@
         android:layout_gravity="center_vertical|end"
         android:layout_toStartOf="@id/vcilCounterBtn"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:src="@drawable/icon_clear"
+        android:minWidth="@dimen/dp_48"
+        android:minHeight="@dimen/dp_48"
+        android:src="@drawable/icon_close"
         tools:ignore="ContentDescription" />
 
 </merge>

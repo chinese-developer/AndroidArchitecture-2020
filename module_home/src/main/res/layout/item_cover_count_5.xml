@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="com.example.architecture.home.ui.model.FiveItemModel" />
+            type="com.example.architecture.home.ui.model.allgames.FiveItemModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,12 +48,12 @@
                 android:id="@+id/cl_top_left_container"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_micro"
-                android:layout_marginEnd="@dimen/spacing_micro"
-                android:layout_marginBottom="@dimen/spacing_micro"
-                android:background="@drawable/shape_white_solid_corners_10"
-                android:elevation="@dimen/z_card"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:layout_marginBottom="@dimen/dp_4"
+                android:background="@drawable/shape_white_r10"
+                android:elevation="@dimen/dp_2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/top_half_vertical"
@@ -62,7 +62,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:roundCornersDimenRes="@{R.dimen.item_card_corners}"
+                    android:roundCornersDimenRes="@{R.dimen.dp_4}"
                     android:scaleType="fitXY"
                     android:src="@{R.mipmap.bg_album_ycb}"
                     tools:ignore="ContentDescription"
@@ -72,12 +72,12 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/spacing_micro"
-                android:layout_marginTop="@dimen/spacing_micro"
-                android:layout_marginEnd="@dimen/spacing_normal"
-                android:layout_marginBottom="@dimen/spacing_micro"
-                android:background="@drawable/shape_white_solid_corners_10"
-                android:elevation="@dimen/z_card"
+                android:layout_marginStart="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:layout_marginBottom="@dimen/dp_4"
+                android:background="@drawable/shape_white_r10"
+                android:elevation="@dimen/dp_2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/top_half_vertical"
                 app:layout_constraintRight_toRightOf="parent"
@@ -86,7 +86,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:roundCornersDimenRes="@{R.dimen.item_card_corners}"
+                    android:roundCornersDimenRes="@{R.dimen.dp_4}"
                     android:scaleType="fitXY"
                     android:src="@{R.mipmap.bg_album_china_top_100}"
                     tools:ignore="ContentDescription"
@@ -110,19 +110,19 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/spacing_normal"
-                android:layout_marginTop="@dimen/spacing_micro"
-                android:layout_marginEnd="@dimen/spacing_micro"
-                android:layout_marginBottom="@dimen/spacing_micro"
-                android:background="@drawable/shape_white_solid_corners_10"
-                android:elevation="@dimen/z_card"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:layout_marginBottom="@dimen/dp_4"
+                android:background="@drawable/shape_white_r10"
+                android:elevation="@dimen/dp_2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/bottom_half_vertical">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:roundCornersDimenRes="@{R.dimen.item_card_corners}"
+                    android:roundCornersDimenRes="@{R.dimen.dp_4}"
                     android:scaleType="fitXY"
                     android:src="@{R.mipmap.bg_album_bsb}"
                     tools:ignore="ContentDescription"
@@ -132,19 +132,19 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/spacing_micro"
-                android:layout_marginTop="@dimen/spacing_micro"
-                android:layout_marginEnd="@dimen/spacing_normal"
-                android:layout_marginBottom="@dimen/spacing_micro"
-                android:background="@drawable/shape_white_solid_corners_10"
-                android:elevation="@dimen/z_card"
+                android:layout_marginStart="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:layout_marginBottom="@dimen/dp_4"
+                android:background="@drawable/shape_white_r10"
+                android:elevation="@dimen/dp_2"
                 app:layout_constraintLeft_toRightOf="@+id/bottom_half_vertical"
                 app:layout_constraintRight_toRightOf="parent">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:roundCornersDimenRes="@{R.dimen.item_card_corners}"
+                    android:roundCornersDimenRes="@{R.dimen.dp_4}"
                     android:scaleType="fitXY"
                     android:src="@{R.mipmap.bg_album_china_top_100_hk}"
                     tools:ignore="ContentDescription"
@@ -155,19 +155,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_micro"
-            android:layout_marginEnd="@dimen/spacing_normal"
-            android:layout_marginBottom="@dimen/spacing_micro"
-            android:background="@drawable/shape_white_solid_corners_10"
-            android:elevation="@dimen/z_card"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:background="@drawable/shape_white_r10"
+            android:elevation="@dimen/dp_2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bottom_horizontal">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:roundCornersDimenRes="@{R.dimen.item_card_corners}"
+                android:roundCornersDimenRes="@{R.dimen.dp_4}"
                 android:scaleType="fitXY"
                 android:src="@{R.mipmap.bg_album_rgb}"
                 tools:ignore="ContentDescription"

@@ -8,7 +8,7 @@
 
         <variable
             name="item"
-            type="com.example.architecture.home.ui.model.ThreeItemModel" />
+            type="com.example.architecture.home.ui.model.allgames.ThreeItemModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,7 +26,7 @@
             android:id="@+id/bottom_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_white_solid_corners_10"
+            android:background="@drawable/shape_white_r10"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.66" />
 
@@ -34,19 +34,19 @@
             android:id="@+id/cv_top"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_micro"
-            android:layout_marginEnd="@dimen/spacing_normal"
-            android:layout_marginBottom="@dimen/spacing_micro"
-            android:background="@drawable/shape_white_solid_corners_10"
-            android:elevation="@dimen/z_card"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:background="@drawable/shape_white_r10"
+            android:elevation="@dimen/dp_2"
             app:layout_constraintBottom_toBottomOf="@+id/top_horizontal"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:roundCornersDimenRes="@{R.dimen.item_card_corners}"
+                android:roundCornersDimenRes="@{R.dimen.dp_4}"
                 android:scaleType="fitXY"
                 android:src="@{R.mipmap.bg_album_ycb}"
                 tools:ignore="ContentDescription"
@@ -57,18 +57,18 @@
             android:id="@+id/cv_middle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_micro"
-            android:layout_marginEnd="@dimen/spacing_normal"
-            android:layout_marginBottom="@dimen/spacing_micro"
-            android:elevation="@dimen/z_card"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:elevation="@dimen/dp_2"
             app:layout_constraintBottom_toBottomOf="@+id/bottom_horizontal"
             app:layout_constraintTop_toBottomOf="@+id/top_horizontal">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:roundCornersDimenRes="@{R.dimen.item_card_corners}"
+                android:roundCornersDimenRes="@{R.dimen.dp_4}"
                 android:scaleType="fitXY"
                 android:src="@{R.mipmap.bg_album_bsb}"
                 tools:ignore="ContentDescription"
@@ -79,19 +79,19 @@
             android:id="@+id/cv_bottom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_micro"
-            android:layout_marginEnd="@dimen/spacing_normal"
-            android:layout_marginBottom="@dimen/spacing_micro"
-            android:background="@drawable/shape_white_solid_corners_10"
-            android:elevation="@dimen/z_card"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:background="@drawable/shape_white_r10"
+            android:elevation="@dimen/dp_2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bottom_horizontal">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:roundCornersDimenRes="@{R.dimen.item_card_corners}"
+                android:roundCornersDimenRes="@{R.dimen.dp_4}"
                 android:scaleType="fitXY"
                 android:src="@{R.mipmap.bg_album_china_top_100}"
                 tools:ignore="ContentDescription"

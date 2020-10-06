@@ -14,8 +14,7 @@ class SlideBottomItemAnimation @JvmOverloads constructor(private val mDistance: 
                 view,
                 "translationY",
                 if (mDistance == -1f) view.measuredHeight.toFloat() else mDistance,
-                0F,
-                0f
+                0F
             )
         )
     }

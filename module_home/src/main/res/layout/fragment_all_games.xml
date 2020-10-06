@@ -3,16 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:fillViewport="true"
-        tools:context=".com.example.cp.disk.ui.home.BucketGamesFragment">
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="@color/white">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/iv_shader"
@@ -129,7 +122,7 @@
                 android:includeFontPadding="false"
                 android:maxWidth="@dimen/dp_110"
                 android:maxLines="1"
-                android:textColor="@color/core_414655"
+                android:textColor="@color/textPrimary"
                 android:textSize="@dimen/sp_20"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_sign"
@@ -140,7 +133,7 @@
                 tools:ignore="HardcodedText" />
 
             <ImageView
-                android:id="@+id/iv_maney"
+                android:id="@+id/iv_money"
                 android:layout_width="@dimen/dp_20"
                 android:layout_height="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_2"
@@ -750,21 +743,21 @@
                 android:orientation="vertical"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/home_tab_sports_selected_bg"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/home_tab_sports_selected_bg"
                 app:layout_constraintTop_toBottomOf="@id/home_wallet_deposit_text" />
 
             <LinearLayout
-                android:id="@+id/ll_maney_popup"
+                android:id="@+id/ll_money_popup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.0"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="@+id/iv_maney"
-                app:layout_constraintStart_toStartOf="@+id/iv_maney"
-                app:layout_constraintTop_toBottomOf="@+id/iv_maney"
+                app:layout_constraintEnd_toEndOf="@+id/iv_money"
+                app:layout_constraintStart_toStartOf="@+id/iv_money"
+                app:layout_constraintTop_toBottomOf="@+id/iv_money"
                 tools:ignore="UseCompoundDrawables">
 
                 <ImageView
@@ -784,6 +777,5 @@
                     tools:ignore="HardcodedText,SpUsage" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
 
 </layout>

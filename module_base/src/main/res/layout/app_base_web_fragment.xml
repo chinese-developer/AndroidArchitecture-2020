@@ -36,7 +36,7 @@
             android:layout_marginTop="1px"
             android:max="100"
             android:progress="0"
-            android:progressDrawable="@drawable/layer_web_progress"
+            android:progressDrawable="@drawable/progress_00afe2"
             android:visibility="invisible"/>
 
         <include

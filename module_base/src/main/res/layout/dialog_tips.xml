@@ -12,16 +12,16 @@
         android:id="@+id/dialog_tips_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/dp_16"
         android:text="@string/dialog_loading"
-        android:textColor="@color/black_gray_level2"
-        android:textSize="@dimen/text_big"/>
+        android:textColor="@color/textSecondPrimary"
+        android:textSize="@dimen/sp_16"/>
 
     <ImageView
         android:id="@+id/dialog_tips_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/dp_16"
         android:src="@color/colorPrimary"
         tools:ignore="ContentDescription"/>
 

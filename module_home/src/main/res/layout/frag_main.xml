@@ -14,10 +14,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginEnd="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/dp_8"
             android:alpha="0.3"
             android:textColor="@color/textPrimary"
-            android:textSize="13sp"
+            android:textSize="@dimen/sp_13"
             android:visibility="gone"
             tools:ignore="HardcodedText,RtlHardcoded"
             tools:text="开发环境"
@@ -27,15 +27,14 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/bottom_navigation_height"
             android:orientation="horizontal" />
 
         <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/player_view"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="@dimen/dp_120"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="@dimen/bottom_navigation_height"
+            android:layout_marginBottom="@dimen/dp_48"
             android:visibility="gone"
             app:auto_show="true"
             app:controller_layout_id="@layout/layout_exo_control"
@@ -49,7 +48,7 @@
         <com.ashokvarma.bottomnavigation.BottomNavigationBar
             android:id="@+id/bottom_navigation_bar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/bottom_navigation_height"
+            android:layout_height="@dimen/dp_48"
             android:layout_gravity="bottom"
             app:bnbAutoHideEnabled="false" />
 
@@ -58,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/dp_16"
             android:backgroundTint="@color/colorAccent"
             android:src="@mipmap/ic_favorite_white_24dp"
             android:tint="@color/white"

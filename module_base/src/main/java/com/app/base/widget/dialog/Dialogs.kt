@@ -73,8 +73,8 @@ private fun showTipsDialogImpl(
     val tipsDialog = TipsDialog(
         actFragWrapper.context,
         when (tipsDialogBuilder.type) {
-            TipsDialogBuilder.TYPE_SUCCESS -> R.drawable.ic_checkbox_green_checked
-            TipsDialogBuilder.TYPE_ERROR -> R.drawable.ic_warning
+            TipsDialogBuilder.TYPE_SUCCESS -> R.drawable.ic_app_logo
+            TipsDialogBuilder.TYPE_ERROR -> R.drawable.icon_warning
             else -> throw IllegalArgumentException("you should define the type of tips ")
         }
     )
@@ -192,7 +192,7 @@ open class BaseDialogBuilder(val context: Context) {
     var titleSize = 16F
 
     /**标题的字体颜色*/
-    var titleColor = context.colorFromId(R.color.black_gray_level2)
+    var titleColor = context.colorFromId(R.color.textSecondPrimary)
 
     /*确认按钮*/
     @StringRes
@@ -247,7 +247,7 @@ class ConfirmDialogBuilder(context: Context) : BaseDialogBuilder(context) {
     var messageSize = 14F
 
     /**消息的字体颜色*/
-    var messageColor = context.colorFromId(R.color.gray_level1)
+    var messageColor = context.colorFromId(R.color.text_808080)
 
     //确认与取消
     var positiveListener: ((dialog: Dialog) -> Unit)? = null

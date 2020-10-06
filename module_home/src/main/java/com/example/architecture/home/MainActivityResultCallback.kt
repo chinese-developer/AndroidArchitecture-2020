@@ -26,7 +26,7 @@ class MainActivityResultCallback(private val activity: MainActivity) :
                     showConfirmDialog(activity) {
                         messageId = R.string.tips
                         positiveId = R.string.confirm
-                        positiveColor = R.color.green_main
+                        positiveColor = R.color.color_22d59c
                         titleId = R.string.title
                         positiveListener = {
                             toast("appRouter.build().navigation()")

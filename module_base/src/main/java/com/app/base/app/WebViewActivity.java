@@ -90,13 +90,13 @@ public class WebViewActivity extends AppCompatActivity {
             //去除默认Title显示
             actionBar.setDisplayShowTitleEnabled(false);
         }
-        toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.ic_actionbar_more));
+        toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.icon_actionbar_more));
         toolbarTitle.postDelayed(() -> toolbarTitle.setSelected(true), 1900);
         toolbarTitle.setText(mTitle);
 
         byWebView = ByWebView.with(this)
                 .setWebParent(llWebView, new LinearLayout.LayoutParams(-1, -1))
-                .useWebProgress(ContextCompat.getColor(this, R.color.red_level1))
+                .useWebProgress(ContextCompat.getColor(this, R.color.red))
                 .setOnTitleProgressCallback(new OnTitleProgressCallback() {
                     @Override
                     public void onReceivedTitle(String title) {

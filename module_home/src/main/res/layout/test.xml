@@ -3,90 +3,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar"
+        <FrameLayout
+            android:id="@+id/topBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:layout_height="@dimen/dp_70"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsing_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="370dp"
-                android:background="@color/color_background"
-                android:theme="@style/Theme.AppCompat"
-                app:contentScrim="@color/colorPrimary"
-                app:expandedTitleTextAppearance="@style/TextApperance.Artist.Title"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:statusBarScrim="#512DA8">
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_26"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginStart="@dimen/dp_14"
+                android:scaleType="fitXY"
+                tools:ignore="ContentDescription,RtlHardcoded" />
 
-                <ImageView
-                    android:id="@+id/album_art"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fitsSystemWindows="true"
-                    android:scaleType="centerCrop"
-                    android:transitionName="@string/transition_album_art"
-                    app:layout_collapseMode="parallax"
-                    tools:ignore="ContentDescription" />
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center"
+                android:layout_marginBottom="@dimen/dp_6"
+                android:orientation="horizontal"
+                app:tabGravity="fill"
+                app:tabIndicator="@drawable/tab_indicator"
+                app:tabIndicatorColor="@color/color_d2b496"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorGravity="bottom"
+                app:tabIndicatorHeight="@dimen/dp_3"
+                app:tabMode="fixed"
+                app:tabPaddingBottom="@dimen/dp_0"
+                app:tabPaddingTop="@dimen/dp_10"
+                app:tabRippleColor="@color/transparent"
+                app:tabSelectedTextColor="@color/color_d2b496"
+                app:tabTextAppearance="@style/Widget.Base.TabTextAppearance"
+                app:tabTextColor="@color/textPrimary" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:background="@drawable/bg_gradient"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
+            <TextView
+                style="@style/UI.TextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end|center_vertical"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingEnd="@dimen/dp_16"
+                android:text="登录 | 注册"
+                android:visibility="visible"
+                tools:ignore="HardcodedText"
+                tools:visibility="visible" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/artist_art"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:visibility="gone"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginBottom="10dp" />
+        </FrameLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="18dp"
-                        android:layout_marginBottom="15dp"
-                        android:orientation="vertical">
+        <FrameLayout
+            android:id="@+id/common_container_id"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topBar"
 
-                        <TextView
-                            android:id="@+id/album_title"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:singleLine="true"
-                            android:textColor="#ffffff"
-                            android:textSize="25sp"
-                            android:textStyle="bold" />
+            tools:ignore="UselessLeaf" />
 
-                        <TextView
-                            android:id="@+id/album_details"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingTop="3dp"
-                            android:textColor="#ffffff"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-                </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-                </androidx.appcompat.widget.Toolbar>
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

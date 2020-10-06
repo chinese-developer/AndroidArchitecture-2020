@@ -146,7 +146,7 @@ private fun MaterialDialog.setupGridLayout(
 
     val gridRecyclerView = getCustomView()
         .findViewById<DialogRecyclerView>(R.id.itemPreChooserGrid)
-    val gridColumnCount = windowContext.resources.getInteger(R.integer.item_grid_column_count)
+    val gridColumnCount = 4
     gridRecyclerView.layoutManager = GridLayoutManager(windowContext, gridColumnCount)
     gridRecyclerView.attach(this)
 

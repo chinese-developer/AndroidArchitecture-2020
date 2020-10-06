@@ -3,20 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_white_solid_corners_10"
+    android:background="@drawable/shape_white_r10"
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDialogListContent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="@dimen/dp_18"
         android:layout_weight="1"/>
 
     <com.app.base.widget.dialog.DialogBottomLayout
         android:id="@+id/dblListDialogBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="@dimen/dp_5"/>
 
 </LinearLayout>

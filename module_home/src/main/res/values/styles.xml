@@ -19,7 +19,7 @@
         <item name="android:gravity">start|center_vertical</item>
         <item name="android:maxLines">1</item>
         <item name="android:singleLine">true</item>
-        <item name="android:textColor">@color/gray_level1</item>
+        <item name="android:textColor">@color/text_808080</item>
         <item name="android:textSize">14sp</item>
     </style>
 

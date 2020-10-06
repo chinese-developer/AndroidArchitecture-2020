@@ -21,7 +21,7 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_45"
             android:layout_marginStart="@dimen/dp_16"
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -29,7 +29,7 @@
             app:tabBackground="@color/transparent"
             app:tabGravity="start"
             app:tabIndicator="@drawable/tab_indicator"
-            app:tabIndicatorColor="@color/green_primary"
+            app:tabIndicatorColor="@color/color_22d59c"
             app:tabIndicatorFullWidth="false"
             app:tabIndicatorGravity="bottom"
             app:tabIndicatorHeight="4dp"

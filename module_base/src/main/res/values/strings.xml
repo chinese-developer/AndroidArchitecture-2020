@@ -143,37 +143,6 @@
     <string name="login_expired_re_login_tips">登录已过期，请重新登录</string>
     <string name="sso_re_login_tips">账号已在其他设备登录，请重新登录</string>
 
-    <string name="grade_0">一年级以下</string>
-    <string name="grade_1">一年级</string>
-    <string name="grade_2">二年级</string>
-    <string name="grade_3">三年级</string>
-    <string name="grade_4">四年级</string>
-    <string name="grade_5">五年级</string>
-    <string name="grade_6">六年级</string>
-    <string name="grade_7">七年级（初一）</string>
-    <string name="grade_8">八年级（初二）</string>
-    <string name="grade_9">九年级（初三）</string>
-    <string name="grade_10">十年级（高一）</string>
-    <string name="grade_11">十一年级（高二）</string>
-    <string name="grade_12">十二年级（高三）</string>
-
-    <!-- 值的索引即传参  -->
-    <array name="binding_child_grade">
-        <item>@string/grade_0</item>
-        <item>@string/grade_1</item>
-        <item>@string/grade_2</item>
-        <item>@string/grade_3</item>
-        <item>@string/grade_4</item>
-        <item>@string/grade_5</item>
-        <item>@string/grade_6</item>
-        <item>@string/grade_7</item>
-        <item>@string/grade_8</item>
-        <item>@string/grade_9</item>
-        <item>@string/grade_10</item>
-        <item>@string/grade_11</item>
-        <item>@string/grade_12</item>
-    </array>
-
     <!-- ====================================时间相关==================================== -->
     <string name="hour">小时</string>
     <string name="hour_">时</string>

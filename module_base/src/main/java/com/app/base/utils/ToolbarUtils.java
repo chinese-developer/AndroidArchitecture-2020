@@ -24,7 +24,7 @@ public class ToolbarUtils {
     private static final int INVALIDATE_ID = 0;
 
     private static int sTintColor = -1;
-    private static int sBackDrawableId = R.drawable.ic_back;
+    private static int sBackDrawableId = R.drawable.icon_back;
 
     private View.OnClickListener onNavigationOnClickListener;
 

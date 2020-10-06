@@ -18,18 +18,18 @@
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:gravity="center"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp"
+            android:paddingBottom="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_16"
             android:text="@string/cancel_"
-            android:textColor="@color/gray_level3"
-            android:textSize="@dimen/text_big"
+            android:textColor="@color/text_808080"
+            android:textSize="@dimen/sp_14"
             android:visibility="visible"/>
 
         <View
             android:id="@+id/viewDialogBtnDivider"
-            android:layout_width="1dp"
+            android:layout_width="@dimen/dp_1"
             android:layout_height="match_parent"
-            android:background="@color/divider"
+            android:background="@color/divider_f2f2f2"
             android:visibility="visible"/>
 
         <TextView
@@ -39,11 +39,11 @@
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:gravity="center"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp"
+            android:paddingBottom="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_16"
             android:text="@string/confirm"
-            android:textColor="@color/blue_level2"
-            android:textSize="@dimen/text_big"/>
+            android:textColor="@color/color_blue_00AFE2"
+            android:textSize="@dimen/sp_14"/>
 
     </LinearLayout>
 
@@ -51,6 +51,6 @@
         android:id="@+id/viewBottomDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/divider"/>
+        android:background="@color/divider_f2f2f2"/>
 
 </merge>
