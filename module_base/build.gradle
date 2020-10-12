@@ -72,6 +72,7 @@ dependencies {
     api project(':lib_base') // 基础类库
     api project(':lib_cache') // 缓存库
     api project(':lib_network') // 网络库
+    api project(':lib_webview') // x5
     api project(':lib_media_selector') // 媒体库选择器
 
     // AndroidX Support
@@ -85,6 +86,9 @@ dependencies {
     // apt
     kapt "com.github.bumptech.glide:compiler:${versions.glide}"
 
+    // https://github.com/SherlockGougou/BigImageViewPager
+    api "com.github.SherlockGougou:BigImageViewPager:androidx-${versions.bigImageViewPager}"
+
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:${versions.dagger}"
     kapt "com.google.dagger:hilt-android-compiler:${versions.dagger}"
@@ -96,9 +100,6 @@ dependencies {
 
     // multi channel
     implementation "com.leon.channel:helper:2.0.3"
-
-    // WebView https://github.com/youlookwhat/ByWebView
-    implementation 'com.github.youlookwhat:ByWebView:1.0.0'
 
     // ARouter
     api "com.alibaba:arouter-api:${versions.arouter}"

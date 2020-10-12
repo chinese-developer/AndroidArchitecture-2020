@@ -40,6 +40,11 @@ android {
         resConfigs "zh" // 只需要中文资源
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
+        // x5
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+
         // need dependency room library or gradle will throws error exception
         javaCompileOptions {
             annotationProcessorOptions {

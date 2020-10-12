@@ -3,28 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.app.base.widget.FixDragLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/iv_shader"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:scaleType="fitXY"
-                android:scaleX="0.95"
-                android:scaleY="0.95"
-                android:src="@mipmap/banner_shadow"
-                android:translationY="10.0dip"
-                android:visibility="invisible"
-                tools:ignore="ContentDescription" />
-
-            <com.android.base.widget.banner.Banner
+            <cn.bingoogolapple.bgabanner.BGABanner
                 android:id="@+id/banner"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="@dimen/dp_0"
-                android:clipChildren="false"
+                android:layout_width="0.0dip"
+                android:layout_height="0.0dip"
+                app:banner_pointContainerBackground="@color/transparent"
+                app:banner_pointLeftRightMargin="@dimen/dp_2_5"
+                app:banner_pointTopBottomMargin="@dimen/dp_5"
                 app:layout_constraintDimensionRatio="360:144"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,23 +29,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/banner" />
 
-            <com.app.base.widget.MarqueeTextView
+            <com.app.base.widget.text.MarqueeView
                 android:id="@+id/notice_title"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_20"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/dp_5"
-                android:layout_marginTop="@dimen/dp_11"
-                android:layout_marginEnd="@dimen/dp_16"
-                android:ellipsize="marquee"
-                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/dp_34"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_14"
                 android:singleLine="true"
-                android:textColor="#9AA4C2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/home_horn_image"
-                app:layout_constraintTop_toBottomOf="@+id/banner"
                 android:text="正在测试走马灯效果, 正在测试走马灯效果, 正在测试走马灯效果, 正在测试走马灯效果, 请忽略~"
-                tools:ignore="HardcodedText" />
+                app:arch_marquee_is_clickable_stop="false"
+                app:arch_marquee_is_reset_location="false"
+                app:arch_marquee_repeat_type="repeat_continuous"
+                app:arch_marquee_text_color="@color/color_9aa4c2"
+                app:arch_marquee_text_size="14"
+                app:arch_marquee_text_speed="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/banner"
+                tools:ignore="HardcodedText,SpUsage" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guide_line_home_login"
@@ -733,7 +725,7 @@
                 app:layout_constraintStart_toStartOf="@+id/home_tab_fishes_selected_bg"
                 tools:ignore="HardcodedText" />
 
-            <androidx.viewpager2.widget.ViewPager2
+            <com.app.base.widget.verticalviewpager.VerticalViewPager
                 android:id="@+id/home_game_vp"
                 android:layout_width="0.0dip"
                 android:layout_height="0.0dip"
@@ -743,8 +735,8 @@
                 android:orientation="vertical"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/home_tab_sports_selected_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/home_tab_sports_selected_bg"
                 app:layout_constraintTop_toBottomOf="@id/home_wallet_deposit_text" />
 
             <LinearLayout
@@ -776,6 +768,6 @@
                     android:textSize="@dimen/dp_14"
                     tools:ignore="HardcodedText,SpUsage" />
             </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.app.base.widget.FixDragLayout>
 
 </layout>

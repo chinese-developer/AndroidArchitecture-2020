@@ -16,16 +16,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.android.base.app.fragment.BaseFragment
-import com.android.base.utils.android.views.newFragment
 import com.android.base.widget.adapter.BindingAdapter
-import com.app.base.utils.ext.setOverScrollModeNever
+import com.app.base.widget.verticalviewpager.BaseFragmentAdapter
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentAllGamesBinding
 import com.example.architecture.home.ui.model.allgames.GamesSecondaryFragment
-import com.example.architecture.home.ui.model.allgames.GamesSecondaryFragment.Companion.KEY_FOR_WHICH_PAGE
 
 class AllGamesFragment : BaseFragment() {
 
@@ -58,6 +54,7 @@ class AllGamesFragment : BaseFragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
         BannerFactory.build(requireContext(), binding.banner)
+        binding.noticeTitle.setText("正在测试走马灯效果, 正在测试走马灯效果, 正在测试走马灯效果, 正在测试走马灯效果, 请忽略~")
         initViewPager()
         listeners()
     }
@@ -131,23 +128,25 @@ class AllGamesFragment : BaseFragment() {
     private fun initViewPager() {
         binding.apply {
             val itemCount = fetchGamesPrimaryItems().size
+            val fragments = mutableListOf<Fragment>()
             homeGameVp.offscreenPageLimit = itemCount
-            homeGameVp.setOverScrollModeNever()
-            homeGameVp.adapter = object : FragmentStateAdapter(childFragmentManager, lifecycle) {
-                override fun getItemCount(): Int = itemCount
+            homeGameVp.overScrollMode = View.OVER_SCROLL_NEVER
+            homeGameVp.adapter = BaseFragmentAdapter.Holder(childFragmentManager)
+                .add(GamesSecondaryFragment.instance(1, homeGameVp))
+                .add(GamesSecondaryFragment.instance(2, homeGameVp))
+                .add(GamesSecondaryFragment.instance(3, homeGameVp))
+                .add(GamesSecondaryFragment.instance(4, homeGameVp))
+                .add(GamesSecondaryFragment.instance(5, homeGameVp))
+                .add(GamesSecondaryFragment.instance(6, homeGameVp))
+                .set()
 
-                override fun createFragment(position: Int): Fragment {
-                    return newFragment<GamesSecondaryFragment>(Pair(KEY_FOR_WHICH_PAGE, position.toString()))
-                }
-            }
-
-            homeGameVp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            /*homeGameVp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     if (isDragging) {
-                        /*adapter.notifyItemChangedSelectedPosition(
+                        *//*adapter.notifyItemChangedSelectedPosition(
                             currentSelectedPosition = position,
                             lastSelectedPosition = lastVisibleItemPosition
-                        )*/
+                        )*//*
                         lastVisibleItemPosition = position
                     }
                 }
@@ -159,7 +158,7 @@ class AllGamesFragment : BaseFragment() {
                         isDragging = false
                     }
                 }
-            })
+            })*/
         }
     }
 

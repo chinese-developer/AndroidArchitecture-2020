@@ -1,18 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ll_wallet_bottom" android:background="@drawable/shape_radius_5" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="@dimen/dp_58" android:layout_marginBottom="@dimen/dp_10" android:splitMotionEvents="false" android:layout_marginEnd="@dimen/dp_13">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/ll_wallet" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:layout_marginStart="@dimen/dp_14">
-            <TextView android:textSize="@dimen/dp_14" android:textColor="@color/core_9aa4c2" android:gravity="center" android:id="@id/tvUserName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="未登录" android:drawablePadding="@dimen/dp_3" android:layout_centerVertical="true" />
-            <TextView android:textSize="@dimen/sp_12" android:textColor="@color/color_896A4B" android:gravity="center" android:layout_gravity="center" android:id="@id/tv_loginnow" android:background="@drawable/shape_greystro_radius15" android:paddingLeft="@dimen/dp_7" android:paddingTop="@dimen/dp_3" android:paddingRight="@dimen/dp_7" android:paddingBottom="@dimen/dp_3" android:visibility="gone" android:layout_width="@dimen/dp_80" android:layout_height="@dimen/dp_30" android:layout_marginBottom="@dimen/dp_3" android:text="登录查看" />
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/rl_wallet_blance" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <ImageView android:layout_gravity="center_vertical" android:id="@id/iv_sign" android:layout_width="@dimen/dp_10" android:layout_height="@dimen/dp_14" android:layout_marginTop="@dimen/dp_3" android:src="@mipmap/icon_rmb" />
-                <TextView android:textSize="@dimen/sp_20" android:textStyle="bold" android:textColor="@color/core_414655" android:layout_gravity="center_vertical" android:id="@id/tv_balance" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/dp_130" android:maxLines="1" />
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@id/ll_wallet_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_58"
+        android:layout_marginEnd="@dimen/dp_13"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:background="@drawable/shape_radius_5"
+        android:clipChildren="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:splitMotionEvents="false">
+
+        <LinearLayout
+            android:id="@id/ll_wallet"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_marginStart="@dimen/dp_14"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/dp_3"
+                android:gravity="center"
+                android:text="未登录"
+                android:textColor="@color/core_9aa4c2"
+                android:textSize="@dimen/dp_14" />
+
+            <TextView
+                android:id="@id/tv_loginnow"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_30"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/dp_3"
+                android:background="@drawable/shape_greystro_radius15"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp_7"
+                android:paddingTop="@dimen/dp_3"
+                android:paddingRight="@dimen/dp_7"
+                android:paddingBottom="@dimen/dp_3"
+                android:text="登录查看"
+                android:textColor="@color/color_896A4B"
+                android:textSize="@dimen/sp_12"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@id/rl_wallet_blance"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@id/iv_sign"
+                    android:layout_width="@dimen/dp_10"
+                    android:layout_height="@dimen/dp_14"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:src="@mipmap/icon_rmb" />
+
+                <TextView
+                    android:id="@id/tv_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:maxWidth="@dimen/dp_130"
+                    android:maxLines="1"
+                    android:textColor="@color/core_414655"
+                    android:textSize="@dimen/sp_20"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
-        <com.ty.allgame.tabcontent.TextImageView android:id="@id/recharge_layout" android:text="存款" android:drawableTop="@mipmap/icon_wallet_deposit" app:drawableTopHeight="@dimen/dp_36" app:drawableTopWidth="@dimen/dp_36" style="@style/btn_withdraw_style_home" />
-        <com.ty.allgame.tabcontent.TextImageView android:id="@id/transfer_layout" android:text="转账" android:drawableTop="@mipmap/icon_wallet_transfer" app:drawableTopHeight="@dimen/dp_36" app:drawableTopWidth="@dimen/dp_36" style="@style/btn_withdraw_style_home" />
-        <com.ty.allgame.tabcontent.TextImageView android:id="@id/withdraw_layout" android:text="取款" android:drawableTop="@mipmap/icon_wallet_withdraw" app:drawableTopHeight="@dimen/dp_36" app:drawableTopWidth="@dimen/dp_36" style="@style/btn_withdraw_style_home" />
-        <com.ty.allgame.tabcontent.TextImageView android:id="@id/vip_layout" android:text="VIP" android:drawableTop="@mipmap/icon_wallet_vip" app:drawableTopHeight="@dimen/dp_36" app:drawableTopWidth="@dimen/dp_36" style="@style/btn_withdraw_style_home" />
+
+        <com.ty.allgame.tabcontent.TextImageView
+            android:id="@id/recharge_layout"
+            style="@style/btn_withdraw_style_home"
+            android:drawableTop="@mipmap/icon_wallet_deposit"
+            android:text="存款"
+            app:drawableTopHeight="@dimen/dp_36"
+            app:drawableTopWidth="@dimen/dp_36" />
+
+        <com.ty.allgame.tabcontent.TextImageView
+            android:id="@id/transfer_layout"
+            style="@style/btn_withdraw_style_home"
+            android:drawableTop="@mipmap/icon_wallet_transfer"
+            android:text="转账"
+            app:drawableTopHeight="@dimen/dp_36"
+            app:drawableTopWidth="@dimen/dp_36" />
+
+        <com.ty.allgame.tabcontent.TextImageView
+            android:id="@id/withdraw_layout"
+            style="@style/btn_withdraw_style_home"
+            android:drawableTop="@mipmap/icon_wallet_withdraw"
+            android:text="取款"
+            app:drawableTopHeight="@dimen/dp_36"
+            app:drawableTopWidth="@dimen/dp_36" />
+
+        <com.ty.allgame.tabcontent.TextImageView
+            android:id="@id/vip_layout"
+            style="@style/btn_withdraw_style_home"
+            android:drawableTop="@mipmap/icon_wallet_vip"
+            android:text="VIP"
+            app:drawableTopHeight="@dimen/dp_36"
+            app:drawableTopWidth="@dimen/dp_36" />
     </LinearLayout>
 </merge>

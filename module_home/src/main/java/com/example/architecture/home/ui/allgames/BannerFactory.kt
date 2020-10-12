@@ -1,54 +1,34 @@
 package com.example.architecture.home.ui.allgames
 
 import android.content.Context
-import android.graphics.Color
-import androidx.viewpager2.widget.ViewPager2
-import com.android.base.widget.adapter.BindingAdapter
-import com.android.base.widget.banner.Banner
-import com.android.base.widget.banner.IndicatorView
+import androidx.constraintlayout.widget.ConstraintLayout
+import cn.bingoogolapple.bgabanner.BGABanner
+import com.bumptech.glide.Glide
 import com.example.architecture.home.R
 
 class BannerFactory(
     val context: Context,
-    val banner: Banner
+    private val banner: BGABanner
 ) {
-    private val adapter = BindingAdapter()
-
-    private val indicator by lazy {
-        IndicatorView(context)
-                .setIndicatorRatio(4f)
-                .setIndicatorRadius(2f)
-                .setIndicatorSelectedRatio(6f)
-                .setIndicatorSelectedRadius(2f)
-                .setIndicatorSpacing(0f)
-                .setIndicatorStyle(IndicatorView.IndicatorStyle.INDICATOR_CIRCLE_RECT)
-                .setIndicatorColor(Color.parseColor("#1AFFFFFF"))
-                .setIndicatorSelectorColor(Color.parseColor("#99FFFFFF"))
-    }
-
     private val items: MutableList<String> by lazy { mutableListOf("1", "2", "3")}
 
     init {
-
         initAdapter()
     }
 
     private fun initAdapter() {
         if (items.isNullOrEmpty()) return
-        adapter.setContext(context)
-        adapter.addType<String>(R.layout.item_banner)
-        adapter.addModels(items)
-        banner.setAutoPlay(true)
-                .setOffscreenPageLimit(1)
-                .setIndicator(indicator)
-                .setOrientation(ViewPager2.ORIENTATION_HORIZONTAL).setPagerScrollDuration(800)
-                .setAutoTurningTime(BANNER_AUTO_TURNING_TIME)
-                .setOuterPageChangeListener(object : ViewPager2.OnPageChangeCallback() {
-                    override fun onPageSelected(position: Int) {
-
-
-                    }
-                }).adapter = adapter
+        banner.apply {
+            setData(R.layout.banner_home, items, null)
+            setAdapter(BGABanner.Adapter<ConstraintLayout, String> { bgaBanner: BGABanner, itemView: ConstraintLayout, _: String?, _: Int ->
+               /* Glide.with(bgaBanner.context)
+                    .load(R.mipmap.banner_place_holder_image)
+                    .placeholder(R.mipmap.banner_place_holder_image)
+                    .error(R.mipmap.banner_error_place_holder)
+                    .dontAnimate()
+                    .into(itemView.findViewById(R.id.iv_banner_placeholder))*/
+            })
+        }
     }
 
     companion object {
@@ -57,7 +37,7 @@ class BannerFactory(
 
         fun build(
             context: Context,
-            banner: Banner
+            banner: BGABanner
         ): BannerFactory {
             return BannerFactory(context, banner)
         }

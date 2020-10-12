@@ -5,6 +5,7 @@
 
 package com.example.architecture.home.ui.model.allgames
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,8 @@ import com.android.base.widget.adapter.utils.linear
 import com.android.base.widget.adapter.utils.setup
 import com.app.base.AppContext
 import com.app.base.utils.animations.*
+import com.app.base.widget.verticalviewpager.VerticalVPOnTouchListener
+import com.app.base.widget.verticalviewpager.VerticalViewPager
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentGamesSecondaryBinding
 import kotlin.properties.Delegates
@@ -42,9 +45,10 @@ class GamesSecondaryFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        whoAmI = arguments?.getString(KEY_FOR_WHICH_PAGE)?.toInt() ?: 0
+        whoAmI = arguments?.getInt(KEY_FOR_WHICH_PAGE) ?: 0
 
         initAdapter()
+        listeners()
 
         AppContext.get().appDataSource.eventBus().mayStartAnim.observe(viewLifecycleOwner, {
             if (whoAmI == it && lifecycle.currentState == Lifecycle.State.STARTED) {
@@ -53,18 +57,24 @@ class GamesSecondaryFragment : BaseFragment() {
         })
     }
 
+    @SuppressLint("ClickableViewAccessibility")
+    private fun listeners() {
+        val viewPager = arguments?.getSerializable(KEY_FOR_VIEWPAGER) as VerticalViewPager
+        binding.list.setOnTouchListener(VerticalVPOnTouchListener(viewPager))
+    }
+
     private fun initAdapter() {
         binding.apply {
             adapter = list.linear(scrollEnabled = false).setup {
                 setDuration(370)
                 isFirstOnly(false)
                 when (whoAmI) {
-                    0 -> addType<Model>(R.layout.item_cover_count_1)
-                    1 -> addType<DoubleItemModel>(R.layout.item_cover_count_2)
-                    2 -> addType<ThreeItemModel>(R.layout.item_cover_count_3)
-                    3 -> addType<FourItemModel>(R.layout.item_cover_count_4)
-                    4 -> addType<FiveItemModel>(R.layout.item_cover_count_5)
-                    5 -> addType<SixItemModel>(R.layout.item_cover_count_6)
+                    1 -> addType<Model>(R.layout.item_cover_count_1)
+                    2 -> addType<DoubleItemModel>(R.layout.item_cover_count_2)
+                    3 -> addType<ThreeItemModel>(R.layout.item_cover_count_3)
+                    4 -> addType<FourItemModel>(R.layout.item_cover_count_4)
+                    5 -> addType<FiveItemModel>(R.layout.item_cover_count_5)
+                    6 -> addType<SixItemModel>(R.layout.item_cover_count_6)
                 }
 
                 onBind {
@@ -90,12 +100,12 @@ class GamesSecondaryFragment : BaseFragment() {
             }
 
             val model = when (whoAmI) {
-                0 -> Model("")
-                1 -> DoubleItemModel("")
-                2 -> ThreeItemModel("")
-                3 -> FourItemModel("")
-                4 -> FiveItemModel("")
-                5 -> SixItemModel("")
+                1 -> Model("")
+                2 -> DoubleItemModel("")
+                3 -> ThreeItemModel("")
+                4 -> FourItemModel("")
+                5 -> FiveItemModel("")
+                6 -> SixItemModel("")
                 else -> Model("")
             }
 
@@ -137,6 +147,16 @@ class GamesSecondaryFragment : BaseFragment() {
 
     companion object {
         const val KEY_FOR_WHICH_PAGE = "key_for_data"
+        const val KEY_FOR_VIEWPAGER= "key_for_viewpager"
+
+        fun instance(position: Int, viewPager: VerticalViewPager): GamesSecondaryFragment {
+            val fragment = GamesSecondaryFragment()
+            val args = Bundle()
+            args.putInt(KEY_FOR_WHICH_PAGE, position);
+            args.putSerializable(KEY_FOR_VIEWPAGER, viewPager);
+            fragment.arguments = args
+            return fragment
+        }
     }
 
 }

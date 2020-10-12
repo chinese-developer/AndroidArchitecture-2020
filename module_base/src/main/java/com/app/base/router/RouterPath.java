@@ -87,4 +87,16 @@ public class RouterPath {
         public static final String HELP_FEEDBACK = "help.html";
     }
 
+    /**
+     * x5 webview
+     */
+    public static final class X5WebView {
+        public static final String PATH = "/arch_x5/webview";
+
+        public static final String URL = "url";//string
+        public static final String TITLE = "title";//string
+        public static final String isLoadData = "isLoadData";//boolean
+        public static final String ACTION_AUTO = "javascript:";//string
+    }
+
 }

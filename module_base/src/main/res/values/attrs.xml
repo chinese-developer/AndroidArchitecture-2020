@@ -47,4 +47,48 @@
         <attr name="android:fontFamily" />
     </declare-styleable>
 
+    <declare-styleable name="ArchRoundedImageView">
+        <attr name="arch_riv_corner_radius" format="dimension" />
+        <attr name="arch_riv_corner_radius_top_left" format="dimension" />
+        <attr name="arch_riv_corner_radius_top_right" format="dimension" />
+        <attr name="arch_riv_corner_radius_bottom_left" format="dimension" />
+        <attr name="arch_riv_corner_radius_bottom_right" format="dimension" />
+        <attr name="arch_riv_border_width" format="dimension" />
+        <attr name="arch_riv_border_color" format="color" />
+        <attr name="arch_riv_mutate_background" format="boolean" />
+        <attr name="arch_riv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+        <attr name="arch_riv_tile_mode">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="arch_riv_tile_mode_x">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="arch_riv_tile_mode_y">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="ArchMarqueeView">
+        <attr name="arch_marquee_repeat_type" format="enum">
+            <enum name="repeat_once_time" value="0"/><!-- 播放一次 -->
+            <enum name="repeat_interval" value="1"/>  <!--连续播放 循环结束再继续下次循环-->
+            <enum name="repeat_continuous" value="2"/>  <!--连续播放 到末尾直接继续下次循环-->
+        </attr>
+        <attr name="arch_marquee_text_distance" format="integer"/>
+        <attr name="arch_marquee_text_startlocationdistance" format="float"/>
+        <attr name="arch_marquee_text_speed" format="float"/>
+        <attr name="arch_marquee_text_color" format="color|reference"/>
+        <attr name="arch_marquee_text_size" format="float"/>
+        <attr name="arch_marquee_is_clickable_stop" format="boolean"/>
+        <attr name="arch_marquee_is_reset_location" format="boolean"/>
+    </declare-styleable>
+
+
 </resources>

@@ -5,6 +5,7 @@ include ':app'
 include ':lib_base'
 include ':lib_cache'
 include ':lib_network'
+include ':lib_webview'
 include ':lib_media_selector'
 
 // 业务基础架构
