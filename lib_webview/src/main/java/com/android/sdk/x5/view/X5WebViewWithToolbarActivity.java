@@ -27,13 +27,9 @@ import com.android.sdk.x5.utils.X5WebUtils;
 import com.android.sdk.x5.widget.WebProgress;
 
 /**
- * <pre>
- *     desc  : 应用被作为第三方浏览器打开的activity
- *     revise: 这里可供选择
- * </pre>
+ * 应用被作为第三方浏览器打开的activity
  */
-
-public class X5WebViewActivity extends AppCompatActivity {
+public class X5WebViewWithToolbarActivity extends AppCompatActivity {
 
     private X5WebView webView;
     private WebProgress pb;

@@ -2,7 +2,6 @@ package com.app.base.data.app
 
 import android.content.Context
 import com.android.sdk.net.error.ErrorException
-import com.app.base.AppContext
 import com.app.base.common.EventCenter
 import com.app.base.config.AppSettings.settingsStorage
 import com.app.base.data.api.AuthTokenLocalDataSource
@@ -10,9 +9,6 @@ import com.app.base.data.api.NetResult
 import com.app.base.data.models.LoggedInUser
 import com.app.base.data.models.Song
 import com.app.base.utils.domain.DomainResponse
-import com.app.base.utils.scope
-import com.app.base.utils.withIO
-import com.bumptech.glide.Glide
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.Flowable
 import io.reactivex.Observable

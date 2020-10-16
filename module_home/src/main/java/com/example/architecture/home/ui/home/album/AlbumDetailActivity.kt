@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.app.SharedElementCallback
 import androidx.databinding.DataBindingUtil
 import com.app.base.app.AppBaseActivity
+import com.app.base.utils.contentView
 import com.bumptech.glide.Glide
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.ActivityAlbumDetailBinding
@@ -19,12 +20,13 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class AlbumDetailActivity : AppBaseActivity() {
 
-    private lateinit var binding: ActivityAlbumDetailBinding
+    private val binding by contentView<AlbumDetailActivity, ActivityAlbumDetailBinding>(
+        R.layout.activity_album_detail
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_album_detail)
         binding.lifecycleOwner = this
 
         setEnterSharedElementCallback(object : SharedElementCallback() {

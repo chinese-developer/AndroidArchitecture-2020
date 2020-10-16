@@ -21,6 +21,7 @@ import com.android.base.interfaces.adapter.OnTabSelectedListenerAdapter
 import com.android.base.utils.android.ClipboardUtils
 import com.android.base.utils.android.views.getStringArray
 import com.android.base.utils.android.views.newFragment
+import com.android.base.utils.event.EventObserver
 import com.android.base.utils.ktx.tryCatchAll
 import com.app.base.data.models.Song
 import com.app.base.service.DownLoadJobService
@@ -89,6 +90,10 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        model.songModel.observe(viewLifecycleOwner, EventObserver {
+
+        })
         initViewPager()
     }
 

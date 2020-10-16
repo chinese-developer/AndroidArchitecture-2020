@@ -5,4 +5,5 @@ object TagsFactory {
     const val activity_lifecycle = "===ACTIVITY==="
     const val okHttp = "===OKHTTP==="
     const val debug ="===DEBUG==="
+    const val error ="===ERROR==="
 }

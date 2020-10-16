@@ -20,9 +20,7 @@ import java.lang.ref.WeakReference;
 import java.util.Map;
 
 /**
- * <pre>
- *     desc  : 自定义WebView的base类
- * </pre>
+ * 自定义WebView的base类
  */
 public class BaseWebView extends WebView {
 

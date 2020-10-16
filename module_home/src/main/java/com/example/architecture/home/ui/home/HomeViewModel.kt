@@ -14,6 +14,7 @@ import com.android.base.app.mvvm.VMViewModel
 import com.android.base.app.mvvm.launchOnUI
 import com.android.base.rx.subscribeIgnoreError
 import com.android.base.utils.android.views.getString
+import com.android.base.utils.event.Event
 import com.app.base.AppContext
 import com.app.base.data.api.NetResult
 import com.app.base.data.models.Song
@@ -37,8 +38,8 @@ class HomeViewModel @ViewModelInject constructor(
 
     private val stableStorage by lazy { AppContext.storageManager().stableStorage() }
 
-    private val _songModel = MutableLiveData<SongModel>()
-    val songModel: LiveData<SongModel>
+    private val _songModel = MutableLiveData<Event<SongModel>>()
+    val songModel: LiveData<Event<SongModel>>
         get() = _songModel
 
     init {
@@ -136,11 +137,11 @@ class HomeViewModel @ViewModelInject constructor(
     private fun createSongModel(
         song: Song? = null,
         lyricPojo: LyricPojo? = null
-    ): SongModel {
-        return SongModel(
+    ): Event<SongModel> {
+        return Event(SongModel(
             song = song,
             lyricPojo = lyricPojo
-        )
+        ))
     }
 }
 

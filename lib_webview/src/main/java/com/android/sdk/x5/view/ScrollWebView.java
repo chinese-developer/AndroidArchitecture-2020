@@ -19,9 +19,7 @@ import com.tencent.smtt.sdk.WebViewClient;
 import java.util.Map;
 
 /**
- * <pre>
- *     desc  : 实现WebView的滑动监听和优雅处理回退栈问题
- * </pre>
+ * 实现WebView的滑动监听和优雅处理回退栈问题
  */
 public class ScrollWebView extends X5WebView {
 

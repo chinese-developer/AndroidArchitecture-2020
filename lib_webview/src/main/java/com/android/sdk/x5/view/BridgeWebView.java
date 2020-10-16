@@ -27,9 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <pre>
- *     desc  : 自定义WebView类
- * </pre>
+ * 自定义WebView类
  */
 @SuppressLint("SetJavaScriptEnabled")
 public class  BridgeWebView extends BaseWebView implements WebViewJavascriptBridge {
