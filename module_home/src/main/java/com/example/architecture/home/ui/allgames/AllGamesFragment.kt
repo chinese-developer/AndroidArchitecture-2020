@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment
 import com.android.base.app.fragment.BaseFragment
 import com.android.base.widget.adapter.BindingAdapter
 import com.app.base.widget.verticalviewpager.BaseFragmentAdapter
+import com.blankj.utilcode.util.SpanUtils
 import com.example.architecture.home.R
 import com.example.architecture.home.databinding.FragmentAllGamesBinding
 import com.example.architecture.home.ui.model.allgames.GamesSecondaryFragment
@@ -55,6 +56,7 @@ class AllGamesFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         BannerFactory.build(requireContext(), binding.banner)
         binding.noticeTitle.setText("正在测试走马灯效果, 正在测试走马灯效果, 正在测试走马灯效果, 正在测试走马灯效果, 请忽略~")
+        SpanUtils.with(binding.tvUserName).append("Ne").setForegroundColor(ContextCompat.getColor(requireActivity(), R.color.colorAccent)).append("mo").create()
         initViewPager()
         listeners()
     }

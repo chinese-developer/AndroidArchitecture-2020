@@ -75,7 +75,7 @@
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/notice_title"
-                android:text="Nemo"
+                tools:text="Nemo"
                 tools:ignore="HardcodedText" />
 
             <ImageView
