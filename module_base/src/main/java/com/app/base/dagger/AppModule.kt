@@ -1,13 +1,18 @@
 package com.app.base.dagger
 
+import android.app.Activity
 import android.content.Context
+import android.net.ConnectivityManager
+import androidx.core.content.getSystemService
 import androidx.room.Room
+import com.app.base.AppContext
 import com.app.base.data.api.ApiParameter
 import com.app.base.data.api.AuthInterceptorOkHttpClient
 import com.app.base.data.api.DeEnvelopingConverter
 import com.app.base.data.app.AppApiService
 import com.app.base.data.app.AppDao
 import com.app.base.data.app.AppDataBase
+import com.app.base.utils.ConnectivityChecker
 import com.google.gson.Gson
 import dagger.Lazy
 import dagger.Module
@@ -62,4 +67,17 @@ object AppModule {
             .build()
             .create(AppApiService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun connectivityChecker(): ConnectivityChecker? {
+        val connectivityManager = AppContext.get().getSystemService<ConnectivityManager>()
+        return if (connectivityManager != null) {
+            ConnectivityChecker(connectivityManager)
+        } else {
+            null
+        }
+    }
+
 }
+
