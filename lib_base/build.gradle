@@ -49,34 +49,32 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
-    testImplementation "junit:junit:4.13"
+    testImplementation "junit:junit:${test.junitVersion}"
 
     // AndroidX Support
+    api "androidx.appcompat:appcompat:${versions.appcompat}"
+    api "com.google.android.material:material:${versions.material}"
+    api "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
     api "androidx.activity:activity-ktx:${versions.activityKtx}"
     api "androidx.fragment:fragment-ktx:${versions.fragmentKtx}"
     api "androidx.legacy:legacy-support-v4:${versions.supportV4}"
-    api "androidx.appcompat:appcompat:${versions.appcompat}"
     api "androidx.recyclerview:recyclerview:${versions.recyclerview}"
-    api "com.google.android.material:material:${versions.material}"
-    api "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
     api "androidx.arch.core:core-runtime:${versions.arch}"
     api "androidx.arch.core:core-common:${versions.arch}"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:${versions.livedata}"
     api "androidx.lifecycle:lifecycle-common:${versions.lifecycle}"
     api "androidx.lifecycle:lifecycle-common-java8:${versions.lifecycle}"
     api "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}"
-    api "androidx.lifecycle:lifecycle-livedata-core:${versions.lifecycle}"
-    api "androidx.lifecycle:lifecycle-livedata:${versions.livedata}"
-    api "androidx.lifecycle:lifecycle-livedata-ktx:${versions.livedata}"
-    api "androidx.lifecycle:lifecycle-viewmodel:${versions.lifecycle}"
+    api "androidx.lifecycle:lifecycle-livedata-core-ktx:${versions.lifecycle}"
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
     api "androidx.lifecycle:lifecycle-viewmodel-savedstate:${versions.lifecycle}"
     api "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
-    api "androidx.lifecycle:lifecycle-reactivestreams:${versions.lifecycle}"
+    api "androidx.lifecycle:lifecycle-reactivestreams-ktx:${versions.lifecycle}"
 
     // Kotlin
     api "androidx.core:core-ktx:${versions.coreKtx}"
-    api "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
-    api "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutines}"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"
 
@@ -86,7 +84,7 @@ dependencies {
     api "com.jakewharton.rxbinding2:rxbinding:${versions.rxBinding2}"
     api "com.jakewharton.rxbinding3:rxbinding:${versions.rxBinding3}"
 
-    // autoDispose
+    // AutoDispose
     api "com.uber.autodispose:autodispose:${versions.autodispose}"
     api "com.uber.autodispose:autodispose-lifecycle:${versions.autodispose}"
     api "com.uber.autodispose:autodispose-android:${versions.autodispose}"
@@ -95,7 +93,7 @@ dependencies {
     // Log
     api "com.jakewharton.timber:timber:${versions.timber}"
 
-    // glide
+    // Glide
     api "com.github.bumptech.glide:glide:${versions.glide}"
     api "com.github.bumptech.glide:okhttp3-integration:${versions.glide}"
     api "de.hdodenhof:circleimageview:${versions.circleImageView}"
@@ -109,7 +107,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:${versions.dagger}"
     kapt "com.google.dagger:hilt-android-compiler:${versions.dagger}"
 
-    /** Utils support */
+    // Utils support
     api "com.blankj:utilcode:${versions.blankjUtils}"
 
     // Reflect chain

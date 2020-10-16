@@ -79,11 +79,11 @@ dependencies {
     api "androidx.cardview:cardview:${versions.cardview}"
     api "androidx.multidex:multidex:${versions.multidex}"
 
-    // kotlin
+    // Kotlin
     api "io.reactivex.rxjava2:rxkotlin:${versions.rxkotlin}"
 
     // Third Library
-    // apt
+    // Apt
     kapt "com.github.bumptech.glide:compiler:${versions.glide}"
 
     // https://github.com/SherlockGougou/BigImageViewPager
@@ -98,17 +98,17 @@ dependencies {
     implementation "androidx.room:room-ktx:${versions.room}"
     kapt "androidx.room:room-compiler:${versions.room}"
 
-    // multi channel
+    // Multi channel
     implementation "com.leon.channel:helper:2.0.3"
 
     // ARouter
     api "com.alibaba:arouter-api:${versions.arouter}"
     kapt "com.alibaba:arouter-compiler:${versions.arouterAnnotation}"
 
-    // gson
+    // Gson
     api "com.google.code.gson:gson:${versions.gson}"
 
-    // image compression
+    // Image compression
     api "top.zibin:Luban:${versions.luban}"
 
     // EventBus
@@ -131,21 +131,21 @@ dependencies {
     // https://github.com/afollestad/vvalidator
     api 'com.afollestad:vvalidator:0.5.2'
 
-    // toast
+    // Toast
     api "com.github.liangjingkanji:Tooltip:${versions.toast}"
 
     // https://github.com/evant/binding-collection-adapter
     api "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${versions.bindingAdapter}"
     api "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${versions.bindingAdapter}"
 
-    // rx binding
+    // Rx binding
     api "com.jakewharton.rxbinding3:rxbinding-appcompat:${versions.rxBinding3}"
 
     // Debug
     if (openDebug()) {
         // UETool
         implementation "me.ele:uetool:${versions.ueTool}"
-        // stetho
+        // Stetho
         implementation "com.facebook.stetho:stetho:${versions.stethoOkhttp3}"
         implementation "com.facebook.stetho:stetho-okhttp3:${versions.stethoOkhttp3}"
         // LeakCanary
