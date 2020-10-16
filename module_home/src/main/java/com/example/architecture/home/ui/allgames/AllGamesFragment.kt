@@ -56,7 +56,10 @@ class AllGamesFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         BannerFactory.build(requireContext(), binding.banner)
         binding.noticeTitle.setText("正在测试走马灯效果, 正在测试走马灯效果, 正在测试走马灯效果, 正在测试走马灯效果, 请忽略~")
-        SpanUtils.with(binding.tvUserName).append("Ne").setForegroundColor(ContextCompat.getColor(requireActivity(), R.color.colorAccent)).append("mo").create()
+        SpanUtils.with(binding.tvUserName).append("Ne")
+            .setForegroundColor(ContextCompat.getColor(requireActivity(), R.color.colorAccent))
+            .append("mo")
+            .create()
         initViewPager()
         listeners()
     }
