@@ -71,10 +71,13 @@ class MainFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         mediaController = MediaController(this, binding, model, eventCenter)
+        initViewModelObservers()
         initViewPager()
         initBottomNavigationBar()
         listeners()
+    }
 
+    private fun initViewModelObservers() {
         model.songModel.observe(viewLifecycleOwner, {
             if (it.lyricPojo != null) {
 //                lyricsFragment.setLrcRows(true, it.lyricPojo!!)

@@ -20,6 +20,8 @@ import com.example.architecture.home.HomeApiService
 import com.example.architecture.home.repository.pojo.AlbumCoverImageUrlPojo
 import com.example.architecture.home.repository.pojo.AlbumListPojo
 import com.example.architecture.home.repository.pojo.LyricPojo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Singleton
@@ -33,20 +35,28 @@ class HomeApiRepository @Inject constructor(
 
     fun checkIfHasToken(): Boolean = appDataSource.checkIfHasToken()
 
-    suspend fun getLyric(id: Long): NetResult<LyricPojo> = safeApiCallWithoutCode {
-        api.lyric(buildingLyricParams(id.toString()))
+    suspend fun getLyric(id: Long): NetResult<LyricPojo> = withContext(Dispatchers.IO) {
+        safeApiCallWithoutCode {
+            api.lyric(buildingLyricParams(id.toString()))
+        }
     }
 
-    suspend fun albumList(id: Long): NetResult<AlbumListPojo> = safeApiCallWithoutCode {
-        api.albumList(buildingAlbumListParams(id.toString()))
+    suspend fun albumList(id: Long): NetResult<AlbumListPojo> = withContext(Dispatchers.IO) {
+        safeApiCallWithoutCode {
+            api.albumList(buildingAlbumListParams(id.toString()))
+        }
     }
 
-    suspend fun getSongUrl(id: Long): NetResult<Song> = safeApiCallWithoutCode {
-        api.songUrl(buildingSongUrlParams(id.toString()))
+    suspend fun getSongUrl(id: Long): NetResult<Song> = withContext(Dispatchers.IO) {
+        safeApiCallWithoutCode {
+            api.songUrl(buildingSongUrlParams(id.toString()))
+        }
     }
 
-    suspend fun logout(): NetResult<Int> = safeApiCall {
-        api.logout(buildingLogoutParams())
+    suspend fun logout(): NetResult<Int> = withContext(Dispatchers.IO) {
+        safeApiCall {
+            api.logout(buildingLogoutParams())
+        }
     }
 
     suspend fun syncAlbumListByUid(uid: String): NetResult<NetEase> = safeApiCallWithoutCode {
@@ -54,12 +64,14 @@ class HomeApiRepository @Inject constructor(
     }
 
     suspend fun getAlbumCoverImgUrlById(id: String?): NetResult<AlbumCoverImageUrlPojo> =
-        safeApiCallWithoutCode {
-            api.getAlbumCoverImgUrlById(buildingAlbumCoverImgUrlParams(id))
+        withContext(Dispatchers.IO) {
+            safeApiCallWithoutCode {
+                api.getAlbumCoverImgUrlById(buildingAlbumCoverImgUrlParams(id))
+            }
         }
 
     suspend fun download(url: String): NetResult<String> {
-        val response = apiWithoutToken.download(url)
+        val response = withContext(Dispatchers.IO) { apiWithoutToken.download(url) }
 
         if (response.isSuccessful) {
             response.body()?.byteStream()?.apply {

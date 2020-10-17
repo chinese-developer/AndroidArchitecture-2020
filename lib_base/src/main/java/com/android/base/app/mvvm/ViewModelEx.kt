@@ -1,9 +1,6 @@
 package com.android.base.app.mvvm
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -23,9 +20,9 @@ fun ViewModel.launchOnIO(block: suspend CoroutineScope.() -> Unit) {
 }
 
 fun ViewModel.launchWithExceptionHandler(
-        block: suspend CoroutineScope.() -> Unit,
-        onError: (e: Throwable) -> Unit = {},
-        onComplete: () -> Unit = {}
+    block: suspend CoroutineScope.() -> Unit,
+    onError: (e: Throwable) -> Unit = {},
+    onComplete: () -> Unit = {}
 ) {
     viewModelScope.launch(CoroutineExceptionHandler { _, e -> onError(e) }) {
         try {
