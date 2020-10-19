@@ -39,8 +39,8 @@ class HomeApiRepository @Inject constructor(
     private val localCacheModel: LocalCacheModel by HomeModelDelegate
 
     init {
-        networkModel.println()
-        localCacheModel.println()
+        networkModel.toast()
+        localCacheModel.toast()
     }
 
     fun checkIfHasToken(): Boolean = appDataSource.checkIfHasToken()

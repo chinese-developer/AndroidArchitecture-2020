@@ -24,6 +24,5 @@ object HomeModel {
                     modelMap[this] as T
                 }
             }
-
     }
 }

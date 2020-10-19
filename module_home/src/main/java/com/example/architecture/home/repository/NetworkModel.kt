@@ -1,11 +1,10 @@
 package com.example.architecture.home.repository
 
 import com.app.base.toast
-import javax.inject.Inject
 
-class NetworkModel @Inject constructor() : AbsHomeModel() {
+class NetworkModel : AbsHomeModel() {
 
-    fun println() {
+    fun toast() {
         toast("networkModel")
     }
 }
