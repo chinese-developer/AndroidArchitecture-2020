@@ -20,8 +20,10 @@ import com.example.architecture.home.HomeApiService
 import com.example.architecture.home.repository.pojo.AlbumCoverImageUrlPojo
 import com.example.architecture.home.repository.pojo.AlbumListPojo
 import com.example.architecture.home.repository.pojo.LyricPojo
+import com.example.architecture.home.ui.model.allgames.Model
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Singleton
@@ -32,6 +34,14 @@ class HomeApiRepository @Inject constructor(
     @Named(OKHTTP_REGULAR) private val api: HomeApiService,
     @Named(OKHTTP_WITHOUT_TOKEN) private val apiWithoutToken: HomeApiService
 ) : BaseRepository() {
+
+    private val networkModel: NetworkModel by HomeModelDelegate
+    private val localCacheModel: LocalCacheModel by HomeModelDelegate
+
+    init {
+        networkModel.println()
+        localCacheModel.println()
+    }
 
     fun checkIfHasToken(): Boolean = appDataSource.checkIfHasToken()
 
