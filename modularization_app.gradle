@@ -111,6 +111,8 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:${versions.dagger}"
     /*ARouter*/
     kapt "com.alibaba:arouter-compiler:${versions.arouterAnnotation}"
+    /*MoShi*/
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}"
     /* all jar*/
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }

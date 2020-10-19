@@ -1,7 +1,9 @@
 package com.app.base.data.models
 
+import com.squareup.moshi.JsonClass
 import java.io.Serializable
 
+@JsonClass(generateAdapter = true)
 data class Song(var url: String?) : Serializable {
     var sourceOfSongId: Long = -1L
     var title: String? = ""

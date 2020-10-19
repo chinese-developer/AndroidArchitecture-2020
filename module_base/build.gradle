@@ -107,6 +107,11 @@ dependencies {
 
     // Gson
     api "com.google.code.gson:gson:${versions.gson}"
+    // Moshi
+    api "com.squareup.moshi:moshi:${versions.moshi}"
+    api "com.squareup.moshi:moshi-kotlin:${versions.moshi}"
+    api "com.squareup.retrofit2:converter-moshi:2.9.0"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}"
 
     // Image compression
     api "top.zibin:Luban:${versions.luban}"

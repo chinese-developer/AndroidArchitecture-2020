@@ -190,6 +190,8 @@ dependencies {
 
         /*ARouter*/
         kapt "com.alibaba:arouter-compiler:${versions.arouterAnnotation}"
+        /*MoShi*/
+        kapt "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}"
 
     } else {
 

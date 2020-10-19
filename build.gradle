@@ -31,6 +31,7 @@ buildscript {
                 'smartRefreshLayout': '2.0.1',
                 'toast'             : '1.0.4',
                 'gson'              : '2.8.6',
+                'moshi'             : '1.11.0',
                 'jsoup'             : '1.11.3',
                 'junit'             : '4.12',
                 'ktlint'            : '0.24.0',

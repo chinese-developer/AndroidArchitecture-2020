@@ -144,6 +144,7 @@ class MainViewModel @ViewModelInject constructor(
     }
 
     fun download(song: Song) {
+
         if (!repo.checkIfHasToken()) return
 
         if (song.url.isNullOrBlank()) {

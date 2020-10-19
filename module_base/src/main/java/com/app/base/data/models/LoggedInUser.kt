@@ -10,10 +10,12 @@ import com.android.base.utils.android.views.getString
 import com.app.base.AppContext
 import com.app.base.R
 import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
 @Parcelize
+@JsonClass(generateAdapter = true)
 data class LoggedInUser(
     @SerializedName("token")
     val token: String?,
@@ -22,7 +24,7 @@ data class LoggedInUser(
     val displayName: String?,
 
     @SerializedName("header")
-    val avatarUrl: String? = null,
+    val avatarUrl: String?,
 
     @SerializedName("w_uid")
     val netEaseUid: String?

@@ -57,7 +57,7 @@ class AppRepository @Inject constructor(
 
     override fun observableUser(): Flowable<LoggedInUser> = userObservable
 
-    override fun isLoggedIn(): Boolean = user != null && user!!.token != null
+    override fun isLoggedIn(): Boolean = user != null && user?.token != null
     override fun resetToken() {
         tokenLocalDataSource.resetToken()
     }

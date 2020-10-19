@@ -1,13 +1,16 @@
 package com.app.base.data.models
 
+import com.squareup.moshi.JsonClass
 import java.io.Serializable
 
+@JsonClass(generateAdapter = true)
 data class NetEase(
     val code: Int,
     val more: Boolean,
     val playlist: List<Playlist>?
 ) : Serializable
 
+@JsonClass(generateAdapter = true)
 data class Playlist(
     val adType: Int,
     val anonimous: Boolean,
