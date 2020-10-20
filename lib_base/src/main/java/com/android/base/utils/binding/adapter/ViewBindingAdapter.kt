@@ -15,7 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.databinding.BindingMethod
 import androidx.databinding.BindingMethods
-import com.android.base.utils.android.views.dpToPx
+import com.android.base.utils.ktx.dpToPx
 
 @BindingMethods(
         BindingMethod(type = View::class, attribute = "android:fadeScrollbars", method = "setScrollbarFadingEnabled"),

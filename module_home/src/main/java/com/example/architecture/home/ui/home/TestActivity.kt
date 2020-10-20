@@ -2,7 +2,7 @@ package com.example.architecture.home.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.commitNow
-import com.android.base.utils.android.views.newFragment
+import com.android.base.utils.ktx.newFragment
 import com.app.base.AppContext
 import com.app.base.app.AppBaseActivity
 import com.app.base.router.RouterPath

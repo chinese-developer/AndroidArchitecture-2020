@@ -1,7 +1,7 @@
 package com.app.base.app
 
 import android.annotation.SuppressLint
-import com.android.base.utils.android.views.getString
+import com.android.base.utils.ktx.getString
 import com.android.sdk.net.error.ErrorException
 import com.android.sdk.net.error.ExceptionHandle
 import com.app.base.R

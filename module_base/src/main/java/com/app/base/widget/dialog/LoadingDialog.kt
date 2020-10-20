@@ -1,8 +1,8 @@
 package com.app.base.widget.dialog
 
 import androidx.appcompat.app.AppCompatDialog
-import com.android.base.utils.android.views.gone
-import com.android.base.utils.android.views.visible
+import com.android.base.utils.ktx.gone
+import com.android.base.utils.ktx.visible
 import com.app.base.R
 import kotlinx.android.synthetic.main.dialog_loading.*
 

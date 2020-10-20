@@ -14,7 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentActivity;
 
 import com.android.base.utils.android.ViewUtils;
-import com.android.base.utils.android.views.FragmentExKt;
+import com.android.base.utils.ktx.FragmentExtKt;
 import com.app.base.R;
 
 public class TopBarLayout extends LinearLayout {
@@ -103,7 +103,7 @@ public class TopBarLayout extends LinearLayout {
         }
         FragmentActivity realContext = ViewUtils.getRealContext(this);
         if (realContext != null) {
-            FragmentExKt.exitFragment(realContext, false);
+            FragmentExtKt.exitFragment(realContext, false);
         }
     }
 

@@ -1,8 +1,8 @@
 package com.app.base.widget.dialog
 
 import android.view.View
-import com.android.base.utils.android.views.gone
-import com.android.base.utils.android.views.visible
+import com.android.base.utils.ktx.gone
+import com.android.base.utils.ktx.visible
 import com.app.base.R
 import com.app.base.widget.dialog.BaseDialogBuilder.Companion.NO_ID
 import kotlinx.android.synthetic.main.dialog_confirm_layout.*

@@ -15,7 +15,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.android.base.app.ui.LoadingView
 import com.android.base.utils.android.ActFragWrapper
-import com.android.base.utils.android.views.colorFromId
+import com.android.base.utils.ktx.getColorRes
 import com.app.base.R
 
 private val internalHandler = Handler(Looper.getMainLooper())
@@ -129,7 +129,7 @@ open class BaseLoadingDialog(val context: Context) {
         }
 
     var titleSize = 16F
-    var titleColor = context.colorFromId(R.color.colorAccent)
+    var titleColor = context.getColorRes(R.color.colorAccent)
 
     var cancelable: Boolean = true
 }
@@ -192,7 +192,7 @@ open class BaseDialogBuilder(val context: Context) {
     var titleSize = 16F
 
     /**标题的字体颜色*/
-    var titleColor = context.colorFromId(R.color.textSecondPrimary)
+    var titleColor = context.getColorRes(R.color.textSecondPrimary)
 
     /*确认按钮*/
     @StringRes
@@ -247,7 +247,7 @@ class ConfirmDialogBuilder(context: Context) : BaseDialogBuilder(context) {
     var messageSize = 14F
 
     /**消息的字体颜色*/
-    var messageColor = context.colorFromId(R.color.text_808080)
+    var messageColor = context.getColorRes(R.color.text_808080)
 
     //确认与取消
     var positiveListener: ((dialog: Dialog) -> Unit)? = null

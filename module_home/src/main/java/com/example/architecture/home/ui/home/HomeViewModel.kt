@@ -13,7 +13,7 @@ import androidx.lifecycle.SavedStateHandle
 import com.android.base.app.mvvm.VMViewModel
 import com.android.base.app.mvvm.launchOnUI
 import com.android.base.rx.subscribeIgnoreError
-import com.android.base.utils.android.views.getString
+import com.android.base.utils.ktx.getString
 import com.android.base.utils.event.Event
 import com.app.base.AppContext
 import com.app.base.data.api.NetResult
@@ -27,7 +27,6 @@ import com.example.architecture.home.repository.pojo.AlbumCoverImageUrlPojo
 import com.example.architecture.home.repository.pojo.LyricPojo
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
 import kotlin.collections.set
 
 @ExperimentalCoroutinesApi

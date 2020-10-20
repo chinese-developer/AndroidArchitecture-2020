@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import com.blankj.utilcode.util.ScreenUtils;
 
-import static com.android.base.utils.android.views.SizeExKt.dpToPx;
+import static com.android.base.utils.ktx.DisplayMertricsExtKt.dpToPx;
 
 /**
  * 截屏工具类

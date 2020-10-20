@@ -1,4 +1,4 @@
-package com.android.base.utils.android.views
+package com.android.base.utils.ktx
 
 import android.view.Menu
 import android.view.MenuItem

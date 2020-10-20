@@ -1,6 +1,6 @@
 @file:JvmName("Resources")
 
-package com.android.base.utils.android.views
+package com.android.base.utils.ktx
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -13,49 +13,31 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.android.base.utils.BaseUtils
 
-inline fun <T : TypedArray?, R> T.use(block: (T) -> R): R {
-    var recycled = false
-    try {
-        return block(this)
-    } catch (e: Exception) {
-        recycled = true
-        try {
-            this?.recycle()
-        } catch (exception: Exception) {
-        }
-        throw e
-    } finally {
-        if (!recycled) {
-            this?.recycle()
-        }
-    }
-}
-
-fun Fragment.colorFromId(@ColorRes colorRes: Int): Int {
+fun Fragment.getColorRes(@ColorRes colorRes: Int): Int {
     val safeContext = context ?: return 0
     return ContextCompat.getColor(safeContext, colorRes)
 }
 
-fun Fragment.drawableFromId(@DrawableRes colorRes: Int): Drawable? {
+fun Fragment.getDrawableRes(@DrawableRes colorRes: Int): Drawable? {
     val safeContext = context ?: return null
     return ContextCompat.getDrawable(safeContext, colorRes)
 }
 
-fun View.colorFromId(@ColorRes colorRes: Int): Int {
+fun View.getColorRes(@ColorRes colorRes: Int): Int {
     val safeContext = context ?: return 0
     return ContextCompat.getColor(safeContext, colorRes)
 }
 
-fun View.drawableFromId(@DrawableRes colorRes: Int): Drawable? {
+fun View.getDrawableRes(@DrawableRes colorRes: Int): Drawable? {
     val safeContext = context ?: return null
     return ContextCompat.getDrawable(safeContext, colorRes)
 }
 
-fun Context.colorFromId(@ColorRes id: Int): Int {
+fun Context.getColorRes(@ColorRes id: Int): Int {
     return ContextCompat.getColor(this, id)
 }
 
-fun Context.drawableFromId(@DrawableRes id: Int): Drawable? {
+fun Context.getDrawableRes(@DrawableRes id: Int): Drawable? {
     return ContextCompat.getDrawable(this, id)
 }
 
@@ -96,24 +78,6 @@ fun createUriByResource(id: Int): Uri {
 
 fun createUriByAssets(path: String): Uri {
     return Uri.parse("file:///android_asset/$path")
-}
-
-fun getStyledColor(context: Context, @AttrRes attr: Int): Int {
-    val a = context.obtainStyledAttributes(null, intArrayOf(attr))
-    try {
-        return a.getColor(0, 0x000000)
-    } finally {
-        a.recycle()
-    }
-}
-
-fun getStyledDrawable(context: Context, @AttrRes attr: Int): Drawable? {
-    val a = context.obtainStyledAttributes(null, intArrayOf(attr))
-    try {
-        return a.getDrawable(0)
-    } finally {
-        a.recycle()
-    }
 }
 
 fun getDimensionPixelSize(dimenId: Int): Int {

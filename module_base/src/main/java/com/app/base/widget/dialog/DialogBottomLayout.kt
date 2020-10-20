@@ -5,8 +5,8 @@ import androidx.annotation.ColorInt
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
-import com.android.base.utils.android.views.gone
-import com.android.base.utils.android.views.visible
+import com.android.base.utils.ktx.gone
+import com.android.base.utils.ktx.visible
 import com.app.base.R
 import kotlinx.android.synthetic.main.dialog_common_bottom.view.*
 

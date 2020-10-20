@@ -4,7 +4,7 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.android.base.utils.android.views.onDebouncedClick
+import com.android.base.utils.ktx.onDebouncedClick
 import com.android.base.utils.ktx.getBlackWhiteColor
 import com.app.base.app.AppBaseActivity
 import com.app.base.router.RouterPath

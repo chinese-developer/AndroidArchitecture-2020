@@ -6,7 +6,7 @@
 package com.app.base.data.models
 
 import android.os.Parcelable
-import com.android.base.utils.android.views.getString
+import com.android.base.utils.ktx.getString
 import com.app.base.AppContext
 import com.app.base.R
 import com.google.gson.annotations.SerializedName

@@ -1,4 +1,4 @@
-package com.app.base.utils.ext
+package com.android.base.utils.ktx
 
 import com.google.android.material.tabs.TabLayout
 import android.widget.LinearLayout

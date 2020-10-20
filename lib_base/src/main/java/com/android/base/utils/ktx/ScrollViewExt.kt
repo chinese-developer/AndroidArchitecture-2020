@@ -1,4 +1,9 @@
-package com.android.base.utils.android.views
+/**
+ * Designed and developed by Nemo (privateemailmaster@gmail.com)
+ *
+ */
+
+package com.android.base.utils.ktx
 
 import android.view.View
 import android.widget.ScrollView

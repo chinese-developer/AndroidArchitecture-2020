@@ -1,20 +1,21 @@
-package com.android.base.utils.android.views
+package com.android.base.utils.ktx
 
-import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
-import android.os.Build
+import android.text.method.LinkMovementMethod
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.widget.EditText
+import android.widget.TextView
 import androidx.annotation.IdRes
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.FragmentActivity
 import com.android.base.rx.subscribeIgnoreError
 import com.android.base.utils.android.WindowUtils
 import com.android.base.utils.android.compat.AndroidVersion.atLeast
-import com.android.base.utils.ktx.otherwise
-import com.android.base.utils.ktx.yes
+import com.google.android.material.textfield.TextInputLayout
 import com.jakewharton.rxbinding3.view.clicks
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -389,4 +390,15 @@ private fun doAction(action: Int, vararg views: View) {
             ACTION_DISABLE -> view.isEnabled = false
         }
     }
+}
+
+inline fun < T: View> T.afterMeasure(crossinline action: T.() -> Unit) {
+    viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+        override fun onGlobalLayout() {
+            if (measuredWidth > 0 && measuredHeight > 0) {
+                viewTreeObserver.removeOnGlobalLayoutListener(this)
+                action()
+            }
+        }
+    })
 }

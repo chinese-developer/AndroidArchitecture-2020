@@ -14,10 +14,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.android.base.app.fragment.BaseFragment
-import com.android.base.utils.android.views.getStringArray
-import com.android.base.utils.android.views.newFragment
-import com.android.base.utils.android.views.onDebouncedClick
-import com.android.base.utils.android.views.visible
+import com.android.base.utils.ktx.getStringArray
+import com.android.base.utils.ktx.newFragment
+import com.android.base.utils.ktx.onDebouncedClick
+import com.android.base.utils.ktx.visible
 import com.app.base.AppContext
 import com.app.base.common.EventCenter
 import com.app.base.data.DataConfig
@@ -34,7 +34,6 @@ import com.example.architecture.home.common.Constant.TAB_2
 import com.example.architecture.home.common.Constant.TAB_3
 import com.example.architecture.home.common.OnTabSelectedListenerAdapter
 import com.example.architecture.home.databinding.FragMainBinding
-import com.example.architecture.home.ui.allgames.AllGamesFragment
 import com.example.architecture.home.ui.home.HomeFragment
 import com.example.architecture.home.ui.mine.MineFragment
 import dagger.hilt.android.AndroidEntryPoint

@@ -5,7 +5,7 @@ import android.os.Handler
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.android.base.app.activity.ActivityDelegate
-import com.android.base.utils.android.views.onDebouncedClick
+import com.android.base.utils.ktx.onDebouncedClick
 import com.android.cache.getEntity
 import com.app.base.AppContext
 import com.app.base.common.EventCenter

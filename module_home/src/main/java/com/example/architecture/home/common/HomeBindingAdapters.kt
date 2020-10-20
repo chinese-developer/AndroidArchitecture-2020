@@ -10,7 +10,7 @@ package com.example.architecture.home.common
 import android.graphics.drawable.AnimationDrawable
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.android.base.utils.android.views.setLeftDrawable
+import com.android.base.utils.ktx.setLeftDrawable
 import com.example.architecture.home.R
 
 @BindingAdapter("loadTextViewStartAnimWhen")

@@ -1,4 +1,4 @@
-package com.app.base.utils.ext
+package com.android.base.utils.ktx
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

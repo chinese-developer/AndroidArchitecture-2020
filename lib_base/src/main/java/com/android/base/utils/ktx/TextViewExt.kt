@@ -1,4 +1,4 @@
-package com.android.base.utils.android.views
+package com.android.base.utils.ktx
 
 import android.graphics.drawable.Drawable
 import android.text.Editable

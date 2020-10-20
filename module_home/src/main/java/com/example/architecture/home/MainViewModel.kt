@@ -14,7 +14,7 @@ import androidx.lifecycle.viewModelScope
 import com.android.base.app.mvvm.VMViewModel
 import com.android.base.app.mvvm.launchOnUI
 import com.android.base.rx.subscribeIgnoreError
-import com.android.base.utils.android.views.getString
+import com.android.base.utils.ktx.getString
 import com.app.base.AppContext
 import com.app.base.dagger.CoroutinesDispatcherProvider
 import com.app.base.data.api.NetResult

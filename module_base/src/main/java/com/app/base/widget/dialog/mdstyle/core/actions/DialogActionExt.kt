@@ -5,7 +5,7 @@
 
 package com.app.base.widget.dialog.mdstyle.core.actions
 
-import com.android.base.utils.android.views.isVisible
+import com.android.base.utils.ktx.isVisible
 import com.app.base.widget.dialog.mdstyle.MaterialDialog
 import com.app.base.widget.dialog.mdstyle.core.WhichButton
 import com.app.base.widget.dialog.mdstyle.core.button.DialogActionButton

@@ -7,7 +7,7 @@ package com.app.base.data.api
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import com.android.base.utils.android.views.getString
+import com.android.base.utils.ktx.getString
 import com.app.base.AppContext
 import com.app.base.R
 import com.drake.tooltip.toast

@@ -18,7 +18,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.ColorInt
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
-import com.android.base.utils.android.views.dpToPx
+import com.android.base.utils.ktx.dpToPx
 import com.app.base.R
 import com.app.base.widget.dialog.mdstyle.util.MDUtil.dimenPx
 
