@@ -30,9 +30,8 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlin.collections.set
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
+import kotlin.concurrent.thread
+import kotlin.coroutines.*
 
 @ExperimentalCoroutinesApi
 class MainViewModel @ViewModelInject constructor(
@@ -60,6 +59,10 @@ class MainViewModel @ViewModelInject constructor(
             }
     }
 
+    fun main() {
+
+    }
+
     suspend fun getUser() = suspendCoroutine<String> { continuation ->
         getUser {
             continuation.resume(it)
@@ -67,9 +70,20 @@ class MainViewModel @ViewModelInject constructor(
     }
 
     suspend fun getUserCoroutine() = suspendCoroutine<String> { continuation ->
+        // continuation 是 SafeContinuation 的, 这个类是协程本体 SuspendLambda 的包装类
+        // 它的作用是保证 SuspendLambda 的 resume() 只能被执行一次, 同时在没有切线程不要调用它而直接返回.
+        // 执行流程是:
+        // 1. 首先调用包装类 SafeContinuation 的 resume(), 包装类的 resume 会调用内部的拦截器 Intercepted 的 resume() 进行线程切换
+        // 2. 拦截器 每次执行时或第一次执行时, 都会去拦截本体 SuspendLambda
+        // 3. 完成上述后最终会调用协程本体 SuspendLambda 的 resume() 通知本体恢复执行.
         getUser(object : CallbackWithError<String> {
             override fun onSuccess(value: String) {
+                // 在当前线程调用栈上直接调用, 则不会挂起
                 continuation.resume(value)
+                // 真正的挂起必须保证切线程后才会挂起
+                thread {
+                    continuation.resume(value)
+                }
             }
 
             override fun onError(t: Throwable) {
@@ -83,7 +97,16 @@ class MainViewModel @ViewModelInject constructor(
     }
 
     fun getUser(callback: CallbackWithError<String>) {
+        suspend {
+            // suspend 大括号内是协程函数体的本体(类名:SuspendLambda)
+        }.createCoroutine(object : Continuation<Unit> {
+            override val context: CoroutineContext
+                get() = EmptyCoroutineContext
 
+            override fun resumeWith(result: Result<Unit>) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
     fun logout() {
