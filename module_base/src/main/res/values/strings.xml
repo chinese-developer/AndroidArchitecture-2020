@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
-    <!--通用词-->
+    <!-- regular -->
     <string name="confirm">确认</string>
-    <string name="cancel_">取消</string>
+    <string name="cancel">取消</string>
     <string name="tips">提示</string>
     <string name="avatar">头像</string>
     <string name="share">分享</string>
@@ -45,106 +45,6 @@
     <string name="okay">好的</string>
     <string name="modify">修改</string>
     <string name="caesura_sign">、</string>
-
-    <!-- ====================================mask、symbol==================================== -->
-    <string name="currency_mask">¥%s</string><!--全局唯一货币符号-->
-    <string name="brackets_mask">(%s)</string>
-    <string name="scoring_mask" tools:ignore="ExtraTranslation">%s分</string>
-
-    <!-- ====================================对话框==================================== -->
-    <string name="dialog_loading">请稍等…</string>
-    <string name="net_dialog_msg">加载中</string>
-
-    <!-- ====================================错误提示==================================== -->
-
-    <!--错误提示 toast-->
-    <string name="error_not_login">检测您还没有登录，请先登录</string>
-    <string name="error_net_error">网络连接失败，请检查网络喔</string>
-    <string name="error_service_error">服务器开小差了，请稍后重试喔</string><!--error code 500-600-->
-    <string name="error_request_error">请求失败，code(400–500)！</string><!--error code 400-500-->
-    <string name="error_service_data_error">服务器数据异常</string><!--解析数据出错-->
-    <string name="error_api_code_mask_tips">请求错误！，错误码为(%d)</string><!--响应码错误-->
-    <string name="error_unknow">未知错误</string>
-    <string name="error_upload_failed">上传失败</string>
-    <string name="error_pic_upload_failed">图片上传失败，请重试~</string>
-    <string name="error_logout_failed">退出登录失败</string>
-    <string name="logout_succeed">退出登录成功</string>
-    <!--错误提示 dialog-->
-    <string name="load_error_retry_tips">数据加载失败，是否重试？</string>
-    <string name="submit_error_retry_tips">数据提交失败，是否重试？</string>
-    <!--错误状态布局-->
-    <string name="page_error_load_fail_tips">加载失败了/(ㄒoㄒ)/~~ </string>
-    <string name="page_error_retry_action_tips">重新加载</string>
-    <string name="page_error_no_data">暂无可用数据喔</string>
-    <string name="page_loading">正在努力加载数据…</string>
-    <string name="page_error_no_network">@string/error_net_error</string>
-    <string name="page_error_server_error">@string/error_service_error</string>
-
-    <!-- ====================================表单提示==================================== -->
-    <string name="hint_username">8–16位，含数字、字母</string>
-    <string name="hint_password">8–16位，含数字大小写字母</string>
-    <string name="obtain_validate_code">获取验证码</string>
-    <string name="sms_code">短信验证码</string>
-    <string name="sms_code_enter_tips">请输入短信验证码</string>
-    <string name="sms_code_no_match_tips">验证码错误，请重新输入</string>
-    <string name="sms_code_again_tips_mask">%ss后重新发送</string>
-    <string name="sms_code_length_ove_limit_tips">验证码长度不能超过6位！</string>
-    <string name="password_enter_tips">请输入密码</string>
-    <string name="password_no_match_special_char_tips">密码至少包含一个数字或特殊字符#@!~%`&amp;*</string>
-    <string name="password_no_match_tips">密码必须包含数字和字母，不允许包含特殊字符</string>
-    <string name="password_length_ove_limit_tips">密码长度在8–16位之间</string>
-    <string name="confirm_password_error_tips">两次输入密码不一致</string>
-    <string name="confirm_password_tips">请再次输入密码</string>
-    <string name="cellphone_enter_tips">请输入手机号</string>
-    <string name="cellphone_no_match_tips">手机号格式错误</string>
-    <string name="cellphone_length_ove_limit_tips">仅支持中国11位手机号</string>
-    <string name="nick_name_empty_tips">昵称不能为空！</string>
-    <string name="child_nick_name_tips">昵称不能包含特殊字符</string>
-    <string name="child_nick_length_ove_limit_tips">昵称长度不能超过8位</string>
-    <string name="username_empty_tips">用户名不能为空！</string>
-    <string name="real_name_empty_tips">真实姓名不能为空！</string>
-    <string name="real_name_error_tips">请输入2–15位中文姓名。特殊字符无法填写，可联系客服进行处理。</string>
-    <string name="real_name_length_ove_limit_tips">用户名长度在2–15位之间</string>
-    <string name="username_name_tips">用户名必须包含字母和数字，不能包含特殊字符</string>
-    <string name="username_length_ove_limit_tips">用户名长度在8–16位之间</string>
-    <string name="email_empty_tips">邮箱地址不能为空！</string>
-    <string name="email_error_tips">邮箱地址不合法！</string>
-    <string name="email_length_ove_limit_tips">邮箱地址长度超出限制</string>
-    <string name="error_search_text_must_be_not_null_tips">搜索内容不能为空！</string>
-
-    <!-- ====================================其他提示==================================== -->
-    <string name="image_save_success_tips">图片已保存到相册</string>
-    <string name="image_save_fail_tips">图片保存失败</string>
-    <string name="image_get_fail_tips">图片获取失败</string>
-
-    <!-- ====================================自定义控件==================================== -->
-    <string name="widget_read_more_read_more">展开全文</string>
-    <string name="widget_read_more_read_less">收起</string>
-
-    <!-- ====================================登录注册模块==================================== -->
-    <string name="welcome_to_gelei">欢迎使用</string>
-    <string name="login_register">登录/注册</string>
-    <string name="password_login">密码登录</string>
-    <string name="wechat_login">微信登录</string>
-    <string name="forgot_password">忘记密码</string>
-    <string name="hint_setup_password">请输入8–16位英文数字组合</string>
-    <string name="setup_password">设置密码</string>
-    <string name="user_agreement_tips">完成注册即代表同意</string>
-    <string name="user_agreement_with_guillemet">《用户协议》</string>
-    <string name="validate_code_login">验证码登录</string>
-    <string name="register_success">注册成功</string>
-    <string name="retrieve_password">找回密码</string>
-    <string name="next_step">下一步</string>
-    <string name="validate_cellphone">验证手机号</string>
-    <string name="cellphone">手机号码</string>
-    <string name="sms_code_send_to_cellphone_tips_mask">验证码已经发送至%s （手机号）</string>
-    <string name="reset_password">重新设置密码</string>
-    <string name="login_success">登录成功</string>
-    <string name="login_expired_re_login_tips">登录已过期，请重新登录</string>
-    <string name="sso_re_login_tips">账号已在其他设备登录，请重新登录</string>
-    <string name="digits_az_number">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
-
-    <!-- ====================================时间相关==================================== -->
     <string name="hour">小时</string>
     <string name="hour_">时</string>
     <string name="minute">分钟</string>
@@ -166,42 +66,96 @@
     <string name="five">五</string>
     <string name="six">六</string>
     <string name="sun">日</string>
-    <string name="x_add_to_y_list_mask">%1s已加入%2s列表</string>
-    <string name="save_edits_tips">您的修改未保存，确定要退出吗？</string>
     <string name="prohibit">禁止</string>
-    <string name="send_again">再次发送</string>
+    <string name="text_send_again">再次发送</string>
     <string name="just">刚刚</string>
-    <string name="x_minutes_ago_mask">%d分钟前</string>
     <string name="today">今天</string>
     <string name="yesterday">昨天</string>
     <string name="the_day_before_yesterday">前天</string>
-    <string name="x_hours_ago_mask">%d小时前</string>
-    <string name="cannot_over_usable_period_tips_mask">可用时长不能超过您设置的可用时段%s哦</string>
+    <string name="digits_az_number">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="currency_mask">¥%s</string>
+    <string name="brackets_mask">(%s)</string>
+    <string name="scoring_mask">%s分</string>
 
-    <!-- ==================================== 个人信息模块==================================== -->
-    <string name="toolbar_title_profile">个人信息</string>
-    <string name="click_to_logout">退出登录</string>
-    <string name="logout_dialog_tips">确定要退出登录吗？</string>
-    <string name="old_password">原密码</string>
-    <string name="new_password">新密码</string>
-    <string name="confirm_password">确认密码</string>
-    <string name="toolbar_title_change_pwd">修改登录密码</string>
-    <string name="input_old_password">请输入原密码</string>
-    <string name="input_new_password">请输入新密码(8–16位英文数字组合)</string>
-    <string name="input_confirm_password">请再次输入新密码</string>
-    <string name="focus_input_sth">点击输入</string>
-    <string name="input_verify_code">请输入验证码</string>
-    <string name="error_input_verify_code">您输入的验证码有误/验证码过期</string>
 
-    <!-- ==================================== WebView Actionbar ==================================== -->
+    <!-- toast/tips messages -->
+    <string name="msg_dialog_loading">请稍等…</string>
+    <string name="msg_network_loading">加载中</string>
+    <string name="msg_error_not_login">检测您还没有登录，请先登录</string>
+    <string name="msg_error_net_error">网络连接失败，请检查网络喔</string>
+    <string name="msg_error_service_error">服务器开小差了，请稍后重试喔</string><!--error code 500-600-->
+    <string name="msg_error_request_error">请求失败，code(400–500)！</string><!--error code 400-500-->
+    <string name="msg_error_service_data_error">服务器数据异常</string><!--解析数据出错-->
+    <string name="msg_error_api_code_mask_tips">请求错误！，错误码为(%d)</string><!--响应码错误-->
+    <string name="msg_error_unknown">未知错误</string>
+    <string name="msg_error_upload_failed">上传失败</string>
+    <string name="msg_error_pic_upload_failed">图片上传失败，请重试~</string>
+    <string name="msg_logout_failed">退出登录失败</string>
+    <string name="msg_logout_succeed">退出登录成功</string>
+    <string name="msg_load_error_retry_tips">数据加载失败，是否重试？</string>
+    <string name="msg_submit_error_retry_tips">数据提交失败，是否重试？</string>
+    <string name="msg_page_error_load_fail_tips">加载失败了/(ㄒoㄒ)/~~ </string>
+    <string name="msg_page_error_no_data">暂无可用数据喔</string>
+    <string name="msg_page_loading">正在努力加载数据…</string>
+    <string name="msg_page_error_no_network">@string/msg_error_net_error</string>
+    <string name="msg_page_error_server_error">@string/msg_error_service_error</string>
+    <string name="msg_sms_code_no_match_tips">验证码错误，请重新输入</string>
+    <string name="msg_sms_code_again_tips_mask">%ss后重新发送</string>
+    <string name="msg_sms_code_length_ove_limit_tips">验证码长度不能超过6位！</string>
+    <string name="msg_password_no_match_special_char_tips">密码至少包含一个数字或特殊字符#@!~%`&amp;*</string>
+    <string name="msg_password_no_match_tips">密码必须包含数字和字母，不允许包含特殊字符</string>
+    <string name="msg_password_length_ove_limit_tips">密码长度在8–16位之间</string>
+    <string name="msg_confirm_password_error_tips">两次输入密码不一致</string>
+    <string name="msg_confirm_password_tips">请再次输入密码</string>
+    <string name="msg_cellphone_enter_tips">请输入手机号</string>
+    <string name="msg_cellphone_no_match_tips">手机号格式错误</string>
+    <string name="msg_cellphone_length_ove_limit_tips">仅支持中国11位手机号</string>
+    <string name="msg_nick_name_empty_tips">昵称不能为空！</string>
+    <string name="msg_child_nick_name_tips">昵称不能包含特殊字符</string>
+    <string name="msg_child_nick_length_ove_limit_tips">昵称长度不能超过8位</string>
+    <string name="msg_username_empty_tips">用户名不能为空！</string>
+    <string name="msg_real_name_empty_tips">真实姓名不能为空！</string>
+    <string name="msg_real_name_error_tips">请输入2–15位中文姓名。特殊字符无法填写，可联系客服进行处理。</string>
+    <string name="msg_real_name_length_ove_limit_tips">用户名长度在2–15位之间</string>
+    <string name="msg_username_name_tips">用户名必须包含字母和数字，不能包含特殊字符</string>
+    <string name="msg_username_length_ove_limit_tips">用户名长度在8–16位之间</string>
+    <string name="msg_email_empty_tips">邮箱地址不能为空！</string>
+    <string name="msg_email_error_tips">邮箱地址不合法！</string>
+    <string name="msg_email_length_ove_limit_tips">邮箱地址长度超出限制</string>
+    <string name="msg_error_search_text_must_be_not_null_tips">搜索内容不能为空！</string>
+    <string name="msg_image_save_success_tips">图片已保存到相册</string>
+    <string name="msg_image_save_fail_tips">图片保存失败</string>
+    <string name="msg_image_get_fail_tips">图片获取失败</string>
+    <string name="msg_save_edits_tips">您的修改未保存，确定要退出吗？</string>
+    <string name="msg_picture_has_save_to_x">已保存至 %s</string>
+    <string name="msg_needed_re_login_tips">登录状态异常，请重新登录!</string>
+    <string name="msg_token_expired_tips">登录已过期，请重新登录!</string>
+
+
+    <!-- hint -->
+    <string name="hint_username">8–16位，含数字、字母</string>
+    <string name="hint_password">8–16位，含数字大小写字母</string>
+    <string name="hint_sms_code_enter_tips">请输入短信验证码</string>
+    <string name="hint_password_enter_tips">请输入密码</string>
+
+
+    <!-- text -->
+    <string name="text_obtain_validate_code">获取验证码</string>
+    <string name="text_sms_code">短信验证码</string>
+    <string name="text_x_minutes_ago_mask">%d分钟前</string>
+    <string name="text_x_hours_ago_mask">%d小时前</string>
+
+
+    <!-- action -->
+    <string name="action_expand_all">展开全文</string>
+    <string name="action_collapse">收起</string>
     <string name="action_share">分享</string>
-    <string name="actionbar_more">更多信息</string>
-    <string name="actionbar_webview_share">分享</string>
-    <string name="actionbar_webview_cope">复制链接</string>
-    <string name="actionbar_webview_open">浏览器打开</string>
-    <string name="actionbar_webview_refresh">刷新</string>
-    <string name="actionbar_webview_collect">添加到收藏</string>
-    <string name="actionbar_share">分享给朋友\(^o^)/~</string>
-    <string name="picture_has_save_to">已保存至 %s</string>
+    <string name="action_more">更多信息</string>
+    <string name="action_copy">复制链接</string>
+    <string name="action_open_browser">浏览器打开</string>
+    <string name="action_refresh">刷新</string>
+    <string name="action_add_collect">添加到收藏</string>
+    <string name="action_share_to_friends">分享给朋友\(^o^)/~</string>
+    <string name="action_retry">重新加载</string>
 
 </resources>

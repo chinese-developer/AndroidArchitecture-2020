@@ -225,7 +225,7 @@ open class BaseDialogBuilder(val context: Context) {
                 context.getText(value)
             }
         }
-    var negativeText: CharSequence? = context.getText(R.string.cancel_)
+    var negativeText: CharSequence? = context.getText(R.string.cancel)
     fun noNegative() {
         negativeText = null
     }

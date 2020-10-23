@@ -7,15 +7,15 @@ import com.app.base.R
 class UsernameValidator private constructor(view: View, doOnAfterTextChanged: Boolean) : TextValidator(view, doOnAfterTextChanged) {
 
     public override fun emptyTips(): Int {
-        return R.string.username_empty_tips
+        return R.string.msg_username_empty_tips
     }
 
     public override fun noMatchTips(): Int {
-        return R.string.username_name_tips
+        return R.string.msg_username_name_tips
     }
 
     override fun lengthOverLimitTips(): Int {
-        return R.string.username_length_ove_limit_tips
+        return R.string.msg_username_length_ove_limit_tips
     }
 
     override fun validateTypeText(content: String): Boolean {

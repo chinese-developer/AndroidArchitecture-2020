@@ -7,19 +7,19 @@ import com.app.base.R
 class PasswordValidator private constructor(view: View, private val allowSpecialCharInput: Boolean, doOnAfterTextChanged: Boolean) : TextValidator(view, doOnAfterTextChanged) {
 
     public override fun emptyTips(): Int {
-        return R.string.password_enter_tips
+        return R.string.hint_password_enter_tips
     }
 
     public override fun noMatchTips(): Int {
         return if (allowSpecialCharInput) {
-            R.string.password_no_match_special_char_tips
+            R.string.msg_password_no_match_special_char_tips
         } else {
-            R.string.password_no_match_tips
+            R.string.msg_password_no_match_tips
         }
     }
 
     override fun lengthOverLimitTips(): Int {
-        return R.string.password_length_ove_limit_tips
+        return R.string.msg_password_length_ove_limit_tips
     }
 
     override fun validateTypeText(content: String): Boolean {

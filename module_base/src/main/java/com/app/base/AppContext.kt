@@ -157,7 +157,7 @@ open class AppContext : BaseAppContext() {
 
         var onDialog: DialogCoroutineScope.(FragmentActivity) -> Dialog = {
             val progress = ProgressDialog(activity)
-            progress.setMessage(activity.getString(R.string.net_dialog_msg))
+            progress.setMessage(activity.getString(R.string.msg_network_loading))
             progress
         }
     }

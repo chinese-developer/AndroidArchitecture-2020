@@ -7,15 +7,15 @@ import com.app.base.R
 class NicknameValidator private constructor(view: View, doOnAfterTextChanged: Boolean) : TextValidator(view, doOnAfterTextChanged) {
 
     public override fun emptyTips(): Int {
-        return R.string.nick_name_empty_tips
+        return R.string.msg_nick_name_empty_tips
     }
 
     public override fun noMatchTips(): Int {
-        return R.string.child_nick_name_tips
+        return R.string.msg_child_nick_name_tips
     }
 
     override fun lengthOverLimitTips(): Int {
-        return R.string.child_nick_length_ove_limit_tips
+        return R.string.msg_child_nick_length_ove_limit_tips
     }
 
     override fun validateTypeText(content: String): Boolean {

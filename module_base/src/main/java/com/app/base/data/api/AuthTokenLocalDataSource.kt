@@ -38,7 +38,7 @@ class AuthTokenLocalDataSource @Inject constructor(private val prefs: SharedPref
 
     fun checkIfHasToken(): Boolean {
         if (authToken.isNullOrBlank()) {
-            AppContext.get().toast(getString(R.string.error_not_login))
+            AppContext.get().toast(getString(R.string.msg_error_not_login))
             return false
         }
         return true

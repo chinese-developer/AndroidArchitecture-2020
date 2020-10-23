@@ -157,7 +157,7 @@ class HomeFragment : BaseFragment() {
                                 preFill = song.url,
                                 inputType = InputType.TYPE_CLASS_NUMBER
                             )
-                            positiveButton(getString(R.string.actionbar_webview_cope)) {
+                            positiveButton(getString(R.string.action_open_browser)) {
                                 ClipboardUtils.copyText(song.url)
                             }
                             lifecycleOwner(viewLifecycleOwner)

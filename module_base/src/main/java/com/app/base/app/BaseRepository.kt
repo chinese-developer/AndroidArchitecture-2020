@@ -49,16 +49,13 @@ open class BaseRepository {
         errorMessage: String? = null
     ): NetResult<T> {
         if (response.isSuccessful) {
-            val data = response.body()
-            if (data != null) {
-                return NetResult.Success(data)
-            }
+            return NetResult.Success(response.body())
         }
 
         return if (NetworkUtils.isConnected()) {
             NetResult.Error(ErrorException(response.code(), errorMessage ?: response.message()))
         } else {
-            NetResult.Error(ErrorException(response.code(), getString(R.string.error_net_error)))
+            NetResult.Error(ErrorException(response.code(), getString(R.string.msg_error_net_error)))
         }
     }
 
@@ -68,10 +65,8 @@ open class BaseRepository {
         errorMessage: String? = null
     ): NetResult<T> {
         val result = response.body()
-        if (response.isSuccessful && response.code() == 200) {
-            if (result != null && result.data != null) {
-                return NetResult.Success(result.data!!)
-            }
+        if (response.isSuccessful && result?.code == 200) {
+            return NetResult.Success(result.data)
         }
 
         return if (NetworkUtils.isConnected()) {
@@ -85,7 +80,7 @@ open class BaseRepository {
             NetResult.Error(
                 ErrorException(
                     result?.code
-                        ?: response.code(), getString(R.string.error_net_error)
+                        ?: response.code(), getString(R.string.msg_error_net_error)
                 )
             )
         }

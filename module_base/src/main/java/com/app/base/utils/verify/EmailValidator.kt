@@ -7,15 +7,15 @@ import com.app.base.R
 class EmailValidator private constructor(view: View, doOnAfterTextChanged: Boolean) : TextValidator(view, doOnAfterTextChanged) {
 
     public override fun emptyTips(): Int {
-        return R.string.email_empty_tips
+        return R.string.msg_email_empty_tips
     }
 
     public override fun noMatchTips(): Int {
-        return R.string.email_error_tips
+        return R.string.msg_email_error_tips
     }
 
     override fun lengthOverLimitTips(): Int {
-        return R.string.email_length_ove_limit_tips
+        return R.string.msg_email_length_ove_limit_tips
     }
 
     override fun validateTypeText(content: String): Boolean {

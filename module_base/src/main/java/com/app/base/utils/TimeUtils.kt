@@ -199,10 +199,10 @@ fun Long.millisecondsToDetailDesc(): String {
             ResourceUtils.getString(R.string.just)
         }
         this.isWithinOneHour(now) -> {
-            ResourceUtils.getString(R.string.x_minutes_ago_mask, this.minutesDifference(now).toInt())
+            ResourceUtils.getString(R.string.text_x_minutes_ago_mask, this.minutesDifference(now).toInt())
         }
         this.isToday(wee) -> {
-            ResourceUtils.getString(R.string.x_hours_ago_mask, this.hoursDifference(now).toInt())
+            ResourceUtils.getString(R.string.text_x_hours_ago_mask, this.hoursDifference(now).toInt())
         }
         this.isYesterday(wee) -> {
             "${ResourceUtils.getString(R.string.yesterday)}${thisCalendar.get(Calendar.HOUR_OF_DAY).to2BitText()}:${thisCalendar.get(Calendar.MINUTE).to2BitText()}"

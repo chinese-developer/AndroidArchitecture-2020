@@ -172,20 +172,20 @@ public class BaseDebugActivity extends AppCompatActivity {
                     } else {
                         host = DataConfig.BUILD_RELEASE;
                     }
-                    showRestartAction(host);
+                    showRestartAction(host, which);
                 }).show();
     }
 
-    private void showRestartAction(int host) {
+    private void showRestartAction(int host, int position) {
         new AlertDialog.Builder(this)
                 .setMessage("应用将会重启！当前环境的登录状态与数据缓存将会清空，确定要切换吗？")
-                .setNegativeButton(R.string.cancel_, (dialog, which) -> dialog.dismiss())
+                .setNegativeButton(R.string.cancel, (dialog, which) -> dialog.dismiss())
                 .setPositiveButton(R.string.confirm, (dialog, which) -> {
                     dialog.dismiss();
 
                     //修改 host 标识
                     showHost(host);
-                    DataConfig.getInstance().switchHost(host);
+                    DataConfig.getInstance().switchHost(host, position);
                     //清除所有数据
                     AppContext.appDataSource().logout();
                     AppContext.storageManager().stableStorage().clearAll();

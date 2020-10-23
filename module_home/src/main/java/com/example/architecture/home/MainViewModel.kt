@@ -115,11 +115,11 @@ class MainViewModel @ViewModelInject constructor(
 
             response.whenSuccess {
                 AppContext.appDataSource().logout()
-                toast(getString(R.string.logout_succeed))
+                toast(getString(R.string.msg_logout_succeed))
             }
 
             response.whenFailure {
-                toast("${getString(R.string.error_logout_failed)} ${it.exception.message}")
+                toast("${getString(R.string.msg_logout_failed)} ${it.exception.message}")
             }
         }
     }

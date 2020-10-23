@@ -8,15 +8,15 @@ import com.app.base.R
 class CellphoneNumberValidator private constructor(view: View, doOnAfterTextChanged: Boolean) : TextValidator(view, doOnAfterTextChanged) {
 
     public override fun emptyTips(): Int {
-        return R.string.cellphone_enter_tips
+        return R.string.msg_cellphone_enter_tips
     }
 
     public override fun noMatchTips(): Int {
-        return R.string.cellphone_no_match_tips
+        return R.string.msg_cellphone_no_match_tips
     }
 
     override fun lengthOverLimitTips(): Int {
-        return R.string.cellphone_length_ove_limit_tips
+        return R.string.msg_cellphone_length_ove_limit_tips
     }
 
     override fun validateTypeText(content: String): Boolean {

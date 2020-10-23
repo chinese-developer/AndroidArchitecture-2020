@@ -39,51 +39,48 @@ import static com.app.base.AppContextKt.toast;
 public class SaveImageUtils {
 
     private static Observable<String> saveImageAndGetPathObservable(Activity context, String url, String title) {
-        return Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                // 检查路径
-                if (TextUtils.isEmpty(url) || TextUtils.isEmpty(title)) {
-                    emitter.onError(new Exception("请检查图片路径"));
-                }
-                // 检查图片是否已存在
-                File appDir = new File(Environment.getExternalStorageDirectory(), "云阅相册");
-                if (appDir.exists()) {
-                    File file = new File(appDir, getFileName(url, title));
-                    if (file.exists()) {
-                        emitter.onError(new Exception("图片已存在"));
-                    }
-                }
-                // 没有目录创建目录
-                if (!appDir.exists()) {
-                    appDir.mkdir();
-                }
-                File file = new File(appDir, getFileName(url, title));
-
-                try {
-                    // 下载
-                    File fileDo = Glide.with(context)
-                            .load(url)
-                            .downloadOnly(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
-                            .get();
-                    if (fileDo != null) {
-                        // 复制图片
-                        copyFile(fileDo.getAbsolutePath(), file.getPath());
-
-                        // 通知图库更新
-                        Uri uri = Uri.fromFile(file);
-                        Intent scannerIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri);
-                        context.sendBroadcast(scannerIntent);
-                    } else {
-                        emitter.onError(new Exception("无法下载到图片"));
-                    }
-
-                } catch (Exception e) {
-                    emitter.onError(e);
-                }
-                emitter.onNext("");
-                emitter.onComplete();
+        return Observable.create((ObservableOnSubscribe<String>) emitter -> {
+            // 检查路径
+            if (TextUtils.isEmpty(url) || TextUtils.isEmpty(title)) {
+                emitter.onError(new Exception("请检查图片路径"));
             }
+            // 检查图片是否已存在
+            File appDir = new File(Environment.getExternalStorageDirectory(), "云阅相册");
+            if (appDir.exists()) {
+                File file = new File(appDir, getFileName(url, title));
+                if (file.exists()) {
+                    emitter.onError(new Exception("图片已存在"));
+                }
+            }
+            // 没有目录创建目录
+            if (!appDir.exists()) {
+                appDir.mkdir();
+            }
+            File file = new File(appDir, getFileName(url, title));
+
+            try {
+                // 下载
+                File fileDo = Glide.with(context)
+                        .load(url)
+                        .downloadOnly(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+                        .get();
+                if (fileDo != null) {
+                    // 复制图片
+                    copyFile(fileDo.getAbsolutePath(), file.getPath());
+
+                    // 通知图库更新
+                    Uri uri = Uri.fromFile(file);
+                    Intent scannerIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri);
+                    context.sendBroadcast(scannerIntent);
+                } else {
+                    emitter.onError(new Exception("无法下载到图片"));
+                }
+
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
+            emitter.onNext("");
+            emitter.onComplete();
         }).subscribeOn(Schedulers.io());
     }
 
@@ -96,7 +93,7 @@ public class SaveImageUtils {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(uri -> {
                     File appDir = new File(Environment.getExternalStorageDirectory(), "相册");
-                    String msg = String.format(BaseUtils.getResources().getString(R.string.picture_has_save_to),
+                    String msg = String.format(BaseUtils.getResources().getString(R.string.msg_picture_has_save_to_x),
                             appDir.getAbsolutePath());
                     toast(msg);
                 }, error -> toast(error.getMessage()));

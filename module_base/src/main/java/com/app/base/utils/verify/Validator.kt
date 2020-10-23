@@ -1,12 +1,12 @@
 package com.app.base.utils.verify
 
-import com.google.android.material.textfield.TextInputLayout
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import com.android.base.utils.android.ResourceUtils.getString
 import com.app.base.toast
 import com.app.base.widget.text.ValidateCodeInputLayout
+import com.google.android.material.textfield.TextInputLayout
 
 /**
  * 验证手机号的输入
@@ -122,6 +122,15 @@ internal fun handMatch(view: View) {
             }
             view.textInputLayout.error = null
         }
-        else -> {}
+        else -> {
+        }
     }
+}
+
+fun TextView.validatorTextNotEmpty(tips: String): Boolean {
+    if (text.toString().isBlank()) {
+        toast(tips)
+        return false
+    }
+    return true
 }

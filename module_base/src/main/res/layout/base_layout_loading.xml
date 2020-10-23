@@ -22,7 +22,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/dp_20"
-        android:text="@string/page_loading"
+        android:text="@string/msg_page_loading"
         android:textColor="@color/text_808080"
         android:textSize="@dimen/sp_16"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -5,8 +5,10 @@
 
 package com.app.base.data.api
 
+import com.android.base.utils.ktx.getString
 import com.android.sdk.net.error.ErrorException
 import com.app.base.AppContext
+import com.app.base.R
 import com.app.base.router.RouterPath
 import com.app.base.toast
 import com.blankj.utilcode.util.ActivityUtils
@@ -30,9 +32,9 @@ sealed class NetResult<out T : Any> {
                 if (topActivity != null) {
                     val topActivityName = topActivity::class.java.name
                     if (topActivityName != "com.example.cp.disk.view.activity.LoginAndRegActivity") {
-                        toast("登录状态异常，请重新登录")
+                        toast(getString(R.string.msg_needed_re_login_tips))
                         AppContext.get().appRouter.build(RouterPath.Account.PATH)
-                            ./*withFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK).*/navigation()
+                                ./*withFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK).*/navigation()
                         AppContext.get().appDataSource.logout()
                         if (topActivityName != "com.example.cp.disk.view.activity.MainActivityTwo") {
                             topActivity.finish()

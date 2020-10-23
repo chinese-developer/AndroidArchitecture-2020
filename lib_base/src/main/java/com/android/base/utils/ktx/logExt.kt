@@ -12,5 +12,5 @@ fun logError(message: String) {
 }
 
 fun logThread(message: String) {
-    Timber.tag(TagsFactory.debug).d("当前线程是[%s] %s", Thread.currentThread().name, message)
+    Timber.tag(TagsFactory.debug).d("[%s] %s", Thread.currentThread().name, message)
 }

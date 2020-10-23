@@ -52,9 +52,9 @@ class AppErrorHandler @Inject constructor() : ErrorHandler {
         currentActivity.showConfirmDialog {
 
             messageId = if (isLoginExpired(code)) {
-                R.string.login_expired_re_login_tips
+                R.string.msg_token_expired_tips
             } else {
-                R.string.sso_re_login_tips
+                R.string.msg_needed_re_login_tips
             }
 
             noNegative()

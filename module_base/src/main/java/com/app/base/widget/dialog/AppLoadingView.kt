@@ -16,7 +16,7 @@ class AppLoadingView constructor(@NonNull context: Context) : LoadingView {
         if (!message.isNullOrEmpty()) {
             mLoadingDialog.setTitle(message)
         } else {
-            mLoadingDialog.setTitle(R.string.dialog_loading)
+            mLoadingDialog.setTitle(R.string.msg_dialog_loading)
         }
         mLoadingDialog.setCancelable(cancelable)
         mLoadingDialog.show()
