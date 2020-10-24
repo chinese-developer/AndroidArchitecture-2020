@@ -32,6 +32,10 @@
         <activity
             android:name=".ui.home.album.AlbumDetailActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".test.TestSelectAnimatorDurationActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

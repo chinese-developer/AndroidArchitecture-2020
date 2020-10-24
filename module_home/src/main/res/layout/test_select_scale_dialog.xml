@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp_8">
+
+            <!-- Using CheckedTextView rather than RadioButton for greater control over styling -->
+
+            <CheckedTextView
+                android:id="@+id/scale_off"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?android:listPreferredItemHeightSmall"
+                android:gravity="start|center_vertical"
+                android:paddingStart="@dimen/dp_8"
+                android:paddingEnd="@dimen/dp_8"
+                android:drawablePadding="@dimen/dp_8"
+                android:onClick="scaleClick"
+                android:text="animation_off"
+                style="@style/Widget.Base.RadioButton"
+                tools:ignore="HardcodedText" />
+
+            <CheckedTextView
+                android:id="@+id/scale_0_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?android:listPreferredItemHeightSmall"
+                android:gravity="start|center_vertical"
+                android:paddingStart="@dimen/dp_8"
+                android:paddingEnd="@dimen/dp_8"
+                android:drawablePadding="@dimen/dp_8"
+                android:onClick="scaleClick"
+                android:text="animation_scale_0_5x"
+                tools:ignore="HardcodedText"
+                style="@style/Widget.Base.RadioButton"/>
+
+            <CheckedTextView
+                android:id="@+id/scale_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?android:listPreferredItemHeightSmall"
+                android:gravity="start|center_vertical"
+                android:paddingStart="@dimen/dp_8"
+                android:paddingEnd="@dimen/dp_8"
+                android:drawablePadding="@dimen/dp_8"
+                android:onClick="scaleClick"
+                android:text="animation_scale_1x"
+                tools:ignore="HardcodedText"
+                style="@style/Widget.Base.RadioButton" />
+
+            <CheckedTextView
+                android:id="@+id/scale_1_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?android:listPreferredItemHeightSmall"
+                android:gravity="start|center_vertical"
+                android:paddingStart="@dimen/dp_8"
+                android:paddingEnd="@dimen/dp_8"
+                android:drawablePadding="@dimen/dp_8"
+                android:onClick="scaleClick"
+                android:text="animation_scale_1_5x"
+                style="@style/Widget.Base.RadioButton"
+                tools:ignore="HardcodedText" />
+
+            <CheckedTextView
+                android:id="@+id/scale_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?android:listPreferredItemHeightSmall"
+                android:gravity="start|center_vertical"
+                android:paddingStart="@dimen/dp_8"
+                android:paddingEnd="@dimen/dp_8"
+                android:drawablePadding="@dimen/dp_8"
+                android:onClick="scaleClick"
+                android:text="animation_scale_2x"
+                style="@style/Widget.Base.RadioButton"
+                tools:ignore="HardcodedText" />
+
+            <CheckedTextView
+                android:id="@+id/scale_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?android:listPreferredItemHeightSmall"
+                android:gravity="start|center_vertical"
+                android:paddingStart="@dimen/dp_8"
+                android:paddingEnd="@dimen/dp_8"
+                android:drawablePadding="@dimen/dp_8"
+                android:onClick="scaleClick"
+                android:text="animation_scale_5x"
+                tools:ignore="HardcodedText"
+                style="@style/Widget.Base.RadioButton" />
+
+            <CheckedTextView
+                android:id="@+id/scale_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?android:listPreferredItemHeightSmall"
+                android:gravity="start|center_vertical"
+                android:paddingStart="@dimen/dp_8"
+                android:paddingEnd="@dimen/dp_8"
+                android:drawablePadding="@dimen/dp_8"
+                android:onClick="scaleClick"
+                tools:ignore="HardcodedText"
+                android:text="animation_scale_10x"
+                style="@style/Widget.Base.RadioButton" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:onClick="cancel"
+        android:text="@android:string/cancel"
+        style="@android:style/Widget.Material.Light.Button.Borderless.Colored" />
+
+</LinearLayout>

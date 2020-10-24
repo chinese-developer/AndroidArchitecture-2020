@@ -31,4 +31,12 @@
     <style name="TextApperance.Artist.Title" parent="@style/TextAppearance.AppCompat.Large">
         <item name="android:textSize">29sp</item>
     </style>
+
+    <style name="Widget.Base.RadioButton">
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:drawableStart">?android:listChoiceIndicatorSingle</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
 </resources>
