@@ -1,6 +1,8 @@
 package com.android.sdk.net.error
 
+import android.app.Application
 import android.net.ParseException
+import com.android.sdk.net.R
 import com.android.sdk.net.error.ErrorException.Companion.ERROR_FORBIDDEN
 import com.android.sdk.net.error.ErrorException.Companion.ERROR_INTERNAL_SERVER_ERROR
 import com.android.sdk.net.error.ErrorException.Companion.ERROR_NETWORK_ERROR
@@ -25,41 +27,42 @@ import javax.net.ssl.SSLException
 
 object ExceptionHandle {
 
-    fun handleException(e: Throwable): ErrorException {
+    @JvmStatic
+    fun handleException(app: Application, e: Throwable): ErrorException {
         return when (e) {
             is HttpException -> {
                 when (e.code()) {
-                    ERROR_UNAUTHORIZED -> RequestParamsException(e.code(), "操作未授权")
-                    ERROR_FORBIDDEN -> RequestParamsException(e.code(), "请求被拒绝")
-                    ERROR_NOT_FOUND -> RequestParamsException(e.code(), "资源不存在")
-                    ERROR_REQUEST_TIMEOUT -> RequestParamsException(e.code(), "服务器执行超时")
-                    ERROR_INTERNAL_SERVER_ERROR -> ServerResponseException(e.code(), "服务器内部错误")
-                    ERROR_SERVICE_UNAVAILABLE -> ServerResponseException(e.code(), "服务器不可用")
-                    TOKEN_EXPIRATION -> ServerResponseException(e.code(), "登录过期,请重新登录")
-                    else -> ErrorException(e.code(), "网络错误")
+                    ERROR_UNAUTHORIZED -> RequestParamsException(e.code(), app.getString(R.string.operation_is_not_authorized))
+                    ERROR_FORBIDDEN -> RequestParamsException(e.code(), app.getString(R.string.request_denied))
+                    ERROR_NOT_FOUND -> RequestParamsException(e.code(), app.getString(R.string.resource_does_not_exist))
+                    ERROR_REQUEST_TIMEOUT -> RequestParamsException(e.code(), app.getString(R.string.server_execution_timeout))
+                    ERROR_INTERNAL_SERVER_ERROR -> ServerResponseException(e.code(), app.getString(R.string.server_error))
+                    ERROR_SERVICE_UNAVAILABLE -> ServerResponseException(e.code(), app.getString(R.string.server_unavailable))
+                    TOKEN_EXPIRATION -> ServerResponseException(e.code(), app.getString(R.string.login_expired_please_log_in_again))
+                    else -> ErrorException(e.code(), app.getString(R.string.network_error))
                 }
             }
             is JsonParseException, is JSONException, is ParseException, is MalformedJsonException -> {
-                ErrorException(ERROR_PARSE_ERROR, "解析错误")
+                ErrorException(ERROR_PARSE_ERROR, app.getString(R.string.parsing_error))
             }
 
             is ConnectException -> {
-                ErrorException(ERROR_NETWORK_ERROR, "网络似乎出现了点问题..")
+                ErrorException(ERROR_NETWORK_ERROR, app.getString(R.string.something_wrong_with_the_network))
             }
 
             is SSLException -> {
-                ErrorException(ERROR_SSL_ERROR, "证书验证失败")
+                ErrorException(ERROR_SSL_ERROR, app.getString(R.string.certificate_verification_failed))
             }
 
             is SocketTimeoutException -> {
-                ErrorException(ERROR_TIMEOUT_ERROR, "连接超时")
+                ErrorException(ERROR_TIMEOUT_ERROR, app.getString(R.string.connection_timed_out))
             }
 
             is UnknownHostException -> {
-                ErrorException(ERROR_UNKNOWN_HOST_ERROR, "网络似乎出现了点问题..")
+                ErrorException(ERROR_UNKNOWN_HOST_ERROR, app.getString(R.string.something_wrong_with_the_network))
             }
 
-            else -> ErrorException(ERROR_UNKNOWN, "未知错误")
+            else -> ErrorException(ERROR_UNKNOWN, app.getString(R.string.unknown_error))
 
         }
     }

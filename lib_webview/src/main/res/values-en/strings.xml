@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="save_image">Save image</string>
+    <string name="save_image_succeed">Save image succeed</string>
+    <string name="save_image_failed">Save image failed</string>
+    <string name="network_error">Network error</string>
+    <string name="loading">Loading…</string>
+
+</resources>

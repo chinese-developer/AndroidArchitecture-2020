@@ -1,0 +1,9 @@
+<resources>
+
+   <string name="save_image">保存图片</string>
+   <string name="save_image_succeed">保存图片成功!</string>
+   <string name="save_image_failed">保存图片失败!</string>
+   <string name="network_error">网络连接失败，请检查网络喔</string>
+   <string name="loading">加载中…</string>
+
+</resources>

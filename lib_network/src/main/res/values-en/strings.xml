@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="operation_is_not_authorized">Operation is not authorized</string>
+    <string name="request_denied">Request denied</string>
+    <string name="resource_does_not_exist">Resource does not exist</string>
+    <string name="server_execution_timeout">Server execution timeout</string>
+    <string name="server_error">Server error</string>
+    <string name="server_unavailable">Server unavailable</string>
+    <string name="login_expired_please_log_in_again">Login expired, please log in again</string>
+    <string name="network_error">Network error</string>
+    <string name="parsing_error">Parsing error</string>
+    <string name="something_wrong_with_the_network">Something wrong with the network</string>
+    <string name="certificate_verification_failed">Certificate verification failed</string>
+    <string name="connection_timed_out">Connection timed out</string>
+    <string name="unknown_error">Unknown error</string>
+
+</resources>

@@ -31,9 +31,9 @@ object NetConfig {
         private set
 
     var onError: Throwable.() -> Unit = {
-        val error = ExceptionHandle.handleException(this)
+        val error = ExceptionHandle.handleException(app, this)
         printStackTrace()
-        Toast.makeText(app, error.message ?: "未知错误", Toast.LENGTH_SHORT).show()
+        Toast.makeText(app, error.message ?: app.getString(R.string.unknown_error), Toast.LENGTH_SHORT).show()
     }
 
     var onStateError: Throwable.(view: View) -> Unit = {

@@ -4,6 +4,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.android.sdk.net.error.ExceptionHandle
+import com.app.base.AppContext
 import kotlinx.coroutines.*
 import kotlin.coroutines.EmptyCoroutineContext
 
@@ -66,7 +67,7 @@ open class NetCoroutineScope() : AndroidScope() {
 
     @Suppress("ThrowableNotThrown")
     override fun handleError(e: Throwable) {
-        ExceptionHandle.handleException(e)
+        ExceptionHandle.handleException(AppContext.get(), e)
     }
 
     override fun catch(e: Throwable) {

@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.TextView;
@@ -139,7 +138,7 @@ public class X5WebViewWithToolbarActivity extends AppCompatActivity {
                 tvTitle.setSelected(true);
             }
         }, 1000);
-        tvTitle.setText("加载中……");
+        tvTitle.setText(getString(R.string.loading));
     }
 
     private void initWebView() {

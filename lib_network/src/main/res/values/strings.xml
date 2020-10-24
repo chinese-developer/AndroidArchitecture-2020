@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="operation_is_not_authorized">操作未授权</string>
+    <string name="request_denied">请求被拒绝</string>
+    <string name="resource_does_not_exist">资源不存在</string>
+    <string name="server_execution_timeout">服务器执行超时</string>
+    <string name="server_error">服务器内部错误</string>
+    <string name="server_unavailable">服务器不可用</string>
+    <string name="login_expired_please_log_in_again">登录过期,请重新登录</string>
+    <string name="network_error">网络错误</string>
+    <string name="parsing_error">解析错误</string>
+    <string name="something_wrong_with_the_network">网络似乎出现了点问题…</string>
+    <string name="certificate_verification_failed">证书验证失败</string>
+    <string name="connection_timed_out">连接超时</string>
+    <string name="unknown_error">未知错误</string>
+
+</resources>

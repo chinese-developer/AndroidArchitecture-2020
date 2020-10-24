@@ -3,7 +3,6 @@ package com.android.sdk.x5.helper;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -11,6 +10,7 @@ import android.os.Build;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 
+import com.android.sdk.x5.R;
 import com.android.sdk.x5.utils.EncodeUtils;
 import com.android.sdk.x5.utils.OkHttpUtils;
 import com.android.sdk.x5.utils.ToastUtils;
@@ -40,12 +40,9 @@ public final class SaveImageProcessor {
         }
         mContext = context;
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setItems(new CharSequence[]{"保存图片"}, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (hasExtStoragePermission(mContext)) {
-                    saveImage(mContext, webView);
-                }
+        builder.setItems(new CharSequence[]{mContext.getString(R.string.save_image)}, (dialogInterface, i) -> {
+            if (hasExtStoragePermission(mContext)) {
+                saveImage(mContext, webView);
             }
         });
         AlertDialog dialog = builder.create();
@@ -56,17 +53,17 @@ public final class SaveImageProcessor {
     private void saveImage(final Context context, final WebView webView) {
         File rootImagePath = WebFileUtils.getImageDir(context);
         if (rootImagePath == null) {
-            ToastUtils.showRoundRectToast("保存图片失败");
+            ToastUtils.showRoundRectToast(context.getString(R.string.save_image_failed));
             return;
         }
         WebView.HitTestResult hitTestResult = webView.getHitTestResult();
         if (hitTestResult == null) {
-            ToastUtils.showRoundRectToast("保存图片失败");
+            ToastUtils.showRoundRectToast(context.getString(R.string.save_image_failed));
             return;
         }
         String imageUrl = hitTestResult.getExtra();
         if (imageUrl == null) {
-            ToastUtils.showRoundRectToast("保存图片失败");
+            ToastUtils.showRoundRectToast(context.getString(R.string.save_image_failed));
             return;
         } else if (imageUrl.startsWith("data:")) {
             String imageData = imageUrl.replaceFirst("data:image\\/\\w+;base64,", "");
@@ -79,9 +76,9 @@ public final class SaveImageProcessor {
                 fileOutputStream.close();
                 String imagePath = imageFile.getAbsolutePath();
                 insertMedia(context, imagePath);
-                ToastUtils.showRoundRectToast("保存图片成功" + imagePath);
+                ToastUtils.showRoundRectToast(context.getString(R.string.save_image_succeed) + imagePath);
             } catch (IOException e) {
-                ToastUtils.showRoundRectToast("保存图片成功");
+                ToastUtils.showRoundRectToast(context.getString(R.string.save_image_succeed));
                 e.printStackTrace();
             }
         } else {
@@ -99,7 +96,7 @@ public final class SaveImageProcessor {
                     webView.post(new Runnable() {
                         @Override
                         public void run() {
-                            ToastUtils.showRoundRectToast("保存图片成功" + imagePath);
+                            ToastUtils.showRoundRectToast(context.getString(R.string.save_image_succeed) + imagePath);
                         }
                     });
                 }
@@ -109,7 +106,7 @@ public final class SaveImageProcessor {
                     webView.post(new Runnable() {
                         @Override
                         public void run() {
-                            ToastUtils.showRoundRectToast("请稍后再试，请链接网络");
+                            ToastUtils.showRoundRectToast(context.getString(R.string.network_error));
                         }
                     });
                 }

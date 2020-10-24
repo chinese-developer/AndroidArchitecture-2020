@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import com.android.base.utils.ktx.getString
 import com.android.sdk.net.error.ErrorException
 import com.android.sdk.net.error.ExceptionHandle
+import com.app.base.AppContext
 import com.app.base.R
 import com.app.base.data.api.HttpResult
 import com.app.base.data.api.NetResult
@@ -17,7 +18,7 @@ open class BaseRepository {
         return try {
             call()
         } catch (e: Exception) {
-            NetResult.Error(ExceptionHandle.handleException(e))
+            NetResult.Error(ExceptionHandle.handleException(AppContext.get(), e))
         }
     }
 
@@ -28,7 +29,7 @@ open class BaseRepository {
         return try {
             checkResponse(call(), errorMessage)
         } catch (e: Exception) {
-            NetResult.Error(ExceptionHandle.handleException(e))
+            NetResult.Error(ExceptionHandle.handleException(AppContext.get(), e))
         }
     }
 
@@ -39,7 +40,7 @@ open class BaseRepository {
         return try {
             checkResponseCode(call(), errorMessage)
         } catch (e: Exception) {
-            NetResult.Error(ExceptionHandle.handleException(e))
+            NetResult.Error(ExceptionHandle.handleException(AppContext.get(), e))
         }
     }
 
