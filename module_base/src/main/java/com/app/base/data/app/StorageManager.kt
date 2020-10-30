@@ -10,10 +10,12 @@ import java.lang.ref.WeakReference
 class StorageManager internal constructor(private val context: Context, private val appDataSource: AppDataSource) {
 
     companion object {
-        // data/data/package/files/mmkv/mvvm-stable-storage-id
-        private const val STABLE_CACHE_ID = "mvvm-stable-storage-id"
+        /** private keys */
+        private const val STABLE_CACHE_ID = "mvvm-stable-storage-id" // data/data/package/files/mmkv/mvvm-stable-storage-id
         private const val USER_STORAGE_ID = "mvvm-user-storage-id"
         private const val ALL_USER_STORAGE_ID_KEY = "all_user_storage_id_key"
+
+        /** public keys set into [com.app.base.common.Keys] */
     }
 
     private val storageFactory = MMKVStorageFactoryImpl()
