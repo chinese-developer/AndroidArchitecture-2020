@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModel;
 
+import com.android.base.TagsFactory;
 import com.android.base.app.mvvm.LifecycleViewModel;
 import com.app.base.AppContext;
 
@@ -19,7 +20,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
+import timber.log.Timber;
 
+
+/**
+ * 注意 onPause onResume 会自动暂停和恢复, 如果不需要 resunme 恢复, 需要在 accept 里面拦截.
+ */
 public final class GlobalLooper {
     private static WeakHandler uiHandler;
     private static GlobalLooper instance;
@@ -91,6 +97,10 @@ public final class GlobalLooper {
         cancel(object, object.getClass().getName());
     }
 
+    public boolean containsTag(String tag) {
+        return builderTagsMap.containsKey(tag);
+    }
+
     public void cancel(Object object, String tag) {
         if (object == null || TextUtils.isEmpty(tag)) {
             return;
@@ -124,6 +134,24 @@ public final class GlobalLooper {
         if (builder != null) {
             builder.pause();
         }
+    }
+
+    public boolean isPaused(Object object) {
+        if (object == null) {
+            return true;
+        }
+        return isPaused(object, object.getClass().getName());
+    }
+
+    public boolean isPaused(Object object, String tag) {
+        if (object == null || TextUtils.isEmpty(tag)) {
+            return true;
+        }
+        Builder builder = builderTagsMap.get(tag);
+        if (builder != null) {
+            return builder.isPaused();
+        }
+        return true;
     }
 
     /**
@@ -188,6 +216,7 @@ public final class GlobalLooper {
         static final int RUNNING_WHAT = 0x0001;
         Lifecycle.State status = Lifecycle.State.DESTROYED; // Lifecycle.Event
         IIntervalObserver.Observer observer = null;
+        private boolean handlerHasBeenSuspended = false;
 
         public Builder(Object object) {
             this(object, object.getClass().getName());
@@ -259,6 +288,8 @@ public final class GlobalLooper {
 
         /**
          * @param action 任务执行完成CallBack
+         *               注意: 绑定了 lifecycle 在 onResume 时会自动恢复任务, onPause 时会自动暂停任务.
+         *               如果不需要轮训, 请在 accept 拦截 lifecycle 生命周期事件
          */
         public Builder accept(Action action) {
             this.action = action;
@@ -289,15 +320,25 @@ public final class GlobalLooper {
          * 暂停任务
          */
         public void pause() {
-            uiHandler.removeCallbacksAndMessages(this);
+            if (!handlerHasBeenSuspended) {
+                handlerHasBeenSuspended = true;
+                uiHandler.removeCallbacksAndMessages(this);
+            }
+        }
+
+        public boolean isPaused() {
+            return handlerHasBeenSuspended;
         }
 
         /**
          * 恢复任务
          */
         public void resume() {
-            if (!uiHandler.hasMessages(RUNNING_WHAT, this)) {
-                uiHandler.sendMessageDelayed(obtainThis(), period);
+            if (handlerHasBeenSuspended) {
+                handlerHasBeenSuspended = false;
+                if (!uiHandler.hasMessages(RUNNING_WHAT, this)) {
+                    uiHandler.sendMessageDelayed(obtainThis(), period);
+                }
             }
         }
 
@@ -305,6 +346,7 @@ public final class GlobalLooper {
          * 取消任务
          */
         public void cancel() {
+            handlerHasBeenSuspended = false;
             cancel(null);
         }
 
@@ -314,9 +356,13 @@ public final class GlobalLooper {
          * @param lifecycleOwner {@link LifecycleOwner}
          */
         public void cancel(@Nullable LifecycleOwner lifecycleOwner) {
-            if (tag != null) {
+            if (tag != null && builderTagsMap.containsKey(tag)) {
+                if (!tag.equals("lottery_detail_handler_fetch_user_info_key")) {
+                    Timber.tag(TagsFactory.debug).d("cancel tag is %s", tag);
+                }
                 builderTagsMap.remove(tag);
             }
+            handlerHasBeenSuspended = false;
             status = Lifecycle.State.DESTROYED;
             uiHandler.removeCallbacksAndMessages(this);
             if (checkLifecycleOwnerNotNull(lifecycleOwner)) removeObserver(lifecycleOwner);
@@ -329,6 +375,7 @@ public final class GlobalLooper {
             if (taskType == null || tag == null) {
                 return this;
             }
+            handlerHasBeenSuspended = false;
             builderTagsMap.put(tag, this);
             this.initialDelay = Math.max(0L, unit.toMillis(initialDelay));
             this.period = Math.max(0L, unit.toMillis(period));
