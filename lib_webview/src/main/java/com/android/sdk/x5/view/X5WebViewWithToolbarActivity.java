@@ -21,7 +21,7 @@ import com.android.sdk.x5.base.X5WebChromeClient;
 import com.android.sdk.x5.base.X5WebViewClient;
 import com.android.sdk.x5.inter.InterWebListener;
 import com.android.sdk.x5.inter.VideoWebListener;
-import com.android.sdk.x5.tools.AndroidBug5497Workaround;
+import com.android.sdk.x5.tools.AndroidBug5497WorkaroundForWebView;
 import com.android.sdk.x5.utils.X5WebUtils;
 import com.android.sdk.x5.widget.WebProgress;
 
@@ -36,7 +36,7 @@ public class X5WebViewWithToolbarActivity extends AppCompatActivity {
     private Toolbar mTitleToolBar;
     private X5WebChromeClient x5WebChromeClient;
     private X5WebViewClient x5WebViewClient;
-    private AndroidBug5497Workaround workaround;
+    private AndroidBug5497WorkaroundForWebView workaround;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -108,7 +108,7 @@ public class X5WebViewWithToolbarActivity extends AppCompatActivity {
         initWebView();
         // 处理 作为三方浏览器打开传过来的值
         getDataFromBrowser(getIntent());
-        AndroidBug5497Workaround workaround = new AndroidBug5497Workaround(this);
+        AndroidBug5497WorkaroundForWebView workaround = new AndroidBug5497WorkaroundForWebView(this);
     }
 
     private void initFindViewById() {

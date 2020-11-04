@@ -13,8 +13,7 @@ import com.app.base.data.api.isLoginExpired
 import com.app.base.data.api.newErrorDataStub
 import com.app.base.debug.DebugTools
 import com.app.base.debug.isOpenDebug
-import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import timber.log.Timber
@@ -22,7 +21,7 @@ import java.lang.reflect.Type
 import java.util.concurrent.TimeUnit
 import javax.net.ssl.HostnameVerifier
 
-internal fun newOkHttpConfig(): HttpConfig {
+internal fun newOkHttpConfig(keepCookie: Boolean = false): HttpConfig {
 
     return object : HttpConfig {
 
@@ -34,34 +33,53 @@ internal fun newOkHttpConfig(): HttpConfig {
         override fun environment() = DataConfig.environment()
 
         override fun configRetrofit(
-                okHttpClient: OkHttpClient,
-                builder: Retrofit.Builder
+            okHttpClient: OkHttpClient,
+            builder: Retrofit.Builder
         ): Boolean = false
 
         @SuppressLint("BinaryOperationInTimber")
         override fun configHttp(builder: OkHttpClient.Builder) {
             val sslSocketFactory = HttpsUtils.getSslSocketFactory(null, null, null)
+
+            if (keepCookie) {
+                builder.cookieJar(cookieJar)
+            }
+
             // 常规配置
             builder.connectTimeout(CONNECTION_TIME_OUT.toLong(), TimeUnit.SECONDS)
-                    .readTimeout(IO_TIME_OUT.toLong(), TimeUnit.SECONDS)
-                    .writeTimeout(IO_TIME_OUT.toLong(), TimeUnit.SECONDS)
-                    .sslSocketFactory(sslSocketFactory.sSLSocketFactory, sslSocketFactory.trustManager)
-                    .hostnameVerifier(HostnameVerifier { hostname, session ->
-                        Timber.d("hostnameVerifier called with: hostname 、session = [" + hostname + "、" + session.protocol + "]")
-                        true
-                    })
+                .readTimeout(IO_TIME_OUT.toLong(), TimeUnit.SECONDS)
+                .writeTimeout(IO_TIME_OUT.toLong(), TimeUnit.SECONDS)
+                .sslSocketFactory(sslSocketFactory.sSLSocketFactory, sslSocketFactory.trustManager)
+                .hostnameVerifier(HostnameVerifier { hostname, session ->
+                    Timber.d("hostnameVerifier called with: hostname 、session = [" + hostname + "、" + session.protocol + "]")
+                    true
+                })
 
             // 调试配置
             if (isOpenDebug()) {
                 val httpLoggingInterceptor =
-                        HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-                            override fun log(message: String) {
-                                Timber.tag(TagsFactory.okHttp).i(message)
-                            }
-                        })
+                    HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+                        override fun log(message: String) {
+                            Timber.tag(TagsFactory.okHttp).i(message)
+                        }
+                    })
                 httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
                 builder.addInterceptor(httpLoggingInterceptor)
                 DebugTools.installStethoHttp(builder)
+            }
+        }
+
+        val cookieJar by lazy {
+            object : CookieJar {
+                private val cookieStore = hashMapOf<String, List<Cookie>>()
+                override fun loadForRequest(url: HttpUrl): List<Cookie> {
+                    val cookies = cookieStore[url.host]
+                    return cookies ?: emptyList()
+                }
+
+                override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
+                    cookieStore[url.host] = cookies
+                }
             }
         }
     }
@@ -70,10 +88,10 @@ internal fun newOkHttpConfig(): HttpConfig {
 
 internal fun newErrorDataAdapter(): ErrorDataAdapter = object : ErrorDataAdapter {
     override fun createErrorDataStub(
-            type: Type,
-            annotations: Array<Annotation>,
-            retrofit: Retrofit,
-            value: ResponseBody
+        type: Type,
+        annotations: Array<Annotation>,
+        retrofit: Retrofit,
+        value: ResponseBody
     ): Any {
         return newErrorDataStub()
     }

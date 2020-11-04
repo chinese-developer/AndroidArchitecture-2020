@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
  *     desc   : 优雅在解决web页面android软键盘覆盖问题
  * </pre>
  */
-public class AndroidBug5497Workaround {
+public class AndroidBug5497WorkaroundForWebView {
 
     /**
      * 优雅解决
@@ -39,7 +39,7 @@ public class AndroidBug5497Workaround {
 
 
     public static void assistActivity (Activity activity) {
-        new AndroidBug5497Workaround(activity);
+        new AndroidBug5497WorkaroundForWebView(activity);
     }
 
     public void onDestroy(){
@@ -48,7 +48,7 @@ public class AndroidBug5497Workaround {
         }
     }
 
-    public AndroidBug5497Workaround(Activity activity) {
+    public AndroidBug5497WorkaroundForWebView(Activity activity) {
         if (activity!=null){
             FrameLayout content = activity.findViewById(android.R.id.content);
             mChildOfContent = content.getChildAt(0);

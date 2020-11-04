@@ -64,7 +64,7 @@ public class DataConfig {
         // 环境初始化
         initEnvironment();
         // 初始化网络库
-        NetConfig.INSTANCE.initNet(application, newApiHandler(), newOkHttpConfig(), newErrorDataAdapter());
+        NetConfig.INSTANCE.initNet(application, newApiHandler(), newOkHttpConfig(false), newErrorDataAdapter());
     }
 
     void publishLoginExpired(int code) {
