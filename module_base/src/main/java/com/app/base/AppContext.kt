@@ -35,6 +35,7 @@ import com.app.base.router.RouterManager
 import com.app.base.scope.DialogCoroutineScope
 import com.app.base.widget.dialog.AppLoadingView
 import com.android.base.widget.statusLayout.StateConfig
+import com.app.base.utils.network.NetworkManager
 import com.drake.tooltip.toast
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.MaterialHeader
@@ -78,6 +79,8 @@ open class AppContext : BaseAppContext() {
         AppSecurity.init()
         // 路由
         RouterManager.init(this)
+        // NetWork state
+        NetworkManager.getInstance().init(this)
 
         StateConfig.apply {
             emptyLayout = R.layout.base_layout_empty

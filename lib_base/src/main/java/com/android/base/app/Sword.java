@@ -77,6 +77,7 @@ public final class Sword {
         return loadingViewFactory;
     }
 
+    /** subscribe 会存在内存泄漏, 因为是静态的, 所以使用前要保证内存中仅有一处订阅, 且生命周期是全局的 */
     public Flowable<NetworkState> networkState() {
         return NetworkState.observableState();
     }
