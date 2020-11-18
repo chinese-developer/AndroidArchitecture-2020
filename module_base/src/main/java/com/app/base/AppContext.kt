@@ -35,6 +35,7 @@ import com.app.base.router.RouterManager
 import com.app.base.scope.DialogCoroutineScope
 import com.app.base.widget.dialog.AppLoadingView
 import com.android.base.widget.statusLayout.StateConfig
+import com.app.base.debug.isOpenDebug
 import com.app.base.utils.network.NetworkManager
 import com.drake.tooltip.toast
 import com.scwang.smart.refresh.footer.ClassicsFooter
@@ -101,7 +102,7 @@ open class AppContext : BaseAppContext() {
         // 基础库配置
         Sword.get()
             .registerLoadingFactory { AppLoadingView(it) } // 默认的通用的LoadingDialog和Toast实现
-            .setCrashProcessor { _, _ ->  }
+            .setCrashProcessor(isOpenDebug())
             .setErrorClassifier(object : Sword.ErrorClassifier {
                 override fun isNetworkError(throwable: Throwable): Boolean {
                     Timber.tag(TagsFactory.okHttp).d(throwable)

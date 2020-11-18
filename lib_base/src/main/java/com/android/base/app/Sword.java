@@ -86,8 +86,8 @@ public final class Sword {
         void uncaughtException(Thread thread, Throwable ex);
     }
 
-    public Sword setCrashProcessor(CrashProcessor crashProcessor) {
-        applicationDelegate.setCrashProcessor(crashProcessor);
+    public Sword setCrashProcessor(/*CrashProcessor crashProcessor*/boolean isOpenDebug) {
+        applicationDelegate.setCrashProcessor(isOpenDebug);
         return this;
     }
 

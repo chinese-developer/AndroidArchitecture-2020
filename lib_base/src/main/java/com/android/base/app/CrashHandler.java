@@ -7,6 +7,8 @@ import android.os.Build;
 import android.os.Process;
 
 import com.blankj.utilcode.util.AppUtils;
+import com.yc.toollib.crash.CrashListener;
+import com.yc.toollib.crash.CrashToolUtils;
 
 import java.io.File;
 import java.io.PrintStream;
@@ -24,10 +26,21 @@ final class CrashHandler implements Thread.UncaughtExceptionHandler {
     private Context context;
     private Sword.CrashProcessor crashProcessor;
 
-    public static CrashHandler register(Application application) {
-        CrashHandler crashHandler = new CrashHandler(application);
-        Thread.setDefaultUncaughtExceptionHandler(crashHandler);
-        return crashHandler;
+    public static void register(Application application) {
+        /*CrashHandler crashHandler = new CrashHandler(application);
+        Thread.setDefaultUncaughtExceptionHandler(crashHandler);*/
+
+        com.yc.toollib.crash.CrashHandler.getInstance().init(application, new CrashListener() {
+            @Override
+            public void againStartApp() {
+                CrashToolUtils.reStartApp1(application,500);
+            }
+
+            @Override
+            public void recordException(Throwable ex) {
+
+            }
+        });
     }
 
     void setCrashProcessor(Sword.CrashProcessor crashProcessor) {

@@ -11,6 +11,7 @@ import com.android.base.receiver.NetStateReceiver;
 import com.android.base.utils.BaseUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.Utils;
+import com.yc.toollib.network.utils.NetworkTool;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -23,7 +24,6 @@ public final class ApplicationDelegate {
 
     private Application application;
 
-    private CrashHandler crashHandler;
     private BehaviorProcessor<Boolean> appStatus;
 
     private AtomicBoolean onCreateCalled = new AtomicBoolean(false);
@@ -47,7 +47,7 @@ public final class ApplicationDelegate {
         // 工具类初始化
         BaseUtils.init(application);
         // 异常日志记录
-        crashHandler = CrashHandler.register(application);
+        CrashHandler.register(application);
         // 网络状态
         listenNetworkState();
         // App前台后台
@@ -99,9 +99,11 @@ public final class ApplicationDelegate {
         return appStatus;
     }
 
-    void setCrashProcessor(Sword.CrashProcessor crashProcessor) {
-        if (crashHandler != null) {
-            crashHandler.setCrashProcessor(crashProcessor);
+    void setCrashProcessor(/*Sword.CrashProcessor crashProcessor*/boolean isOpenDebug) {
+        if (isOpenDebug) {
+            NetworkTool.getInstance().init(application);
+            // 开启悬浮按钮, 点击去网络拦截列表页面查看网络请求数据
+            NetworkTool.getInstance().setFloat(application);
         }
     }
 
