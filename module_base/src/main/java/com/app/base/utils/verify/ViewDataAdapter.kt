@@ -9,8 +9,8 @@ import com.app.base.widget.text.ValidateCodeInputLayout
 internal fun getStringData(view: View): String {
     return when (view) {
         is TextView -> view.text.toString()
-        is TextInputLayout -> view.textStr()
-        is ValidateCodeInputLayout -> view.textInputLayout.textStr()
+        is TextInputLayout -> view.textStr()!!
+        is ValidateCodeInputLayout -> view.textInputLayout.textStr()!!
         else -> {
             throw IllegalArgumentException("ViewDataAdapter unSupport ")
         }

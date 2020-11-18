@@ -8,7 +8,6 @@ import com.android.base.app.activity.ActivityDelegate
 import com.android.base.utils.ktx.onDebouncedClick
 import com.android.cache.getEntity
 import com.app.base.AppContext
-import com.app.base.common.EventCenter
 import com.app.base.data.models.Song
 import com.app.base.toast
 import com.example.architecture.home.common.Constant
@@ -29,7 +28,6 @@ class MediaController(
     private val host: MainFragment,
     private val binding: FragMainBinding,
     private val model: MainViewModel,
-    private val eventCenter: EventCenter
 ) : ActivityDelegate<MainActivity> {
 
     private val storage by lazy { AppContext.storageManager().stableStorage() }
@@ -213,7 +211,6 @@ class MediaController(
             storage.putEntity(Constant.PLAYED_MUSIC_CACHE_KEY, playedList)
         }
 
-        eventCenter.notifyPlayedListSetDataChanged()
         storage.putEntity(Constant.PLAYING_MUSIC_CACHE_KEY, song)
     }
 

@@ -2,7 +2,6 @@ package com.app.base.data.app
 
 import android.content.Context
 import com.android.sdk.net.error.ErrorException
-import com.app.base.common.EventCenter
 import com.app.base.config.AppSettings.settingsStorage
 import com.app.base.data.api.AuthTokenLocalDataSource
 import com.app.base.data.api.NetResult
@@ -27,7 +26,6 @@ class AppRepository @Inject constructor(
 ) : AppDataSource {
 
     @Inject lateinit var appApi: AppApiService
-    @Inject lateinit var eventbus: EventCenter
 
     internal val storageManager = StorageManager(context, this)
     private val stableStorage = storageManager.stableStorage()
@@ -61,8 +59,6 @@ class AppRepository @Inject constructor(
     override fun resetToken() {
         tokenLocalDataSource.resetToken()
     }
-
-    override fun eventBus(): EventCenter = eventbus
 
     override fun fetchDomain(domain: String): Observable<DomainResponse> {
         return appApi.testFastDomain("$domain/ping.jpg")

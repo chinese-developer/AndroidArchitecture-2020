@@ -1,6 +1,5 @@
 package com.app.base.data.app
 
-import com.app.base.common.EventCenter
 import com.app.base.data.api.NetResult
 import com.app.base.data.models.LoggedInUser
 import com.app.base.data.models.Song
@@ -32,8 +31,6 @@ interface AppDataSource {
 
     /** 刷新 token */
     fun resetToken()
-
-    fun eventBus(): EventCenter
 
     /** 通过 id 获取歌曲可播放的 url 地址 */
     suspend fun getSongUrl(id: String): NetResult<Song>

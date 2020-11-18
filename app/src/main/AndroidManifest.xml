@@ -53,7 +53,7 @@
         </activity>
 
         <activity
-            android:name="com.app.base.web.x5.X5WebViewActivity"
+            android:name="com.app.base.web.X5WebViewActivity"
             android:screenOrientation="portrait" />
 
     </application>

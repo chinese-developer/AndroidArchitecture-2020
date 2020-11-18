@@ -20,7 +20,6 @@ import com.android.base.utils.ktx.newFragment
 import com.android.base.utils.ktx.onDebouncedClick
 import com.android.base.utils.ktx.visible
 import com.app.base.AppContext
-import com.app.base.common.EventCenter
 import com.app.base.data.DataConfig
 import com.app.base.debug.isOpenDebug
 import com.app.base.router.RouterPath
@@ -53,8 +52,6 @@ class MainFragment : BaseFragment() {
     private lateinit var allGamesFragment: MineFragment
     private lateinit var mediaController: MediaController
 
-    @Inject lateinit var eventCenter: EventCenter
-
     private val model by viewModels<MainViewModel>()
 
     override fun onCreateView(
@@ -70,7 +67,7 @@ class MainFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mediaController = MediaController(this, binding, model, eventCenter)
+        mediaController = MediaController(this, binding, model)
         initViewModelObservers()
         initViewPager()
         initBottomNavigationBar()
