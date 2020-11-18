@@ -43,12 +43,6 @@ class ScreenSlidePageFragment : BaseFragment() {
         whoAmI = arguments?.getString(KEY_FOR_WHICH_PAGE)?.toInt() ?: 0
 
         initAdapter()
-
-        AppContext.get().appDataSource.eventBus().mayStartAnim.observe(viewLifecycleOwner) {
-            if (whoAmI == it && lifecycle.currentState == Lifecycle.State.STARTED) {
-                adapter.notifyDataSetChanged()
-            }
-        }
     }
 
     private fun initAdapter() {

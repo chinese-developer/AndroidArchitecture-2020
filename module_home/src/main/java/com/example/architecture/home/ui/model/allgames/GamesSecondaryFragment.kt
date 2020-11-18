@@ -49,12 +49,6 @@ class GamesSecondaryFragment : BaseFragment() {
 
         initAdapter()
         listeners()
-
-        AppContext.get().appDataSource.eventBus().mayStartAnim.observe(viewLifecycleOwner, {
-            if (whoAmI == it && lifecycle.currentState == Lifecycle.State.STARTED) {
-                adapter.notifyDataSetChanged()
-            }
-        })
     }
 
     @SuppressLint("ClickableViewAccessibility")

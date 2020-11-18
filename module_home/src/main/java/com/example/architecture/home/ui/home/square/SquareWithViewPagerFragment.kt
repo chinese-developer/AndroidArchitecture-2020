@@ -74,7 +74,6 @@ class SquareWithViewPagerFragment : BaseFragment() {
                         )
                         lastVisibleItemPosition = modelPosition
                         vpSecondary.currentItem = modelPosition
-                        AppContext.get().appDataSource.eventBus().startAnim(modelPosition)
                     }
                 }
 
