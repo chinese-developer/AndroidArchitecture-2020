@@ -5,6 +5,6 @@
         <bitmap android:src="@mipmap/bg_launch" />
     </item>
     <item>
-        <bitmap android:gravity="center" android:src="@mipmap/col_cover_avia_sports_long" />
+        <bitmap android:gravity="center" android:src="@mipmap/bg_launch_content" />
     </item>
 </layer-list>
