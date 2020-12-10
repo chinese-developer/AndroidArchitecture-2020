@@ -863,6 +863,58 @@ class BindingAdapter : RecyclerView.Adapter<BindingAdapter.BindingViewHolder>() 
         return holder.collapse(depth)
     }
 
+    fun expandAll(groupIndex: Int, @IntRange(from = -1) depth: Int = 0) {
+        val itemExpand = getModelOrNull<ItemExpand>(groupIndex)
+
+        if (itemExpand != null && !itemExpand.itemExpand) {
+            val itemSublist = itemExpand.itemSublist
+            itemExpand.itemExpand = true
+
+            val sublist =
+                if (itemSublist is ArrayList) itemSublist else itemSublist?.toMutableList()
+            if (sublist != null && sublist.size > 0) {
+                val sublistFlat = flat(sublist, true, depth)
+
+                (this@BindingAdapter.models as MutableList).addAll(
+                    groupIndex + 1,
+                    sublistFlat
+                )
+                if (expandAnimationEnabled) {
+                    notifyItemChanged(groupIndex)
+                    notifyItemRangeInserted(groupIndex + 1, sublistFlat.size)
+                } else {
+                    notifyDataSetChanged()
+                }
+
+                previousExpandPosition = groupIndex
+                sublistFlat.size
+            }
+        }
+    }
+
+    fun collapseAll(groupIndex: Int, @IntRange(from = -1) depth: Int = 0) {
+        val itemExpand = getModelOrNull<ItemExpand>(groupIndex)
+
+        if (itemExpand != null && itemExpand.itemExpand) {
+            val itemSublist = itemExpand.itemSublist
+            itemExpand.itemExpand = false
+
+            val sublist =
+                if (itemSublist is ArrayList) itemSublist else itemSublist?.toMutableList()
+            if (sublist != null && sublist.size > 0) {
+                val sublistFlat = flat(sublist, false, depth)
+                (this@BindingAdapter.models as MutableList).removeAll(sublistFlat)
+                if (expandAnimationEnabled) {
+                    notifyItemChanged(groupIndex, itemExpand)
+                    notifyItemRangeRemoved(groupIndex + 1, sublistFlat.size)
+                } else {
+                    notifyDataSetChanged()
+                }
+                sublistFlat.size
+            }
+        }
+    }
+
     /**
      * 展开或折叠
      * @param scrollTop 展开同时当前条目滑动到顶部
